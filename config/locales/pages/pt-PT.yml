@@ -1,33 +1,35 @@
 # Messages for Portuguese (Português)
 # Exported from translatewiki.net
 # Export driver: syck
+# Author: Hamilton Abreu
+# Author: Luckas Blade
 pt-PT: 
   activerecord: 
     attributes: 
       page: 
-        css: stylesheets
-        js: javascript
+        css: Stylesheets
+        js: JavaScript
     models: 
-      page: page
-      pages: pages
+      page: Página
+      pages: Páginas
   pages: 
     actions: 
-      create_page: Create new page
-      edit_page: Edit page
-      title: Actions
+      create_page: Criar página nova
+      edit_page: Editar página
+      title: Acções
     create: 
-      success: Page was successfully created.
+      success: A página foi criada.
     edit: 
-      title: Editing page
+      title: A editar página
     form: 
-      language_tip: page language
-      title_tip: "Page title, use this to reference the page. for example: [[FAQ|check out the faq]]"
+      language_tip: Língua da página
+      title_tip: "Título da página, usado para referi-la. Por exemplo: [[FAQ|veja a FAQ]]"
     index: 
-      create_page: create new page
-      title: List of pages
-      written_in: written in %{language}
+      create_page: Criar página nova
+      title: Lista de páginas
+      written_in: Escrita em %{language}
     new: 
-      title: new page
-    title: fixme
+      title: Página nova
+    title: Corrigir
     update: 
-      success: Page was successfully updated.
+      success: A página foi actualizada.
