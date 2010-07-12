@@ -1,1 +1,0 @@
-require 'machine_tags'
