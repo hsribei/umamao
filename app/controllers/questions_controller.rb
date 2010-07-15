@@ -548,6 +548,7 @@ class QuestionsController < ApplicationController
   end
 
   def retag_to
+    debugger
     @question = Question.find_by_slug_or_id(params[:id])
 
     @question.tags = params[:question][:tags]

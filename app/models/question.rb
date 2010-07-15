@@ -75,7 +75,7 @@ class Question
   filterable_keys :title, :body
   language :language
 
-  before_save :update_activity_at, :extract_machine_tags
+  before_save :update_activity_at
   before_validation_on_create :update_language
 
   validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
@@ -85,21 +85,6 @@ class Question
   validate :check_useful
 
   timestamps!
-
-  def extract_machine_tags
-    Rails.logger.debug("ALMOST THERE!! Tags are: " + tags.inspect)
-    tags.each do |tag|
-      if tag =~ /(\w+):(\w+)=(\w+)/
-        Rails.logger.debug("WOOOOW GOT ME ONE OF THEM CHECK THIS OUT: " + tag)
-        tags.delete(tag)
-
-        mtag = MachineTag.first_or_new(:question_id => self.id, :namespace => $1,
-                                       :key => $2)
-        mtag.value = $3
-        mtag.save!
-      end
-    end
-  end
 
   def first_tags
     tags[0..5]
