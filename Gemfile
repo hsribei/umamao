@@ -48,6 +48,7 @@ gem 'uuidtools', '~>2.1.1'
 gem 'whatlanguage', '~>1.0.0'
 gem 'warden', '~>0.10.7'
 gem 'bitly'
+gem 'jammit', '~>0.6.0'
 
 group :test do
   gem "rspec"
