@@ -16,7 +16,8 @@
       = label_tag 'user[remember_me]', t("sessions.new.remember_me")
       = check_box_tag 'user[remember_me]', '1', false, :tabindex => 3
 
-= include_stylesheets :landing
+- content_for :js do
+  = include_javascripts :landing
 
 #content
   %h3 Qualquer pergunta, não qualquer resposta.

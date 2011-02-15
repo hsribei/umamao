@@ -1,8 +1,5 @@
 - content_for :js do
-  = javascript_include_tag "#{AppConfig.wmd_location}/jquery.wmd.min.js"
-  = javascript_include_tag "#{AppConfig.wmd_location}/jquery.wmd.mathjax.js"
-  = javascript_include_tag "modules/single/question"
-  = javascript_include_tag "modules/new_question"
+  = include_javascripts :content_show
 
 - content_for :subtabs do
   .navtitle

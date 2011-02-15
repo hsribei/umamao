@@ -1,6 +1,5 @@
 - content_for :js do
-  = render :partial => "shared/layout/javascript/show"
-  = javascript_include_tag "modules/edit_question"
+  = include_javascripts :content_show, :questions_edit_revert
 
 - content_for :subtabs do
   .navtitle
