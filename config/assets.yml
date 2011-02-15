@@ -37,6 +37,7 @@ stylesheets:
     - public/stylesheets/colorbox.css
     - public/stylesheets/compiled/themes/plain/style.css
     - public/javascripts/wmd/wmd.css
+    - public/stylesheets/welcome.css
   landing:
     - public/stylesheets/autocomplete_landing.css
     - public/stylesheets/compiled/landing.css
