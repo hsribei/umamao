@@ -1,0 +1,13 @@
+embed_assets: datauri
+
+stylesheets:
+  base:
+    - public/stylesheets/jquery-ui.css
+    - public/stylesheets/compiled/application.css
+    - public/stylesheets/autocomplete.css
+    - public/stylesheets/colorbox.css
+    - public/stylesheets/compiled/themes/plain/style.css
+    - public/javascripts/wmd/wmd.css
+  landing:
+    - public/stylesheets/autocomplete_landing.css
+    - public/stylesheets/compiled/landing.css

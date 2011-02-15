@@ -3,7 +3,7 @@
   %head
     %title
       &= page_title
-    = render :partial => "shared/layout/css"
+    = include_stylesheets :base, :media => 'all'
     = current_group.head_tag
     = render :partial => "shared/layout/meta"
     = render :partial => "shared/layout/javascript"
