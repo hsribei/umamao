@@ -4,6 +4,7 @@
     %title
       &= page_title
     = include_stylesheets :base, :media => 'all'
+    = yield :css
     = current_group.head_tag
     = render :partial => "shared/layout/meta"
     = include_javascripts :base
