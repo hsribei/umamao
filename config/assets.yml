@@ -16,15 +16,15 @@ javascripts:
     - public/javascripts/modules/welcome.js
     - public/javascripts/modules/follow_link.js
     - public/javascripts/modules/cookies.js
+    - public/javascripts/modules/votes.js
   landing:
     - public/javascripts/modules/landing.js
   suggestions:
     - public/javascripts/modules/suggestions.js
   content_show:
-    - public/javascripts/wmd/jquery.wmd.min.js
-    - public/javascripts/wmd/jquery.wmd.mathjax.js
     - public/javascripts/modules/single/question.js
     - public/javascripts/modules/show_question.js
+    - public/javascripts/modules/new_question.js
     - public/javascripts/jquery.colorbox-min.js
   questions_edit_revert:
     - public/javascripts/modules/edit_question.js
@@ -36,7 +36,7 @@ stylesheets:
     - public/stylesheets/autocomplete.css
     - public/stylesheets/colorbox.css
     - public/stylesheets/compiled/themes/plain/style.css
-    - public/javascripts/wmd/wmd.css
+    - public/stylesheets/compiled/themes/plain/style.css
     - public/stylesheets/welcome.css
   landing:
     - public/stylesheets/autocomplete_landing.css
