@@ -1,6 +1,6 @@
 $logo-color: #da242b
 $link-color: #0077cc
-$controls-color: #666
+$controls-color: #666666
 
 @import ../../footer
 @import ../../screen
@@ -10,18 +10,17 @@ a
   text-decoration: none
 
 h1, h2, h3
-  color: #444
+  color: #444444
 
 body
-  color: #333
-  background: #fff
-  font-family: Arial, 'Liberation Sans', 'DejaVu Sans', sans-serif
+  color: #333333
+  background: white
+  font-family: Arial, "Liberation Sans", "DejaVu Sans", sans-serif
   font-size: 13px
 
-
 hr
-  background-color: #DDDDDD
-  color: #DDDDDD
+  background-color: #dddddd
+  color: #dddddd
   border: 0 none
   height: 1px
   margin-bottom: 20px
@@ -35,37 +34,30 @@ p
 input.checkbox
   vertical-align: middle
 
-
 .hightlight
-  background-color: #ffc
-
+  background-color: #ffffcc
 
 .small
   font-size: 11px
 
-
 .gray
-  color: #999
-
+  color: #999999
 
 #main
-
   .block
     padding: 0 40px 20px 0
     margin-bottom: 20px
     background: transparent
-
     .content
-      background: #fff
+      background: white
       .inner
         padding: 0px 3px 0px 0px
-
     h2.title
       margin: 10px 0 5px 0
       background-color: none
       padding: 5px 5px 5px 15px
       font-size: 18px
-      color: #456
+      color: #445566
 
 #container
   +sticky-footer-container
@@ -76,93 +68,77 @@ input.checkbox
 
 #sidebar
   .notice
-    background-color: #D9E3ED
+    background-color: #d9e3ed
     padding: 10px
-    border-bottom: 1px solid #ddd
-    border-right: 1px solid #ddd
-    border-top: 1px solid #fff
-    border-left: 1px solid #fff
-
+    border-bottom: 1px solid #dddddd
+    border-right: 1px solid #dddddd
+    border-top: 1px solid white
+    border-left: 1px solid white
     h1
       margin-bottom: 10px
     h2
       font-size: 16px
       margin: 5px 0
-      border-bottom: 1px solid #456
-
+      border-bottom: 1px solid #445566
     p
       font-size: 12px
-
   .help
-    background-color: #FFEFC6
-
+    background-color: #ffefc6
   h3
     padding: 0 0 10px 0
     margin: 0
-    color: #333
+    color: #333333
     font-weight: bold
     font-size: 17px
     line-height: 26px
-
   ul
     &.navigation li
       &.last a
         border-bottom: none
-
       a
         &:link, &:visited
           padding: 7px 10px
           color: #6a6a6a
           text-decoration: none
-
         &:hover
           text-decoration: underline
-
   .block .sidebar-block h4
-    border-bottom: 1px dotted #aaa
-
+    border-bottom: 1px dotted #aaaaaa
 
 #main-navigation ul li
-  background: #456
-  border-top: 1px solid #5C738A
-  color: #eee
+  background: #445566
+  border-top: 1px solid #5c738a
+  color: #eeeeee
   border-top-left-radius: 5px
   border-top-right-radius: 5px
-
   &:hover
-    border-top-color: #7593B0
-    background-color: #576C82 !important
-    color: #fff
-
+    border-top-color: #7593b0
+    background-color: #576c82 !important
+    color: white
   &.active
-    background-color: #eee !important
-    color: #333
-
+    background-color: #eeeeee !important
+    color: #333333
   a
     &:link, &:visited, &:hover, &:active
       text-decoration: none
-      color: #F5F5F5
+      color: #f5f5f5
 
 #user-navigation ul li a
   &:link, &:visited, &:hover, &:active
     text-decoration: none
-    color: #F5F5F5
-
+    color: #f5f5f5
   &:link, &:visited
-    color: #CDE
-    border-bottom: 1px dotted #345
-
+    color: #ccddee
+    border-bottom: 1px dotted #334455
   &:hover
-    color: #fff
-    border-bottom: 1px dotted #CDE
+    color: white
+    border-bottom: 1px dotted #ccddee
     text-decoration: none
-
 
 #main-navigation ul li
   a
     font-size: 12px
     padding: 3px 10px
-
   &.active a
     &:link, &:visited, &:hover, &:active
       color: #364b69
@@ -170,32 +146,27 @@ input.checkbox
 .secondary-navigation ul li a
   &:link, &:visited, &:hover, &:active
     text-decoration: none
-    color: #666
+    color: #666666
 
 .secondary-navigation
-  background: #fff
-  color: #222
+  background: white
+  color: #222222
   margin-bottom: -4px
-
   ul
     float: right
-
   ul + ul
     margin-left: 5px
-
   ul li
     color: black
     border-top-left-radius: 5px
     border-top-right-radius: 5px
     padding: 1px 1px 0px 1px
-
     a, span
       padding: 3px 10px
       color: black
       font-weight: bold
-
     &:hover
-      color: #777
+      color: #777777
 
 .pagination
   font-size: 14px
@@ -204,31 +175,24 @@ input.checkbox
     padding-bottom: 0px
     &.current
       background: #808185
-      color: #FFFFE0
-
-
+      color: #ffffe0
     &.disabled
-      background: #eee
-      color: #aaa
-      border: 1px solid #ddd
-
+      background: #eeeeee
+      color: #aaaaaa
+      border: 1px solid #dddddd
   a
     color: #808185
-    border: 1px solid #ddd
-
-
+    border: 1px solid #dddddd
     &:hover
-      color: #444
-      border: 1px solid #576C82
-
+      color: #444444
+      border: 1px solid #576c82
 
 .table
   th
-    background: #576C82
-    color: #F5F5F5
+    background: #576c82
+    color: #f5f5f5
     font-weight: normal
     padding: 3px
-
     a.toggle
       display: block
       width: 12px
@@ -236,78 +200,67 @@ input.checkbox
       background: transparent url(images/tick.png) center no-repeat
       text-indent: -9999px
       -moz-outline: none
-
     &.first
       width: 30px
       text-align: center
-
   td
-    border-bottom: 1px solid #AAA
-
+    border-bottom: 1px solid #aaaaaa
 
 .form
   input.text
-    border: 1px solid #ddd
+    border: 1px solid #dddddd
     padding: 5px
     width: 99%
-
   input.text_field, textarea.text_area
-    border-right: 1px solid #ddd
-    border-bottom: 1px solid #ddd
-    border-top: 2px solid #ccc
-    border-left: 2px solid #ccc
+    border-right: 1px solid #dddddd
+    border-bottom: 1px solid #dddddd
+    border-top: 2px solid #cccccc
+    border-left: 2px solid #cccccc
     width: 99%
-
   textarea.editor-input
-    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New
     font-size: 90%
-    border: 1px solid #BBBBBB
+    border: 1px solid #bbbbbb
     height: 240px
     line-height: 1.2
     padding: 3px
     width: 100%
-
   .navform
     font-size: 13px
     line-height: 26px
     height: 26px
     padding: 5.5px
-    background-color: #eee
-    border-bottom: 1px solid #ddd
-    border-right: 1px solid #ddd
-    border-top: 1px solid #eee
-    border-left: 1px solid #eee
-
+    background-color: #eeeeee
+    border-bottom: 1px solid #dddddd
+    border-right: 1px solid #dddddd
+    border-top: 1px solid #eeeeee
+    border-left: 1px solid #eeeeee
     input[type=submit]
       height: 26px
 
 .invitation_form
   .tip
-    color: #666
+    color: #666666
     margin: 0 0 10px 0
     font-size: 90%
-
     p
       line-height: 1em
       margin: 0 0 5px 0
     ul
       list-style-position: inside
-
   h3
-    color: #444
+    color: #444444
     padding-top: 14px
   form
-    color: #444
+    color: #444444
     +blueprint-form
     +blueprint-form-sizes(95%)
     textarea
       width: 95%
 
-
 .description
-  color: #aaa
+  color: #aaaaaa
   font-family: Georgia, serif
-
 
 .flash
   .message
@@ -316,36 +269,30 @@ input.checkbox
     text-align: center
     margin: 0 auto 5px
     width: 80%
-
     p
       margin: 8px
-
   .error
-    border: 1px solid #fbb
-    background-color: #fdd
-
+    border: 1px solid #ffbbbb
+    background-color: #ffdddd
   .warning
     border: 1px solid #fffaaa
     background-color: #ffffcc
-
   .notice
-    border: 1px solid #ddf
-    background-color: #eef
-
+    border: 1px solid #ddddff
+    background-color: #eeeeff
 
 #box .block
-  background: #F5F5F5
-  border: 1px solid #ddd
+  background: #f5f5f5
+  border: 1px solid #dddddd
   border-radius: 10px
-
   h2
-    background: #576C82
-    color: #F5F5F5
+    background: #576c82
+    color: #f5f5f5
     border-top-left-radius: 5px
     border-top-right-radius: 5px
 
 .edit-link
   color: $controls-color
-  
+
 .lighter_text
-  color: #999
+  color: #999999

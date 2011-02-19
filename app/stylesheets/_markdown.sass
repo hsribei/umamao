@@ -1,47 +1,36 @@
-@import "compass/utilities/general/reset"
+@import compass/utilities/general/reset
 
 .markdown
-  color: #222
-
+  color: #222222
   p
     +reset-font
     margin: 0 0 13px
     font-size: 13px
     line-height: 22px
-    font-family: Helvetica,Arial,"Liberation Sans","DejaVu Sans",sans-serif
-
+    font-family: Helvetica, Arial, "Liberation Sans", "DejaVu Sans", sans-serif
   p + p, ul + p, ol + p
     margin-top: 0.8em
-
   p + ul
     margin-top: 0.8em
-
   strong
     font-weight: bold
   em
     font-style: italic
-
   ul
     list-style: disc
-
   ol
     list-style: decimal
-
   ul, ol
   //list-style-position: inside
-  
   li
     line-height: 22px
-
   li + li
     margin-top: 0.9em
     //line-height: 22px
-
   h1,h2,h3,h4,h5,h6
     +reset-font
     color: #222222
     font-weight: bold
-
   h1
     font-size: 20px
   h2
@@ -53,20 +42,16 @@
     font-size: 14px
   h5
     font-size: 14px
-
   code
-    background-color: #F0F0F0
+    background-color: #f0f0f0
     max-height: 600px
     overflow: auto
     width: auto
     display: inline
-    font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace
-
+    font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace
   pre
     code
       display: block
-
-
   blockquote
     width: 95%
     margin: 1em

@@ -1,6 +1,6 @@
-@import "blueprint/buttons"
+@import blueprint/buttons
 
-@mixin button
+=button
   +border-radius
   font-weight: bold
   color: black
@@ -12,8 +12,7 @@
 =umamao-button
   +button-button
   +button-colors
-  +button-hover-colors(#fff, $logo-color + 30, $logo-color + 30)
-  +button-active-colors(#fff, $logo-color - 50, $logo-color - 50)
+  +button-hover-colors(white, $logo-color + 30, $logo-color + 30)
+  +button-active-colors(white, $logo-color - 50, $logo-color - 50)
   &.current
-    +button-colors(#fff, $logo-color + 30, $logo-color + 30)
-
+    +button-colors(white, $logo-color + 30, $logo-color + 30)

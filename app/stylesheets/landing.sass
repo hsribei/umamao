@@ -19,6 +19,7 @@ body.bp
 #container
   +container
   +sticky-footer-container
+
 #header
   +column($blueprint-grid-columns)
   padding: 20px 0
@@ -30,16 +31,13 @@ body.bp
   +blueprint-form-sizes(142px)
   float: right
   font-size: 11px
-
   .label
     line-height: 1
-
   #email_label
     +column(4)
   #password_label
     +append(4)
     +column(2, true)
-
   #email_field
     +column(4)
   #password_field
@@ -50,7 +48,6 @@ body.bp
     +append(4)
     +column(6, true)
     line-height: 1
-
   input[type=submit]
     width: 70px
     margin-top: 6px
@@ -58,11 +55,11 @@ body.bp
     padding: 5px 10px 5px 7px
 
 hr#colruler
-  +colruler(#EEEEEE)
+  +colruler(#eeeeee)
 
 #help-box
   background-color: #eef5e9
-  border: 1pt dashed #DA242B
+  border: 1pt dashed #da242b
   font-size: 1em
   display: none
   padding: 10px
@@ -81,20 +78,17 @@ hr#colruler
   // true means it's the last column in the row
   +column($signup-columns, true)
   +border-radius(8px)
-  background-color: #F5F5F5
+  background-color: #f5f5f5
   padding: 20px
   margin-bottom: 20px
-
   form
     +blueprint-form-sizes(258px)
   .label
     text-align: left
     line-height: 1
     height: 39px
-
     label
       height: 39px
-
     label[for=user_email]
       vertical-align: -100%
     label[for=user_password]
@@ -106,21 +100,18 @@ hr#colruler
     img
       margin-bottom: -2px
       margin-right: 2px
-
   .field
     margin-left: 60px
-
   .submit
     float: right
     padding-right: 52px
-
     #user_submit
       width: 133px
 
 input[type=submit]
   // The +button-button mixin is just like the +anchor-button mixin, but for <button> elements.
   +umamao-button
-  background-color: #FFFFFF
+  background-color: white
 
 form#waiting_list
   // true means it's the last column in the row
@@ -128,16 +119,13 @@ form#waiting_list
   +blueprint-inline-form
   +blueprint-form-sizes(180px)
   font-size: 11px
-
   .label
     line-height: 1
-
   #email_label
     +column(5)
   #university_label
     +append(5)
     +column(4, true)
-
   #email_field
     +column(5)
   #university_field
@@ -148,7 +136,6 @@ form#waiting_list
 form
   +blueprint-form
   +blueprint-form-sizes(379px)
-
   textarea
     width: 379px
 
@@ -163,10 +150,8 @@ ul#team
     clear: both
   .bio, .avatar
     float: left
-
   .bio
     width: 70%
-
   .avatar
     margin-right: 20px
 
@@ -187,7 +172,6 @@ ul#team
   width: 391px
   text-align: justify
   margin-bottom: 1.5em
-
   p
     margin: 0
 
@@ -197,7 +181,6 @@ ul#team
 #new_user
   .submit
     margin-top: 10px
-
   .field.agree .field_with_errors
     // Quick and dirty way of avoiding the text to go to the next line
     display: inline
@@ -207,8 +190,7 @@ ul#team
   margin: 0 auto
   padding: 20px
   +border-radius
-  border: 1px solid #eee
-
+  border: 1px solid #eeeeee
   #introduction
     font-size: 13px
     border-width: 1px
@@ -216,22 +198,17 @@ ul#team
     border-style: dashed
     padding: 10px
     background-color: #ddffaa
-
   #interaction
     width: 550px
-
     +suggestions
     .suggestions
       width: 300px
       margin: 0 auto 20px auto
-
-
   #navigation
     a
       +umamao-button
     float: right
     margin-bottom: 5px
-
   a.skip
     clear: both
     float: right

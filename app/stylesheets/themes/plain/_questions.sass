@@ -2,78 +2,61 @@
   position: relative
   margin-bottom: 3em
   +pie-clearfix
-
   .body-col
-
     .flagged
       font-size: 13px
       font-weight: bold
-
     #body
-
       #close_reason
         text-align: center
         padding: 10px
         width: 95%
-        border: 4px solid #386EA4
+        border: 4px solid #386ea4
         margin: 10px 5px
         font-weight: bold
-        background: #E0EBF1
-
+        background: #e0ebf1
     .user_info
       font-size: 12px
       padding: 8px 4px
       margin: 10px 2px
-      color: #666
-
-      background: #E0EBF1
+      color: #666666
+      background: #e0ebf1
       float: right
-
       .wiki_flag
         float: right
         font-weight: bold
-        color: #E55B00
+        color: #e55b00
       .gravatar
         float: left
       .user_data
         margin-left: 2px
         float: left
-
         .user_reputation
           font-weight: bold
           font-size: 14px
         .time_ago
           display: block
           font-weight: bold
-
     .actions
       font-size: 13px
       line-height: 26px
-
       a
         margin-right: 2px
         color: $controls-color
-
         &#add_follow_up_question
           float: right
-
     .ccontrol
       font-size: 13px
       line-height: 26px
-
       a#add_comment_link
         color: $controls-color
-
   .ccontrol
     text-decoration: none
     display: block
     font-size: 13px
-
     a
       color: $link-color
-
   .topic-list
-
     .topic,.retag
       margin: 0 5px 5px 0
       padding: 4px
@@ -83,113 +66,88 @@
       font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif
       font-weight: normal
       max-width: none
-
     .retag
       float: left
-
     .topic
       +border-radius
-
       .topic-title
         vertical-align: middle
-
     + #topic-autocomplete-input,
     + .add-topic,
     + .cancel-reclassify
       font-size: 13px
       margin: 4px 0 3px
-
     .cancel-reclassify
       margin: 5px 0 4px
 
 #answers, #questions
   clear: both
-
   .wiki_flag
     font-weight: bold
-    color: #E55B00
+    color: #e55b00
     font-size: 130%
   .secondary-navigation
-    background: #FFFFFF
-    border-bottom: 1px solid #666
-
+    background: white
+    border-bottom: 1px solid #666666
   .answer, .question
     margin-bottom: 25px
     margin-top: 25px
     padding-bottom: 25px
-
     h2.version_title
       padding: 20px
-      background: #FFFFCD
+      background: #ffffcd
       .version
         font-size: 36px
-        color: #666
-
+        color: #666666
     #vote-col, .vote-col
       float: left
       text-align: center
       margin-top: 6px
-
     .vote_box
       margin-top: -21px
-
     .avatar
       float: right
       padding-right: 5px
-
     #body-col, .body-col
       float: left
       width: 90%
       margin-bottom: 10px
-
       .actions
         float: left
         padding-top: 10px
-
         a
           color: $controls-color
           font-size: 13px
           line-height: 26px
           margin-right: 1em
-
       .controls
         .updated
           float: right
           padding-top: 10px
-
       .user_data
         margin-bottom: 5px
         padding: 4px
         float: left
-        border-bottom: 1px dotted #aaa
-
+        border-bottom: 1px dotted #aaaaaa
       .entry-content
         clear: both
         padding-top: 15px
 
 .version_message
-  background: #EEEEFF
-
+  background: #eeeeff
 
 #question, #answers
-
   .comments
-
     margin-top: 10px
-
     +column(12, true)
-
     .comment
-      border-top: 1px solid #CCCCCC
+      border-top: 1px solid #cccccc
       padding-top: 2px
-
       .comment-content
         +column(10, true)
-
       .actions
         float: left
         padding-top: 0
-
         a
           color: $controls-color
           font-size: 13px
@@ -200,7 +158,6 @@
   .controls
     margin-bottom: 10px
     text-align: center
-
   #question_submit
     padding-left: 10px
     padding-right: 10px
