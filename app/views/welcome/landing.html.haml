@@ -17,7 +17,7 @@
       = check_box_tag 'user[remember_me]', '1', false, :tabindex => 3
 
 - content_for :js do
-  = render :partial => "shared/layout/javascript/landing"
+  = include_javascripts :landing
 
 #content
   %h3 Qualquer pergunta, não qualquer resposta.

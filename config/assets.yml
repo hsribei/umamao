@@ -1,0 +1,43 @@
+embed_assets: datauri
+
+javascripts:
+  base:
+    - public/javascripts/i18n/pt-BR.js
+    - public/javascripts/jquery.min.js
+    - public/javascripts/rails.js
+    - public/javascripts/jquery.tools.min.js
+    - public/javascripts/jquery-ui.js
+    - public/javascripts/jquery.notifyBar.js
+    - public/javascripts/jquery.hotkeys.js
+    - public/javascripts/showdown.js
+    - public/javascripts/utils.js
+    - public/javascripts/autocompleteBox.js
+    - public/javascripts/application.js
+    - public/javascripts/modules/welcome.js
+    - public/javascripts/modules/follow_link.js
+    - public/javascripts/modules/cookies.js
+  landing:
+    - public/javascripts/modules/landing.js
+  suggestions:
+    - public/javascripts/modules/suggestions.js
+  content_show:
+    - public/javascripts/wmd/jquery.wmd.min.js
+    - public/javascripts/wmd/jquery.wmd.mathjax.js
+    - public/javascripts/modules/single/question.js
+    - public/javascripts/modules/show_question.js
+    - public/javascripts/jquery.colorbox-min.js
+  questions_edit_revert:
+    - public/javascripts/modules/edit_question.js
+
+stylesheets:
+  base:
+    - public/stylesheets/jquery-ui.css
+    - public/stylesheets/compiled/application.css
+    - public/stylesheets/autocomplete.css
+    - public/stylesheets/colorbox.css
+    - public/stylesheets/compiled/themes/plain/style.css
+    - public/javascripts/wmd/wmd.css
+    - public/stylesheets/welcome.css
+  landing:
+    - public/stylesheets/autocomplete_landing.css
+    - public/stylesheets/compiled/landing.css

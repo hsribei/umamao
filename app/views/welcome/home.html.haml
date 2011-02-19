@@ -2,7 +2,7 @@
   %meta{:name => "description", :content => markdown(current_group.description).gsub(/<\/?[^>]*>/, "")[0, 255] }
 
 - content_for :js do
-  = javascript_include_tag "modules/suggestions"
+  = include_javascripts :suggestions
 
 - content_for :subtabs do
   .navtitle

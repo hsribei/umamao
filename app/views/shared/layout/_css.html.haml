@@ -1,9 +1,0 @@
-= render :partial => "shared/layout/css/base"
-
-%link#current-theme{ :href => "/stylesheets/compiled/themes/#{current_group.theme}/style.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
--if current_group.has_custom_css?
-  %link{:href => css_group_path(current_group),  :rel => "stylesheet", :media => "screen", :type => "text/css"}
-
-%link{ :href => "#{AppConfig.wmd_location}/wmd.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
-
-= yield :css

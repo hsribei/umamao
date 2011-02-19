@@ -1,3 +1,8 @@
+desc "Generate Jammit assets"
+task :generate_assets => [:environment] do
+  Jammit.package!
+end
+
 desc "Setup application"
 task :bootstrap => [:environment, "setup:reset",
                     "setup:create_admin",

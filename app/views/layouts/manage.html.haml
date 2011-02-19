@@ -3,10 +3,13 @@
   %head
     %title
       &= page_title
-    = render :partial => "shared/layout/css"
+    = include_stylesheets :base, :media => 'all'
+    = yield :css
     = current_group.head_tag
     = render :partial => "shared/layout/meta"
-    = render :partial => "shared/layout/javascript"
+    = include_javascripts :base
+    = javascript_include_tag AppConfig.mathjax_location
+    = yield :js
 
   %body
     = render :partial => "shared/analytics"

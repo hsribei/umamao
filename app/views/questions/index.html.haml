@@ -1,5 +1,5 @@
 - content_for :js do
-  = render :partial => "shared/layout/javascript/show"
+  = include_javascripts :content_show
 
 - feed_url = url_for(:format => "atom", :tags => params[:tags])
 

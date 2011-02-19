@@ -2,7 +2,7 @@
 
 %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
 
-= javascript_include_tag "i18n/#{I18n.locale}"
+= javascript_include_tag "i18n/#{I18n.locale}" if I18n.locale != :"pt-BR"
 
 = yield :head
 

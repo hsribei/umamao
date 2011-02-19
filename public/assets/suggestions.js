@@ -1,0 +1,1 @@
+Utils.clickObject(".suggestions a.follow_link, .suggestions .refuse-suggestion a",function(){var a=$(this).closest("li");var b=$(this).closest(".suggestions");return{data:{suggestion:true},success:function(c){a.slideUp(800,function(){b.replaceWith(c.suggestions)})}}});

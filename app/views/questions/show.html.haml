@@ -18,8 +18,7 @@
 - source = question_path(@question)
 
 - content_for :js do
-  = render :partial => "shared/layout/javascript/show"
-  = javascript_include_tag "jquery.colorbox-min"
+  = include_javascripts :content_show
 
 - content_for :head do
   %meta{:name => "keywords", :content => clean_seo_keywords(@question.topics.map(&:title).dup, @question.title)}

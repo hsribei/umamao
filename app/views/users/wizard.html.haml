@@ -1,5 +1,5 @@
 -# FIXME: We need to reorganize our JS.
 - content_for :js do
-  = javascript_include_tag "modules/suggestions"
+  = include_javascripts :suggestions
 
 = render_cell "signup_wizard", :wizard
