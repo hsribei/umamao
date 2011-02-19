@@ -3,8 +3,6 @@ require 'fancy-buttons'
 # Require any additional compass plugins here.
 
 project_type = :rails
-project_path = Compass::AppIntegration::Rails.root
-environment = AppConfig.compass_environment.to_sym
 line_comments = false
 # Set this to the root of your project when deployed:
 http_path = "/"
