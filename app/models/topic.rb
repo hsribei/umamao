@@ -220,7 +220,9 @@ class Topic
         self.email_subscriber_ids.delete(user.id)
       end
       self.increment(:followers_count => -1)
-      self.save!
+      if self.save!
+        user_topic_info.save
+      end
     end
   end
 
