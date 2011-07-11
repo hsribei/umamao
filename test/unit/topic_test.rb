@@ -28,4 +28,13 @@ class TopicTest < ActiveSupport::TestCase
       Factory.create(:topic, :title => 'Title')
     }
   end
+
+  test 'should update UserTopicInfo on topic unfollow' do
+    t = Factory.create(:topic)
+    u = Factory.create(:user)
+    t.add_follower!(u)
+    t.remove_follower!(u)
+    ut = UserTopicInfo.find_by_user_id_and_topic_id(u.id, t.id)
+    assert_nil ut.followed_at
+  end
 end
