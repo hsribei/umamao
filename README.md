@@ -68,8 +68,9 @@ Please refer to their [installation guide](http://www.mongodb.org/display/DOCS/Q
 ### Bootstrap
     $ bundle exec rake bootstrap
 
-### Start server
+### Start server and jobs
     $ bundle exec rails s
+    $ bundle exec rake jobs:work
 
 ### Known Issues
 If you're on a Mac you'll probably have trouble installing ruby from rvm. If
