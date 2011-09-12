@@ -60,6 +60,9 @@ class Question
   key :answer_id, String
   belongs_to :answer
 
+  key :search_result_ids, Array
+  has_many :search_results, :in => :search_result_ids
+
   key :group_id, String, :index => true
   belongs_to :group
 
