@@ -62,6 +62,7 @@ class User
   has_many :affiliations, :dependent => :destroy
   has_many :questions, :dependent => :destroy
   has_many :answers, :dependent => :destroy
+  has_many :search_results, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :votes, :dependent => :destroy
   has_many :external_accounts, :class_name => "UserExternalAccount",
