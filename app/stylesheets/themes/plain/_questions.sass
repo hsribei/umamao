@@ -85,7 +85,7 @@
     .cancel-reclassify
       margin: 5px 0 4px
 
-#answers, #questions, .answers
+#answers, #questions, #search_results, .answers, .search_results
   clear: both
   .wiki_flag
     font-weight: bold
@@ -163,8 +163,25 @@
       a + a
         margin-left: 3px
 
-    #answer_flag_div
-      clear: both
+  .search_result
+    .vote-col
+      float: left
+      margin-left: -30px
+    margin-bottom: 2em
+    .title
+      text-decoration: underline
+      font-size: 1.2em
+    .url
+      p
+        margin: 0
+        padding: 0
+      color: #009933
+      margin-bottom: 3px
+    .summary
+      p
+        margin: 0
+        padding: 0
+      color: #333
 
 .version_message
   background: #eeeeff

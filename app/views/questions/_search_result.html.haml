@@ -1,0 +1,12 @@
+.search_result
+  .vote-col
+    = vote_box(search_result, question_path(question), question.closed)
+  .title
+    = link_to(search_result.title, search_result.url)
+  .url
+    %p
+      = shorten_url(search_result.url)
+  .summary
+    - if search_result.summary.present?
+      %p
+        = search_result.summary

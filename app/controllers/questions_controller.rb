@@ -156,10 +156,10 @@ class QuestionsController < ApplicationController
     @open_sharing_widget = flash[:connected_to]
 
     options = {:per_page => 25, :page => params[:page] || 1,
-               :order => [:votes, "votes_average desc"], :banned => false}
-    @answers = @question.answers.paginate(options)
+               :order => [:votes, "votes_average desc"]}
+    @search_results = @question.search_results.paginate(options)
 
-    @answer = Answer.new(params[:answer])
+    @search_result = SearchResult.new(params[:search_result])
 
     if @question.user != current_user && !is_bot?
       @question.viewed!(request.remote_ip)

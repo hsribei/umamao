@@ -70,32 +70,11 @@
 
   = render :partial => "shared/comments", :locals => {:commentable => @question, :source => source, :path_scope => [@question]}
 
-#answers
-  .hentry
-    - @answers.each do |answer|
-      = render :partial=> "answer", :locals=> {:question => @question, :answer => answer}
-  = will_paginate(@answers)
-
--# New answer form
-- unless @question.closed
-  - if logged_in? && !@answers.map(&:user_id).include?(current_user.id) && current_user.can_post_more_answers_on?(@question)
-    #new-answer-wrapper
-      = form_for @answer,
-        :url => question_answers_path(@question.id, :format => :js),
-        :html => {:class => "form mainAnswerForm bp editor",
-                  :remote => true,
-                  "data-type" => "json"} do |f|
-        = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
-        .group.navform
-          = submit_tag t("answers.form.submit"), :class => "button"
-    -# Image upload prompt; hidden by default
-    = render :partial => "shared/image_prompt",
-      :locals => { :entry_type => "answer" }
-  - else
-    - if not logged_in?
-      %p= t("answers.form.not_logged", :link => new_user_session_path)
-    - else
-      = render :partial => "questions/already_answered", :locals => {:answer => Answer.first(:question_id => @question.id, :user_id => current_user.id)}
+#search_results
+  - @search_results.each do |search_result|
+    = render(:partial => "search_result",
+             :locals => { :question => @question,
+                          :search_result => search_result })
 
 - content_for :sidebar do
   - if logged_in? && current_user != @question.user

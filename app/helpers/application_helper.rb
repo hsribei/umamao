@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
+
+require 'uri'
+
 module ApplicationHelper
 
   def context_panel_ads(group)
@@ -312,6 +315,21 @@ module ApplicationHelper
   def waiting_tag
     image_tag("ajax-loader-big.gif", :alt => t("global.waiting"),
               :class => "waiting")
+  end
+
+  def shorten_url(url)
+    port = lambda do |port|
+      port.present? && port != 80 ? ':' + port.to_s : ''
+    end
+    relevant_path = lambda do |path|
+      head = truncate(path[0..(path.length / 2)], :length => 20)
+      tail =
+        truncate(path.reverse[0..(path.length / 2) - 1], :length => 20).reverse
+      (head + tail).sub('......', '...')
+    end
+    uri = URI.parse(url)
+    "#{uri.scheme}://#{uri.host}#{port.call(uri.port)}" <<
+      relevant_path.call(uri.path)
   end
 
   private
