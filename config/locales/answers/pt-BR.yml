@@ -18,6 +18,7 @@ pt-BR:
   \n - Você só pode postar uma resposta por pergunta."
     show:
       share_success: Pergunta compartilhada com sucesso no %{site}.
+      title: Resposta de "%{user_name}" a "%{question_title}"
     share_body:
       facebook: Resposta
       facebook_named: Resposta de %{name}

@@ -48,7 +48,10 @@ class Answer < Comment
   ensure_index([[:user_id, 1], [:question_id, 1]])
 
   def title
-    self.question.title
+    I18n.t(:title,
+           :scope => [:answers, :show],
+           :user_name => user.name,
+           :question_title => question.title)
   end
 
   def topic_ids

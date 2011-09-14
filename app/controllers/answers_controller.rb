@@ -61,7 +61,7 @@ class AnswersController < ApplicationController
     end
 
     @question = @answer.question
-    set_page_title(@question.title)
+    set_page_title(@answer.title)
     respond_to do |format|
       format.html
       format.json  { render :json => @answer.to_json }

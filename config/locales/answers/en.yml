@@ -8,6 +8,8 @@ en:
       not_logged: "Please <a href=\"%{link}\">login</a> to answer question."
     edit:
       title: Editing answer
+    show:
+      title: \"%{user_name}\"\'s answer to \"%{question_title}\"
     create:
       flash_notice: "Thanks!"
       flash_error:  "Something went wrong adding your answer.
