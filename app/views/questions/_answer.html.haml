@@ -16,8 +16,6 @@
                                   :class_name => "answer", :format => :js),
             :class => site, :remote => true, "data-type" => "json"
 
-  .vote-col
-    = vote_box(answer, question_path(question), question.closed)
   .body-col
     .user_data
       = render :partial => "users/user_mini", :locals => {:user => answer.user}
