@@ -19,3 +19,4 @@ vendor/cache
 public/stylesheets/compiled
 public/assets
 .rvmrc
+.sass-cache
