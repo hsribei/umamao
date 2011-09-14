@@ -1,15 +1,7 @@
 - question = answer.question
 - title = h(question.title)
-- owner = answer.user
 
 %li.item
-  / Answer Stats
-  .stats
-    .box.votes
-      .counter{:class => class_for_number(answer.votes_average) }
-        = format_number(answer.votes_average)
-      .text
-        = t(:votes, :scope => "activerecord.attributes.question")
   / Answer Summary
   .summary
     %h3
