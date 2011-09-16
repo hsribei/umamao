@@ -1,0 +1,23 @@
+- content_for :js do
+  = include_javascripts :content_edit
+  = javascript_include_tag "#{AppConfig.wmd_location}/jquery.wmd.min.js"
+  = javascript_include_tag "#{AppConfig.wmd_location}/jquery.wmd.mathjax.js"
+
+- content_for :css do
+  = stylesheet_link_tag "#{AppConfig.wmd_location}/wmd.css"
+
+- content_for :subtabs do
+  .navtitle
+    = t(".title")
+
+- form_for(:answer, :url => question_answer_path(@question, @answer),
+  :html => {:method => :put, :class => "form editor"}) do |f|
+  = render :partial => "form", :locals => {:f => f, :markdown => true}
+  .group
+    .group.navform
+      = f.submit t("scaffold.update"), :class => "buttton"
+      = t("global.or")
+      = link_to t('scaffold.cancel'), question_path(@question), :class => "button cancel"
+
+= render :partial => "shared/image_prompt",
+  :locals => { :entry_type => "answer" }

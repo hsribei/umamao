@@ -1,0 +1,6 @@
+en:
+  helpers:
+    label:
+      search_result:
+        url: URL
+        summary: Summary

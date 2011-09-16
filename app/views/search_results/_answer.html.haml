@@ -1,0 +1,9 @@
+- question = answer.question
+- title = h(question.title)
+
+%li.item
+  / Answer Summary
+  .summary
+    %h3
+      = link_to title, question_answer_path(question, answer), :title => truncate(h(answer.body), :length => 200)
+  .clear

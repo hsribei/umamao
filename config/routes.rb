@@ -202,6 +202,7 @@ Shapado::Application.routes.draw do
     end
 
     resources :comments
+    resources :search_results
 
     resources :answers do
       member do

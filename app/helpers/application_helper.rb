@@ -318,6 +318,7 @@ module ApplicationHelper
   end
 
   def shorten_url(url)
+    uri = URI.parse(url)
     port = lambda do |port|
       port.present? && port != 80 ? ':' + port.to_s : ''
     end
@@ -327,9 +328,10 @@ module ApplicationHelper
         truncate(path.reverse[0..(path.length / 2) - 1], :length => 20).reverse
       (head + tail).sub('......', '...')
     end
-    uri = URI.parse(url)
     "#{uri.scheme}://#{uri.host}#{port.call(uri.port)}" <<
       relevant_path.call(uri.path)
+  rescue URI::InvalidURIError
+    url
   end
 
   private

@@ -1,0 +1,20 @@
+= render :partial => 'shared/share_header', :locals => { :opts => { :content => @answer, :class_name => Answer.to_s.underscore }, :content_url => question_answer_url(@answer.question, @answer) }
+
+- content_for :js do
+  = include_javascripts :content_edit, :show_question
+
+- content_for :sidebar do
+  = render :partial => 'shared/share_body', :locals => { :opts => { :content => @answer.id, :class_name => Answer.to_s.underscore } }
+
+#question
+  %h1.navtitle.title.entry-title
+    &= link_to @answer.title, @question
+  #question-body.markdown
+    = markdown(@question.body)
+  .body-col
+    = render :partial => "shared/classify", :locals => {:classifiable => @question, :ajax_add => false}
+
+%hr
+
+#answers
+  = render :partial=> "questions/answer", :locals=> {:question => @question, :answer => @answer, :comment => Answer.new}

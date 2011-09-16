@@ -1,0 +1,6 @@
+pt-BR:
+  helpers:
+    label:
+      search_result:
+        url: URL
+        summary: Descrição

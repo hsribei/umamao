@@ -159,6 +159,7 @@ class QuestionsController < ApplicationController
                :order => [:votes, "votes_average desc"]}
     @search_results = @question.search_results.paginate(options)
 
+    @answer = Answer.new(params[:answer])
     @search_result = SearchResult.new(params[:search_result])
 
     if @question.user != current_user && !is_bot?
