@@ -46,6 +46,21 @@ $(document).ready(function() {
     };
   });
 
+  Utils.clickObject('form#new_search_result', function() {
+    return {
+      success: function(data) {
+        var search_result = $(data.html);
+        $('#search_results').append(search_result);
+        highlightEffect(search_result);
+      },
+      error: function(data) {
+        if(data.status == 'unauthenticate') {
+          Utils.redirectToSignIn();
+        }
+      }
+    };
+  });
+
   // Send new comment.
   Utils.clickObject("form.commentForm", function () {
     var form = $(this);

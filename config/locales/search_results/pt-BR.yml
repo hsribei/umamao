@@ -1,4 +1,22 @@
 pt-BR:
+  activerecord:
+    models:
+      search_results: Resultados de busca
+      search_result: Resultado de busca
+      search_result_count:
+        one: resultado de busca
+        other: resultados de busca
+    attributes:
+      search_result:
+        url: URL
+        summary: Descrição
+  search_results:
+    create:
+      flash_notice: Link enviado com sucesso.
+      flash_error: Alguma coisa deu errado com o seu link.
+    attributes:
+      search_result:
+        url: URL
   helpers:
     label:
       search_result:

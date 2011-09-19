@@ -84,7 +84,7 @@
   #link
     = form_for(@search_result,
                :url => question_search_results_path(@question.id, :format => :js),
-               :html => { :class => 'form mainAnswerForm bp',
+               :html => { :class => 'form bp',
                           :remote => true,
                           :novalidate => true,
                           :'data-type' => 'json' }) do |f|
