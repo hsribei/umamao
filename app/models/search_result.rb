@@ -2,6 +2,7 @@ require 'uri'
 
 class SearchResult
   REDIRECTION_LIMIT = 4
+  ACCEPTED_SCHEMES = %w[http https]
 
   include MongoMapper::Document
   include Support::Voteable
@@ -31,7 +32,7 @@ class SearchResult
   after_validation :fetch_title, :fetch_summary, :if => :response_present?
 
   validates_presence_of :url
-  validates_format_of :url, :with => URI.regexp(%w[http https]), :allow_blank => true
+  validates_format_of :url, :with => URI.regexp(ACCEPTED_SCHEMES), :allow_blank => true
 
 private
 
@@ -44,24 +45,31 @@ private
   end
 
   def url_has_scheme?
-    !!URI.parse(url).scheme
+    (parsed_url = URI.parse(url)) && ACCEPTED_SCHEMES.include?(parsed_url.scheme)
   rescue URI::InvalidURIError
     false
   end
 
   def prepend_scheme_on_url
-    scheme = lambda { |scheme| scheme ? scheme : 'http' }
+    scheme = lambda { |scheme| ACCEPTED_SCHEMES.include?(scheme) ? scheme : 'http' }
     port = lambda { |port| [80, 443, nil].include?(port) ? '' : ":#{port}" }
     uri = URI.parse(url)
-    self.url = "#{scheme.call(uri.scheme)}://#{uri.host}#{port.call(uri.port)}#{uri.path}"
+    self.url = "#{scheme.call(uri.scheme)}://#{uri.to_s}"
   rescue URI::InvalidURIError
-    self.url = "http://#{url}"
   end
 
   def fetch_url_metadata
     fetch = lambda do |uri, redirection_limit|
       raise ArgumentError, 'HTTP redirect too deep' if redirection_limit == 0
-      case response = Net::HTTP.get_response(URI.parse(uri))
+      parsed_uri = URI.parse(uri)
+      request = Net::HTTP::Get.new(parsed_uri.request_uri)
+      http = Net::HTTP.new(parsed_uri.host, parsed_uri.port)
+      if parsed_uri.port == 443
+        http.use_ssl = true
+        # http://jamesgolick.com/2011/2/15/verify-none..html
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      end
+      case response = http.request(request)
       when Net::HTTPSuccess then response
       when Net::HTTPRedirection then fetch.call(response['location'],
                                                 redirection_limit - 1)
@@ -72,7 +80,10 @@ private
   rescue URI::InvalidURIError,
          SocketError,
          Errno::ECONNREFUSED,
+         Errno::ECONNRESET,
+         Errno::ETIMEDOUT,
          Net::HTTPServerException,
+         Net::HTTPBadResponse
          ArgumentError
     errors.add(:url, $!)
   end
