@@ -15,7 +15,6 @@ end
 
 gem 'rails', :git => 'git://github.com/umamao/rails.git', :branch => '3-0-7'
 
-gem 'always_verify_ssl_certificates', '0.3.0'
 gem 'bson_ext', :require => 'bson'
 gem 'mongo'
 gem "mongo_mapper", :git => "git://github.com/umamao/mongomapper.git"
