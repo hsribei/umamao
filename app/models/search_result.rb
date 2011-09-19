@@ -5,6 +5,7 @@ class SearchResult
 
   include MongoMapper::Document
   include Support::Voteable
+  include ApplicationHelper
 
   key :_id, String
   key :_type, String
@@ -27,6 +28,8 @@ class SearchResult
 
   validate :fetch_url_metadata, :if => :url_present?
 
+  after_validation :fetch_title, :fetch_summary, :if => :response_present?
+
   validates_presence_of :url
   validates_format_of :url, :with => URI.regexp(%w[http https]), :allow_blank => true
 
@@ -34,6 +37,10 @@ private
 
   def url_present?
     url.present?
+  end
+
+  def response_present?
+    @response.present?
   end
 
   def url_has_scheme?
@@ -61,12 +68,31 @@ private
       else response.error!
       end
     end
-    response = fetch.call(url, REDIRECTION_LIMIT)
+    @response = fetch.call(url, REDIRECTION_LIMIT)
   rescue URI::InvalidURIError,
          SocketError,
          Errno::ECONNREFUSED,
          Net::HTTPServerException,
          ArgumentError
     errors.add(:url, $!)
+  end
+
+  def fetch_title
+    title = Nokogiri::HTML(@response.body).xpath('//title').text
+    self.title = title.present? ? title : url
+  end
+
+  def fetch_summary
+    summary = Nokogiri::HTML(@response.body).
+                xpath("//meta[translate(@name, '#{('A'..'Z').to_a.to_s}', " <<
+                        "'#{('a'..'z').to_a.to_s}')='description']/@content").
+                text
+    self.summary = if summary.present?
+                     summary
+                   else
+                     html = Nokogiri::HTML(@response.body)
+                     html.xpath('//script').remove
+                     truncate_words(html.xpath('//body').text, 200)
+                   end
   end
 end
