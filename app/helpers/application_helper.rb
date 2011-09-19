@@ -329,7 +329,7 @@ module ApplicationHelper
       (head + tail).sub('......', '...')
     end
     "#{uri.scheme}://#{uri.host}#{port.call(uri.port)}" <<
-      relevant_path.call(uri.path)
+      relevant_path.call(uri.path.to_s)
   rescue URI::InvalidURIError
     url
   end
