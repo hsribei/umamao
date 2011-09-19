@@ -1,0 +1,1 @@
+require 'always_verify_ssl_certificates'

@@ -108,6 +108,7 @@ GEM
     ZenTest (4.5.0)
     abstract (1.0.0)
     addressable (2.2.4)
+    always_verify_ssl_certificates (0.3.0)
     arel (2.0.9)
     autotest-rails (4.1.0)
       ZenTest
@@ -379,6 +380,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (~> 4.1.1)
+  always_verify_ssl_certificates (= 0.3.0)
   autotest-rails
   bitly
   bson_ext
