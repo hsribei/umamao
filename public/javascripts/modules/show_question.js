@@ -204,4 +204,21 @@ $(document).ready(function() {
     $(this).closest(".commentable").find(".comments_wrapper").slideToggle("slow");
     return false;
   });
+
+  $('ul.tabs li#link').delegate('a', 'click', function(e) {
+    e.preventDefault();
+    $('ul.tabs li#link').addClass('current');
+    $('ul.tabs li#answer').removeClass('current');
+    $('div#answer').hide();
+    $('div#link').show();
+  });
+
+  $('ul.tabs li#answer').delegate('a', 'click', function(e) {
+    e.preventDefault();
+    $('div#answer').removeClass('editor_hack');
+    $('ul.tabs li#answer').addClass('current');
+    $('ul.tabs li#link').removeClass('current');
+    $('div#link').hide();
+    $('div#answer').show();
+  });
 });
