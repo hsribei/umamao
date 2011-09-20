@@ -1,28 +1,5 @@
 class SearchResultsController < ApplicationController
-  before_filter :login_required, :except => [:show]
-  before_filter :check_permissions, :only => [:destroy]
-  before_filter :check_update_permissions, :only => [:edit, :update, :revert]
-
-  helper :votes
-
-  def show
-    @open_sharing_widget = flash[:connected_to]
-
-    @search_result = SearchResult.find(params[:id])
-
-    raise Goalie::NotFound unless @search_result
-
-    if params[:group_invitation]
-      session[:group_invitation] = params[:group_invitation]
-    end
-
-    @question = @search_result.question
-    set_page_title(@search_result.title)
-    respond_to do |format|
-      format.html
-      format.json  { render :json => @search_result.to_json }
-    end
-  end
+  before_filter :login_required
 
   def create
     @question = Question.find_by_id(params[:question_id])
