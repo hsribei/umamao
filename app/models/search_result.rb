@@ -56,7 +56,6 @@ private
   def prepend_scheme_on_url
     scheme = lambda { |scheme| ACCEPTED_SCHEMES.include?(scheme) ? scheme :
                                                                    'http' }
-    port = lambda { |port| [80, 443, nil].include?(port) ? '' : ":#{port}" }
     uri = URI.parse(url)
     self.url = "#{scheme.call(uri.scheme)}://#{uri.to_s}"
   rescue URI::InvalidURIError
