@@ -3,6 +3,7 @@ require 'uri'
 class SearchResult
   REDIRECTION_LIMIT = 4
   ACCEPTED_SCHEMES = %w[http https]
+  TIMEOUT = 3
 
   include MongoMapper::Document
   include Support::Voteable
@@ -64,6 +65,7 @@ private
       parsed_uri = URI.parse(uri)
       request = Net::HTTP::Get.new(parsed_uri.request_uri)
       http = Net::HTTP.new(parsed_uri.host, parsed_uri.port)
+      http.open_timeout = http.read_timeout = TIMEOUT
       if parsed_uri.port == 443
         http.use_ssl = true
         # http://jamesgolick.com/2011/2/15/verify-none..html
