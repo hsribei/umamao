@@ -5,9 +5,12 @@ class SearchResult
   ACCEPTED_SCHEMES = %w[http https]
   TIMEOUT = 3
 
+  class TooManyRedirectionsError < StandardError; end
+
   include MongoMapper::Document
   include Support::Voteable
   include ApplicationHelper
+  include ActiveSupport::Inflector
 
   key :_id, String
   key :_type, String
@@ -71,7 +74,7 @@ private
     end
     host = lambda { |uri| uri.host || URI.parse(url).host }
     fetch = lambda do |uri, redirection_limit|
-      raise ArgumentError, 'HTTP redirect too deep' if redirection_limit == 0
+      raise TooManyRedirectionsError if redirection_limit == 0
       parsed_uri = URI.parse(uri)
       request = Net::HTTP::Get.new(request_uri.call(parsed_uri))
       http = Net::HTTP.new(host.call(parsed_uri), parsed_uri.port)
@@ -89,16 +92,18 @@ private
       end
     end
     @response = fetch.call(url, REDIRECTION_LIMIT)
-  rescue ArgumentError,
-         Errno::ECONNREFUSED,
+  rescue Errno::ECONNREFUSED,
          Errno::ECONNRESET,
          Errno::ETIMEDOUT,
          Net::HTTPServerException,
          Net::HTTPBadResponse,
          SocketError,
          Timeout::Error,
+         TooManyRedirectionsError,
          URI::InvalidURIError
-    errors.add(:url, $!.class)
+    errors.add_to_base(I18n.t(underscore($!.class.to_s.delete(':')).to_sym,
+                              :scope =>
+                                [:activerecord, :errors, :search_result]))
   end
 
   def fetch_title

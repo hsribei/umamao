@@ -1,5 +1,16 @@
 pt-BR:
   activerecord:
+    errors:
+      search_result:
+        errno_econnrefused: 'A conexão nesta URL foi recusada'
+        errno_econnreset: 'Houve um problema ao tentar se conectar a essa URL'
+        errno_etimedout: 'A tempo de conexão nesta URL expirou'
+        net_http_server_exception: 'Houve um problema ao tentar se conectar a essa URL'
+        net_http_bad_response: 'Houve um problema ao tentar se conectar a essa URL'
+        socket_error: 'Houve um problema ao tentar se conectar a essa URL'
+        timeout_error: 'Houve um problema ao tentar se conectar a essa URL'
+        too_many_redirections_error: 'Essa URL tem redireções demais'
+        uri_invalid_uri_error: 'URL mal-formada'
     models:
       search_results: Resultados de busca
       search_result: Resultado de busca
@@ -13,7 +24,6 @@ pt-BR:
   search_results:
     create:
       flash_notice: Link enviado com sucesso.
-      flash_error: Alguma coisa deu errado com o seu link.
     attributes:
       search_result:
         url: URL
