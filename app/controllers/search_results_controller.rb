@@ -17,7 +17,8 @@ class SearchResultsController < ApplicationController
                      :html =>
                        render_to_string(:partial => "questions/search_result",
                                         :object => @search_result,
-                                        :locals => { :question => @question }) })
+                                        :locals => { :question =>
+                                                       @question }) })
         end
         format.json { head(:created) }
       else

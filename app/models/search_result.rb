@@ -33,7 +33,9 @@ class SearchResult
   after_validation :fetch_title, :fetch_summary, :if => :response_present?
 
   validates_presence_of :url
-  validates_format_of :url, :with => URI.regexp(ACCEPTED_SCHEMES), :allow_blank => true
+  validates_format_of :url,
+                      :with => URI.regexp(ACCEPTED_SCHEMES),
+                      :allow_blank => true
 
 private
 
@@ -52,7 +54,8 @@ private
   end
 
   def prepend_scheme_on_url
-    scheme = lambda { |scheme| ACCEPTED_SCHEMES.include?(scheme) ? scheme : 'http' }
+    scheme = lambda { |scheme| ACCEPTED_SCHEMES.include?(scheme) ? scheme :
+                                                                   'http' }
     port = lambda { |port| [80, 443, nil].include?(port) ? '' : ":#{port}" }
     uri = URI.parse(url)
     self.url = "#{scheme.call(uri.scheme)}://#{uri.to_s}"
