@@ -1,7 +1,7 @@
 require 'uri'
 
 class SearchResult
-  REDIRECTION_LIMIT = 4
+  REDIRECTION_LIMIT = 5
   ACCEPTED_SCHEMES = %w[http https]
   TIMEOUT = 3
 
@@ -60,11 +60,19 @@ private
   end
 
   def fetch_url_metadata
+    request_uri = lambda do |uri|
+      if uri.respond_to?(:request_uri)
+        uri.request_uri
+      else
+        uri.query ? uri.path + '?' + uri.query : uri.path
+      end
+    end
+    host = lambda { |uri| uri.host || URI.parse(url).host }
     fetch = lambda do |uri, redirection_limit|
       raise ArgumentError, 'HTTP redirect too deep' if redirection_limit == 0
       parsed_uri = URI.parse(uri)
-      request = Net::HTTP::Get.new(parsed_uri.request_uri)
-      http = Net::HTTP.new(parsed_uri.host, parsed_uri.port)
+      request = Net::HTTP::Get.new(request_uri.call(parsed_uri))
+      http = Net::HTTP.new(host.call(parsed_uri), parsed_uri.port)
       http.open_timeout = http.read_timeout = TIMEOUT
       if parsed_uri.port == 443
         http.use_ssl = true
@@ -79,15 +87,16 @@ private
       end
     end
     @response = fetch.call(url, REDIRECTION_LIMIT)
-  rescue URI::InvalidURIError,
-         SocketError,
+  rescue ArgumentError,
          Errno::ECONNREFUSED,
          Errno::ECONNRESET,
          Errno::ETIMEDOUT,
          Net::HTTPServerException,
-         Net::HTTPBadResponse
-         ArgumentError
-    errors.add(:url, $!)
+         Net::HTTPBadResponse,
+         SocketError,
+         Timeout::Error,
+         URI::InvalidURIError
+    errors.add(:url, $!.class)
   end
 
   def fetch_title
