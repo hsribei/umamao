@@ -49,11 +49,13 @@ $(document).ready(function() {
   Utils.clickObject('form#new_search_result', function() {
     return {
       success: function(data) {
+        $('.loader').hide();
         var search_result = $(data.html);
         $('#search_results').append(search_result);
         highlightEffect(search_result);
       },
       error: function(data) {
+        $('.loader').hide();
         if(data.status == 'unauthenticate') {
           Utils.redirectToSignIn();
         }
@@ -235,5 +237,9 @@ $(document).ready(function() {
     $('ul.tabs li#link').removeClass('current');
     $('div#link').hide();
     $('div#answer').show();
+  });
+
+  $('form#new_search_result').live('submit', function() {
+    $('.loader').show();
   });
 });

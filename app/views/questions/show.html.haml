@@ -76,6 +76,9 @@
              :locals => { :question => @question,
                :search_result => search_result })
 
+.loader{:style => 'display: none;'}
+  = waiting_tag
+
 - if logged_in? && !@question.closed
   .secondary-navigation
     - tabs_tag :namespace => :welcome_home, :open_tabs => { :class => :tabs } do |tab|
