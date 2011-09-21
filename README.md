@@ -40,6 +40,61 @@ now.)
 You can also contact us in Portuguese or in English at
 contato@umamao.com.
 
+## Dependencies
+   - mongodb
+   - ruby 1.8.7
+
+## Bootstrapping The Development Environment
+### Installing mongodb
+Please refer to their [installation guide](http://www.mongodb.org/display/DOCS/Quickstart)
+
+### Install bundler and gems
+    $ gem install bundler
+    $ bundle
+
+### Edit the config files
+    $ cp config/shapado.yml{.sample,} && vim config/shapado.yml
+    $ cp config/database.yml{.sample,} && vim config/database.yml
+
+### [Start mongodb](http://www.mongodb.org/display/DOCS/Quickstart)
+
+### Add a new host
+    # echo '127.0.0.1 localhost.lan' >> /etc/hosts
+
+### Clone submodules
+    $ git submodule init
+    $ git submodule update
+
+### Bootstrap
+    $ bundle exec rake bootstrap
+
+### Start server and jobs
+    $ bundle exec rails s
+    $ bundle exec rake jobs:work
+
+### Known Issues
+If you're on a Mac you'll probably have trouble installing ruby from rvm. If
+ruby fails to compile because of `readline`, make sure you have it installed.
+If you don't you can either compile it manually or use
+[Homebrew](https://github.com/mxcl/homebrew) to install it.
+
+Manually:
+
+    $ curl -O ftp://ftp.cwru.edu/pub/bash/readline-6.2.tar.gz
+    $ tar xvfz readline-6.2.tar.gz
+    $ cd readline-6.2
+    $ ./configure --prefix=/usr/local
+    $ make
+    $ sudo make install
+
+With [Homebrew](https://github.com/mxcl/homebrew):
+
+    $ brew install readline
+
+Then install ruby:
+
+    $ rvm install 1.8.7 --with-readline-dir=/usr/local/
+
 ## Shapado
 
 Umamão is a fork of [Shapado](http://shapado.com), a free software
