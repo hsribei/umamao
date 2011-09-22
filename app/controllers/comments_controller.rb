@@ -165,14 +165,11 @@ class CommentsController < ApplicationController
   def find_scope
     @question = Question.by_slug(params[:question_id])
     @answer = @question.answers.find(params[:answer_id]) unless params[:answer_id].blank?
+    @search_result = SearchResult.find(params[:search_result_id])
   end
 
   def scope
-    unless @answer.nil?
-      @answer
-    else
-      @question
-    end
+    @search_result || @answer || @question
   end
 
   def full_scope
