@@ -1,4 +1,4 @@
-.search_result
+.search_result{:class => 'commentable'}
   .vote-col
     = vote_box(search_result, question_path(question), question.closed)
   .title
@@ -10,3 +10,7 @@
     - if search_result.summary.present?
       %p
         = search_result.summary
+  = render :partial => 'shared/comments',
+           :locals => { :commentable => search_result,
+                        :source => question_path(question),
+                        :path_scope => [search_result] }

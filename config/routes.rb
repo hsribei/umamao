@@ -218,6 +218,10 @@ Shapado::Application.routes.draw do
     resources :close_requests
   end
 
+  resources :search_results do
+    resources :comments
+  end
+
   resources :content_images, :only => [:create, :destroy]
 
   match 'questions/tagged/:tags' => 'questions#index',

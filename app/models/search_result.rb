@@ -26,6 +26,9 @@ class SearchResult
   belongs_to :group
   belongs_to :user
   belongs_to :question
+  has_many :comments,
+           :foreign_key => 'commentable_id',
+           :dependent => :destroy
 
   before_validation :prepend_scheme_on_url,
                     :if => :url_present?,
