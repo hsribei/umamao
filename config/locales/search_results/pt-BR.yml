@@ -24,6 +24,8 @@ pt-BR:
   search_results:
     create:
       flash_notice: Link enviado com sucesso.
+    destroy:
+      flash_notice: Link removido com sucesso.
     attributes:
       search_result:
         url: URL

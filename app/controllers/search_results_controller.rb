@@ -45,6 +45,7 @@ class SearchResultsController < ApplicationController
     end
     @search_result.destroy
     @question.search_result_removed!
+    flash[:notice] = t(:flash_notice, :scope => "search_results.destroy")
 
     respond_to do |format|
       format.html { redirect_to(question_path(@question)) }

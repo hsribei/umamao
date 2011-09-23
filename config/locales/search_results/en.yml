@@ -24,6 +24,8 @@ en:
   search_results:
     create:
       flash_notice: Successfully sent link.
+    destroy:
+      flash_notice: Successfully removed link.
     attributes:
       search_result:
         url: URL
