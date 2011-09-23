@@ -19,6 +19,10 @@ namespace :data do
                                    "/answers/#{params[:answer_id]}")
       end
 
+      optional = lambda do |object, message|
+        object.respond_to?(message) ? object.send(message) : nil
+      end
+
       Answer.find_each(:batch_size => 100, :fields => [:id,
                                                        :title,
                                                        :body,
@@ -57,10 +61,6 @@ namespace :data do
                          :value => vote.value,
                          :voteable_id => search_result.id,
                          :voteable_type => search_result.class.to_s)
-          end
-
-          optional = lambda do |object, message|
-            object.respond_to?(message) ? object.send(message) : nil
           end
 
           Comment.
