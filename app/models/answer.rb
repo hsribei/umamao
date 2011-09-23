@@ -240,6 +240,8 @@ class Answer < Comment
       SearchResult.new(:title => title,
                        :summary => summary,
                        :question => question,
+                       :user => user,
+                       :group => group,
                        :url => Rails.
                                  application.
                                  routes.
