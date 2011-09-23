@@ -5,15 +5,17 @@ class SearchResultsController < ApplicationController
     @question = Question.find_by_id(params[:question_id])
     respond_to do |format|
       if (@search_result = SearchResult.new(params[:search_result])).save
-        flash[:notice] = t(:flash_notice, :scope => "search_results.create")
         format.html do
+          flash[:notice] = t(:flash_notice, :scope => "search_results.create")
           redirect_to(question_path(@question))
         end
         format.js do
           render(:json =>
                    { :success => true,
-                     :form_message => flash[:notice],
-                     :message => flash[:notice],
+                     :form_message =>
+                       t(:flash_notice, :scope => "search_results.create"),
+                     :message =>
+                       t(:flash_notice, :scope => "search_results.create"),
                      :html =>
                        render_to_string(:partial => "questions/search_result",
                                         :object => @search_result,

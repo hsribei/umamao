@@ -104,16 +104,17 @@ class AnswersController < ApplicationController
                       :question_answers_count => @question.answers_count,
                       :own_question => @question.user_id == @answer.user_id)
 
-          flash[:notice] = t(:flash_notice, :scope => "answers.create")
           format.html do
+            flash[:notice] = t(:flash_notice, :scope => "answers.create")
             redirect_to question_path(@question)
           end
           format.json { render :json => @answer.to_json(:except => %w[_keywords]) }
           format.js do
             render(:json =>
                      { :success => true,
-                       :form_message => flash[:notice],
-                       :message => flash[:notice],
+                       :form_message =>
+                         t(:flash_notice, :scope => "answers.create"),
+                       :message => t(:flash_notice, :scope => "answers.create"),
                        :html =>
                          render_to_string(:partial => "questions/search_result",
                                           :object => @answer.search_result,
