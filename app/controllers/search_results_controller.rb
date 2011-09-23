@@ -36,4 +36,19 @@ class SearchResultsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @question = Question.find_by_slug(params[:question_id])
+    @search_result = @question.search_results.find(params[:id])
+    if @search_result.user_id == current_user.id
+      @search_result.user.update_reputation(:delete_search_result, current_group)
+    end
+    @search_result.destroy
+    @question.search_result_removed!
+
+    respond_to do |format|
+      format.html { redirect_to(question_path(@question)) }
+      format.json { head(:ok) }
+    end
+  end
 end

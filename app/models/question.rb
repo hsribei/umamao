@@ -175,6 +175,18 @@ class Question
     on_activity
   end
 
+  def search_result_added!
+    collection.update({ :_id => _id },
+                      { :$inc => { :search_results_count => 1 } },
+                      :upsert => true)
+  end
+
+  def search_result_removed!
+    collection.update({ :_id => _id },
+                      { :$inc => { :search_results_count => -1 } },
+                      :upsert => true)
+  end
+
   def answer_removed!
     self.collection.update({:_id => self._id}, {:$inc => {:answers_count => -1}},
                                                :upsert => true)

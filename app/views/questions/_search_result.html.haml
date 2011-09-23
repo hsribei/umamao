@@ -14,3 +14,13 @@
            :locals => { :commentable => search_result,
                         :source => question_path(question),
                         :path_scope => [search_result] }
+
+  .actions
+    - if logged_in?
+      - if current_user.can_modify?(search_result) || current_user.mod_of?(question.group)
+        = link_to t("scaffold.destroy"),
+                  question_search_result_path(question, search_result),
+                  :confirm => t("scaffold.sure",
+                                :model => t("activerecord.models.search_result").downcase),
+                  :method => :delete,
+                  :class =>"cancel"
