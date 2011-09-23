@@ -28,6 +28,7 @@ $(document).ready(function() {
         var search_result = $(data.html);
         $('#search_results').append(search_result);
         highlightEffect(search_result);
+        $('#answer-input').val('');
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, search_result[0]]);
       },
 
@@ -46,6 +47,7 @@ $(document).ready(function() {
         var search_result = $(data.html);
         $('#search_results').append(search_result);
         highlightEffect(search_result);
+        $('#search_result_url').val('');
       },
       error: function(data) {
         $('.loader').hide();
