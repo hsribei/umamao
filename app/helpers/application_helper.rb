@@ -326,7 +326,7 @@ module ApplicationHelper
       head = truncate(request_uri[0..(request_uri.length / 2)], :length => 30)
       tail = truncate(request_uri.reverse[0..(request_uri.length / 2) - 1],
                       :length => 30).reverse
-      (head + tail).sub('......', '...')
+      (head + tail).sub('......', '...').squeeze('/')
     end
     "#{uri.scheme}://#{uri.host}#{port.call(uri)}#{relevant_path.call(uri)}"
   rescue URI::InvalidURIError
