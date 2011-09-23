@@ -59,6 +59,10 @@ namespace :data do
                          :voteable_type => search_result.class.to_s)
           end
 
+          optional = lambda do |object, message|
+            object.respond_to?(message) ? object.send(message) : nil
+          end
+
           Comment.
             where(:commentable_id => answer.id, :commentable_type => 'Answer').
             fields([:banned,
@@ -85,9 +89,11 @@ namespace :data do
                             :body => comment.body,
                             :commentable_id => search_result.id,
                             :commentable_type => search_result.class.to_s,
-                            :content_image_ids => comment.content_image_ids,
+                            :content_image_ids =>
+                              optional.call(comment, :content_image_ids),
                             :created_at => comment.created_at,
-                            :flags_count => comment.flags_count,
+                            :flags_count =>
+                              optional.call(comment, :flags_count),
                             :group_id => GROUP.id,
                             :imported_from_se => comment.imported_from_se,
                             :language => comment.language,
@@ -95,13 +101,16 @@ namespace :data do
                             :se_id => comment.se_id,
                             :se_site => comment.se_site,
                             :updated_at => comment.updated_at,
-                            :updated_by_id => comment.updated_by_id,
+                            :updated_by_id =>
+                              optional.call(comment, :updated_by_id),
                             :user_id => comment.user_id,
                             :user_ip => comment.user_ip,
-                            :versions => comment.versions,
-                            :views_count => comment.views_count,
-                            :wiki => comment.wiki,
-                            :version_message => comment.version_message)
+                            :versions => optional.call(comment, :versions),
+                            :views_count =>
+                              optional.call(comment, :views_count),
+                            :wiki => optional.call(comment, :wiki),
+                            :version_message =>
+                              optional.call(comment, :version_message))
           end
         rescue StandardError
           STDERR.puts $!
