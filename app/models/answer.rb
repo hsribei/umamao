@@ -42,7 +42,6 @@ class Answer < Comment
   filterable_keys :body
 
   validate :disallow_spam
-  validate :check_unique_answer, :if => lambda { |a| (!a.group.forum && !a.disable_limits?) }
 
   after_create :create_news_update, :new_answer_notification,
     :increment_user_topic_answers_count
@@ -67,16 +66,6 @@ class Answer < Comment
 
   def topics
     self.question.topics
-  end
-
-  def check_unique_answer
-    check_answer = Answer.first(:question_id => self.question_id,
-                               :user_id => self.user_id)
-
-    if !check_answer.nil? && check_answer.id != self.id
-      self.errors.add(:limitation, "Your can only post one answer per question.")
-      return false
-    end
   end
 
   def update_question_answered_with
