@@ -90,7 +90,7 @@ class AnswersController < ApplicationController
     else # TODO: put a return statement and remove this else block
       @answer.user = current_user #has answered the question
       respond_to do |format|
-        if @question && @answer.save
+        if @question && @answer.save_with_search_result
           Question.update_last_target(@question.id, @answer)
 
           current_user.stats.add_answer_tags(*@question.tags)
@@ -104,26 +104,21 @@ class AnswersController < ApplicationController
                       :question_answers_count => @question.answers_count,
                       :own_question => @question.user_id == @answer.user_id)
 
-          notice = t(:flash_notice, :scope => "answers.create")
+          flash[:notice] = t(:flash_notice, :scope => "answers.create")
           format.html do
-            flash[:notice] = notice
             redirect_to question_path(@question)
           end
           format.json { render :json => @answer.to_json(:except => %w[_keywords]) }
           format.js do
-            render(:json => {
-                     :success => true,
-                     :form_message => render_to_string(:partial => "questions/already_answered",
-                                                       :object => @answer,
-                                                       :locals => {:answer => @answer}),
-                     :message => notice,
-                     :html => render_to_string(:partial => "questions/answer",
-                                               :object => @answer,
-                                               :locals => {
-                                                 :question => @question,
-                                                 :share => true
-                                               })
-                   }.to_json)
+            render(:json =>
+                     { :success => true,
+                       :form_message => flash[:notice],
+                       :message => flash[:notice],
+                       :html =>
+                         render_to_string(:partial => "questions/search_result",
+                                          :object => @answer.search_result,
+                                          :locals => { :question =>
+                                                         @question }) })
           end
         else
           error = t(:flash_error, :scope => "answers.create")

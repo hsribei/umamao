@@ -2,6 +2,7 @@ class Answer < Comment
   include MongoMapper::Document
   include MongoMapperExt::Filter
   include Support::Versionable
+  include ApplicationHelper
 
   key :_id, String
 
@@ -19,6 +20,9 @@ class Answer < Comment
   key :question_id, String
   belongs_to :question
 
+  key :search_result_id, String
+  belongs_to :search_result
+
   key :content_image_ids, Array
   has_many :content_images, :in => :content_image_ids
 
@@ -32,8 +36,7 @@ class Answer < Comment
 
   validates_presence_of :user_id
   validates_presence_of :question_id
-
-  validates_uniqueness_of :user_id, :scope => :question_id
+  validates_presence_of :search_result_id
 
   versionable_keys :body
   filterable_keys :body
@@ -52,6 +55,10 @@ class Answer < Comment
            :scope => [:answers, :show],
            :user_name => user.name,
            :question_title => question.title)
+  end
+
+  def summary
+    truncate_words(body, 200)
   end
 
   def topic_ids
@@ -228,4 +235,25 @@ class Answer < Comment
     UserTopicInfo.answer_removed!(self)
   end
 
+  def save_with_search_result
+    search_result =
+      SearchResult.new(:title => title,
+                       :summary => summary,
+                       :question => question,
+                       :url => Rails.
+                                 application.
+                                 routes.
+                                 url_helpers.
+                                 question_answer_url(question, self.id))
+    self.search_result = search_result
+    if save && search_result.save
+      true
+    else
+      search_result.errors.full_messages.each do |error|
+        errors.add_to_base(error)
+      end
+      search_result.destroy
+      false
+    end
+  end
 end

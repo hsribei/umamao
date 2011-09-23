@@ -22,23 +22,16 @@ $(document).ready(function() {
     };
   });
 
-  Utils.clickObject("form.mainAnswerForm", function () {
-    var form = $(this);
-    var answers = $("#answers .hentry");
-    var button = $(this).find(".button");
-
+  Utils.clickObject("form#new_answer", function() {
     return {
-      success: function (data) {
-        window.onbeforeunload = null;
-        var answer = $(data.html);
-        var content = answer.find(".entry-content");
-        answers.append(answer);
-        highlightEffect(answer);
-        $('#new-answer-wrapper').html(data.form_message);
-        MathJax.Hub.Queue(['Typeset', MathJax.Hub, answer[0]]);
+      success: function(data) {
+        var search_result = $(data.html);
+        $('#search_results').append(search_result);
+        highlightEffect(search_result);
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, search_result[0]]);
       },
 
-      error: function (data) {
+      error: function(data) {
         if(data.status == "unauthenticate") {
           Utils.redirectToSignIn();
         }

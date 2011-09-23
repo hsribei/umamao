@@ -72,9 +72,9 @@
 
 #search_results
   - @search_results.each do |search_result|
-    = render(:partial => "search_result",
+    = render(:partial => 'search_result',
              :locals => { :question => @question,
-               :search_result => search_result })
+                          :search_result => search_result })
 
 .loader{:style => 'display: none;'}
   = waiting_tag

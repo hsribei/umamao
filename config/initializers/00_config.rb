@@ -93,3 +93,5 @@ if AppConfig.postmark != nil and AppConfig.postmark['activate']
 end
 
 Tracking::Mixpanel::TOKEN = AppConfig.mixpanel['api_key'] if AppConfig.mixpanel
+
+Rails.application.routes.default_url_options[:host] = AppConfig.domain

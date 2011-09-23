@@ -26,6 +26,7 @@ class SearchResult
   belongs_to :group
   belongs_to :user
   belongs_to :question
+  has_one :answer
   has_many :comments,
            :foreign_key => 'commentable_id',
            :dependent => :destroy
@@ -34,9 +35,17 @@ class SearchResult
                     :if => :url_present?,
                     :unless => :url_has_scheme?
 
-  validate :fetch_url_metadata, :if => :url_present?
+  validate :fetch_url_metadata,
+           :if => :url_present?,
+           :unless => [:title_present?, :summary_present?]
 
-  after_validation :fetch_title, :fetch_summary, :if => :response_present?
+  after_validation :fetch_title,
+                   :unless => :title_present?,
+                   :if => :response_present?
+
+  after_validation :fetch_summary,
+                   :unless => :summary_present?,
+                   :if => :response_present?
 
   validates_presence_of :url
   validates_format_of :url,
@@ -47,6 +56,14 @@ private
 
   def url_present?
     url.present?
+  end
+
+  def title_present?
+    title.present?
+  end
+
+  def summary_present?
+    summary.present?
   end
 
   def response_present?
