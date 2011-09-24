@@ -10,6 +10,7 @@ base_packaged.*
 landing_packaged.*
 .directory
 .bundle
+data/
 log/
 tmp/**/*
 dump
