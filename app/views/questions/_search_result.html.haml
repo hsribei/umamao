@@ -1,6 +1,7 @@
 .search_result{:class => 'commentable'}
   .vote-col
     = vote_box(search_result, question_path(question), question.closed)
+  = avatar_for(search_result.user, :size => 32, :link => true)
   .title
     = link_to(search_result.title, search_result.url)
   .url
