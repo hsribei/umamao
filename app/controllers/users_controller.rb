@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   prepend_before_filter :require_no_authentication, :only => [:new, :create]
   before_filter :login_required, :only => [:edit, :update, :wizard,
                                            :follow, :unfollow]
-  before_filter :common_show, :only => [:show, :questions, :answers]
+  before_filter :common_show, :only => [:show, :questions, :answers, :search_results]
 
   tabs :default => :users
 
@@ -288,6 +288,27 @@ class UsersController < ApplicationController
                                     :group_id => current_group.id,
                                     :per_page => 10,
                                     :banned => false)
+    render :show
+  end
+
+  def search_results
+    @tab = 'search_results'
+    set_tab @tab, :users_show
+
+    sort, order = active_subtab(:sort)
+    @order_info = {
+      :user => @user,
+      :will_sort => true,
+      :sort => sort,
+      :path_used => :search_results_user_path,
+      :modes => [:use_votes]
+    }
+
+    @page = params[:page] || 1
+    @items = @user.search_results.paginate(:page => @page,
+                                           :order => order,
+                                           :group_id => current_group.id,
+                                           :per_page => 10)
     render :show
   end
 
