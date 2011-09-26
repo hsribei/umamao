@@ -17,6 +17,8 @@
     = tab.questions "#{t('users.show.tab.questions')} (#{questions_count})", questions_user_path(@user)
     - answers_count = @user.answers.count
     = tab.answers "#{t('users.show.tab.answers')} (#{answers_count})", answers_user_path(@user)
+    - links_count = @user.search_results.count
+    = tab.search_results "#{t('users.show.tab.search_results')} (#{links_count})", search_results_user_path(@user)
 
 #users_show
   - case @tab
@@ -26,6 +28,8 @@
     - partial = "questions/question"
   - when "answers"
     - partial = "answers/answer"
+  - when "search_results"
+    - partial = "search_results/search_result"
   .block
     - if @items.empty?
       = t("users.show.no_#{@tab}")

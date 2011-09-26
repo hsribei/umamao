@@ -129,6 +129,7 @@ Shapado::Application.routes.draw do
       get  :topics
       get  :questions
       get  :answers
+      get  :search_results
     end
 
     collection do
