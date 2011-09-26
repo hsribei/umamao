@@ -19,6 +19,8 @@ module UsersHelper
           t("settings.profile.edit.change_picture"),
           settings_avatar_path, :class => :edit_picture)
       }#{img}</div>"
+    elsif options[:link]
+      "<a href=#{user_url(user)}>#{img}</a>"
     else
       img
     end

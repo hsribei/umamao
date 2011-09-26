@@ -58,6 +58,7 @@ class SearchResult
   validates_format_of :url,
                       :with => URI.regexp(ACCEPTED_SCHEMES),
                       :allow_blank => true
+  validates_uniqueness_of(:url, :scope => :question_id)
 
 private
 

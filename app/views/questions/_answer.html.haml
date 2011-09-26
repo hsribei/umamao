@@ -52,9 +52,6 @@
               = t("time.ago", :time => time_ago_in_words(answer.created_at))
         #answer_flag_div
 
-    - if !hide_controls
-      = render :partial => "shared/comments", :locals => {:commentable => answer, :path_scope => [question, answer], :source => source}
-
   - if !hide_controls
     .avatar
       = link_to avatar_for(answer.user, :size => 25).html_safe, user_path(answer.user)
