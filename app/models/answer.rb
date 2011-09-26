@@ -49,8 +49,15 @@ class Answer < Comment
 
   ensure_index([[:user_id, 1], [:question_id, 1]])
 
-  def title
-    truncate_words(body, 65)
+  def title(options = {})
+    if options[:truncated]
+      truncate_words(body, 65)
+    else
+      I18n.t(:title,
+             :scope => [:answers, :show],
+             :user_name => user.name,
+             :question_title => question.title)
+    end
   end
 
   def summary
@@ -223,7 +230,7 @@ class Answer < Comment
 
   def save_with_search_result
     search_result =
-      SearchResult.new(:title => title,
+      SearchResult.new(:title => title(:truncated),
                        :summary => summary,
                        :question => question,
                        :user => user,

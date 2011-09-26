@@ -35,7 +35,7 @@ namespace :data do
             SearchResult.create!(:url => answer_url.
                                            call(:question_slug => question.slug,
                                                 :answer_id => answer.id),
-                                 :title => answer.title,
+                                 :title => answer.title(:truncated),
                                  :summary => truncate_words(answer.body),
                                  :user_id => answer.user_id,
                                  :group_id => GROUP.id,
