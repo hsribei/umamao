@@ -1,0 +1,7 @@
+- title = h(search_result.title)
+
+%li.entry.item{:class => SearchResult}
+  -# SearchResult Summary
+  .summary
+    %h3= link_to title, search_result_path(search_result), :title => truncate(search_result.summary, :length => 200)
+  .clear
