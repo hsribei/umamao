@@ -3,3 +3,7 @@
 = f.hidden_field(:question_id, :value => question_id)
 = f.hidden_field(:group_id, :value => group_id)
 = f.hidden_field(:user_id, :value => user_id)
+= f.label(:comment)
+= f.text_area(:comment,
+              :class => 'placeholder',
+              :placeholder => t(:comment, :scope => [:helpers, :placeholder]))

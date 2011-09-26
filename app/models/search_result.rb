@@ -23,6 +23,10 @@ class SearchResult
 
   timestamps!
 
+  # This is ugly but needed since our version of mongomapper doesn't support
+  # `accepts_nested_attributes_for`.
+  attr_accessor :comment
+
   belongs_to :group
   belongs_to :user
   belongs_to :question

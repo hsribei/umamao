@@ -20,6 +20,7 @@ pt-BR:
     attributes:
       search_result:
         url: URL
+        comment: Comentário
         summary: Descrição
   search_results:
     create:
@@ -33,4 +34,6 @@ pt-BR:
     label:
       search_result:
         url: URL
-        summary: Descrição
+        comment: Comentário (opcional)
+    placeholder:
+      comment: Por que isso é relevante?

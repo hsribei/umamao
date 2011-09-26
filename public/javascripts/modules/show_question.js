@@ -58,6 +58,20 @@ $(document).ready(function() {
     };
   });
 
+  $('#new_search_result').delegate('#search_result_comment', 'blur', function() {
+    if ($(this).val() === '') {
+      $(this).addClass('placeholder');
+    }
+  });
+
+  $('#new_search_result').delegate('#search_result_comment', 'focus', function() {
+    $(this).removeClass('placeholder');
+  });
+
+  if ($('#new_search_result #search_result_comment').val() !== '') {
+    $('#new_search_result #search_result_comment').removeClass('placeholder');
+  }
+
   // Send new comment.
   Utils.clickObject("form.commentForm", function () {
     var form = $(this);
