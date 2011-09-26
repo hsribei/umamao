@@ -15,8 +15,8 @@ pt-BR:
       search_results: Resultados de busca
       search_result: Resultado de busca
       search_result_count:
-        one: resultado de busca
-        other: resultados de busca
+        one: link
+        other: links
     attributes:
       search_result:
         url: URL
