@@ -72,8 +72,9 @@
 
 #search_results
   - @search_results.each do |search_result|
-    = render(:partial => 'search_result',
+    = render(:partial => 'search_results/search_result',
              :locals => { :question => @question,
+                          :hide_controls => false,
                           :search_result => search_result })
 
 .loader{:style => 'display: none;'}
