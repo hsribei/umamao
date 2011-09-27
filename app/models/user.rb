@@ -193,6 +193,10 @@ class User
     igs
   end
 
+  def external_search_results
+    self.search_results.where(:id.nin => self.answers.fields(:search_result_id).map(&:search_result_id))
+  end
+
   def confirm_from_invitation
     return if !self.new?
     invitation = Invitation.find_by_invitation_token(self.invitation_token)
