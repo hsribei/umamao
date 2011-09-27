@@ -27,12 +27,13 @@ pt-BR:
       flash_notice: Link enviado com sucesso.
     destroy:
       flash_notice: Link removido com sucesso.
-    flag: Reportar
     attributes:
       search_result:
         url: URL
     show:
       flagged_as: Reportado como
+    search_result:
+      flag: Reportar
 
   helpers:
     label:
