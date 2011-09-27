@@ -23,10 +23,14 @@ class SearchResult
 
   timestamps!
 
+  # This is ugly but needed since our version of mongomapper doesn't support
+  # `accepts_nested_attributes_for`.
+  attr_accessor :comment
+
   belongs_to :group
   belongs_to :user
   belongs_to :question
-  has_one :answer
+  has_one :answer, :dependent => :destroy
   has_many :comments,
            :foreign_key => 'commentable_id',
            :dependent => :destroy
@@ -46,6 +50,9 @@ class SearchResult
   after_validation :fetch_summary,
                    :unless => :summary_present?,
                    :if => :response_present?
+
+  # https://github.com/jnunemaker/mongomapper/issues/207
+  before_destroy Proc.new { |sr| sr.answer.destroy if sr.answer }
 
   validates_presence_of :url
   validates_format_of :url,

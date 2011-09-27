@@ -202,17 +202,19 @@ form#new_search_result label
   float: left
   clear: both
 
-form#new_search_result input#search_result_url
+form#new_search_result input#search_result_url,
+form#new_search_result textarea#search_result_comment_body
   float: left
   clear: both
   width: 99%
   margin-bottom: 1em
 
-form#new_search_result textarea#search_result_url
+form#new_search_result textarea#search_result_comment
   height: 3em
+  width: 98%
 
-form#new_search_result textarea#search_result_summary
-  height: 5em
+form#new_search_result textarea#search_result_comment.placeholder
+  color: #999
 
 form#new_search_result .group
   float: left

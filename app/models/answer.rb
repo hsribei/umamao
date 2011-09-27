@@ -45,16 +45,21 @@ class Answer < Comment
 
   after_create :create_news_update, :new_answer_notification,
     :increment_user_topic_answers_count
-  before_destroy :unhide_news_update, :decrement_user_topic_answers_count,
-    :destroy_search_result
+  before_destroy :unhide_news_update, :decrement_user_topic_answers_count
 
   ensure_index([[:user_id, 1], [:question_id, 1]])
 
-  def title
-    I18n.t(:title,
-           :scope => [:answers, :show],
-           :user_name => user.name,
-           :question_title => question.title)
+  def title(options = {})
+    if options[:truncated]
+      truncate_words(body, 80)
+    elsif options[:extended]
+      I18n.t(:title,
+             :scope => [:answers, :show],
+             :user_name => user.name,
+             :question_title => question.title)
+    else
+      question.title
+    end
   end
 
   def summary
@@ -227,7 +232,7 @@ class Answer < Comment
 
   def save_with_search_result
     search_result =
-      SearchResult.new(:title => title,
+      SearchResult.new(:title => title(:truncated => true),
                        :summary => summary,
                        :question => question,
                        :user => user,
@@ -236,7 +241,7 @@ class Answer < Comment
                                  application.
                                  routes.
                                  url_helpers.
-                                 question_answer_url(question, self.id))
+                                 question_answer_url(question, id))
     self.search_result = search_result
     if save && search_result.save
       true
@@ -247,9 +252,5 @@ class Answer < Comment
       search_result.destroy
       false
     end
-  end
-
-  def destroy_search_result
-    self.search_result.destroy
   end
 end

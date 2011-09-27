@@ -2,7 +2,7 @@
 .group
   = f.label :title, "#{t(:title, :scope => "activerecord.attributes.question")}*", :class => "label"
   = f.text_field :title, :class => "text_field",
-    "data-autocomplete-url" => autocomplete_url, :tabindex => 1
+    "data-autocomplete-url" => autocomplete_url
   - if @question.new?
     %ul#question-search-results.autocomplete-list
   .description

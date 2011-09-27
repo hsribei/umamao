@@ -20,6 +20,7 @@ en:
     attributes:
       search_result:
         url: URL
+        comment: Comment
         summary: Summary
   search_results:
     create:
@@ -33,4 +34,6 @@ en:
     label:
       search_result:
         url: URL
-        summary: Summary
+        comment: Comment (optional)
+    placeholder:
+      comment: Why is this relevant?
