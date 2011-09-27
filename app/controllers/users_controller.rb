@@ -305,10 +305,10 @@ class UsersController < ApplicationController
     }
 
     @page = params[:page] || 1
-    @items = @user.search_results.paginate(:page => @page,
-                                           :order => order,
-                                           :group_id => current_group.id,
-                                           :per_page => 10)
+    @items = @user.external_search_results.paginate(:page => @page,
+                                                    :order => order,
+                                                    :group_id => current_group.id,
+                                                    :per_page => 10)
     render :show
   end
 

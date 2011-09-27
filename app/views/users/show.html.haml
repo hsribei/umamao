@@ -17,7 +17,7 @@
     = tab.questions "#{t('users.show.tab.questions')} (#{questions_count})", questions_user_path(@user)
     - answers_count = @user.answers.count
     = tab.answers "#{t('users.show.tab.answers')} (#{answers_count})", answers_user_path(@user)
-    - links_count = @user.search_results.count
+    - links_count = @user.external_search_results.count
     = tab.search_results "#{t('users.show.tab.search_results')} (#{links_count})", search_results_user_path(@user)
 
 #users_show
