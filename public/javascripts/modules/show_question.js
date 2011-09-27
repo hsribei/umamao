@@ -157,8 +157,13 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".flag_form .cancel").live("click", function() {
+  $("#question_flag_form .cancel").live("click", function() {
     $("#question_flag_div").html('');
+    return false;
+  });
+
+  $("#answer_flag_form .cancel").live("click", function() {
+    $("#answer_flag_div").html('');
     return false;
   });
 
