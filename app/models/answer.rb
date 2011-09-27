@@ -51,12 +51,14 @@ class Answer < Comment
 
   def title(options = {})
     if options[:truncated]
-      truncate_words(body, 65)
-    else
+      truncate_words(body, 80)
+    elsif options[:extended]
       I18n.t(:title,
              :scope => [:answers, :show],
              :user_name => user.name,
              :question_title => question.title)
+    else
+      question.title
     end
   end
 
@@ -230,7 +232,7 @@ class Answer < Comment
 
   def save_with_search_result
     search_result =
-      SearchResult.new(:title => title(:truncated),
+      SearchResult.new(:title => title(:truncated => true),
                        :summary => summary,
                        :question => question,
                        :user => user,
@@ -239,7 +241,7 @@ class Answer < Comment
                                  application.
                                  routes.
                                  url_helpers.
-                                 question_answer_url(question, self.id))
+                                 question_answer_url(question, id))
     self.search_result = search_result
     if save && search_result.save
       true
