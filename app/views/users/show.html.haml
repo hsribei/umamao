@@ -41,7 +41,7 @@
         - sort = "newest"
       %ul.items{:id => @tab}
         - @items.each do |item|
-          = render :partial => partial, :object => item
+          = render :partial => partial, :object => item, :locals => { :hide_controls => true }
       .additional_info
         = will_paginate @items, :param_name => "page"
         .clear
