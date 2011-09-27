@@ -31,6 +31,9 @@ pt-BR:
     attributes:
       search_result:
         url: URL
+    show:
+      flagged_as: Reportado como
+
   helpers:
     label:
       search_result:

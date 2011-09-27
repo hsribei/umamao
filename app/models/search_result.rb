@@ -20,6 +20,7 @@ class SearchResult
   key :user_id, String, :index => true
   key :question_id, String, :index => true
   key :group_id, String, :index => true
+  key :flags_count, Integer, :default => 0
 
   timestamps!
 
@@ -34,6 +35,7 @@ class SearchResult
   has_many :comments,
            :foreign_key => 'commentable_id',
            :dependent => :destroy
+  has_many :flags, :as => 'flaggeable', :dependent => :destroy
 
   before_validation :prepend_scheme_on_url,
                     :if => :url_present?,

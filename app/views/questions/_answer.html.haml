@@ -32,7 +32,10 @@
           = link_to t('activerecord.attributes.answer.share'), question_answer_path(question, answer), :class => "bookmark"
           - if logged_in?
             - if current_user != answer.user
-              = link_to t(".flag"), flag_question_answer_path(question, answer), :class => "flag-link"
+              - if flag = current_user.has_flagged?(answer)
+                %span.flagged= "#{t('answers.show.flagged_as')} #{t(flag.type, :scope=>'flags.form')}"
+              - else
+                = link_to t('.flag'), flag_question_answer_path(question, answer), :id => 'answer_flag_link', :class => "flag-link"
 
             - if current_user.can_modify?(answer) || current_user.mod_of?(question.group)
               = link_to t("scaffold.destroy"), question_answer_path(question, answer), :confirm => t("scaffold.sure", :model => t("activerecord.models.answer").downcase), :method => :delete, :class =>"cancel"

@@ -19,6 +19,7 @@ pt-BR:
     show:
       share_success: Pergunta compartilhada com sucesso no %{site}.
       title: Resposta de "%{user_name}" a "%{question_title}"
+      flagged_as: Reportada como
     share_body:
       facebook: Resposta
       facebook_named: Resposta de %{name}
