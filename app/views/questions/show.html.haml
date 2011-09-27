@@ -72,7 +72,7 @@
 
 #search_results
   - @search_results.each do |search_result|
-    = render(:partial => 'search_result',
+    = render(:partial => 'search_results/search_result',
              :locals => { :question => @question,
                           :search_result => search_result })
 

@@ -1,7 +1,28 @@
-- title = h(search_result.title)
-
-%li.entry.item{:class => SearchResult}
-  -# SearchResult Summary
+.search_result{:class => 'commentable'}
+  .vote-col
+    = vote_box(search_result, question_path(question), question.closed)
+  = avatar_for(search_result.user, :size => 32, :link => true)
+  .title
+    = link_to(search_result.title, search_result.url)
+  .url
+    %p
+      = shorten_url(search_result.url)
   .summary
-    %h3= link_to(search_result.title, search_result.url)
-  .clear
+    - if search_result.summary.present?
+      %p
+        = search_result.summary
+  .controls
+    .actions
+      - if logged_in?
+        - if current_user.can_modify?(search_result) || current_user.mod_of?(question.group)
+          = link_to t("scaffold.destroy"),
+                    question_search_result_path(question, search_result),
+                    :confirm => t("scaffold.sure",
+                                  :model => t("activerecord.models.search_result").downcase),
+                    :method => :delete,
+                    :class =>"cancel"
+  = render :partial => 'shared/comments',
+           :locals => { :commentable => search_result,
+                        :source => question_path(question),
+                        :path_scope => [search_result] }
+
