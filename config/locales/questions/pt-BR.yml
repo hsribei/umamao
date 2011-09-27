@@ -27,6 +27,9 @@ pt-BR:
         one: pergunta
         other: perguntas
   questions:
+    search_result:
+      add_comment: Adicionar comentário
+      flag: Reportar
     answer:
       add_comment: Adicionar comentário
       flag: Reportar

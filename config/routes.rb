@@ -203,7 +203,11 @@ Shapado::Application.routes.draw do
     end
 
     resources :comments
-    resources :search_results
+    resources :search_results do
+      member do
+        get :flag
+      end
+    end
 
     resources :answers do
       member do

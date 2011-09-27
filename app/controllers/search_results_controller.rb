@@ -61,4 +61,28 @@ class SearchResultsController < ApplicationController
       format.json { head(:ok) }
     end
   end
+
+  def flag
+    @search_result = SearchResult.find(params[:id])
+
+    raise Goalie::NotFound unless @search_result
+
+    @flag = Flag.new
+    @flag.flaggeable_type = @search_result.class.name
+    @flag.flaggeable_id = @search_result.id
+    respond_to do |format|
+      format.html
+      format.js do
+        render(:json =>
+                 { :status => :ok,
+                   :html =>
+                     render_to_string(:partial => '/flags/form',
+                                      :locals =>
+                                        { :flag => @flag,
+                                          :source => params[:source],
+                                          :form_id =>
+                                            'search_result_flag_form' }) })
+      end
+    end
+  end
 end

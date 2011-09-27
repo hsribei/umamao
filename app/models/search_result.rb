@@ -152,4 +152,10 @@ private
                      truncate_words(html.xpath('//body').text, 200)
                    end
   end
+
+  def flagged!
+    collection.update({ :_id => _id} ,
+                      { :$inc => { :flags_count => 1 } },
+                      :upsert => true)
+  end
 end

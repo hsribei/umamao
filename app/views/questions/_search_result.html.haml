@@ -14,6 +14,8 @@
   .controls
     .actions
       - if logged_in?
+        - if current_user != search_result.user
+          = link_to t('.flag'), flag_question_search_result_path(question, search_result), :class => "flag-link"
         - if current_user.can_modify?(search_result) || current_user.mod_of?(question.group)
           = link_to t("scaffold.destroy"),
                     question_search_result_path(question, search_result),
