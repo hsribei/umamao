@@ -40,6 +40,10 @@ namespace :data do
                                  :user_id => answer.user_id,
                                  :group_id => GROUP.id,
                                  :question_id => answer.question_id)
+
+          answer.search_result = search_result
+          answer.save
+
           Vote.
             where(:voteable_id => answer.id, :voteable_type => 'Answer').
             fields([:imported_from_se,
