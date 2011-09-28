@@ -41,8 +41,7 @@ namespace :data do
                                  :group_id => GROUP.id,
                                  :question_id => answer.question_id)
 
-          answer.search_result = search_result
-          answer.save
+          answer.update_attributes!(:search_result_id, search_result.id)
 
           Vote.
             where(:voteable_id => answer.id, :voteable_type => 'Answer').
