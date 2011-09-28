@@ -1,7 +1,8 @@
 .search_result{:class => 'commentable'}
-  .vote-col
-    = vote_box(search_result, question_path(question), question.closed)
-  = avatar_for(search_result.user, :size => 32, :link => true)
+  - if !hide_controls
+    .vote-col
+      = vote_box(search_result, question_path(question), question.closed)
+    = avatar_for(search_result.user, :size => 32, :link => true)
   .title
     = link_to(search_result.title, search_result.url)
   .url
@@ -11,24 +12,25 @@
     - if search_result.summary.present?
       %p
         = search_result.summary
-  .controls
-    .actions
-      - if logged_in?
-        - if current_user != search_result.user
-          - if flag = current_user.has_flagged?(search_result)
-            %span.flagged= "#{t('search_results.show.flagged_as')} #{t(flag.type, :scope=>'flags.form')}"
-          - else
-            = link_to t('.flag'), flag_question_search_result_path(question, search_result), :id => 'search_result_flag_link', :class => "flag-link"
-        - if current_user.can_modify?(search_result) || current_user.mod_of?(question.group)
-          = link_to t("scaffold.destroy"),
-                    question_search_result_path(question, search_result),
-                    :confirm => t("scaffold.sure",
-                                  :model => t("activerecord.models.search_result").downcase),
-                    :method => :delete,
-                    :class =>"cancel"
-    #search_result_flag_div
-  = render :partial => 'shared/comments',
-           :locals => { :commentable => search_result,
-                        :source => question_path(question),
-                        :path_scope => [search_result] }
+  - if !hide_controls
+    .controls
+      .actions
+        - if logged_in?
+          - if current_user != search_result.user
+            - if flag = current_user.has_flagged?(search_result)
+              %span.flagged= "#{t('search_results.show.flagged_as')} #{t(flag.type, :scope=>'flags.form')}"
+            - else
+              = link_to t('.flag'), flag_question_search_result_path(question, search_result), :id => 'search_result_flag_link', :class => "flag-link"
+          - if current_user.can_modify?(search_result) || current_user.mod_of?(question.group)
+            = link_to t("scaffold.destroy"),
+                      question_search_result_path(question, search_result),
+                      :confirm => t("scaffold.sure",
+                                    :model => t("activerecord.models.search_result").downcase),
+                      :method => :delete,
+                      :class =>"cancel"
+      #search_result_flag_div
+    = render :partial => 'shared/comments',
+             :locals => { :commentable => search_result,
+                          :source => question_path(question),
+                          :path_scope => [search_result] }
 
