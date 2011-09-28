@@ -121,5 +121,29 @@ namespace :data do
         end
       end
     end
+
+    desc 'Associate SearchResult objects with Answer objects'
+    task :associate_answers_with_search_results => :environment do
+      raise 'You must have created a Group' unless Group.exists?
+
+      Answer.find_each(:batch_size => 100) do |answer|
+        search_results = SearchResult.where(:question_id => answer.question_id, :user_id => answer.user_id)
+
+        search_result =
+          case count = search_results.count
+          when 1
+            search_results.first
+          else
+            search_results.find do |sr|
+              sr.url == answer_url(answer)
+            end
+          end
+
+        if search_results
+          answer.search_result = search_result
+          answer.save
+        end
+      end
+    end
   end
 end
