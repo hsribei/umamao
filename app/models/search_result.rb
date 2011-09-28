@@ -3,7 +3,7 @@ require 'uri'
 class SearchResult
   REDIRECTION_LIMIT = 5
   ACCEPTED_SCHEMES = %w[http https]
-  TIMEOUT = 3
+  TIMEOUT = 5
 
   class TooManyRedirectionsError < StandardError; end
 
@@ -131,6 +131,7 @@ private
          Timeout::Error,
          TooManyRedirectionsError,
          URI::InvalidURIError
+    debugger
     errors.add_to_base(I18n.t(underscore($!.class.to_s.delete(':')).to_sym,
                               :scope =>
                                 [:activerecord, :errors, :search_result]))
