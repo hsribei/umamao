@@ -12,17 +12,16 @@ class SearchResultsController < ApplicationController
           current_user.on_activity(:comment_question, current_group)
           track_event(:commented, :commentable => @search_result.class.name)
         end
+        notice_message = t(:flash_notice, :scope => "search_results.create")
         format.html do
-          flash[:notice] = t(:flash_notice, :scope => "search_results.create")
+          flash[:notice] = notice_message
           redirect_to(question_path(@question))
         end
         format.js do
           render(:json =>
                    { :success => true,
-                     :form_message =>
-                       t(:flash_notice, :scope => "search_results.create"),
-                     :message =>
-                       t(:flash_notice, :scope => "search_results.create"),
+                     :form_message => notice_message,
+                     :message => notice_message,
                      :html =>
                        render_to_string(:partial => "questions/search_result",
                                         :object => @search_result,
@@ -31,16 +30,17 @@ class SearchResultsController < ApplicationController
         end
         format.json { head(:created) }
       else
-        flash[:error] = @search_result.errors.full_messages.join(', ')
+        error_message = @search_result.errors.full_messages.join(', ')
         format.html do
+          flash[:error] = error_message
           render(@question)
         end
         format.js do
-          render(:json => { :success => false, :message => flash[:error] })
+          render(:json => { :success => false, :message => error_message })
         end
         format.json do
           render(:json => { :status => :unprocessable_entity,
-                            :message => flash[:error] })
+                            :message => error_message })
         end
       end
     end
@@ -54,10 +54,12 @@ class SearchResultsController < ApplicationController
     end
     @search_result.destroy
     @question.search_result_removed!
-    flash[:notice] = t(:flash_notice, :scope => "search_results.destroy")
 
     respond_to do |format|
-      format.html { redirect_to(question_path(@question)) }
+      format.html do
+        flash[:notice] = t(:flash_notice, :scope => "search_results.destroy")
+        redirect_to(question_path(@question))
+      end
       format.json { head(:ok) }
     end
   end
