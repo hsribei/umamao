@@ -3,7 +3,7 @@ require 'uri'
 class SearchResult
   REDIRECTION_LIMIT = 5
   ACCEPTED_SCHEMES = %w[http https]
-  TIMEOUT = 5
+  TIMEOUT = 7
 
   class TooManyRedirectionsError < StandardError; end
 
