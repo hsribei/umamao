@@ -131,7 +131,7 @@ private
          Net::HTTPBadResponse,
          SocketError,
          Timeout::Error,
-         TooManyRedirectionsError,
+         TooManyRedirectionsError
     errors.add_to_base(I18n.t(underscore($!.class.to_s.delete(':')).to_sym,
                               :scope =>
                                 [:activerecord, :errors, :search_result]))
