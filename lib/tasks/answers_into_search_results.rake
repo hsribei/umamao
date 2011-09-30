@@ -125,27 +125,61 @@ namespace :data do
     task :associate_answers_with_search_results => :environment do
       raise 'You must have created a Group' unless Group.exists?
 
+      error_message = StringIO.new
+
       Answer.find_each(:batch_size => 100) do |answer|
-        search_results = SearchResult.where(:question_id => answer.question_id, :user_id => answer.user_id).all
+        search_results = SearchResult.where(:question_id => answer.question_id,
+                                            :user_id => answer.user_id).all
+        url = answer_url(:question_slug => answer.question.slug,
+                         :answer_id => answer.id)
 
-        search_result =
-          case count = search_results.count
-          when 1
-            search_results.first
-          else
-            search_results.find do |sr|
-              sr.url == Rails.application.routes.url_helpers.question_answer_url(answer.question, answer.id)
-            end
-          end
-
-        if search_results
-          answer.search_result = search_result
+        if search_result = search_results.find { |sr| sr.url == url }
           begin
-            answer.save!
+            answer.update_attributes!(:search_result_id => search_result.id)
+            STDERR.print '.'
           rescue StandardError
-            STDERR.puts $!
+            error_message.puts "[error] <Answer##{answer.id}><SearchResult#" <<
+                                 "#{search_result.id}> - #{$!.class}: #{$!}"
+            STDERR.print 'F'
           end
+        else
+          STDERR.print 'N'
+          error_message.puts "[error] Couldn't find SearchResult with url " <<
+            "= #{url} on <Answer##{answer.id}>"
         end
+      end
+
+      if error_message.string.present?
+        STDERR.puts "\nErrors:\n\n#{error_message.string}"
+      end
+    end
+
+    task :fix_search_result_titles_and_summaries => :environment do
+      error_message = StringIO.new
+      SearchResult.find_each(:batch_size => 100) do |search_result|
+        begin
+          if answer = Answer.find_by_search_result_id(search_result.id)
+            search_result.
+              update_attributes!(:title =>
+                                   force_encoding(answer.
+                                                    title(:truncated => true),
+                                                  'utf-8'),
+                                 :summary => force_encoding(answer.summary,
+                                                            'utf-8'))
+            STDERR.print '.'
+          else
+            error_message.puts "[notice] No Answer with search_result_id = " <<
+                                 "#{search_result.id} (external link?)"
+            STDERR.print 'N'
+          end
+        rescue StandardError
+          error_message.puts "[error] <Answer##{answer.id}><SearchResult#" <<
+                               "#{search_result.id}> - #{$!.class}: #{$!}"
+          STDERR.print 'F'
+        end
+      end
+      if error_message.string.present?
+        STDERR.puts "\nErrors:\n\n#{error_message.string}"
       end
     end
   end
