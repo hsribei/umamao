@@ -9,8 +9,6 @@ def answer_url(params)
                              "/answers/#{params[:answer_id]}").to_s
 end
 
-include Support::Encoding
-
 namespace :data do
   namespace :migrate do
     desc 'Creates SearchResult objects from Answer objects'
@@ -155,6 +153,8 @@ namespace :data do
     end
 
     task :fix_search_result_titles_and_summaries => :environment do
+      include Support::Encoding
+
       error_message = StringIO.new
       SearchResult.find_each(:batch_size => 100) do |search_result|
         begin
