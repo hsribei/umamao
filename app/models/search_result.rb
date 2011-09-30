@@ -138,7 +138,7 @@ private
   end
 
   def fetch_title
-    title = truncate(Nokogiri::HTML(force_encoding(@response.body, 'utf-8')).
+    title = truncate(Nokogiri::HTML(scrub_invalid_chars(@response.body)).
                        xpath('//title').
                        text,
                      :length => TITLE_SIZE,
@@ -150,7 +150,7 @@ private
 
   def fetch_summary
     summary =
-      truncate(Nokogiri::HTML(force_encoding(@response.body, 'utf-8')).
+      truncate(Nokogiri::HTML(scrub_invalid_chars(@response.body)).
                  xpath("//meta[translate(@name, '#{('A'..'Z').to_a.to_s}', " <<
                          "'#{('a'..'z').to_a.to_s}')='description']/@content").
                  text,
@@ -162,7 +162,7 @@ private
                      summary
                    else
                      html =
-                       Nokogiri::HTML(force_encoding(@response.body, 'utf-8'))
+                       Nokogiri::HTML(scrub_invalid_chars(@response.body))
                      html.xpath('//script').remove
                      truncate(html.xpath('//body').text,
                               :length => SUMMARY_SIZE,

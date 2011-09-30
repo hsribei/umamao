@@ -2,8 +2,8 @@ require 'iconv'
 
 module Support
   module Encoding
-    def force_encoding(string, encoding)
-      Iconv.conv("#{encoding}//translit//ignore", encoding, string)
+    def scrub_invalid_chars(string)
+      string.unpack("C*").pack("U*")
     end
   end
 end

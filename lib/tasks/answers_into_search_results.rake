@@ -161,11 +161,11 @@ namespace :data do
           if answer = Answer.find_by_search_result_id(search_result.id)
             search_result.
               update_attributes!(:title =>
-                                   force_encoding(answer.
-                                                    title(:truncated => true),
-                                                  'utf-8'),
-                                 :summary => force_encoding(answer.summary,
-                                                            'utf-8'))
+                                   scrub_invalid_chars(answer.
+                                                        title(:truncated =>
+                                                                true)),
+                                 :summary =>
+                                   scrub_invalid_chars(answer.summary))
             STDERR.print '.'
           else
             error_message.puts "[notice] No Answer with search_result_id = " <<
