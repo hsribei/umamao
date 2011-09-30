@@ -3,6 +3,7 @@ class Answer < Comment
   include MongoMapperExt::Filter
   include Support::Versionable
   include ApplicationHelper
+  include ActionView::Helpers::TextHelper
 
   key :_id, String
 
@@ -51,7 +52,10 @@ class Answer < Comment
 
   def title(options = {})
     if options[:truncated]
-      truncate_words(body, 80)
+      truncate(markdown2txt(body),
+               :length => SearchResult::TITLE_SIZE,
+               :omission => ' …',
+               :separator => ' ')
     elsif options[:extended]
       I18n.t(:title,
              :scope => [:answers, :show],
@@ -63,7 +67,13 @@ class Answer < Comment
   end
 
   def summary
-    truncate_words(body, 200)
+    truncate(markdown2txt(body).
+               slice((title(:truncated => true).size - 3)..-1).
+               to_s.
+               insert(0, '… '),
+             :length => SearchResult::SUMMARY_SIZE,
+             :omission => ' …',
+             :separator => ' ')
   end
 
   def topic_ids
