@@ -2,8 +2,10 @@ require 'uri'
 
 class SearchResult
   REDIRECTION_LIMIT = 5
-  ACCEPTED_SCHEMES = %w[http https]
-  TIMEOUT = 7
+  ACCEPTED_SCHEMES  = %w[http https]
+  TIMEOUT           = 10
+  TITLE_SIZE        = 100
+  SUMMARY_SIZE      = 250
 
   class TooManyRedirectionsError < StandardError; end
 
@@ -11,6 +13,8 @@ class SearchResult
   include Support::Voteable
   include ApplicationHelper
   include ActiveSupport::Inflector
+  include ActionView::Helpers::TextHelper
+  include Support::Encoding
 
   key :_id, String
   key :_type, String
@@ -41,7 +45,7 @@ class SearchResult
                     :if => :url_present?,
                     :unless => :url_has_scheme?
 
-  validate :fetch_url_metadata,
+  validate :fetch_response,
            :if => :url_present?,
            :unless => [:title_present?, :summary_present?]
 
@@ -57,9 +61,6 @@ class SearchResult
   before_destroy Proc.new { |sr| sr.answer.destroy if sr.answer }
 
   validates_presence_of :url
-  validates_format_of :url,
-                      :with => URI.regexp(ACCEPTED_SCHEMES),
-                      :allow_blank => true
   validates_uniqueness_of(:url, :scope => :question_id)
 
 private
@@ -81,7 +82,8 @@ private
   end
 
   def url_has_scheme?
-    (parsed_url = URI.parse(url)) && ACCEPTED_SCHEMES.include?(parsed_url.scheme)
+    (parsed_url = URI.parse(url)) &&
+      ACCEPTED_SCHEMES.include?(parsed_url.scheme)
   rescue URI::InvalidURIError
     false
   end
@@ -94,7 +96,7 @@ private
   rescue URI::InvalidURIError
   end
 
-  def fetch_url_metadata
+  def fetch_response
     request_uri = lambda do |uri|
       if uri.respond_to?(:request_uri)
         uri.request_uri
@@ -103,8 +105,8 @@ private
       end
     end
     host = lambda { |uri| uri.host || URI.parse(url).host }
-    fetch = lambda do |uri, redirection_limit|
-      raise TooManyRedirectionsError if redirection_limit == 0
+    fetch = lambda do |uri, redirections_left|
+      raise TooManyRedirectionsError if redirections_left == 0
       parsed_uri = URI.parse(uri)
       request = Net::HTTP::Get.new(request_uri.call(parsed_uri))
       http = Net::HTTP.new(host.call(parsed_uri), parsed_uri.port)
@@ -117,7 +119,7 @@ private
       case response = http.request(request)
       when Net::HTTPSuccess then response
       when Net::HTTPRedirection then fetch.call(response['location'],
-                                                redirection_limit - 1)
+                                                redirections_left - 1)
       else response.error!
       end
     end
@@ -130,28 +132,42 @@ private
          SocketError,
          Timeout::Error,
          TooManyRedirectionsError,
-         URI::InvalidURIError
     errors.add_to_base(I18n.t(underscore($!.class.to_s.delete(':')).to_sym,
                               :scope =>
                                 [:activerecord, :errors, :search_result]))
   end
 
   def fetch_title
-    title = Nokogiri::HTML(@response.body).xpath('//title').text
+    title = truncate(Nokogiri::HTML(force_encoding(@response.body, 'utf-8')).
+                       xpath('//title').
+                       text,
+                     :length => TITLE_SIZE,
+                     :omission => ' …',
+                     :separator => ' ')
+
     self.title = title.present? ? title : url
   end
 
   def fetch_summary
-    summary = Nokogiri::HTML(@response.body).
-                xpath("//meta[translate(@name, '#{('A'..'Z').to_a.to_s}', " <<
-                        "'#{('a'..'z').to_a.to_s}')='description']/@content").
-                text
+    summary =
+      truncate(Nokogiri::HTML(force_encoding(@response.body, 'utf-8')).
+                 xpath("//meta[translate(@name, '#{('A'..'Z').to_a.to_s}', " <<
+                         "'#{('a'..'z').to_a.to_s}')='description']/@content").
+                 text,
+               :length => SUMMARY_SIZE,
+               :omission => ' …',
+               :separator => ' ')
+
     self.summary = if summary.present?
                      summary
                    else
-                     html = Nokogiri::HTML(@response.body)
+                     html =
+                       Nokogiri::HTML(force_encoding(@response.body, 'utf-8'))
                      html.xpath('//script').remove
-                     truncate_words(html.xpath('//body').text, 200)
+                     truncate(html.xpath('//body').text,
+                              :length => SUMMARY_SIZE,
+                              :omission => ' …',
+                              :separator => ' ')
                    end
   end
 
