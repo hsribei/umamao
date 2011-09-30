@@ -1,6 +1,16 @@
 require 'uri'
 require 'cgi'
 
+def answer_url(params)
+  URI::HTTP.build(:host => AppConfig.domain,
+                  :port => AppConfig.port == 80 ? nil: AppConfig.port,
+                  :path => "/questions/" <<
+                             "#{CGI.escape(params[:question_slug])}" <<
+                             "/answers/#{params[:answer_id]}").to_s
+end
+
+include Support::Encoding
+
 namespace :data do
   namespace :migrate do
     desc 'Creates SearchResult objects from Answer objects'
@@ -10,14 +20,6 @@ namespace :data do
       include ApplicationHelper
 
       GROUP = Group.first
-
-      answer_url = lambda do |params|
-        URI::HTTP.build(:host => AppConfig.domain,
-                        :port => AppConfig.port == 80 ? nil: AppConfig.port,
-                        :path => "/questions/" <<
-                                   "#{CGI.escape(params[:question_slug])}" <<
-                                   "/answers/#{params[:answer_id]}")
-      end
 
       optional = lambda do |object, message|
         object.respond_to?(message) ? object.send(message) : nil
@@ -32,16 +34,14 @@ namespace :data do
         begin
           question = Question.where(:id => answer.question_id).fields(:slug).first
           search_result =
-            SearchResult.create!(:url => answer_url.
-                                           call(:question_slug => question.slug,
-                                                :answer_id => answer.id),
+            SearchResult.create!(:url => answer_url(:question_slug =>
+                                                      question.slug,
+                                                    :answer_id => answer.id),
                                  :title => answer.title(:truncated => true),
                                  :summary => truncate_words(answer.body),
                                  :user_id => answer.user_id,
                                  :group_id => GROUP.id,
                                  :question_id => answer.question_id)
-
-          answer.update_attributes!(:search_result_id, search_result.id)
 
           Vote.
             where(:voteable_id => answer.id, :voteable_type => 'Answer').
