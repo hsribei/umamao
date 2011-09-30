@@ -333,6 +333,14 @@ module ApplicationHelper
     truncate(url, :length => 100)
   end
 
+  def markdown2txt(string)
+    Sanitize.
+      clean(markdown(string, :group => Group.first)).
+      strip.
+      gsub("\n", ' ').
+      squeeze(' ')
+  end
+
   private
 
   def find_link_to_method(object_class)
