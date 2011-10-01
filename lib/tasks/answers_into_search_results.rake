@@ -182,5 +182,30 @@ namespace :data do
         STDERR.puts "\nErrors:\n\n#{error_message.string}"
       end
     end
+
+    task :rollback_fix_titles_and_summaries => :environment do
+      error_message = StringIO.new
+      SearchResult.find_each(:batch_size => 100) do |search_result|
+        begin
+          if answer = Answer.find_by_search_result_id(search_result.id)
+            search_result.
+              update_attributes!(:title => answer.title(:truncated => true),
+                                 :summary => answer.summary)
+            STDERR.print '.'
+          else
+            error_message.puts "[notice] No Answer with search_result_id = " <<
+                                 "#{search_result.id} (external link?)"
+            STDERR.print 'N'
+          end
+        rescue StandardError
+          error_message.puts "[error] <Answer##{answer.id}><SearchResult#" <<
+                               "#{search_result.id}> - #{$!.class}: #{$!}"
+          STDERR.print 'F'
+        end
+      end
+      if error_message.string.present?
+        STDERR.puts "\nErrors:\n\n#{error_message.string}"
+      end
+    end
   end
 end
