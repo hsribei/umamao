@@ -7,6 +7,7 @@ pt-BR:
         errno_etimedout: 'A tempo de conexão nesta URL expirou'
         net_http_server_exception: 'Houve um problema ao tentar se conectar a essa URL'
         net_http_bad_response: 'Houve um problema ao tentar se conectar a essa URL'
+        net_http_fatal_error: 'Houve um problema ao tentar se conectar a essa URL'
         socket_error: 'Houve um problema ao tentar se conectar a essa URL'
         timeout_error: 'Houve um problema ao tentar se conectar a essa URL'
         too_many_redirections_error: 'Essa URL tem redireções demais'

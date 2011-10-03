@@ -7,6 +7,7 @@ en:
         errno_etimedout: 'The connection timed-out'
         net_http_server_exception: 'There was an issue trying to connect to this URL'
         net_http_bad_response: 'There was an issue trying to connect to this URL'
+        net_http_fatal_error: 'There was an issue trying to connect to this URL'
         socket_error: 'There was an issue trying to connect to this URL'
         timeout_error: 'There was an issue trying to connect to this URL'
         too_many_redirections_error: 'This URL has too many redirections'
