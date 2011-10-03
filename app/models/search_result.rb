@@ -129,6 +129,7 @@ private
          Errno::ETIMEDOUT,
          Net::HTTPServerException,
          Net::HTTPBadResponse,
+         Net::HTTPFatalError,
          SocketError,
          Timeout::Error,
          TooManyRedirectionsError
