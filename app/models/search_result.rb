@@ -57,7 +57,9 @@ class SearchResult
                    :unless => :summary_present?,
                    :if => :response_present?
 
-  after_create :create_news_update, :notify_watchers
+  after_create :create_news_update, :unless => :has_answer?
+
+  after_create :notify_watchers, :unless => :has_answer?
 
   # https://github.com/jnunemaker/mongomapper/issues/207
   before_destroy Proc.new { |sr| sr.answer.destroy if sr.answer }
@@ -70,6 +72,10 @@ class SearchResult
   end
 
 private
+
+  def has_answer?
+    !!answer
+  end
 
   def url_present?
     url.present?
