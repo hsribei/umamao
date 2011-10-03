@@ -7,6 +7,9 @@ pt-BR:
         subject_owner: "%{name} respondeu à sua pergunta \"%{title}\""
         subject_friend: "%{name} respondeu à pergunta \"%{title}\""
         subject_other: "%{name} respondeu à pergunta \"%{title}\""
+      new_search_result:
+        subject_owner: "%{name} postou um link na sua pergunta \"%{title}\""
+        subject_other: "%{name} postou um link na pergunta \"%{title}\""
       new_comment:
         subject: "%{name} comentou no %{group}"
       new_user_suggestion:
