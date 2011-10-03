@@ -14,7 +14,7 @@ class SearchResult
   include ApplicationHelper
   include ActiveSupport::Inflector
   include ActionView::Helpers::TextHelper
-  include Support::Encoding
+  include ActiveSupport::Multibyte
 
   key :_id, String
   key :_type, String
@@ -137,10 +137,16 @@ private
                                 [:activerecord, :errors, :search_result]))
   end
 
+  def response_body
+    @response_body ||= begin
+                         Unicode.tidy_bytes(@response.body)
+                       rescue StandardError
+                         Unicode.tidy_bytes(@response.body, true)
+                       end
+  end
+
   def fetch_title
-    title = truncate(Nokogiri::HTML(@response.body).
-                       xpath('//title').
-                       text,
+    title = truncate(Nokogiri::HTML(response_body).xpath('//title').text,
                      :length => TITLE_SIZE,
                      :omission => ' …',
                      :separator => ' ')
@@ -150,7 +156,7 @@ private
 
   def fetch_summary
     summary =
-      truncate(Nokogiri::HTML(@response.body).
+      truncate(Nokogiri::HTML(response_body).
                  xpath("//meta[translate(@name, '#{('A'..'Z').to_a.to_s}', " <<
                          "'#{('a'..'z').to_a.to_s}')='description']/@content").
                  text,
@@ -161,8 +167,7 @@ private
     self.summary = if summary.present?
                      summary
                    else
-                     html =
-                       Nokogiri::HTML(@response.body)
+                     html = Nokogiri::HTML(response_body)
                      html.xpath('//script').remove
                      truncate(html.xpath('//body').text,
                               :length => SUMMARY_SIZE,
