@@ -17,6 +17,8 @@ en:
       message4: "If we do not get an answer from you soon, we will ask someone else. You can still answer it whenever you want."
     new_answer:
       message: "%{user} answered %{new_answer} to the question %{question}"
+    new_search_result:
+      author: "%{user} added a link to \"%{question_link}\""
     new_comment:
       message: "%{user} commented %{new_comment} on the question %{question}"
     new_feedback:

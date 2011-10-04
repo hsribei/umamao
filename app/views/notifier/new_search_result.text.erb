@@ -1,18 +1,17 @@
-<% question = h(@question.title) %>
-
+<% question_link = link_to(h(@question.title), url_for(:host => @domain,
+                                                       :controller => 'questions',
+                                                       :action => 'show',
+                                                       :id => @question.slug)) %>
 <%= t('notifier.global.hi', :user => h(@user.first_name)) %>
 
-<%= t('.author', :user => h(@search_result.user.name)) %>
+<%= t('.author',
+      :user => h(@search_result.user.name),
+      :question_link => question_link) %>
 
----
-<%= h(@search_result.title) %>
+<%= question_link %>
 
-<%= h(@search_result.summary) %>
----
-
-<%= t('.question', :question => question) %>
-
-<%= t('.link_label') %>
-<%= question_search_result_url(@question, @search_result) %>
+<% if @question.comments.first %>
+  <%= @question.comments.first.body %>
+<% end %>
 
 <%= simple_format(t('notifier.global.signature')) %>
