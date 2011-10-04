@@ -73,30 +73,6 @@ class Notifier < ActionMailer::Base
     mail(:to => user.email, :subject => subject)
   end
 
-  def new_search_result(user, group, search_result)
-    @user = user
-    @group = group
-    @search_result = search_result
-    @following = true
-
-    @domain = group.domain
-    @question = @search_result.question
-
-    subject = if user == search_result.question.user
-                I18n.t('subject_owner',
-                       :scope => [:mailers, :notifications, :new_search_result],
-                       :title => search_result.question.title,
-                       :name => search_result.user.name)
-              else
-                I18n.t('subject_other',
-                       :scope => [:mailers, :notifications, :new_search_result],
-                       :title => search_result.question.title,
-                       :name => search_result.user.name)
-              end
-
-    mail(:to => user.email, :subject => subject)
-  end
-
   def new_comment(user, group, comment, question)
     @user = user
     @group = group

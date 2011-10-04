@@ -7,5 +7,4 @@ class NotificationConfig
   key :activities, Boolean, :default => true
   key :reports, Boolean, :default => false
   key :new_answer, Boolean, :default => true
-  key :new_search_result, Boolean, :default => true
 end

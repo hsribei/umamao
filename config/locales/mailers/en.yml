@@ -5,9 +5,6 @@ en:
         subject_owner: "%{login} answered your question %{title}"
         subject_friend: "Your friend %{login} answered the question %{title}"
         subject_other: "%{login} answered the question %{title}"
-      new_search_result:
-        subject_owner: "%{name} posted a link on your question \"%{title}\""
-        subject_other: "%{name} posted a link on the question \"%{title}\""
       new_comment:
         subject: "%{login} commented on %{group}"
       give_advice:
