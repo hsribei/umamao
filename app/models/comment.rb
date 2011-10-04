@@ -7,6 +7,7 @@ class Comment
   key :body, String, :required => true
   key :language, String, :default => 'pt-BR'
   key :banned, Boolean, :default => false
+  attr_accessor :created_together_with_search_result
 
   timestamps!
 
@@ -28,7 +29,7 @@ class Comment
 
   before_save :adjust_newlines
   after_create :new_comment_notification,
-               :unless => :created_together_with_search_result?
+               :unless => :created_together_with_search_result
 
   def ban
     self.collection.update({:_id => self.id}, {:$set => {:banned => true}},
@@ -129,13 +130,5 @@ class Comment
 
   def adjust_newlines
     self.body = self.body.to_lf
-  end
-
-  private
-
-  def created_together_with_search_result?
-    commentable_type == 'SearchResult' &&
-      user_id == commentable.user_id &&
-      (created_at - commentable.created_at < 5.seconds)
   end
 end
