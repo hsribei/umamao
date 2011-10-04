@@ -32,6 +32,8 @@ class Notification
     case self.event_type
     when "new_answer"
       self.reason.question
+    when "new_search_result"
+      self.reason.question
     when "new_comment"
       self.reason.find_question
     when "new_question"
