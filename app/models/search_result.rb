@@ -57,8 +57,6 @@ class SearchResult
                    :unless => :summary_present?,
                    :if => :response_present?
 
-  after_create :create_news_update, :unless => :has_answer?
-
   after_create :notify_watchers, :unless => :has_answer?
 
   # https://github.com/jnunemaker/mongomapper/issues/207
@@ -188,16 +186,6 @@ private
                               :separator => ' ')
                    end
   end
-
-  def create_news_update
-    NewsUpdate.create(:author => user,
-                      :entry => self,
-                      :created_at => created_at,
-                      :action => 'created')
-
-    question.news_update.hide!
-  end
-  handle_asynchronously :create_news_update
 
   def notify_watchers
     watcher_ids =
