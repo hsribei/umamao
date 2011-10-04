@@ -26,6 +26,8 @@ pt-BR:
       author: "%{user} respondeu:"
       question: 'à pergunta "%{question}"'
       link_label: "Para ver a resposta, visite o link:"
+    new_search_result:
+      author: "%{user} adicionou um link a \"%{question_link}\""
     new_comment:
       author: "%{user} comentou:"
       question: 'na pergunta "%{question}"'
