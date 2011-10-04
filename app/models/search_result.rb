@@ -57,9 +57,7 @@ class SearchResult
                    :unless => :summary_present?,
                    :if => :response_present?
 
-  after_create :create_news_update, :unless => :has_answer?
-
-  after_create :notify_watchers, :unless => :has_answer?
+  after_create :create_news_update, :notify_watchers
 
   # https://github.com/jnunemaker/mongomapper/issues/207
   before_destroy Proc.new { |sr| sr.answer.destroy if sr.answer }
@@ -72,10 +70,6 @@ class SearchResult
   end
 
 private
-
-  def has_answer?
-    !!answer
-  end
 
   def url_present?
     url.present?
@@ -201,13 +195,14 @@ private
 
   def notify_watchers
     watcher_ids =
-       question.topics.inject(Set.new(question.watchers)) do |watcher_ids, topic|
-         if topic.is_a?(QuestionList)
-           watcher_ids.merge(topic.followers.map(&:id))
-         else
-           watcher_ids
-         end
-       end
+      question.watchers + question.topics.inject([]) do |watcher_ids, topic|
+                            if topic.is_a?(QuestionList)
+                              watcher_ids
+                            else
+                              watcher_ids << topic.followers.map(&:id)
+                            end
+                          end
+
     watcher_ids.each do |watcher_id|
       if (watcher = User.find_by_id(watcher_id)) != user &&
            watcher.notification_opts.new_search_result

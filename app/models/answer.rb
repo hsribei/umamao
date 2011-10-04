@@ -252,7 +252,7 @@ class Answer < Comment
                                  routes.
                                  url_helpers.
                                  question_answer_url(question, id))
-    self.search_result_id = search_result.id
+    self.search_result = search_result
     if save && search_result.save
       true
     else
