@@ -1,6 +1,7 @@
 pt-BR:
   notifications:
     new_answer: "%{user} respondeu à pergunta \"%{question}\""
+    new_search_result: "%{user} adicionou um link à pergunta \"%{question}\""
     new_comment: "%{user} comentou na pergunta \"%{question}\""
     new_question: "%{user} perguntou \"%{question}\" no tópico %{topic}."
     follow: "%{user} está seguindo você no Umamão"

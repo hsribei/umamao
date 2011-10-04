@@ -18,7 +18,7 @@ en:
     new_answer:
       message: "%{user} answered %{new_answer} to the question %{question}"
     new_search_result:
-      author: "%{user} added a link to \"%{question_link}\""
+      author: "%{user} added a link to the question \"%{question_link}\""
     new_comment:
       message: "%{user} commented %{new_comment} on the question %{question}"
     new_feedback:
