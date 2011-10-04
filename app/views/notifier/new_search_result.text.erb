@@ -10,8 +10,8 @@
 
 <%= question_link %>
 
-<% if @question.comments.first %>
-  <%= @question.comments.first.body %>
+<% if @search_result.comments.first %>
+  <%= @search_result.comments.first.body %>
 <% end %>
 
 <%= simple_format(t('notifier.global.signature')) %>

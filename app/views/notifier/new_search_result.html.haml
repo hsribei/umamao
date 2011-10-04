@@ -11,8 +11,8 @@
       :question_link => question_link)
 %p
   = question_link
-- if @question.comments.first
+- if @search_result.comments.first
   %p
-    = @question.comments.first.body
+    = @search_result.comments.first.body
 
 = simple_format(t('notifier.global.signature'))
