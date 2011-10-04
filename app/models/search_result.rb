@@ -40,6 +40,7 @@ class SearchResult
            :foreign_key => 'commentable_id',
            :dependent => :destroy
   has_many :flags, :as => 'flaggeable', :dependent => :destroy
+  has_many :notifications, :as => 'reason', :dependent => :destroy
 
   before_validation :prepend_scheme_on_url,
                     :if => :url_present?,
