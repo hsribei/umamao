@@ -3,7 +3,7 @@ module NotificationsHelper
   def notification_message(notification)
     origin = notification.origin
     case notification.event_type
-    when "new_answer", "new_comment"
+    when "new_answer", "new_comment", "new_search_result"
       question = notification.question
       I18n.t("notifications.#{notification.event_type}",
              :user => link_to(h(short_name(origin)), user_path(origin)),
