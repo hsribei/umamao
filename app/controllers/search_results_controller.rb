@@ -8,7 +8,8 @@ class SearchResultsController < ApplicationController
         if comment = Comment.create(:body => @search_result.comment,
                                     :user => current_user,
                                     :group => current_group,
-                                    :commentable => @search_result)
+                                    :commentable => @search_result,
+                                    :created_together_with_search_result => true)
           current_user.on_activity(:comment_question, current_group)
           track_event(:commented, :commentable => @search_result.class.name)
         end
