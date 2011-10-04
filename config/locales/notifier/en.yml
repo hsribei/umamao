@@ -20,7 +20,7 @@ en:
     new_search_result:
       author: "%{user} added a link to the question \"%{question_link}\""
     new_comment:
-      message: "%{user} commented %{new_comment} on the question %{question}"
+      author: "%{user} commented on the question %{question}"
     new_feedback:
       message1: "The user %{user} <%{email}> sent a feedback"
       message2: "Anonymous user sent a feedback from IP address %{ip}"

@@ -1,11 +1,12 @@
-- question = link_to h(@question.title), url_for(:host => @group.domain, :controller => "questions", :action => "show", :id => @question.slug)
-
+- question = link_to h(@question.title), url_for(:host => @group.domain,
+                                                 :controller => "questions",
+                                                 :action => "show",
+                                                 :id => @question.slug)
 %p= t('notifier.global.hi', :user => h(@user.first_name))
 
-%p= t('.author', :user => h(@comment.user.name))
+%p= t('.author', :user => h(@comment.user.name), :question => question)
 
-%p= shapado_auto_link(markdown(@comment.body, :group => @group))
+%p= h(@comment.body)
 
-%p= t('.question', :question => question)
-
-= simple_format(t('notifier.global.signature'))
+---
+%p= simple_format(t('notifier.global.signature'))

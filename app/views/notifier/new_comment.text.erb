@@ -1,16 +1,12 @@
-<% question = h(@question.title) %>
-
+<% question = link_to h(@question.title), url_for(:host => @group.domain,
+                                                  :controller => "questions",
+                                                  :action => "show",
+                                                  :id => @question.slug) %>
 <%= t('notifier.global.hi', :user => h(@user.first_name)) %>
 
-<%= t('.author', :user => h(@comment.user.name)) %>
+<%= t('.author', :user => h(@comment.user.name), :question => question) %>
 
----
 <%= h(@comment.body) %>
+
 ---
-
-<%= t('.question', :question => question).html_safe %>
-
-<%= t('.link_label') %>
-<%= question_url(@question) %>
-
 <%= simple_format(t('notifier.global.signature')) %>
