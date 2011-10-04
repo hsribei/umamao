@@ -1,18 +1,17 @@
-- question_link = link_to(h(@question.title), url_for(:host => @domain,
-                                                      :controller => 'questions',
-                                                      :action => 'show',
-                                                      :id => @question.slug))
-
+- question_link = url_for(:host => @domain,
+                          :controller => 'questions',
+                          :action => 'show',
+                          :id => @question.slug)
 %p
   = t('notifier.global.hi', :user => h(@user.first_name))
 %p
   = t('.author',
       :user => h(@search_result.user.name),
-      :question_link => question_link)
+      :question_link => link_to(h(@question.title), question_link))
 %p
   = question_link
-- if @question.comments.first
+- if @search_result.comments.first
   %p
-    = @question.comments.first.body
+    = @search_result.comments.first.body
 
 = simple_format(t('notifier.global.signature'))
