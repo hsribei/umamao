@@ -13,6 +13,7 @@ class SearchResultsController < ApplicationController
           current_user.on_activity(:comment_question, current_group)
           track_event(:commented, :commentable => @search_result.class.name)
         end
+        track_event(:added_link)
         notice_message = t(:flash_notice, :scope => "search_results.create")
         format.html do
           flash[:notice] = notice_message
