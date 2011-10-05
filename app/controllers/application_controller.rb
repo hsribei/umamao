@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   before_filter :find_languages
   before_filter :check_agreement_to_tos
   before_filter :ensure_domain
+  before_filter :track_user
   layout :set_layout
 
   DEVELOPMENT_DOMAIN = 'localhost.lan'
@@ -139,6 +140,18 @@ class ApplicationController < ActionController::Base
       end
       _current_group
     }
+  end
+
+  def track_user
+    if current_user
+      key = "last_day_used_at_#{current_user.id}"
+      if last_day_used_at = Rails.cache.read(key)
+        track_event(:used_today) unless last_day_used_at == Date.today.to_s
+      else
+        Rails.cache.write(key, Date.today.to_s)
+        track_event(:used_today)
+      end
+    end
   end
 
   def current_group
