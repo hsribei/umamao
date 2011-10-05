@@ -1,14 +1,14 @@
-<% question_link = url_for(:host => @domain,
-                           :controller => 'questions',
-                           :action => 'show',
-                           :id => @question.slug) %>
 <%= t('notifier.global.hi', :user => h(@user.first_name)) %>
 
 <%= t('.author',
       :user => h(@search_result.user.name),
-      :question_link => link_to(h(@question.title), question_link)) %>
+      :question_link => link_to(h(@question.title),
+                                url_for(:host => @domain,
+                                        :controller => 'questions',
+                                        :action => 'show',
+                                        :id => @question.slug))) %>
 
-<%= question_link %>
+<%= @search_result.url %>
 
 <% if @search_result.comments.first %>
   <%= @search_result.comments.first.body %>
