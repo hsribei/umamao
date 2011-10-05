@@ -4,6 +4,8 @@ en:
       spam: Spam
       offensive: Offensive, abusive or hate speech
       attention: Requires moderator attention
+      not_relevant: Not relevant
+      broken_link: Broken link
       label: Please flag with care
     create:
       flash_notice: Thanks for your report
