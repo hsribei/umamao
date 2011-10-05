@@ -138,5 +138,33 @@ namespace :setup do
       group.save(:validate => false)
     end
   end
+
+  task :make_team_members_admins => :environment do
+    TEAM_MEMBER_EMAILS = %w[abgrilo@gmail.com
+                            andre.lima@gmail.com
+                            arthur.aa@gmail.com
+                            helder@gmail.com
+                            murilo@murilopereira.com
+                            myhomaki@gmail.com
+                            panaggio.ricardo@gmail.com]
+    error_message = StringIO.new
+    TEAM_MEMBER_EMAILS.each do |email|
+      if user = User.find_by_email(email)
+        begin
+          user.update_attributes!(:role => 'admin')
+          STDERR.print '.'
+        rescue StandardError
+          error_message.puts "[error] failed to turn #{user.name} into an admin"
+          STDERR.print 'F'
+        end
+      else
+        error_message.puts "[notice] couldn't find user with email \"#{email}\""
+        STDERR.print 'N'
+      end
+    end
+    if error_message.string.present?
+      STDERR.puts "\n\nErrors:\n\n#{error_message.string}"
+    end
+  end
 end
 
