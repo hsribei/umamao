@@ -5,13 +5,15 @@ class SearchResultsController < ApplicationController
     @question = Question.find_by_id(params[:question_id])
     respond_to do |format|
       if (@search_result = SearchResult.new(params[:search_result])).save
-        if comment = Comment.create(:body => @search_result.comment,
-                                    :user => current_user,
-                                    :group => current_group,
-                                    :commentable => @search_result,
-                                    :created_together_with_search_result => true)
-          current_user.on_activity(:comment_question, current_group)
-          track_event(:commented, :commentable => @search_result.class.name)
+        if @search_result.comment.present?
+          if Comment.create(:body => @search_result.comment,
+                            :user => current_user,
+                            :group => current_group,
+                            :commentable => @search_result,
+                            :created_together_with_search_result => true)
+            current_user.on_activity(:comment_question, current_group)
+            track_event(:commented, :commentable => @search_result.class.name)
+          end
         end
         track_event(:added_link)
         notice_message = t(:flash_notice, :scope => "search_results.create")
