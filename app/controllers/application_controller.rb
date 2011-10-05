@@ -146,17 +146,17 @@ class ApplicationController < ActionController::Base
 
   def track_user
     if current_user
-      handle_event_tracking = lambda do |event, key|
+      key = "last_day_used_at_#{current_user.id}"
+      handle_event_tracking = lambda do |event|
         Rails.cache.write(key, Date.today.to_s)
         track_event(:used_today)
       end
-      key = "last_day_used_at_#{current_user.id}"
       if last_day_used_at = Rails.cache.read(key)
         if last_day_used_at != Date.today.to_s
-          handle_event_tracking.call(:used_today, key)
+          handle_event_tracking.call(:used_today)
         end
       else
-        handle_event_tracking.call(:used_today, key)
+        handle_event_tracking.call(:used_today)
       end
     end
   end
