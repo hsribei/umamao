@@ -1,11 +1,5 @@
 pt-BR:
   welcome:
-    feedback:
-      captcha_error: Resolva um cálculo matemático simples, por favor.
-      feedback_description: "Detalhes:"
-      feedback_title: "Assunto:"
-      title: Críticas, sugestões, elogios?
-      feedback_email: "Email (opcional):"
     home:
       all_tab: Leia
       unanswered_tab: Responda
@@ -29,8 +23,6 @@ pt-BR:
       browse_all_or_by_tags: "Veja a %{full_list_of_questions} ou %{browse_by_tags}"
       full_list_of_questions: "lista completa de perguntas"
       browse_by_topics: "navegue por tópicos"
-      looking_for: "Procurando %{link}?"
-      exercises: listas de exercícios
     sidebar:
       admin: Administrar
       moderate: Moderar
