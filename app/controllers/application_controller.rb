@@ -151,7 +151,6 @@ class ApplicationController < ActionController::Base
         track_event(:used_today)
       end
       key = "last_day_used_at_#{current_user.id}"
-      debugger
       if last_day_used_at = Rails.cache.read(key)
         if last_day_used_at != Date.today.to_s
           handle_event_tracking.call(:used_today, key)
