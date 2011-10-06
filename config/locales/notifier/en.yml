@@ -1,8 +1,16 @@
 en:
   notifier:
     global:
-      hi: "Hi %{user},"
+      hi: "Hi, %{user}!"
       user_page: "user page"
+      signature: |
+        Cheers,
+        Umamão Team
+      founder_signature: |
+        Cheers,
+
+        Helder Ribeiro
+        %{application_name} Founder
     favorited:
       message1: "%{user} added your question as a favorite on %{group}"
       message2: "The text of your question:"
@@ -34,3 +42,16 @@ en:
       message5: "%{votes} votes were made"
       message7: "The account has %{users} users."
       message8: "Visit your group at %{link}"
+    survey:
+      subject: One week survey
+      message: |
+        "You've been using %{application_name} for one week now, and we'd really
+         like to know how it's been for you. Could you take a couple minutes to
+         fill out our survey please?
+
+         %{one_week_survey_url}
+
+         We're eager to hear what you think and make %{application_name} the best
+         possible for you.
+
+         Thanks a lot!"

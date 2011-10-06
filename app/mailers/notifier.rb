@@ -202,6 +202,6 @@ class Notifier < ActionMailer::Base
   def survey(user)
     @user = user
     mail(:to => user.email,
-         :subject => t(:subject, :scope => [:mailers, :notifications, :survey]))
+         :subject => t(:subject, :scope => [:notifier, :survey]))
   end
 end
