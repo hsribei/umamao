@@ -101,7 +101,7 @@ class AnswersController < ApplicationController
           current_user.on_activity(:answer_question, current_group)
 
           track_event(:answered_question,
-                      :question_answers_count => @question.answers_count,
+                      :question_answers_count => @question.search_results.count,
                       :own_question => @question.user_id == @answer.user_id)
 
           format.html do
