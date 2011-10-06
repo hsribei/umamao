@@ -25,8 +25,8 @@
         .metadata
           = t("time.ago", :time => time_ago_in_words(entry.created_at))
           \|
-          = format_number(question.answers_count)
-          = t(:answer_count, :scope => "activerecord.models", :count => question.answers_count)
+          = format_number(question.search_results.count)
+          = t(:answer_count, :scope => "activerecord.models", :count => question.search_results.count)
           - if logged_in? && current_user != question.user
             -# Can watch the question
             \|
