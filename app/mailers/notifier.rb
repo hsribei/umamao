@@ -103,7 +103,7 @@ class Notifier < ActionMailer::Base
     @question = comment.find_question
     @group = @question.group
 
-    mail(:to => user.email,
+    mail(:to => @user.email,
          :subject => t(:subject,
                        :scope => [:mailers, :notifications, :new_comment],
                        :question => @question.title))
