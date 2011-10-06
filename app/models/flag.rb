@@ -1,6 +1,10 @@
 class Flag
   include MongoMapper::Document
-  TYPES = %w[spam offensive attention not_relevant broken_link]
+  COMMON_TYPES = Set.new(%w[spam offensive attention not_relevant])
+  QUESTION_TYPES = COMMON_TYPES
+  ANSWER_TYPES = COMMON_TYPES
+  SEARCH_RESULT_TYPES = COMMON_TYPES | 'broken_link'
+  ALL_TYPES = QUESTION_TYPES | ANSWER_TYPES | SEARCH_RESULT_TYPES
   key :type, String, :required => true
 
   key :_id, String
@@ -15,7 +19,7 @@ class Flag
   belongs_to :flaggeable, :polymorphic => true
 
   validates_presence_of :user_id, :flaggeable_id, :flaggeable_type
-  validates_inclusion_of :type, :within => TYPES
+  validates_inclusion_of :type, :within => ALL_TYPES
 
   validate :should_be_unique
   validate :check_reputation

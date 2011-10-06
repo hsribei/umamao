@@ -192,6 +192,7 @@ class AnswersController < ApplicationController
         render :json => {:status => :ok,
          :html => render_to_string(:partial => "flags/form",
                                    :locals => {:flag => @flag,
+                                               :type => :answer,
                                                :source => params[:source],
                                                :form_id => "answer_flag_form" })
         }
