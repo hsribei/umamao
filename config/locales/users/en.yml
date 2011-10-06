@@ -24,6 +24,7 @@ en:
       follow: Follow
       unfollow: Unfollow
       views: views
+      upvotes_count: "Total upvotes received: %{upvotes_count}"
     follow:
       flash_notice: "The user %{user} was added to your friends"
     unfollow:

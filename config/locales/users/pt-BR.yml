@@ -72,6 +72,7 @@ pt-BR:
         title: "%{site_name} - Atualizações de %{user}"
         question: "Pergunta:"
         answer: "Resposta para:"
+      upvotes_count: "Total de votos positivo recebidos: %{upvotes_count}"
     form:
       change_password: Trocar de senha
       email: "Email pessoal:"
