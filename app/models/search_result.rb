@@ -50,11 +50,11 @@ class SearchResult
            :if => :url_present?,
            :unless => [:title_present?, :summary_present?]
 
-  after_validation :fetch_title,
+  after_validation :fill_title,
                    :unless => :title_present?,
                    :if => :response_present?
 
-  after_validation :fetch_summary,
+  after_validation :fill_summary,
                    :unless => :summary_present?,
                    :if => :response_present?
 
@@ -157,7 +157,7 @@ private
                        end
   end
 
-  def fetch_title
+  def fill_title
     title = truncate(Nokogiri::HTML(response_body).xpath('//title').text,
                      :length => TITLE_SIZE,
                      :omission => ' …',
@@ -166,7 +166,7 @@ private
     self.title = title.present? ? title : url
   end
 
-  def fetch_summary
+  def fill_summary
     summary =
       truncate(Nokogiri::HTML(response_body).
                  xpath("//meta[translate(@name, '#{('A'..'Z').to_a.to_s}', " <<
