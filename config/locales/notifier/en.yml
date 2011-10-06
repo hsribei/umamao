@@ -45,13 +45,13 @@ en:
     survey:
       subject: How's everything goin'?
       message: |
-        "You've been using %{application_name} for one week now, and we'd really
-         like to know how it's been for you. Could you take a couple minutes to
-         fill out our survey please?
+        You've been using %{application_name} for one week now, and we'd really
+        like to know how it's been for you. Could you take a couple minutes to
+        fill out our survey please?
 
-         %{one_week_survey_url}
+        %{one_week_survey_url}
 
-         We're eager to hear what you think and make %{application_name} the best
-         possible for you.
+        We're eager to hear what you think and make %{application_name} the best
+        possible for you.
 
-         Thanks a lot!"
+        Thanks a lot!
