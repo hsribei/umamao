@@ -30,8 +30,8 @@
         .metadata
           = t("time.ago", :time => time_ago_in_words(last_target.updated_at))
           \|
-          = format_number(question.answers_count)
-          = t(:answer_count, :scope => "activerecord.models", :count => question.answers_count)
+          = format_number(question.search_results.count)
+          = t(:answer_count, :scope => "activerecord.models", :count => question.search_results.count)
           = render :partial => 'shared/stats_follow', :locals => { :question => question }
     .clear
 - else
@@ -40,7 +40,7 @@
       .stats
         .box.answers{:class => question.accepted ? "accepted" : "" }
           .counter
-            = format_number(question.answers_count)
+            = format_number(question.search_results.count)
           - if !local_assigns[:lite]
             .text
               = t(:answers, :scope => "activerecord.attributes.question")

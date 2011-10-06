@@ -14,7 +14,7 @@
 
     - if options[:render_answer_count]
       .answers_count
-        - link_text = t(".answers_count", :count => question.answers_count)
+        - link_text = t(".answers_count", :count => question.search_results.count)
         = link_to link_text, question_path(question)
 
     - if options[:render_answers] && (answers = question.answers.all).size > 0
