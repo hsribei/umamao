@@ -43,7 +43,7 @@ en:
       message7: "The account has %{users} users."
       message8: "Visit your group at %{link}"
     survey:
-      subject: One week survey
+      subject: How's everything goin'?
       message: |
         "You've been using %{application_name} for one week now, and we'd really
          like to know how it's been for you. Could you take a couple minutes to

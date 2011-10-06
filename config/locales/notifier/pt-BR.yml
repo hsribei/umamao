@@ -95,7 +95,7 @@ pt-BR:
       message2: "Para sugerir uma nova universidade, visite http://feedback.umamao.com ou envie-nos um email."
       goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
     survey:
-      subject: One week survey
+      subject: Tudo indo bem?
       message: |
         Faz uma semana que você começou a usar o %{application_name}, e a gente
         queria muito de saber como tem sido sua experiência. Tem como você tirar
