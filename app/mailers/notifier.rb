@@ -198,4 +198,10 @@ class Notifier < ActionMailer::Base
     @email = waiting_user.email
     mail(:to => waiting_user.email, :subject => t("mailers.notifications.closed_for_signup.subject"))
   end
+
+  def survey(user)
+    @user = user
+    mail(:to => user.email,
+         :subject => t(:subject, :scope => [:mailers, :notifications, :survey]))
+  end
 end

@@ -1,6 +1,6 @@
 class Flag
   include MongoMapper::Document
-  TYPES = ["spam", "offensive", "attention"]
+  TYPES = %w[spam offensive attention not_relevant broken_link]
   key :type, String, :required => true
 
   key :_id, String

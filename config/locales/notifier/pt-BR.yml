@@ -1,11 +1,16 @@
 pt-BR:
   notifier:
     global:
-      hi: "Oi %{user},"
+      hi: "Oi, %{user}!"
       user_page: "perfil"
       signature: |
         Abraço,
         Equipe Umamão
+      founder_signature: |
+        Abraço,
+
+        Helder Ribeiro
+        %{application_name} Founder
     favorited:
       message1: "%{user} adicionou sua pergunta as suas favoritas no %{group}"
       message2: "O texto da sua pergunta é:"
@@ -89,3 +94,15 @@ pt-BR:
 
       message2: "Para sugerir uma nova universidade, visite http://feedback.umamao.com ou envie-nos um email."
       goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
+    survey:
+      message: |
+        Faz uma semana que você começou a usar o %{application_name}, e a gente
+        queria muito de saber como tem sido sua experiência. Tem como você tirar
+        um minutinho para responder à nossa pesquisa de opinião por favor?
+
+        %{one_week_survey_url}
+
+        Seu feedback é muito importante para a tornar o %{application_name}
+        melhor para você.
+
+        Muito obrigado!
