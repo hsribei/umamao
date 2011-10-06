@@ -11,7 +11,7 @@ pt-BR:
         subject_owner: "%{name} postou um link na sua pergunta \"%{title}\""
         subject_other: "%{name} postou um link na pergunta \"%{title}\""
       new_comment:
-        subject: "Novo comentário na pergunta %{question}"
+        subject: "Novo comentário na pergunta \"%{question}\""
       new_user_suggestion:
         "%{origin} sugeriu que você seguisse o tópico %{entry}"
       give_advice:
