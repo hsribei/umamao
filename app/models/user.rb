@@ -147,6 +147,12 @@ class User
   scope :confirmed, where(:confirmed_at.ne => nil)
   scope :unconfirmed, where(:confirmed_at => nil)
 
+  def upvotes_count
+    # FIXME: this can be way better, if upvotes are kept on its on counter
+    #        or maybe if upvotes_count is denormalized
+    self.search_results.map{ |sr| sr.votes.count(:value => 1) }.reduce(&:+)
+  end
+
   def description=(description)
     super(description.try(:strip))
   end
