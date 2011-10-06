@@ -97,18 +97,16 @@ class Notifier < ActionMailer::Base
     mail(:to => user.email, :subject => subject)
   end
 
-  def new_comment(user, group, comment, question)
-    @user = user
-    @group = group
+  def new_comment(comment, params)
     @comment = comment
-    @question = question
+    @user = params[:recipient]
+    @question = comment.find_question
+    @group = @question.group
 
-    @domain = group.domain
-
-    subject = I18n.t("mailers.notifications.new_comment.subject",
-                     :name => comment.user.name, :group => group.name)
-
-    mail(:to => user.email, :subject => subject)
+    mail(:to => user.email,
+         :subject => t(:subject,
+                       :scope => [:mailers, :notifications, :new_comment],
+                       :question => @question.title))
   end
 
   def new_feedback(user, title, content, email, ip)
