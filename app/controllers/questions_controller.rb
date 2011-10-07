@@ -326,6 +326,7 @@ class QuestionsController < ApplicationController
         render :json => {:status => :ok,
          :html => render_to_string(:partial => "flags/form",
                                    :locals => {:flag => @flag,
+                                               :type => :question,
                                                :source => params[:source],
                                                :form_id => "question_flag_form" })
         }

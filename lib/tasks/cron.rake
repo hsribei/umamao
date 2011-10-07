@@ -13,4 +13,12 @@ namespace :cron_tasks do
       topic.save :validate => false
     end
   end
+
+  task :send_survey_to_newcomers => :environment do
+    User.find_each(:created_at => { :$gte => 8.days.ago.midnight,
+                                    :$lt => 7.day.ago.midnight },
+                   :batch_size => 10) do |user|
+      Notifier.delay.survey(user)
+    end
+  end
 end

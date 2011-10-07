@@ -9,7 +9,7 @@ en:
         subject_owner: "%{name} posted a link on your question \"%{title}\""
         subject_other: "%{name} posted a link on the question \"%{title}\""
       new_comment:
-        subject: "%{login} commented on %{group}"
+        subject: "New comment on question \"%{question}\""
       give_advice:
         subject: "We need your advice: %{question_title}"
         friend_subject: "Your friend needs help: %{question_title}"

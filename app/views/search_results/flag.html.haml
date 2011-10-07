@@ -1,1 +1,4 @@
-= render :partial => "flags/form", :locals => { :flag => @flag, :source => question_path(@search_result.question) }
+= render :partial => 'flags/form',
+         :locals => { :flag => @flag,
+                      :type => :search_result,
+                      :source => question_path(@question) }

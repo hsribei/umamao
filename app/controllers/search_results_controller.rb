@@ -85,6 +85,7 @@ class SearchResultsController < ApplicationController
                      render_to_string(:partial => '/flags/form',
                                       :locals =>
                                         { :flag => @flag,
+                                          :type => :search_result,
                                           :source => params[:source],
                                           :form_id =>
                                             'search_result_flag_form' }) })
