@@ -15,5 +15,5 @@
           = link_to avatar_for(user, :size => 24).html_safe, user_path(user)
         .user-links
           .name-link= link_to h(user.name), user_path(user)
-          .answer-count= link_to(t('searches.question.answers', :count => user_topic.search_results.count), topic_user_answers_url(topic, user))
+          .answer-count= link_to(t('searches.question.answers', :count => user_topic.answers_count), topic_user_answers_url(topic, user))
           .question-count= link_to(t('searches.topic.questions', :count => user_topic.questions_count), topic_user_questions_url(topic, user))

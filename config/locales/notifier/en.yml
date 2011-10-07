@@ -49,7 +49,7 @@ en:
         like to know how it's been for you. Could you take a couple minutes to
         fill out our survey please?
 
-        %{one_week_survey_url}
+        http://survey.io/survey/933ea
 
         We're eager to hear what you think and make %{application_name} the best
         possible for you.
