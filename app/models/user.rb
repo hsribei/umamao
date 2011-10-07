@@ -150,7 +150,7 @@ class User
   def upvotes_count
     # FIXME: this can be way better, if upvotes are kept on its on counter
     #        or maybe if upvotes_count is denormalized
-    self.search_results.map{ |sr| sr.votes.count(:value => 1) }.reduce(&:+)
+    self.search_results.map{ |sr| sr.votes.count(:value => 1) }.reduce(0, &:+)
   end
 
   def description=(description)
