@@ -1,6 +1,7 @@
 task :cron => :environment do
   Rake::Task["cron_tasks:refresh_related_topics"].execute
   Rake::Task["suggestions:refresh"].execute
+  Rake::Task["cron_tasks:send_survey_to_newcomers"].execute
 end
 
 namespace :cron_tasks do
