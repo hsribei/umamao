@@ -6,6 +6,8 @@ pt-BR:
       flash_notice: "Comentário enviado."
     update:
       flash_notice: "Comentário atualizado."
+    destroy:
+      flash_notice: Comentário removido.
     shared:
       add_comment: "Adicionar comentário"
       comment_submit: "Comentar"

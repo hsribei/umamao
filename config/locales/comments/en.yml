@@ -6,6 +6,8 @@ en:
       flash_notice: Thanks for your comment
     update:
       flash_notice: "Comment was successfully updated."
+    destroy:
+      flash_notice: Comment was successfully removed.
     shared:
       add_comment: "Add comment..."
       comment_submit: "Comment"
