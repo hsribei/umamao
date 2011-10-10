@@ -4,7 +4,6 @@ module Support
   class ResponseBodyFetcher
     class TooManyRedirectionsError < StandardError; end
 
-    ACCEPTED_SCHEMES = %w[http https]
     POSSIBLE_FETCH_ERRORS = [Errno::ECONNREFUSED,
                              Errno::ECONNRESET,
                              Errno::ETIMEDOUT,
@@ -24,13 +23,7 @@ module Support
 
     def initialize(uri, params)
       @fetcher = params[:fetcher]
-      parsed_uri = URI.parse(uri)
-      @uri = if parsed_uri.scheme && parsed_uri.host && parsed_uri.port
-               ACCEPTED_SCHEMES.include?(parsed_uri.scheme) ? parsed_uri : nil
-             else
-               URI.parse(uri.insert(0, parsed_uri.port == 443 ? 'https://' :
-                                                                'http://'))
-             end
+      @uri = URL.new(uri).uri
     rescue URI::InvalidURIError
       add_error(@fetcher, $!)
     end
