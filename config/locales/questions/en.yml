@@ -45,6 +45,7 @@ en:
       answers_title:
         one: "%{count} answer"
         other: "%{count} answers"
+      title: Answer with
     retag:
       title: Retag
     answer:

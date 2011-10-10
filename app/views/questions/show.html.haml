@@ -82,6 +82,7 @@
 
 - if logged_in? && !@question.closed
   .secondary-navigation
+    %h2{:id => :title}= t(:title, :scope => [:questions, :show])
     - tabs_tag :namespace => :welcome_home, :open_tabs => { :class => :tabs } do |tab|
       = tab.link 'Link', '#', :id => 'link', :class => 'current'
       = tab.answer 'Nova Resposta', '#', :id => 'answer'
