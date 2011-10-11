@@ -13,7 +13,7 @@ module Support
                                                                   nil
                  else
                    URI.parse(url.insert(0, parsed_uri.port == 443 ? 'https://' :
-                                        'http://'))
+                                                                    'http://'))
                  end
       scrub_hash if twitter?
     rescue URI::InvalidURIError
