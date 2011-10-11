@@ -86,7 +86,7 @@ class Question
 
   belongs_to :last_target, :polymorphic => true
 
-  has_many :answers, :dependent => :destroy
+  has_many :answers
   has_many :flags, :as => "flaggeable", :dependent => :destroy
   has_many :comments, :as => "commentable", :order => "created_at asc", :dependent => :destroy
   has_many :close_requests
@@ -131,7 +131,7 @@ class Question
   after_create :update_topics_questions_count,
     :increment_user_topic_questions_count, :post_on_twitter
 
-  before_destroy :decrement_user_topic_questions_count
+  before_destroy :decrement_user_topic_questions_count, :delete_answers
 
   validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
   validates_true_for :language, :logic => lambda { |q| q.group.language == q.language },
@@ -588,6 +588,10 @@ class Question
   end
 
   protected
+  def delete_answers
+    Answer.destroy_all(:question_id => self.id)
+  end
+
   def update_answer_count
     self.answers_count = self.answers.where(:banned => false).count
     votes_average = 0
