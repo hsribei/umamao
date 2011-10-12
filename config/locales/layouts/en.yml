@@ -1,7 +1,10 @@
 en:
   layouts:
+    footer:
+      content_license: |
+        All user-generated content is licensed under a <a href="http://creativecommons.org/licenses/by-sa/2.5/" target="_blank" rel="license">Creative Commons license</a>, with mandatory attribution.
     application:
-      title: "Questions & Answers"
+      title: "Collaborative Search"
       questions: Questions
       questions_in: Questions in
       questions_tagged: tagged with

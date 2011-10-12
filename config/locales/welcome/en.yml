@@ -1,5 +1,9 @@
 en:
   welcome:
+    landing:
+      headline: Finally, an information desk for the Internet.
+      pitch: <p>When you go to a library, unless you know <em>exactly</em> what you're looking for, <strong>you just can't get around without asking for help</strong>, be it from the information desk or from a friend who you know has spent a lot of time around that technology, history or business section you're interested in.</p><p>Wouldn't it be great if you could do the same to <strong>find your way around the Internet</strong>? Now you can.</p>
+      invitation_only: For the moment, you need an invitation to be able to sign up.
     home:
       all_tab: News feed
       unanswered_tab: Answer
