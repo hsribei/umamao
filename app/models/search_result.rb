@@ -41,11 +41,11 @@ class SearchResult
 
   after_validation :fill_title,
                    :unless => :title_present?,
-                   :if => :response_body_present?
+                   :if => [:response_body_present?, :response_body_text?]
 
   after_validation :fill_summary,
                    :unless => :summary_present?,
-                   :if => :response_body_present?
+                   :if => [:response_body_present?, :response_body_text?]
 
   after_create :notify_watchers, :unless => :has_answer?
 
@@ -78,11 +78,19 @@ private
   end
 
   def response_body_present?
-    @response_body.present?
+    @response.body.present?
+  end
+
+  def response_body_text?
+    @response.content_type.split('/').first == 'text'
+  end
+
+  def response_body
+    @response.body
   end
 
   def fetch_response_body
-    @response_body = Support::ResponseBodyFetcher.new(url, :fetcher => self).fetch
+    @response = Support::ResponseFetcher.new(url, :fetcher => self).fetch
   end
 
   def fill_title
