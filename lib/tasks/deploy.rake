@@ -46,8 +46,11 @@ namespace :deploy do
 
     # Check whether asset bundles have changed
     if last_commit.nil? ||
-        Repo.diff(last_commit, master,
-                  "config/assets.yml", "public/javascripts",
+        Repo.diff(last_commit,
+                  master,
+                  "config/assets.yml",
+                  "app/stylesheets",
+                  "public/javascripts",
                   "public/stylesheets").size > 0
       puts "Compressed assets changed, update required."
       `compass compile`
