@@ -1,20 +1,20 @@
 pt-BR:
   wiki:
-    history:
-      link: Histórico
-      title: "Histórico (%{count})"
-      previous_versions: Versão anterior
-      current_version: Versão atual
-      version: Versão
-      version_summary: Explicação
-      author: "Autor: %{name}"
-    diff:
-      title: Diferenças entre %{prev} e %{curr}
     actions:
-      revert: Reverter para esta versão
-      show_diff: Comparar versões selecionadas
-      all_history: Voltar para histórico
+      all_history: "Voltar para histórico"
       back_to_question: Voltar para pergunta
+      revert: "Reverter para esta versão"
+      show_diff: "Comparar versões selecionadas"
+    diff:
+      title: "Diferenças entre %{prev} e %{curr}"
+    history:
+      author: "Autor: %{name}"
+      current_version: "Versão atual"
+      link: "Histórico"
+      previous_versions: "Versão anterior"
+      title: "Histórico (%{count})"
+      version: "Versão"
+      version_summary: "Explicação"
     model:
       attributes:
-        message: Explicação
+        message: "Explicação"

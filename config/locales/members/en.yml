@@ -4,9 +4,9 @@ en:
       member:
         role: Role
   members:
-    index:
-      title: "Members of %{name}'s group"
-      title_isolate: "Members of %{name}"
-      manage_members_title: Manage members
     form:
-      login_tip: "Search as you type"
+      login_tip: Search as you type
+    index:
+      manage_members_title: Manage members
+      title: Members of %{name}'s group
+      title_isolate: Members of %{name}

@@ -1,9 +1,9 @@
 pt-BR:
   shared:
-    topbar:
-      logged_as: "%{login}"
-      admin: Admin
-      user_page: Sua página
     current_tags:
-      title: Tópicos selecionados
-    wait_to_print: Preparando para impressão. Aguarde.
+      title: "Tópicos selecionados"
+    topbar:
+      admin: Admin
+      logged_as: "%{login}"
+      user_page: "Sua página"
+    wait_to_print: "Preparando para impressão. Aguarde."

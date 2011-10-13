@@ -1,48 +1,46 @@
 pt-BR:
   question_lists:
-    new:
-      title: "Criar lista de exercícios"
-      main_topic: "Tópico principal"
-      submit: "Adicionar exercícios"
-      description: "Descrição"
-      sample_title: "(ex.: %{title} - %{semester}s%{year} - Lista 1)"
     create:
-      success: "Lista criada com sucesso. Adicione os exercícios."
       error:
+        default: Erro ao tentar criar a lista.
         existing_list: "Erro ao tentar criar a lista. Lista já existente."
-        default: "Erro ao tentar criar a lista."
+      success: "Lista criada com sucesso. Adicione os exercícios."
       topic_does_not_allow: "Tópico %{title} não permite listas de exercícios."
-    print_header: Versão para impressão
-    questions_print: Apenas exercícios
-    full_print: Respostas e comentários
-    show:
-      all: Todas as perguntas
-      empty:
-        basic: "Esta lista ainda não possui nenhum exercício."
-        transcribe: |
-          Esta lista ainda não possui nenhum exercício.
-          Você pode ajudar transcrevendo os arquivos acima.
-      confirm_destroy: |
-        Tem certeza que deseja excluir esta lista de exercícios?
-      add_questions: "Adicionar novo exercício"
-      add_files: "adicionar arquivo"
-      files:
-        title: "Arquivos"
-        add:
-          title: "Adicionar arquivo"
-          submit: "Enviar"
-      unanswered: Perguntas em aberto
-    form:
-      new_question: "Título do exercício"
-      example: "(ex.: %{list_title} - Exercício 1)"
-      details: "Enunciado"
-      make_question: "Adicionar exercício"
-    question:
-      answers_count:
-        zero: "Adicionar resposta"
-        one: "%{count} resposta"
-        other: "%{count} respostas"
     create_file:
       error: "Não foi possível enviar o arquivo"
     destroy_file:
       error: "Não foi possível apagar o arquivo"
+    form:
+      details: Enunciado
+      example: "(ex.: %{list_title} - Exercício 1)"
+      make_question: "Adicionar exercício"
+      new_question: "Título do exercício"
+    full_print: "Respostas e comentários"
+    new:
+      description: "Descrição"
+      main_topic: "Tópico principal"
+      sample_title: "(ex.: %{title} - %{semester}s%{year} - Lista 1)"
+      submit: "Adicionar exercícios"
+      title: "Criar lista de exercícios"
+    print_header: "Versão para impressão"
+    question:
+      answers_count:
+        one: "%{count} resposta"
+        other: "%{count} respostas"
+        zero: Adicionar resposta
+    questions_print: "Apenas exercícios"
+    show:
+      add_files: adicionar arquivo
+      add_questions: "Adicionar novo exercício"
+      all: Todas as perguntas
+      confirm_destroy: "Tem certeza que deseja excluir esta lista de exercícios?\n"
+      empty:
+        basic: "Esta lista ainda não possui nenhum exercício."
+        transcribe: "Esta lista ainda não possui nenhum exercício.\n\
+          Você pode ajudar transcrevendo os arquivos acima.\n"
+      files:
+        add:
+          submit: Enviar
+          title: Adicionar arquivo
+        title: Arquivos
+      unanswered: Perguntas em aberto

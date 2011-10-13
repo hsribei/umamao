@@ -1,38 +1,38 @@
 pt-BR:
   settings:
-    password:
-      edit:
-        submit: Trocar senha
-        new_password_saved: 'Senha salva.'
-        error_changing_password: 'Erro ao salvar senha.'
     account:
       edit:
         title: Conta
-    profile:
-      edit:
-        title: Informações do Perfil
-        change_picture: Trocar foto
-    notifications:
-      edit:
-        title: Notificações
-        description: 'Marque os eventos sobre os quais você deseja ser notificado por email.'
-        new_answer: 'Respostas em perguntas e comentários em entradas suas'
-        submit: Atualizar
-    follow_topics:
-      edit:
-        followed: Tópicos seguidos
-        ignored: Tópicos ignorados
     avatars:
+      create:
+        error: "Não foi possível atualizar seu avatar."
+        success: Avatar atualizado com sucesso.
+      destroy:
+        error: Houve um erro ao tentar remover seu avatar.
+        success: Avatar removido com sucesso.
       edit:
+        destroy: Remover
+        submit: Enviar
         title: Trocar avatar
         upload: Escolha uma foto (limite de %{limit})
-        submit: Enviar
-        destroy: Remover
-      create:
-        success: "Avatar atualizado com sucesso."
-        error: "Não foi possível atualizar seu avatar."
       update:
         error: "Não foi possível atualizar seu avatar."
-      destroy:
-        success: "Avatar removido com sucesso."
-        error: "Houve um erro ao tentar remover seu avatar."
+    follow_topics:
+      edit:
+        followed: "Tópicos seguidos"
+        ignored: "Tópicos ignorados"
+    notifications:
+      edit:
+        description: "Marque os eventos sobre os quais você deseja ser notificado por email."
+        new_answer: "Respostas em perguntas e comentários em entradas suas"
+        submit: Atualizar
+        title: "Notificações"
+    password:
+      edit:
+        error_changing_password: Erro ao salvar senha.
+        new_password_saved: Senha salva.
+        submit: Trocar senha
+    profile:
+      edit:
+        change_picture: Trocar foto
+        title: "Informações do Perfil"

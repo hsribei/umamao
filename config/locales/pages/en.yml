@@ -1,31 +1,30 @@
 en:
-  pages:
-    title: Fixme
-    index:
-      title: List of pages
-      create_page: Create new page
-      written_in: Written in %{language}
-    edit:
-      title: Editing page
-    create:
-      success: 'Page was successfully created.'
-    update:
-      success: 'Page was successfully updated.'
-    new:
-      title: New page
-    form:
-      title_tip: "Page title. Use this to reference the page. For example: [[FAQ|check out the faq]]"
-      language_tip: Page language
-    actions:
-      title: Actions
-      create_page: "Create new page"
-      edit_page: "Edit page"
-
   activerecord:
+    attributes:
+      page:
+        css: Stylesheets
+        js: JavaScript
     models:
       page: Page
       pages: Pages
-    attributes:
-      page:
-        js: JavaScript
-        css: Stylesheets
+  pages:
+    actions:
+      create_page: Create new page
+      edit_page: Edit page
+      title: Actions
+    create:
+      success: Page was successfully created.
+    edit:
+      title: Editing page
+    form:
+      language_tip: Page language
+      title_tip: "Page title. Use this to reference the page. For example: [[FAQ|check out the faq]]"
+    index:
+      create_page: Create new page
+      title: List of pages
+      written_in: Written in %{language}
+    new:
+      title: New page
+    title: Fixme
+    update:
+      success: Page was successfully updated.

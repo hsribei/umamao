@@ -2,5 +2,5 @@ pt-BR:
   imports:
     subtabs:
       need_confirmation:
-        name: Precisa de confirmação
-        title: Mandar email de confirmação
+        name: "Precisa de confirmação"
+        title: "Mandar email de confirmação"

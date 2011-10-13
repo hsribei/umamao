@@ -1,91 +1,92 @@
 en:
-  users:
-    index:
-      title: All users
-      empty: "This group does not have any members. Participate by joining this group."
-      filter: "Search for users"
-      reputation: Reputation
-      newest: Newest
-      oldest: Oldest
-      name: Name
-      reputation_tooltip: Users sorted by higher reputation
-      newest_tooltip: Users who just joined
-      oldest_tooltip: Users who were the first to join
-      name_tooltip: Users sorted alphabetically
-    new:
-      title: Sign up as a new user
-      submit: Sign up
-      agree: |
-        I read and agree with the <a href="%{privacy}" target="_blank">privacy policy</a> and the <a href="%{tos}" target="_blank">terms of use</a>.
-      already_registered: Already have an account on Umamao? <a href="/users/login">Sign in</a> to start.
-    edit:
-      title: Settings
-      submit: Save
-      enable_twitter: Enable your Facebook or Twitter accounts
-    show:
-      title: "User %{user}"
-      follow: Follow
-      unfollow: Unfollow
-      views: views
-      upvotes_count: "Total upvotes received: %{upvotes_count}"
-    follow:
-      flash_notice: "The user %{user} was added to your friends"
-    unfollow:
-      flash_notice: "The user %{user} was removed from your friends"
-    form:
-      change_password: Change password
-      email: "Email:"
-      name: "Full name:"
-      password: "Password:"
-      password_confirmation: "Confirm password:"
-      information: Personal information
-      notifications: Receive emails
-      new_answer_notification: about new answers
-      activities_notification: "about system activities: new followers, comments, etc."
-    create:
-      flash_error: |
-        Sorry, we couldn't create your account. Is there any field missing?
-      welcome: "Success! Welcome to Umamao!"
-      confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
-    messages:
-      errors:
-        reputation_needed: "You need a reputation of %{min_reputation} to %{action}"
-    actions:
-      vote_up: Vote up
-      vote_down: Vote down
-      flag: Flag
-      edit_others_posts: "Edit other's posts"
-      edit_wiki_post: "Edit wiki posts"
-      retag_others_questions: "Retag others questions"
-      vote_to_close_own_question: "Request closing own question"
-      vote_to_close_any_question: "Request closing any question"
   activerecord:
-    models:
-      users: Users
-      user: User
     attributes:
       user:
-        login: Username
-        email: Email
-        name: Real name
-        current_password: Current password
-        password: Password
-        password_confirmation: Password confirmation
-        created_at: created at
-        updated_at: updated at
-        activation_code: Activation code
         activated_at: activated at
+        activation_code: Activation code
+        age: Age
+        asked_by: asked by
+        avatar: Profile image
+        birthday: Birthday
+        created_at: joined
+        current_password: Current password
+        email: Email
         fullname: Full name
         language: Language
-        asked_by: asked by
-        timezone: Time zone
-        preferred_tags: Preferred tags
-        preferred_languages: Select the languages you know
-        last_logged_at: seen
-        created_at: joined
-        reputation: Reputation
-        avatar: Profile image
         language_filter: Filter by language
+        last_logged_at: seen
+        login: Username
+        name: Real name
+        password: Password
+        password_confirmation: Password confirmation
+        preferred_languages: Select the languages you know
+        preferred_tags: Preferred tags
+        reputation: Reputation
+        timezone: Time zone
+        updated_at: updated at
         website: Website
-        birthday: Birthday
-        age: Age
+    models:
+      user: User
+      users: Users
+  users:
+    actions:
+      edit_others_posts: Edit other's posts
+      edit_wiki_post: Edit wiki posts
+      flag: Flag
+      retag_others_questions: Retag others questions
+      vote_down: Vote down
+      vote_to_close_any_question: Request closing any question
+      vote_to_close_own_question: Request closing own question
+      vote_up: Vote up
+    create:
+      confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
+      flash_error: |
+        Sorry, we couldn't create your account. Is there any field missing?
+
+      welcome: Success! Welcome to Umamao!
+    edit:
+      enable_twitter: Enable your Facebook or Twitter accounts
+      submit: Save
+      title: Settings
+    follow:
+      flash_notice: The user %{user} was added to your friends
+    form:
+      activities_notification: "about system activities: new followers, comments, etc."
+      change_password: Change password
+      email: "Email:"
+      information: Personal information
+      name: "Full name:"
+      new_answer_notification: about new answers
+      notifications: Receive emails
+      password: "Password:"
+      password_confirmation: "Confirm password:"
+    index:
+      empty: This group does not have any members. Participate by joining this group.
+      filter: Search for users
+      name: Name
+      name_tooltip: Users sorted alphabetically
+      newest: Newest
+      newest_tooltip: Users who just joined
+      oldest: Oldest
+      oldest_tooltip: Users who were the first to join
+      reputation: Reputation
+      reputation_tooltip: Users sorted by higher reputation
+      title: All users
+    messages:
+      errors:
+        reputation_needed: You need a reputation of %{min_reputation} to %{action}
+    new:
+      agree: |
+        I read and agree with the <a href="%{privacy}" target="_blank">privacy policy</a> and the <a href="%{tos}" target="_blank">terms of use</a>.
+
+      already_registered: Already have an account on Umamao? <a href="/users/login">Sign in</a> to start.
+      submit: Sign up
+      title: Sign up as a new user
+    show:
+      follow: Follow
+      title: User %{user}
+      unfollow: Unfollow
+      upvotes_count: "Total upvotes received: %{upvotes_count}"
+      views: views
+    unfollow:
+      flash_notice: The user %{user} was removed from your friends

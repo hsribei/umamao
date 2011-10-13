@@ -1,27 +1,27 @@
 pt-BR:
   close_requests:
-    index:
-      title: Lista de pedidos de fechamento
-    form:
-      dupe: Duplicada
-      ot: Fora do assunto
-      no_question: Não é uma pergunta
-      not_relevant: Sem relevância
-      spam: Spam
-      request_closing_details: Request to close this question
-      close_with_reason: Fechar direto sem votação (como moderador)
     create:
       flash_notice: Pedido de fechamento criado.
-    update:
-      flash_notice: Pedido de fechamento atualizado.
     destroy:
       flash_notice: Pedido de fechamento removido.
+    form:
+      close_with_reason: "Fechar direto sem votação (como moderador)"
+      dupe: Duplicada
+      no_question: "Não é uma pergunta"
+      not_relevant: "Sem relevância"
+      ot: Fora do assunto
+      request_closing_details: Request to close this question
+      spam: Spam
+    index:
+      title: Lista de pedidos de fechamento
     model:
-      name: Pedido de fechamento
-      prural_name: Pedidos de fechamento
+      attributes:
+        comment: "Explicação"
+        reason: Motivo
+        user: "Usuário"
       messages:
         already_requested: "Você já pediu para fechar esta pergunta"
-      attributes:
-        user: Usuário
-        reason: Motivo
-        comment: Explicação
+      name: Pedido de fechamento
+      prural_name: Pedidos de fechamento
+    update:
+      flash_notice: Pedido de fechamento atualizado.

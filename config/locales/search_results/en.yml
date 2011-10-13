@@ -1,40 +1,40 @@
 en:
   activerecord:
+    attributes:
+      search_result:
+        comment: Comment
+        summary: Summary
+        url: URL
     errors:
       search_result:
-        errno_econnrefused: 'The connection to this URL was refused'
-        errno_econnreset: 'There was an error trying to connect to this URL'
-        errno_etimedout: 'The connection timed-out'
-        net_http_server_exception: 'There was an issue trying to connect to this URL'
-        net_http_bad_response: 'There was an issue trying to connect to this URL'
-        net_http_fatal_error: 'There was an issue trying to connect to this URL'
-        socket_error: 'There was an issue trying to connect to this URL'
-        timeout_error: 'There was an issue trying to connect to this URL'
-        too_many_redirections_error: 'This URL has too many redirections'
-        uri_invalid_uri_error: 'Malformed URL'
+        errno_econnrefused: The connection to this URL was refused
+        errno_econnreset: There was an error trying to connect to this URL
+        errno_etimedout: The connection timed-out
+        net_http_bad_response: There was an issue trying to connect to this URL
+        net_http_fatal_error: There was an issue trying to connect to this URL
+        net_http_server_exception: There was an issue trying to connect to this URL
+        socket_error: There was an issue trying to connect to this URL
+        timeout_error: There was an issue trying to connect to this URL
+        too_many_redirections_error: This URL has too many redirections
+        uri_invalid_uri_error: Malformed URL
     models:
-      search_results: Search results
       search_result: search result
       search_result_count:
         one: search result
         other: search results
+      search_results: Search results
+  helpers:
+    label:
+      search_result:
+        comment: Comment (optional)
+        url: URL
+    placeholder:
+      comment: Why is this relevant?
+  search_results:
     attributes:
       search_result:
         url: URL
-        comment: Comment
-        summary: Summary
-  search_results:
     create:
       flash_notice: Successfully sent link.
     destroy:
       flash_notice: Successfully removed link.
-    attributes:
-      search_result:
-        url: URL
-  helpers:
-    label:
-      search_result:
-        url: URL
-        comment: Comment (optional)
-    placeholder:
-      comment: Why is this relevant?

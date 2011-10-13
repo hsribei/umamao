@@ -1,33 +1,33 @@
 en:
-  answers:
-    form:
-      comment_label: Comment on this answer
-      answer_label: Answer the question
-      comment_submit: Comment
-      submit: Answer
-      not_logged: "Please <a href=\"%{link}\">login</a> to answer question."
-    edit:
-      title: Editing answer
-    show:
-      title: \"%{user_name}\"\'s answer to \"%{question_title}\"
-    create:
-      flash_notice: "Thanks!"
-      flash_error:  "Something went wrong adding your answer.
-  \n  Remember that:
-  \n - Empty and repeated answers are not allowed
-  \n - You need to wait 20 seconds before posting another answer.
-  \n - You can only post one answer per question."
-    update:
-      flash_notice: "Answer was successfully updated."
-    revert:
-      title: "Revert answer"
-
   activerecord:
-    models:
-      answers: Answers
-      answer: Answer
     attributes:
       answer:
-        link: Link
-        created_at: Answered
         body: Body
+        created_at: Answered
+        link: Link
+    models:
+      answer: Answer
+      answers: Answers
+  answers:
+    create:
+      flash_error: |-
+        Something went wrong adding your answer.
+          Remember that:
+         - Empty and repeated answers are not allowed
+         - You need to wait 20 seconds before posting another answer.
+         - You can only post one answer per question.
+      flash_notice: Thanks!
+    edit:
+      title: Editing answer
+    form:
+      answer_label: Answer the question
+      comment_label: Comment on this answer
+      comment_submit: Comment
+      not_logged: Please <a href="%{link}">login</a> to answer question.
+      submit: Answer
+    revert:
+      title: Revert answer
+    show:
+      title: \"%{user_name}\"\'s answer to \"%{question_title}\"
+    update:
+      flash_notice: Answer was successfully updated.

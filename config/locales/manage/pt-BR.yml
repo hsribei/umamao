@@ -2,36 +2,36 @@ pt-BR:
   admin:
     manage:
       content:
-        title: Conteúdo personalizado
-        question_prompt: Prompt da pergunta
-        question_help: Prompt dos detalhes
-        head: header
         footer: Footer
+        head: header
+        question_help: Prompt dos detalhes
+        question_prompt: Prompt da pergunta
+        title: "Conteúdo personalizado"
         top_bar: Top bar
         top_bar_tip: Entre um link por linha
       properties:
-        general:
-          title: Propriedades do site
-        share:
-          title: Compartilhar
         constrains:
-          title: Restrições
-          reputation_constrains_subtitle: Lista de requerimentos de reputação para cada ação
-          reputation_constrains_description: Este formulário permite configurar quantos pontos de reputação o usuário precisa para poder executar cada ação
-        rewards:
-          title: Recompensas
-          reputation_rewards_subtitle: Lista de recompensas de reputação
-          reputation_rewards_description: Este formulário permite configurar como usuários podem ganhar ou perder pontos de reputação para uma dada ação
-        theme:
-          title: Nome do site
-          logo_legend: Logo do site. Deve ser menor que 2MB.
+          reputation_constrains_description: "Este formulário permite configurar quantos pontos de reputação o usuário precisa para poder executar cada ação"
+          reputation_constrains_subtitle: "Lista de requerimentos de reputação para cada ação"
+          title: "Restrições"
         domain:
-          title: Domínio
           description: "Você pode configurar um domínio próprio para o seu site. Funciona assim:"
           instruction1: "Você precisa logar no seu gerenciador do seu domínio primeiro. Este é o site onde você comprou o domínio."
-          instruction2: Lá você deve ir até a configuração de DNS e criar um registro chamado CNAME.
-          instruction3: "Escolha 'www' ou qualquer outra coisa como o nome do CNAME."
+          instruction2: "Lá você deve ir até a configuração de DNS e criar um registro chamado CNAME."
+          instruction3: Escolha 'www' ou qualquer outra coisa como o nome do CNAME.
           instruction4: "Depois, no campo 'host' ou 'destino', coloque seu domínio atual no Shapado: %{domain}."
           instruction5: "Feito isso, depois de mais ou menos uma hora, seu domínio www.%{subdomain} deve apontar para %{appdomain}."
           instruction6: "Quando isso acontecer, volte aqui e coloque o domínio www.%{subdomain} no campo abaixo e pressione o botão 'Atualizar'. Se você tiver perguntas, fale conosco no %{chat_url} ou no nosso fórum de suporte."
-          warning: Certeza que você quer mudar o domínio?
+          title: "Domínio"
+          warning: "Certeza que você quer mudar o domínio?"
+        general:
+          title: Propriedades do site
+        rewards:
+          reputation_rewards_description: "Este formulário permite configurar como usuários podem ganhar ou perder pontos de reputação para uma dada ação"
+          reputation_rewards_subtitle: "Lista de recompensas de reputação"
+          title: Recompensas
+        share:
+          title: Compartilhar
+        theme:
+          logo_legend: Logo do site. Deve ser menor que 2MB.
+          title: Nome do site

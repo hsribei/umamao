@@ -1,41 +1,32 @@
 pt-BR:
   user_suggestions:
     delete:
-      notice:
-        "Sugestão deletada"
-    refuse:
-      notice:
-        "Sugestão recusada"
+      notice: "Sugestão deletada"
     notifications:
-      new_user_suggestion:
-        "%{user} sugeriu que você seguisse o tópico %{topic}"
-      accepted_user_suggestion:
-        "%{user} aceitou sua sugestão e seguiu o tópico %{topic}"
+      accepted_user_suggestion: "%{user} aceitou sua sugestão e seguiu o tópico %{topic}"
+      new_user_suggestion: "%{user} sugeriu que você seguisse o tópico %{topic}"
+    refuse:
+      notice: "Sugestão recusada"
     suggested:
-      user: Tópicos sugeridos
-      suggest: Sugerir um tópico
-      suggest_to: Convidar alguém para este tópico
+      suggest: "Sugerir um tópico"
+      suggest_to: "Convidar alguém para este tópico"
+      user: "Tópicos sugeridos"
     suggested_by:
-      one: "Sugerido por %{user}"
-      other: "Sugerido por %{user} e %{others}"
-    topic: Convidar para tópico
-    user: Sugerir tópicos
+      one: Sugerido por %{user}
+      other: Sugerido por %{user} e %{others}
+    topic: "Convidar para tópico"
+    user: "Sugerir tópicos"
+    user_follows_nothing: "%{user} não segue nenhum tópico ainda."
     user_suggest:
       notice:
-        ok:
-          "Tópico %{topic} sugerido ao usuário %{user}"
-        already_follow:
-          "%{user} já segue o tópico %{topic}"
-        suggestion_exists:
-          "Você já sugeriu o tópico %{topic} para %{user}"
-        user_is_origin:
-          "Você não pode sugerir um tópico a você"
-        invalid_topic:
-          "O tópico sugerido não existe"
+        already_follow: "%{user} já segue o tópico %{topic}"
+        invalid_topic: "O tópico sugerido não existe"
+        ok: "Tópico %{topic} sugerido ao usuário %{user}"
+        suggestion_exists: "Você já sugeriu o tópico %{topic} para %{user}"
+        user_is_origin: "Você não pode sugerir um tópico a você"
       suggestion_box:
         friend: "Sugerido por você. Aguardando confirmação."
         self_html:
-          zero: "Sugerido por %{origin}"
-          one: "Sugerido por %{origin} e mais uma pessoa"
-          other: "Sugerido por %{origin} e mais %{count} pessoas"
-    user_follows_nothing: "%{user} não segue nenhum tópico ainda."
+          one: Sugerido por %{origin} e mais uma pessoa
+          other: Sugerido por %{origin} e mais %{count} pessoas
+          zero: Sugerido por %{origin}

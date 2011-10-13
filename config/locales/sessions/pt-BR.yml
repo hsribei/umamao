@@ -1,18 +1,18 @@
 pt-BR:
   sessions:
     create:
-      flash_notice: "Entrou!"
       flash_error: "Não foi possível fazer login como '%{login}'"
+      flash_notice: Entrou!
     destroy:
-      flash_notice: "Saiu!"
+      flash_notice: Saiu!
     new:
-      with_openid: logar com OpenID
-      with_facebook: "logar com o Facebook"
-      with_twitter: "logar com o Twitter"
-      with_authentication: Logar com email e senha
-      registered: "Já é cadastrado?"
-      not_registered: "Não se cadastrou ainda?"
       log_in: Entrar
-      signup: Fazer cadastro
-      sign_in: Sair
+      not_registered: "Não se cadastrou ainda?"
+      registered: "Já é cadastrado?"
       remember_me: Lembrar de mim
+      sign_in: Sair
+      signup: Fazer cadastro
+      with_authentication: Logar com email e senha
+      with_facebook: logar com o Facebook
+      with_openid: logar com OpenID
+      with_twitter: logar com o Twitter

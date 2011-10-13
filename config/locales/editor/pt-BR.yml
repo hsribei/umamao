@@ -3,4 +3,4 @@ pt-BR:
     add_image:
       title: Adicionar imagem
       upload: Escolha uma imagem
-      url: ou digite um endereço
+      url: "ou digite um endereço"

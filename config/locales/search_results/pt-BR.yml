@@ -1,45 +1,44 @@
 pt-BR:
   activerecord:
+    attributes:
+      search_result:
+        comment: "Comentário"
+        summary: "Descrição"
+        url: URL
     errors:
       search_result:
-        errno_econnrefused: 'A conexão nesta URL foi recusada'
-        errno_econnreset: 'Houve um problema ao tentar se conectar a essa URL'
-        errno_etimedout: 'A tempo de conexão nesta URL expirou'
-        net_http_server_exception: 'Houve um problema ao tentar se conectar a essa URL'
-        net_http_bad_response: 'Houve um problema ao tentar se conectar a essa URL'
-        net_http_fatal_error: 'Houve um problema ao tentar se conectar a essa URL'
-        socket_error: 'Houve um problema ao tentar se conectar a essa URL'
-        timeout_error: 'Houve um problema ao tentar se conectar a essa URL'
-        too_many_redirections_error: 'Essa URL tem redireções demais'
-        uri_invalid_uri_error: 'URL mal-formada'
+        errno_econnrefused: "A conexão nesta URL foi recusada"
+        errno_econnreset: Houve um problema ao tentar se conectar a essa URL
+        errno_etimedout: "A tempo de conexão nesta URL expirou"
+        net_http_bad_response: Houve um problema ao tentar se conectar a essa URL
+        net_http_fatal_error: Houve um problema ao tentar se conectar a essa URL
+        net_http_server_exception: Houve um problema ao tentar se conectar a essa URL
+        socket_error: Houve um problema ao tentar se conectar a essa URL
+        timeout_error: Houve um problema ao tentar se conectar a essa URL
+        too_many_redirections_error: "Essa URL tem redireções demais"
+        uri_invalid_uri_error: URL mal-formada
     models:
-      search_results: Resultados de busca
       search_result: Resultado de busca
       search_result_count:
         one: link
         other: links
+      search_results: Resultados de busca
+  helpers:
+    label:
+      search_result:
+        comment: "Comentário (opcional)"
+        url: URL
+    placeholder:
+      comment: "Por que isso é relevante?"
+  search_results:
     attributes:
       search_result:
         url: URL
-        comment: Comentário
-        summary: Descrição
-  search_results:
     create:
       flash_notice: Link enviado com sucesso.
     destroy:
       flash_notice: Link removido com sucesso.
-    attributes:
-      search_result:
-        url: URL
-    show:
-      flagged_as: Reportado como
     search_result:
       flag: Reportar
-
-  helpers:
-    label:
-      search_result:
-        url: URL
-        comment: Comentário (opcional)
-    placeholder:
-      comment: Por que isso é relevante?
+    show:
+      flagged_as: Reportado como

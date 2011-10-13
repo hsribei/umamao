@@ -1,23 +1,23 @@
 pt-BR:
   widgets:
-    index:
-      title: Gerenciar widgets da barra lateral
-      description: Use as setas para mover as widgets
     groups:
-      title: Sites recentes
       description: "Esta widget exibe os últimos sites criados"
-    top_groups:
-      title: Top 5 de Sites
-      description: "Esta widget exibe os cinco maiores sites"
-    top_users:
-      title: Top 5 de Usuários
-      description: "Esta widget exibe os cinco melhores usuários"
-    users:
-      title: Usuários Recentes
-      description: "Esta widget exibe usuários recentemente cadastrados"
-    tag_cloud:
-      title: Nuvem de Tópicos
-      description: "Esta widget exibe nuvem de tópicos"
+      title: Sites recentes
+    index:
+      description: Use as setas para mover as widgets
+      title: Gerenciar widgets da barra lateral
     pages:
-      title: Páginas wiki
       description: "Esta widget exibe a lista de páginas wiki"
+      title: "Páginas wiki"
+    tag_cloud:
+      description: "Esta widget exibe nuvem de tópicos"
+      title: "Nuvem de Tópicos"
+    top_groups:
+      description: Esta widget exibe os cinco maiores sites
+      title: Top 5 de Sites
+    top_users:
+      description: "Esta widget exibe os cinco melhores usuários"
+      title: "Top 5 de Usuários"
+    users:
+      description: "Esta widget exibe usuários recentemente cadastrados"
+      title: "Usuários Recentes"
