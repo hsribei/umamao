@@ -207,6 +207,8 @@ Shapado::Application.routes.draw do
       member do
         get :flag
       end
+
+      resources :comments
     end
 
     resources :answers do

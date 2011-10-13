@@ -129,7 +129,10 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(params[:source]) }
+      format.html do
+        flash[:notice] = t(:flash_notice, :scope => [:comments, :destroy])
+        redirect_to(params[:source])
+      end
       format.json { head :ok }
     end
   end

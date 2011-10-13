@@ -50,11 +50,15 @@
               = link_to t("scaffold.edit"), edit_question_comment_path(comment.commentable, comment, :source => source), :class => "edit_comment"
             - when "Answer"
               = link_to t("scaffold.edit"), edit_question_answer_comment_path(comment.commentable.question, comment.commentable, comment, :source => source), :class => "edit_comment"
+            - when 'SearchResult'
+              = link_to t('scaffold.edit'), edit_question_search_result_comment_path(comment.commentable.question, comment.commentable, comment, :source => source), :class => 'edit_comment'
         - if logged_in? && comment.can_be_deleted_by?(current_user)
           - case comment.commentable_type
             - when "Question"
               = link_to t("scaffold.destroy"), question_comment_path(comment.commentable, comment, :source => source), :confirm => t(".confirm_destroy"), :method => :delete
             - when "Answer"
               = link_to t("scaffold.destroy"), question_answer_comment_path(comment.commentable.question, comment.commentable, comment, :source => source), :confirm => t(".confirm_destroy"), :method => :delete
+            - when 'SearchResult'
+              = link_to t('scaffold.destroy'), question_search_result_comment_path(comment.commentable.question, comment.commentable, comment, :source => source), :confirm => t('.confirm_destroy'), :method => :delete
     .clear
 
