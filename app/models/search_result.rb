@@ -23,8 +23,6 @@ class SearchResult
   # `accepts_nested_attributes_for`.
   attr_accessor :comment
 
-  attr_reader :response_body
-
   belongs_to :group
   belongs_to :user
   belongs_to :question

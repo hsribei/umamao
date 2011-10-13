@@ -3,6 +3,7 @@ require 'uri'
 module Support
   class ResponseFetcher
     class TooManyRedirectionsError < StandardError; end
+    class EmptyResponse; def body; nil; end; end
 
     POSSIBLE_FETCH_ERRORS = [Errno::ECONNREFUSED,
                              Errno::ECONNRESET,
@@ -65,7 +66,7 @@ module Support
       response
     rescue *POSSIBLE_FETCH_ERRORS
       add_error(@fetcher, $!)
-      ''
+      EmptyResponse.new
     end
 
   private
