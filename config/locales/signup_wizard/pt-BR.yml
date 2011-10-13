@@ -1,5 +1,11 @@
 pt-BR:
   signup_wizard:
+    connect_profiles: 
+      title: "Conecte suas contas para:"
+      import_profile_picture: Importar a foto do seu perfil
+      find_friends: Achar amigos que já estão no Umamão
+      share_stuff: Compartilhar coisas que você achar interessante
+      trust_us: Nós nunca postamos nada sem você mandar.
     connect: "Conectar contas"
     follow: "Seguir pessoas e tópicos"
     skip: "Ir direto para o site"

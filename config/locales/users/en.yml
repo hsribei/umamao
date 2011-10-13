@@ -15,6 +15,9 @@ en:
     new:
       title: Sign up as a new user
       submit: Sign up
+      agree: |
+        I read and agree with the <a href="%{privacy}" target="_blank">privacy policy</a> and the <a href="%{tos}" target="_blank">terms of use</a>.
+      already_registered: Already have an account on Umamao? <a href="/users/login">Sign in</a> to start.
     edit:
       title: Settings
       submit: Save
@@ -30,18 +33,20 @@ en:
     unfollow:
       flash_notice: "The user %{user} was removed from your friends"
     form:
-      information: Information
-      notifications: Notifications
-      new_answer_notification: Get email notifications for new answers
-      give_advice_notification: Receive email notifications about questions in your field of expertise
-      activities_notification: Receive email notifications about system activities such as new followers, etc.
-      reports_notification: Receive a report with latest group activity (only for group admins)
-      avatar_tip: "Change your profile image using Gravatar"
-      show_more_lang: "Show more languages"
+      change_password: Change password
+      email: "Email:"
+      name: "Full name:"
+      password: "Password:"
+      password_confirmation: "Confirm password:"
+      information: Personal information
+      notifications: Receive emails
+      new_answer_notification: about new answers
+      activities_notification: "about system activities: new followers, comments, etc."
     create:
-      flash_notice: "Thanks for signing up!"
-      flash_error:  "Sorry, we could not set up that account. Please try again, or contact an administrator (link is above)."
-      confirm: "ty"
+      flash_error: |
+        Sorry, we couldn't create your account. Is there any field missing?
+      welcome: "Success! Welcome to Umamao!"
+      confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
     messages:
       errors:
         reputation_needed: "You need a reputation of %{min_reputation} to %{action}"

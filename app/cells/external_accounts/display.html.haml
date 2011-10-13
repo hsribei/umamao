@@ -1,18 +1,13 @@
-%ul.items#external_accounts{:style => 'margin-top: 30px'}
-  = render :state => :dac
+%ul.items#external_accounts
   = render :state => :facebook
   = render :state => :twitter
 
-%p{:style => 'margin-top: 20px'} Conecte suas contas para:
+%p{:style => 'margin-top: 10px'}=t('signup_wizard.connect_profiles.title')
 
 %ul
-  %li
-    Importar a foto do seu perfil;
-  %li
-    Encontrar seus amigos que já estão no Umamão;
-  %li
-    Compartilhar as coisas que você acha interessantes (em breve).
+  %li=t('signup_wizard.connect_profiles.import_profile_picture')
+  %li=t('signup_wizard.connect_profiles.find_friends')
+  %li=t('signup_wizard.connect_profiles.share_stuff')
+
 %p
-  %strong
-    Obs.: Nós <strong>nunca</strong> postaremos nada nas suas contas sem
-    que antes você o tenha requisitado explicitamente.
+  %strong=t('signup_wizard.connect_profiles.trust_us')

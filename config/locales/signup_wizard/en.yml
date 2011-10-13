@@ -1,0 +1,17 @@
+en:
+  signup_wizard:
+    connect_profiles: 
+      title: "Connect your profiles to:"
+      import_profile_picture: Import your profile picture
+      find_friends: Find friends who are already on Umamao
+      share_stuff: Share stuff you find interesting
+      trust_us: We'll never post anything you didn't tell us to.
+    connect: "Connect your profiles"
+    follow: "Follow people and topics"
+    skip: "Skip everything"
+    finish: "Finish"
+    introduction: |
+      When you follow people and topics you're interested in, Umamao can show you content that is more relevant to you.
+      <strong>Connect your profiles to find friends and get recommendations!</strong>
+    wait: |
+      Please wait while we look for relevant people and topics.
