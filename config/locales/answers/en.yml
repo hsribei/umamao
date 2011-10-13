@@ -7,19 +7,24 @@ en:
         link: Link
     models:
       answer: Answer
+      answer_count:
+        one: answer
+        other: answers
       answers: Answers
   answers:
+    ban: Hide
     create:
       flash_error: |-
         Something went wrong adding your answer.
           Remember that:
-         - Empty and repeated answers are not allowed
-         - You need to wait 20 seconds before posting another answer.
-         - You can only post one answer per question.
+          - Empty and repeated answers are not allowed;
+          - You need to wait 20 seconds before posting another answer;
+          - You can only post one answer per question.
       flash_notice: Thanks!
     edit:
       title: Editing answer
     form:
+      already_answered: You have already answered this question. If you want to contribute with more information, <a href="%{link}">edit your answer</a>.
       answer_label: Answer the question
       comment_label: Comment on this answer
       comment_submit: Comment
@@ -27,7 +32,17 @@ en:
       submit: Answer
     revert:
       title: Revert answer
+    share_body:
+      facebook: Answer
+      facebook_named: Answer by %{name}
+      facebook_self: My answer
+      twitter: Answer on %{site}
+      twitter_named: Answer by %{name} on %{site}
+      twitter_self: My answer on %{site}
     show:
+      flagged_as: Flaggerd as
+      share_success: Answer shared successfully on %{site}.
       title: \"%{user_name}\"\'s answer to \"%{question_title}\"
+    sure_ban: Are you sure you want to hide this answer?
     update:
       flash_notice: Answer was successfully updated.

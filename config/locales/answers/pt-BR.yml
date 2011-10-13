@@ -14,7 +14,7 @@ pt-BR:
   answers:
     ban: Esconder
     create:
-      flash_error: "Alguma coisa deu errado com a sua resposta. \n  Lembre-se que: \n - Respostas vazias ou repetidas não são permitidas; \n - Você precisa esperar 20 segundos para postar outra resposta; \n - Você só pode postar uma resposta por pergunta."
+      flash_error: "Alguma coisa deu errado com a sua resposta.\n  Lembre-se que:\n  - Respostas vazias ou repetidas não são permitidas;\n  - Você precisa esperar 20 segundos para postar outra resposta;\n  - Você só pode postar uma resposta por pergunta."
       flash_notice: Resposta enviada.
     edit:
       title: Editando resposta
