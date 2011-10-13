@@ -156,7 +156,7 @@ pt-BR:
       stats: Estatísticas da pergunta
       requested_users: Pedidos de resposta
       request_answer: Pedir para alguém responder
-      title: Responda com
+      title: Responder com
     solve:
       flash_notice: Resposta aceita.
     tags:
