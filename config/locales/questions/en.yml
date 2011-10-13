@@ -2,7 +2,9 @@ en:
   activerecord:
     attributes:
       question:
-        answers: Answers
+        answers:
+          one: Answer
+          other: Answers
         asked_by: Asked by
         body: Body
         closed: Closed
@@ -10,20 +12,29 @@ en:
         language: Language
         tags: Tags
         title: Title
+        topic_ids: Topics
         updated_at: updated
         updated_by: updated by
         views: Views
         votes: Votes
     models:
+      file_count:
+        one: file
+        other: files
       question: Question
+      question_count:
+        one: question
+        other: questions
       questions: Questions
   questions:
     answer:
       add_comment: Add comment...
       flag: Flag
       pick_answer: Pick as solution
+      share_new_answer: Share your answer with others!
       unset_answer: Unset solution?
     create:
+      error: It was not possible to create your question.
       flash_notice: The question was successfully created.
     edit:
       title: Editing question
@@ -32,11 +43,13 @@ en:
     form:
       adult_content: This question contains adult material.
       body_tip: What is your question? Be descriptive.
+      details: Details about your question (optional)
       language_tip: Select the language the question is asked in.
       tags_tip: Use tags to add more information about your question.
     index:
       active: Active
       active_tooltip: Questions that have been updated recently
+      all_tab: All questions
       ask_question: Ask question
       empty: No one has asked any questions yet. Be the first!
       help_to_answer: Help us answer
@@ -47,12 +60,15 @@ en:
       oldest: Oldest
       title: All questions
       unanswered_questions: Unanswered questions
+      unanswered_tab: Open questions
       votes: Votes
       votes_tooltip: Questions with the most votes
     model:
       messages:
+        body_too_short: The question's body should have at least 5 characters.
         empty_tags: Sorry, you need to use at least one tag.
         title_too_long: The title is too long. It should not contain more than 100 characters.
+        title_too_short: The question should have at least 5 characters.
         too_many_tags: Sorry, you can only enter 9 tags maximum.
         too_short: Seems too short. Please use more words than %{count} to be more specific.
     move:
@@ -63,6 +79,8 @@ en:
       group_dont_exists: The group %{group} does not exist
       success: Question moved to %{group}
     new:
+      add_details: Add details
+      ask: Ask
       how_to_ask: How to ask
       title: Ask question
     question:
@@ -78,10 +96,14 @@ en:
       success: The tags have been updated successfully.
     revert:
       title: Revert question
+    search_result:
+      add_comment: Add comment
+      flag: Flag
     shared:
       flag: Flag
     show:
       accepted_tooltip: One of the answers was accepted as the correct answer.
+      add_follow_up_question: Add follow up question
       another_answers: Other answers
       answers: Answers
       answers_title:
@@ -95,30 +117,53 @@ en:
       flag: Flag
       flagged_as: Flagged as
       flags: Reported as
+      follow_up_questions: Follow up questions
       last_activity: Latest activity
+      needs_connection:
+        message: In order to share on %{site}, you must connect\n\ your account. By clicking on the "Connect" button below, you will be\n\ redirected to %{site} site to authorize the use of your\n\ account. You will return back here at the end on the\n\ authorization process.
+        title: Connect your account
+      needs_permission: Apparently, your account on %{site} is not connected with\n\ the necessary permissions to allow this action. Click\n\ "Connect" to enable them.
+      question_views:
+        one: This question has been viewed 1 time
+        other: This question has been viewed %{count} times
       related_questions: Related questions
       request_closing: Request closing
       request_closing_details: Request to close this question
+      requested_users: Users asked to answer
       retag: Retag
       retract_request: You have already made a request. Would you like to retract it?
       share: Share this question on
       share_on: Share this question on %{site}
       solution: Solution
+      stats: Questions stats
       to_answer_question: to answer this question
+      topic_followers:
+        one: and its topics are followed by 1 person.
+        other: and its topics are followed by %{count} people.
       unauthenticated_retag: You need an account to retag questions
       unfavorite_tooltip: Remove this question from your favorites
+      unknown_destination: Invalid sharing destination.
       unwatch_tooltip: Stop watching this question
+      view: View question
       viewed: viewed
       watch_tooltip: Watch this question
     solve:
       flash_notice: The question was solved.
     tags:
       filter: Search for tags
+      retag: Edit topics
+      tag: Add topics
       title: Tags
       tooltip: Show questions tagged %{tag}
+    tip:
+      answer: answering questions;
+      call_to_action: "You can help:"
+      explanation: Open questions are questions that have no answers with a positive number of votes.
+      vote: conting on existing answers.
     unanswered:
       empty: This group does not have any unanswered questions.
       expert: Experts
+      explanation: Open questions are those questions whose answers still have no votes. Contribute voting on the questions with appropriate answers.
       my_tags: My tags
       tags: Unanswered tags
       title: Unanswered questions
