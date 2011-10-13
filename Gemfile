@@ -11,6 +11,7 @@ group :development do
   gem 'ruby-debug'
   gem 'ruby-prof'
   gem 'grit'
+  gem 'yaml_waml', '0.3.0'
 end
 
 gem 'rails', :git => 'git://github.com/umamao/rails.git', :branch => '3-0-7'

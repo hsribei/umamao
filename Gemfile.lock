@@ -371,6 +371,7 @@ GEM
     whatlanguage (1.0.0)
     xpath (0.1.3)
       nokogiri (~> 1.3)
+    yaml_waml (0.3.0)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
 
@@ -441,3 +442,4 @@ DEPENDENCIES
   uuidtools (~> 2.1.1)
   warden (~> 0.10.7)
   whatlanguage (~> 1.0.0)
+  yaml_waml (= 0.3.0)
