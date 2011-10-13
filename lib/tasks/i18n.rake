@@ -1,21 +1,23 @@
-require 'active_support'
-
-def convert_hash_to_ordered_hash_and_sort(object, deep = false)
-  # from http://seb.box.re/2010/1/15/deep-hash-ordering-with-ruby-1-8/
-  if object.is_a?(Hash)
-    # Hash is ordered in Ruby 1.9!
-    res = (RUBY_VERSION >= '1.9' ? Hash.new : ActiveSupport::OrderedHash.new).tap do |map|
-      object.each {|k, v| map[k] = deep ? convert_hash_to_ordered_hash_and_sort(v, deep) : v }
+# adapted from http://snippets.dzone.com/posts/show/5811
+class Hash
+  # Replacing the to_yaml function so it'll serialize hashes sorted (by their keys)
+  #
+  # Original function is in /usr/lib/ruby/1.8/yaml/rubytypes.rb
+  def to_yaml( opts = {} )
+    YAML::quick_emit( object_id, opts ) do |out|
+      out.map( taguri, to_yaml_style ) do |map|
+        sort.each do |k, v|
+          map.add( k, v )
+        end
+      end
     end
-    return res.class[res.sort {|a, b| a[0].to_s <=> b[0].to_s } ]
-  elsif deep && object.is_a?(Array)
-    array = Array.new
-    object.each_with_index {|v, i| array[i] = convert_hash_to_ordered_hash_and_sort(v, deep) }
-    return array
-  else
-    return object
   end
 end
+
+# Preserve original encoding of characters.
+# Must be loaded after Hash#to_yaml monkey patch
+# so that it can be properly loaded
+require 'yaml_waml'
 
 namespace :i18n do
   desc 'Canonize i18n files (deep sort keys)'
@@ -31,7 +33,12 @@ namespace :i18n do
         next if content.empty?
 
         File.open(filename, 'w') do |f|
-          f.write(convert_hash_to_ordered_hash_and_sort(content, true))
+          f.write(content.to_yaml_with_decode)
+        end
+
+        content = File.read(filename)
+        File.open(filename, 'w') do |f|
+          f.write(content[5..-1].gsub(/\ *$/, ''))
         end
       end
     end
