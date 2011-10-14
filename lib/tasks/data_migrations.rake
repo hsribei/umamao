@@ -1226,5 +1226,16 @@ namespace :data do
       end
     end
 
+    desc "Update UserTopicInfo counts"
+    task :update_question_is_open_flag => :environment do
+      Question.find_each do |q|
+        print "-"
+        if SearchResult.first(:question_id => Question.first.id,
+                              :votes_average => { :$gt => 0 })
+          q.is_open = true
+          q.save
+        end
+      end
+    end
   end
 end
