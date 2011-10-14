@@ -14,6 +14,7 @@ pt-BR:
         current_password: Senha atual
         description: Biografia longa
         email: Email
+        fullname: Nome Completo
         gender:
           female: Feminino
           male: Masculino
@@ -58,6 +59,8 @@ pt-BR:
       enable_twitter: Conecte suas contas do Twitter e do Facebook
       submit: Salvar
       title: "Configurações"
+    follow:
+      flash_notice: "O usuário %{user} foi adicionado ao seu grupo de amigos"
     form:
       academic_email: "Email acadêmico:"
       activities_notification: "de atividades do sistema: novos seguidores, medalhas ganhas, etc."

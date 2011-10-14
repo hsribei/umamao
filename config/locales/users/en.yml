@@ -2,19 +2,27 @@ en:
   activerecord:
     attributes:
       user:
+        academic_email: Academic e-mail
         activated_at: activated at
         activation_code: Activation code
         age: Age
         asked_by: asked by
         avatar: Profile image
+        bio: Short bio
         birthday: Birthday
         created_at: joined
         current_password: Current password
+        description: Long bio
         email: Email
         fullname: Full name
+        gender:
+          female: Female
+          male: Male
+          title: Gender
         language: Language
         language_filter: Filter by language
         last_logged_at: seen
+        location: Location
         login: Username
         name: Real name
         password: Password
@@ -38,11 +46,13 @@ en:
       vote_to_close_any_question: Request closing any question
       vote_to_close_own_question: Request closing own question
       vote_up: Vote up
+    annoying:
+      resend_confirmation_email: Resend confirmation e-mail.
+      resent_confirmation: Check your e-mail!
+      unconfirmed_non_academic_email: You have not conformed your e-mail yet!
     create:
       confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
-      flash_error: |
-        Sorry, we couldn't create your account. Is there any field missing?
-
+      flash_error: Sorry, we couldn't create your account. Is there any field missing?
       welcome: Success! Welcome to Umamao!
     edit:
       enable_twitter: Enable your Facebook or Twitter accounts
@@ -51,15 +61,21 @@ en:
     follow:
       flash_notice: The user %{user} was added to your friends
     form:
+      academic_email: Academic e-mail
       activities_notification: "about system activities: new followers, comments, etc."
+      avatar_tip: Change your profile image on Gravatar
       change_password: Change password
       email: "Email:"
+      give_advice_notification: of questions on my intereting topics
       information: Personal information
       name: "Full name:"
       new_answer_notification: about new answers
       notifications: Receive emails
       password: "Password:"
       password_confirmation: "Confirm password:"
+      reports_notification: with report of the latest activites on the site (admins only)
+      show_more_lang: Show more languages
+      university: "University:"
     index:
       empty: This group does not have any members. Participate by joining this group.
       filter: Search for users
@@ -72,21 +88,62 @@ en:
       reputation: Reputation
       reputation_tooltip: Users sorted by higher reputation
       title: All users
+    inline_edition:
+      empty_bio: Your short bio is empty, write it now!
+      empty_description: Your long bio is empty, write it now!
     messages:
       errors:
         reputation_needed: You need a reputation of %{min_reputation} to %{action}
     new:
+      affiliation_message: Your academic e-mail %{email} was confirmed! Now just finish your registration by filling out the form below.
       agree: |
         I read and agree with the <a href="%{privacy}" target="_blank">privacy policy</a> and the <a href="%{tos}" target="_blank">terms of use</a>.
 
       already_registered: Already have an account on Umamao? <a href="/users/login">Sign in</a> to start.
+      invitation:
+        title: "You've come invited by %{user}:"
       submit: Sign up
       title: Sign up as a new user
+    news_update:
+      answer:
+        topic:
+          created: Answer added to topic %{origin}
+        user:
+          created: "%{origin} added an answer."
+      question:
+        topic:
+          created: Question add to topic %{origin}.
+        user:
+          created: "%{origin} added a question."
     show:
-      follow: Follow
+      atom:
+        answer: "Answer to:"
+        question: "Question:"
+        title: "%{site_name} - Updates by %{user}"
+      no_answers: No answer yet.
+      no_news_updates: No updates yet.
+      no_questions: No questions yet.
+      profile: Profile
+      tab:
+        answers: Answers
+        news_updates: Updates
+        questions: Questions
+        search_results: Links
       title: User %{user}
-      unfollow: Unfollow
       upvotes_count: "Total upvotes received: %{upvotes_count}"
       views: views
-    unfollow:
-      flash_notice: The user %{user} was removed from your friends
+    validation:
+      errors:
+        did_not_agree: |
+          You must agree to the terms of use and privacy policy
+
+        dup_email: This e-mail is already registered on the site
+        empty_email: E-mail can't be empty
+        empty_name: Name can't be empty
+        empty_password: Password can't be empty
+        invalid_email: E-mail is invalid
+        invalid_password: Password is invalid
+        long_bio: Your short bio can't exceed 140 characters
+        long_description: Your long bio can't exceed 500 characters
+        long_name: Your name can't exceed 100 characters
+        password_match: Password and password confirmation don't match
