@@ -10,6 +10,7 @@ en:
     actions:
       delete: Remove
       title: Actions
+    close: X
     create:
       success: Announcement was successfully created.
     form:
