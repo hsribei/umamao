@@ -1,5 +1,11 @@
 en:
   comments:
+    comment:
+      confirm_destroy: Are you sure you want to remove this comment?
+    count:
+      none: Add coment
+      one: 1 comment
+      other: "%{count} comments"
     create:
       flash_notice: Thanks for your comment
     edit:
