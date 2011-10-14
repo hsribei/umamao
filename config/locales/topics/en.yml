@@ -1,8 +1,8 @@
 en:
   activerecord:
     models:
-      topic: "Topic"
-      topics: "Topics"
+      topic: Topic
+      topics: Topics
   embedded:
     more: More questions
     question: question
@@ -14,11 +14,11 @@ en:
     edit:
       description: Description
       name: Name
-      title: "Edit Topic"
+      title: Edit Topic
     embedded:
       empty: There are no questions on this topic.
     group_invitation:
-      message: "You're one step away from discussing, learning and teaching about <a href=\"%{link_topic}\">%{topic}</a> and a lot more, just sign up to start!"
+      message: You're one step away from discussing, learning and teaching about <a href="%{link_topic}">%{topic}</a> and a lot more, just sign up to start!
     index:
       created_at_tab: Recent
       questions_count_tab: "# of Questions"
@@ -35,12 +35,12 @@ en:
         disable: disable
         enable: enable
         notice:
-          subscribed: "You'll get new questions on %{topic} by email."
-          unsubscribed: "You won't get any more questions about %{topic} by email."
+          subscribed: You'll get new questions on %{topic} by email.
+          unsubscribed: You won't get any more questions about %{topic} by email.
         text: Receive new questions by email
-      empty: "This topic is empty. Help it grow by <a href=\"/questions/new\">asking a question</a>."
+      empty: This topic is empty. Help it grow by <a href="/questions/new">asking a question</a>.
       registered_students: Registered students
-      view: "Show Topic"
+      view: Show Topic
     sidebar:
       connect_to_twitter: Connect to Twitter
       disconnect_from_twitter: Disconnect from Twitter
@@ -51,12 +51,12 @@ en:
       registered_students: Registered students
       related_topics: Related Topics
     tooltip:
-      describe: "Help describe the topic %{title}"
+      describe: Help describe the topic %{title}
     unanswered:
       all_tab: All Questions
-      empty: "This topic is empty. Help it grow by <a href=\"/questions/new\">asking a question</a>."
+      empty: This topic is empty. Help it grow by <a href="/questions/new">asking a question</a>.
       unanswered_tab: Open Questions
     user_answers:
-      title: "Answers by %{user} on topic %{topic}"
+      title: Answers by %{user} on topic %{topic}
     user_questions:
-      title: "Questions by %{user} on topic %{topic}"
+      title: Questions by %{user} on topic %{topic}

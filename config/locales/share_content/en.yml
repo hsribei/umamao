@@ -1,13 +1,15 @@
 en:
   share_content:
     embed:
-      explanation: "Copy one of the snippets below and insert it into your page's HTML code:\n"
+      explanation: |
+        Copy one of the snippets below and insert it into your page's HTML code:
+
       iframe: Embed iframe
       javascript: Embed javascript
-      more: "More information"
+      more: More information
       title: Embed
     group_invitation:
-      message: "You're almost there. Just sign up and you'll get going in no time!"
+      message: You're almost there. Just sign up and you'll get going in no time!
     post_on_facebook: Share on Facebook
     post_on_twitter: Share on Twitter
     share:

@@ -1,9 +1,6 @@
 en:
   layouts:
     application:
-      title: "Find Together"
-      questions: Questions
-      questions_in: Questions in
       ask_question: Ask Question
       forgot: Forgot?
       home: Home
@@ -17,12 +14,14 @@ en:
       openid:
         explaination: "If you would like to register or just log in, please select your OpenID provider:"
       pages: Pages
+      profile: Profile
       questions: Questions
       questions_in: Questions in
       questions_tagged: tagged with
       search: Search
       settings: Settings
       signup: Sign up
+      signup_button: Confirm
       subscribe: Subscribe
       tags: Tags
       title: Collaborative Search
