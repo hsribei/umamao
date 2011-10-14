@@ -1,0 +1,24 @@
+pt-BR:
+  inviter:
+    invitation:
+      click_here: Click here
+      goodbye: "We hope to see you soon!\n\n\
+        Cheers,\n\
+        Umamão Team\n"
+      greeting: Hello!
+      html_link_label: "To accept the invitation, %{link}, or type this URL into your browser:"
+      sender: "%{user} thinks you should join Umamão:"
+      sender_topic: "%{user} has invited you to discuss {%topic} on Umamão:"
+      site_description: "Umamão is a knowledge base constantly expanded and improved.\n\
+        If you're curious and like to teach, Umamão is for you.\n"
+      subject: "%{inviter} invited you to join Umamão!"
+      text_link_label: "To accept this invitation, click this link:"
+    request_answer:
+      answer: Click here to answer
+      goodbye: "\n\
+        Cheers,\n\
+        Umamão Team\n"
+      greeting: Hello %{invited},
+      sender: "%{user} thinks you know the answer to the question %{question}"
+      subject: "%{user} asked you to answer a question on Umamão"
+      text_link_label: "To answer the question, click on this link:"
