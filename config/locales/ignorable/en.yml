@@ -1,0 +1,11 @@
+en:
+  ignorable:
+    flash:
+      ignore: You'll no longer receive updates from %{ignorable}
+      unignore: You'll start receive updates from %{ignorable}
+    ignore: Ignore
+    link:
+      activate: activate
+      deactivate: deactivate
+    text: Ignore updates from this topic
+    unignore: Unignore
