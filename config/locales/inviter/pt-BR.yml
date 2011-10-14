@@ -1,29 +1,24 @@
 pt-BR:
   inviter:
     invitation:
-      subject: "%{inviter} te convidou para entrar no Umamão!"
-      greeting: Olá!
+      click_here: clique aqui
+      goodbye: "Esperamos te ver em breve!\n\n\
+        Abraço,\n\
+        Equipe Umamão\n"
+      greeting: "Olá!"
+      html_link_label: "Para aceitar o convite, %{link}, ou digite esta URL no seu navegador:"
       sender: "%{user} acha que você deveria se juntar ao Umamão:"
       sender_topic: "%{user} te convidou para discutir %{topic} no Umamão:"
-      site_description: |
-        O Umamão é uma base de conhecimento em língua portuguesa expandida e melhorada constantemente por acadêmicos e profissionais.
-
-        Se você é curioso e gosta de ensinar, o Umamão é para você.
+      site_description: "O Umamão é uma base de conhecimento em língua portuguesa expandida e melhorada constantemente por acadêmicos e profissionais.\n\n\
+        Se você é curioso e gosta de ensinar, o Umamão é para você.\n"
+      subject: "%{inviter} te convidou para entrar no Umamão!"
       text_link_label: "Para aceitar o convite, siga este link:"
-      html_link_label: "Para aceitar o convite, %{link}, ou digite esta URL no seu navegador:"
-      click_here: clique aqui
-      goodbye: |
-        Esperamos te ver em breve!
-
-        Abraço,
-        Equipe Umamão
     request_answer:
-      subject: "%{user} pediu para você responder a uma pergunta no Umamão"
-      greeting: Olá %{invited},
-      sender: "%{user} acha que você sabe a resposta da pergunta %{question}"
       answer: Clique aqui para responder
+      goodbye: "\n\
+        Abraço,\n\
+        Equipe Umamão\n"
+      greeting: "Olá %{invited},"
+      sender: "%{user} acha que você sabe a resposta da pergunta %{question}"
+      subject: "%{user} pediu para você responder a uma pergunta no Umamão"
       text_link_label: "Para responder à pergunta, clique neste link:"
-      goodbye: |
-
-        Abraço,
-        Equipe Umamão

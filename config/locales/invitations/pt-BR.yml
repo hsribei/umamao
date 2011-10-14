@@ -3,64 +3,59 @@ pt-BR:
     accepted:
       title: Convites aceitos
     form:
-      title: Convidar por email
       labels:
-        recipient_email: "Email da pessoa:"
         message: "Mensagem pessoal (opcional):"
+        recipient_email: "Email da pessoa:"
+      title: Convidar por email
+    index:
+      empty:
+        accepted: Nenhum convite aceito.
+        pending: "Nenhum convite pendente. Que tal convidar alguém?"
+      title: Convites
+      titles:
+        accepted: Convites aceitos
+        pending: Convites pendentes
+    invite: Convidar outras pessoas
     left:
-      one: 1 convite disponível
-      other: %{count} convites disponíveis
+      one: "1 convite disponível"
+      other: "%{count} convites disponíveis"
     model:
       attributes:
-        sent_at: enviado
         accepted_at: aceito
+        sent_at: enviado
     new:
+      accepted:
+        one: 1 convite aceito
+        other: "%{count} convites aceitos"
       add_contact: Incluir
+      email: Digite o email
       error: Houve um erro. Por favor, tente novamente mais tarde.
       import:
-        title: Importar contatos
         continue: Continuar
-        notice:
-          Você será redirecionado a uma página externa
-          para autorizar o acesso a seus contatos.
-      email: Digite o email
-      name_or_email: Digite o nome ou email
-      invalid_emails:
-        "Os seguintes endereços são inválidos e não puderam ser convidados:"
+        notice: "Você será redirecionado a uma página externa para autorizar o acesso a seus contatos."
+        title: Importar contatos
+      invalid_emails: "Os seguintes endereços são inválidos e não puderam ser convidados:"
       invite: Convidar
       left:
-        none: Você não tem convites disponíveis.
-        one: Você tem 1 convite restante.
-        other: Você tem %{count} convites restantes.
+        none: "Você não tem convites disponíveis."
+        one: "Você tem 1 convite restante."
+        other: "Você tem %{count} convites restantes."
       message: Mensagem (opcional)
+      name_or_email: Digite o nome ou email
+      pending:
+        one: 1 convite pendente
+        other: "%{count} convites pendentes"
       remove_all: Remover todos
       selected: Contatos selecionados
       title: Convidar pessoas
-      wait:
-        Por favor, aguarde enquanto importamos seus contatos.
-        Isso pode levar alguns minutos.
-      pending:
-        one: 1 convite pendente
-        other: %{count} convites pendentes
-      accepted:
-        one: 1 convite aceito
-        other: %{count} convites aceitos
+      wait: Por favor, aguarde enquanto importamos seus contatos. Isso pode levar alguns minutos.
+    new_invitation_student:
+      invite: convidar
+      invite_form: Convidar
+      more: Ver mais
+      pending: pendente
+      reinvite: convidar novamente
+      title: Convite para %{name}
     pending:
       title: Convites pendentes
-    index:
-      title: Convites
-      titles:
-        pending: Convites pendentes
-        accepted: Convites aceitos
-      empty:
-        pending: Nenhum convite pendente. Que tal convidar alguém?
-        accepted: "Nenhum convite aceito."
-    invite: 'Convidar outras pessoas'
     sent: Convite enviado
-    new_invitation_student:
-      more: Ver mais
-      invite: convidar
-      reinvite: convidar novamente
-      invite_form: Convidar
-      pending: pendente
-      title: "Convite para %{name}"

@@ -1,20 +1,19 @@
 pt-BR:
-  flags:
-    form:
-      spam: Spam
-      offensive: Abuso/agressão
-      attention: Requer moderação
-      not_relevant: Não relevante
-      broken_link: Link quebrado
-      label: Reportar problema
-    create:
-      flash_notice: Obrigado por reportar!
-      flash_error: Você não pode reportar esta entrada.
-
   activerecord:
-    models:
-      flags: Denúncias
-      flag: Denúncia
     attributes:
       flag:
         type: Motivo
+    models:
+      flag: "Denúncia"
+      flags: "Denúncias"
+  flags:
+    create:
+      flash_error: "Você não pode reportar esta entrada."
+      flash_notice: Obrigado por reportar!
+    form:
+      attention: "Requer moderação"
+      broken_link: Link quebrado
+      label: Reportar problema
+      not_relevant: "Não relevante"
+      offensive: "Abuso/agressão"
+      spam: Spam

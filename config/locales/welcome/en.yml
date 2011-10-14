@@ -1,39 +1,39 @@
 en:
   welcome:
-    landing:
-      headline: Finally, an information desk for the Internet.
-      pitch: <p>When you go to a library, unless you know <em>exactly</em> what you're looking for, <strong>you just can't get around without asking for help</strong>, be it from the information desk or from a friend who you know has spent a lot of time around that technology, history or business section you're interested in.</p><p>Wouldn't it be great if you could do the same to <strong>find your way around the Internet</strong>? Now you can.</p>
-      invitation_only: For the moment, you need an invitation to be able to sign up.
+    about:
+      title: Who are you?
     home:
       all_tab: News feed
-      unanswered_tab: Answer
-      notifications_tab: Notifications
+      browse_all_or_by_tags: See %{full_list_of_questions} or %{browse_by_tags}
+      browse_by_topics: browse by topics
       empty_news_feed_explanation: |
         This is your news feed: you choose %{users} and %{topics} to follow; when there's new content from them, you'll see it here. That way, your home page is personalized to show stuff that <em>you</em> find relevant.
         <p>(While there's nothing in your news feed, here are the latest questions.)</p>
 
-      users: users
+      full_list_of_questions: all questions
+      notifications_tab: Notifications
       topics: topics
-      browse_all_or_by_tags: "See %{full_list_of_questions} or %{browse_by_tags}"
-      full_list_of_questions: "all questions"
-      browse_by_topics: "browse by topics"
+      unanswered_tab: Answer
+      users: users
+    landing:
+      headline: Finally, an information desk for the Internet.
+      invitation_only: For the moment, you need an invitation to be able to sign up.
+      pitch: <p>When you go to a library, unless you know <em>exactly</em> what you're looking for, <strong>you just can't get around without asking for help</strong>, be it from the information desk or from a friend who you know has spent a lot of time around that technology, history or business section you're interested in.</p><p>Wouldn't it be great if you could do the same to <strong>find your way around the Internet</strong>? Now you can.</p>
+    news_item:
+      answer:
+        topic:
+          created: Answer added to topic %{origin}.
+        user:
+          created: "%{origin} added an answer."
+      question:
+        topic:
+          created: Question added to topic %{origin}.
+        user:
+          created: "%{origin} added a question."
+    notifications:
+      title: Notifications
     sidebar:
       admin: Administrate
       moderate: Moderate
-    about:
-      title: Who are you?
-    notifications:
-      title: Notifications
-    news_item:
-      question:
-        user:
-          created: "%{origin} added a question."
-        topic:
-          created: "Question added to topic %{origin}."
-      answer:
-        user:
-          created: "%{origin} added an answer."
-        topic:
-          created: "Answer added to topic %{origin}."
     unanswered:
       title: Answer

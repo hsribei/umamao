@@ -1,10 +1,9 @@
 pt-BR:
-  unfavorites:
-    create:
-      unauthenticated: "Você precisa de uma conta para remover das favoritas"
-      success:         "Pergunta removida das favoritas"
-
   activerecord:
     models:
-      favorites: Favoritas
       favorite: Favorita
+      favorites: Favoritas
+  unfavorites:
+    create:
+      success: Pergunta removida das favoritas
+      unauthenticated: "Você precisa de uma conta para remover das favoritas"

@@ -1,21 +1,21 @@
 en:
   mailers:
     notifications:
-      new_answer:
-        subject_owner: "%{login} answered your question %{title}"
-        subject_friend: "Your friend %{login} answered the question %{title}"
-        subject_other: "%{login} answered the question %{title}"
-      new_search_result:
-        subject_owner: "%{name} posted a link on your question \"%{title}\""
-        subject_other: "%{name} posted a link on the question \"%{title}\""
-      new_comment:
-        subject: "New comment on question \"%{question}\""
-      give_advice:
-        subject: "We need your advice: %{question_title}"
-        friend_subject: "Your friend needs help: %{question_title}"
-      follow:
-        subject: "%{login} is now following you on %{app}"
       favorited:
         subject: "%{login} added your question as a favorite!"
+      follow:
+        subject: "%{login} is now following you on %{app}"
+      give_advice:
+        friend_subject: "Your friend needs help: %{question_title}"
+        subject: "We need your advice: %{question_title}"
+      new_answer:
+        subject_friend: Your friend %{login} answered the question %{title}
+        subject_other: "%{login} answered the question %{title}"
+        subject_owner: "%{login} answered your question %{title}"
+      new_comment:
+        subject: New comment on question "%{question}"
+      new_search_result:
+        subject_other: "%{name} posted a link on the question \"%{title}\""
+        subject_owner: "%{name} posted a link on your question \"%{title}\""
       report:
-        subject: "Report for the group %{group} of %{app}"
+        subject: Report for the group %{group} of %{app}

@@ -1,21 +1,21 @@
 pt-BR:
+  activerecord:
+    models:
+      vote: Voto
+      votes: Votos
   votes:
+    control:
+      have_voted_down: Desfazer voto
+      have_voted_up: Desfazer voto
+      to_vote_down: "Não gostei"
+      to_vote_up: Gostei
     create:
-      flash_notice: "Obrigado pelo voto!"
-      flash_error:  "Você não pode votar"
+      flash_error: "Você não pode votar"
+      flash_notice: Obrigado pelo voto!
       unauthenticated: "Usuários anônimos não podem votar"
     destroy:
-      flash_notice: "Seu voto foi retirado."
-    control:
-      to_vote_up: "Gostei"
-      to_vote_down: "Não gostei"
-      have_voted_up: "Desfazer voto"
-      have_voted_down: "Desfazer voto"
+      flash_notice: Seu voto foi retirado.
     model:
       messages:
         closed_question: "Você não pode votar em entradas de uma pergunta fechada"
         vote_down_comment: "Comentários não podem receber voto negativo"
-  activerecord:
-    models:
-      votes: Votos
-      vote: Voto

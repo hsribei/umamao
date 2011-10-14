@@ -1,10 +1,9 @@
 pt-BR:
-  favorites:
-    create:
-      unauthenticated: "Você precisa criar uma conta para adicionar às favoritas"
-      success:         "A pergunta foi adicionada às favoritas"
-
   activerecord:
     models:
-      favorites: Favoritas
       favorite: Favorita
+      favorites: Favoritas
+  favorites:
+    create:
+      success: "A pergunta foi adicionada às favoritas"
+      unauthenticated: "Você precisa criar uma conta para adicionar às favoritas"

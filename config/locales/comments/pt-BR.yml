@@ -1,24 +1,24 @@
 pt-BR:
   comments:
-    edit:
-      title: Editar
-    create:
-      flash_notice: "Comentário enviado."
-    update:
-      flash_notice: "Comentário atualizado."
-    destroy:
-      flash_notice: Comentário removido.
-    shared:
-      add_comment: "Adicionar comentário"
-      comment_submit: "Comentar"
-      said: disse
-      reply: Responder
     comment:
       confirm_destroy: "Certeza que você quer remover este comentário?"
     count:
       none: "Adicionar comentário"
       one: "1 comentário"
       other: "%{count} comentários"
+    create:
+      flash_notice: "Comentário enviado."
+    destroy:
+      flash_notice: "Comentário removido."
+    edit:
+      title: Editar
+    shared:
+      add_comment: "Adicionar comentário"
+      comment_submit: Comentar
+      reply: Responder
+      said: disse
+    update:
+      flash_notice: "Comentário atualizado."
   models:
-    comments: Comentários
-    comment: Comentário
+    comment: "Comentário"
+    comments: "Comentários"

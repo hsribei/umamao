@@ -1,69 +1,69 @@
 pt-BR:
-  scaffold:
-    sure: Certeza que você quer remover este(a) %{model}?
-    show: Exibir
-    edit: Editar
-    destroy: Remover
-    back: Voltar
-    update: Atualizar
-    cancel: Cancelar
-    close: Fechar
-    create: Criar
-    new: Adicionar novo %{model}
-    more: "Mais ..."
-    add: Adicionar
-    send: Enviar
-    save: Salvar
-    details: Detalhes
-    done: Pronto
-  time:
-    today: hoje
-    ago: "há %{time}"
+  actions:
+    closed: fechado
+    created: criado
+    deleted: removido
+    updated: atualizado
+  characters_exceded:
+    one: caracter excedente
+    other: caracteres excedentes
+  characters_left:
+    one: caracter restante
+    other: caracteres restantes
+  feeds:
+    feed: RSS
+    post_new_questions: Postar novas perguntas no
+    question: Seguir RSS desta pergunta
+    questions: Seguir RSS de todas as perguntas
+    share_on_twitter: twitter, facebook e outros...
+    tag: "Seguir RSS de tópico"
+    user: "Seguir RSS de usuário"
+  global:
+    by: por
+    current: Atual
+    disable: desativar
+    edit:
+      error: "Erro ao salvar alterações."
+      success: "Alterações salvas."
+    enable: ativar
+    from: de %{site}
+    group_not_found: "A página %{url} não existe"
+    or: ou
+    permission_denied: Acesso negado
+    please_login: "Por favor faça login"
+    preview: Visualizar
+    previous: Anterior
+    share: Compartilhar
+    waiting: Aguarde...
+  languages:
+    any: Qualquer um
+    user: Seus idiomas
   messages:
     success: "%{model} foi %{action}."
   models:
-    question:   A pergunta
-  actions:
-    created:     criado
-    deleted:     removido
-    updated:     atualizado
-    closed:      fechado
-  global:
-    from: "de %{site}"
-    permission_denied: Acesso negado
-    please_login: Por favor faça login
-    group_not_found: "A página %{url} não existe"
-    preview: Visualizar
-    or: ou
-    by: por
-    current: Atual
-    previous: Anterior
-    share: Compartilhar
-    edit:
-      success: 'Alterações salvas.'
-      error: 'Erro ao salvar alterações.'
-    enable: ativar
-    disable: desativar
-    waiting: 'Aguarde...'
-  feeds:
-    question: Seguir RSS desta pergunta
-    questions: Seguir RSS de todas as perguntas
-    tag: Seguir RSS de tópico
-    user: Seguir RSS de usuário
-    feed: RSS
-    post_new_questions: Postar novas perguntas no
-    share_on_twitter: "twitter, facebook e outros..."
-  languages:
-    any:     Qualquer um
-    user:    Seus idiomas
+    question: A pergunta
   number:
     x_time:
-      zero: "Nunca"
       one: "%{count} vez"
       other: "%{count} vezes"
-  characters_left:
-    one: "caracter restante"
-    other: "caracteres restantes"
-  characters_exceded:
-    one: "caracter excedente"
-    other: "caracteres excedentes"
+      zero: Nunca
+  scaffold:
+    add: Adicionar
+    back: Voltar
+    cancel: Cancelar
+    close: Fechar
+    create: Criar
+    destroy: Remover
+    details: Detalhes
+    done: Pronto
+    edit: Editar
+    more: Mais ...
+    new: Adicionar novo %{model}
+    save: Salvar
+    send: Enviar
+    show: Exibir
+    sure: "Certeza que você quer remover este(a) %{model}?"
+    update: Atualizar
+  time:
+    ago: "há %{time}"
+    today: hoje

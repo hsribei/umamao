@@ -1,0 +1,10 @@
+pt-BR:
+  affiliations:
+    create:
+      email_sent: Thanks! Check your e-mail for more instructions.
+    errors:
+      duplicate_email: Someone have already registered wth that e-mail.
+      invalid_email: E-mail is invalid.
+      unknown: An error happened.
+    form:
+      email: Academic e-mail

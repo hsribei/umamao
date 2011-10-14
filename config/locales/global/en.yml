@@ -1,56 +1,69 @@
 en:
-  scaffold:
-    sure: Are you sure you want to delete this %{model} ?
-    show: Show
-    edit: Edit
-    destroy: Delete
-    back: Back
-    update: Update
-    cancel: Cancel
-    close: Close
-    create: Create
-    new: Add new %{model}
-    more: "More ..."
-    add: Add
-    send: Send
-    save: Save
-    details: Details
-  time:
-    today: today
-    ago: "%{time} ago"
+  actions:
+    closed: closed
+    created: created
+    deleted: deleted
+    updated: updated
+  characters_exceded:
+    one: character exceded
+    other: characters exceded
+  characters_left:
+    one: character left
+    other: characters left
+  feeds:
+    feed: Feed
+    post_new_questions: Post new questions to
+    question: Subscribe to this question
+    questions: Subscribe to all questions
+    share_on_twitter: twitter, facebook and more...
+    tag: Subscribe to tag
+    user: Subscribe to user questions
+  global:
+    by: by
+    current: Current
+    disable: Disable
+    edit:
+      error: Error while saving changes.
+      success: Changes saved.
+    enable: enable
+    from: from %{site}
+    group_not_found: The page %{url} doesn't exist
+    or: or
+    permission_denied: Permission denied
+    please_login: Please log in
+    preview: Preview
+    previous: Previous
+    share: share
+    waiting: Wait...
+  languages:
+    any: Any
+    user: My Preferred Languages
   messages:
     success: "%{model} was successfully %{action}."
   models:
-    question:   The question
-  actions:
-    created:     created
-    deleted:     deleted
-    updated:     updated
-    closed:      closed
-  global:
-    from: "from %{site}"
-    permission_denied: Permission denied
-    please_login: Please log in
-    group_not_found: "The page %{url} doesn't exist"
-    preview: Preview
-    or: or
-    by: by
-    current: Current
-    previous: Previous
-    share: share
-  feeds:
-    question: Subscribe to this question
-    questions: Subscribe to all questions
-    tag: Subscribe to tag
-    user: Subscribe to user questions
-    feed: Feed
-    post_new_questions: Post new questions to
-    share_on_twitter: "twitter, facebook and more..."
-  languages:
-    any:     Any
-    user:    My Preferred Languages
+    question: The question
   number:
     x_time:
-      zero: "Never"
       one: "%{count} time"
       other: "%{count} times"
+      zero: Never
+  scaffold:
+    add: Add
+    back: Back
+    cancel: Cancel
+    close: Close
+    create: Create
+    destroy: Delete
+    details: Details
+    done: Done
+    edit: Edit
+    more: More ...
+    new: Add new %{model}
+    save: Save
+    send: Send
+    show: Show
+    sure: Are you sure you want to delete this %{model} ?
+    update: Update
+  time:
+    ago: "%{time} ago"
+    today: today

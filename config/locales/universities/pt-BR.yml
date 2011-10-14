@@ -1,38 +1,38 @@
 pt-BR:
-  universities:
-    index:
-      title: Todas as universidades
-      empty: "Este site não tem nenhuma universidade."
-      filter: "Procurar universidades"
-      newest: Recentes
-      oldest: Antigos
-      name: Nome
-    new:
-      title: Adicionar Universidade
-      submit: Adicionar Universidade
-    edit:
-      title: Configurações
-      submit: Salvar
-    show:
-      title: "%{university}"
-    form:
-      name: "Nome:"
-      sig: "Sigla:"
-      state: "Estado:"
-      open_for_signup: "Aberta para Cadastro de Usuários:"
-      validation_type: "Tipo de Validação:"
-      email_regexp: "Formato de Email (Regexp):"
-    create:
-      welcome: "Universidade Adicionada"
   activerecord:
+    attributes:
+      user:
+        email_regexp: "Formato de Email (Regexp):"
+        name: Nome
+        open_for_signup: "Aberta para Cadastro de Usuários"
+        sig: Sigla
+        state: Estado
+        validation_type: "Tipo de Validação"
     models:
       universities: Universidades
       university: Universidade
-    attributes:
-      user:
-        name: Nome
-        sig: Sigla 
-        state: Estado 
-        open_for_signup: "Aberta para Cadastro de Usuários"
-        validation_type: "Tipo de Validação"
-        email_regexp: "Formato de Email (Regexp):"
+  universities:
+    create:
+      welcome: Universidade Adicionada
+    edit:
+      submit: Salvar
+      title: "Configurações"
+    form:
+      email_regexp: "Formato de Email (Regexp):"
+      name: "Nome:"
+      open_for_signup: "Aberta para Cadastro de Usuários:"
+      sig: "Sigla:"
+      state: "Estado:"
+      validation_type: "Tipo de Validação:"
+    index:
+      empty: "Este site não tem nenhuma universidade."
+      filter: Procurar universidades
+      name: Nome
+      newest: Recentes
+      oldest: Antigos
+      title: Todas as universidades
+    new:
+      submit: Adicionar Universidade
+      title: Adicionar Universidade
+    show:
+      title: "%{university}"

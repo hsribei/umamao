@@ -1,8 +1,7 @@
 pt-BR:
   agreement:
     agree: Li e estou de acordo
-    do_not_agree: Não concordo com os termos.
     continue: Prosseguir
+    do_not_agree: "Não concordo com os termos."
     errors:
-      did_not_agree: |
-        Você deve concordar com os termos de uso e a política de privacidade
+      did_not_agree: "Você deve concordar com os termos de uso e a política de privacidade"

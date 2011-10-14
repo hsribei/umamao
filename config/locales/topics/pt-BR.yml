@@ -1,66 +1,62 @@
 pt-BR:
   activerecord:
     models:
-      topics: Tópicos
-      topic: Tópico
+      topic: "Tópico"
+      topics: "Tópicos"
+  embedded:
+    more: Mais perguntas
+    question:
   topics:
-    index:
-      title: Tópicos
-      questions_count_tab: Nº de Perguntas
-      title_tab: Nome
-      created_at_tab: Recentes
-    edit:
-      title: Editar tópico
-      name: Nome
-      description: Descrição
     common:
       all_tab: Todas as perguntas
+      new_question_list: "Criar lista de exercícios"
       unanswered_tab: Perguntas em aberto
-      new_question_list: Criar lista de exercícios
+    edit:
+      description: "Descrição"
+      name: Nome
+      title: "Editar tópico"
+    embedded:
+      empty: "Não há perguntas sobre este tópico"
+    group_invitation:
+      message: "Você está a um passo de discutir, aprender e ensinar sobre <a href=\"%{link_topic}\">%{topic}</a> e muito mais, basta preencher os dados abaixo."
+    index:
+      created_at_tab: Recentes
+      questions_count_tab: "Nº de Perguntas"
+      title: "Tópicos"
+      title_tab: Nome
+    question_lists:
+      main_topic: "Ver tópico"
+      title: "Listas de exercícios"
     share_body:
-      topic: "Tópico no %{site}: %{title}"
       question_list: "Lista de exercícios no %{site}: %{title}"
+      topic: "Tópico no %{site}: %{title}"
     show:
-      empty: Tópico vazio. Ajude a populá-lo <a href="/questions/new">criando uma nova pergunta</a>.
       email_subscription:
-        notice:
-          subscribed: Você receberá por email novas perguntas no tópico %{topic}.
-          unsubscribed: Você não receberá por email novas perguntas no tópico %{topic}.
         disable: desativar
         enable: ativar
+        notice:
+          subscribed: "Você receberá por email novas perguntas no tópico %{topic}."
+          unsubscribed: "Você não receberá por email novas perguntas no tópico %{topic}."
         text: Receber novas perguntas por email
-      view: Ver tópico
+      empty: "Tópico vazio. Ajude a populá-lo <a href=\"/questions/new\">criando uma nova pergunta</a>."
       registered_students: Alunos matriculados
-    question_lists:
-      title: Listas de exercícios
-      main_topic: Ver tópico
+      view: "Ver tópico"
     sidebar:
-      follow_on_twitter: "Siga este tópico no Twitter:"
       connect_to_twitter: Conectar com o Twitter
       disconnect_from_twitter: Remover conta
-      related_topics: Tópicos relacionados
-      registered_students: Alunos matriculados
-      question_lists: Listas de exercícios
+      follow_on_twitter: "Siga este tópico no Twitter:"
       main: Principal
       more: Mais ...
+      question_lists: "Listas de exercícios"
+      registered_students: Alunos matriculados
+      related_topics: "Tópicos relacionados"
     tooltip:
       describe: "Ajude a descrever o tópico %{title}"
     unanswered:
-      empty: Tópico vazio. Ajude a populá-lo <a href="/questions/new">criando uma nova pergunta</a>.
       all_tab: Todas as perguntas
+      empty: "Tópico vazio. Ajude a populá-lo <a href=\"/questions/new\">criando uma nova pergunta</a>."
       unanswered_tab: Perguntas em aberto
-    group_invitation:
-      message: Você está a um passo de discutir, aprender e ensinar sobre <a href="%{link_topic}">%{topic}</a> e muito mais, basta preencher os dados abaixo.
-    embedded:
-      empty: Não há perguntas sobre este tópico
     user_answers:
       title: "Respostas de %{user} no tópico %{topic}"
     user_questions:
       title: "Perguntas de %{user} no tópico %{topic}"
-  activerecord:
-    models:
-      topic: Tópico
-      topics: Tópicos
-  embedded:
-    question:
-    more: Mais perguntas

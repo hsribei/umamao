@@ -1,15 +1,14 @@
 pt-BR:
   external_accounts:
-    connected_as: "Conectado como: %{name}"
-    disconnect: Desconectar
     connect: Conectar
+    connected_as: "Conectado como: %{name}"
     connected_to:
       success: Conta do %{site} conectada com sucesso.
-    connection_error: |
-      Houve um erro durante a autenticação. Por favor, tente
-      novamente mais tarde.
+    connection_error: "Houve um erro durante a autenticação. Por favor, tente\n\
+      novamente mais tarde.\n"
     dac:
-      code: RA
-      submit: Enviar
       cancel: Cancelar
-      invalid_code: RA inválido.
+      code: RA
+      invalid_code: "RA inválido."
+      submit: Enviar
+    disconnect: Desconectar

@@ -1,29 +1,25 @@
-# Messages for Brazilian Portuguese (Português do Brasil)
-# Exported from translatewiki.net
-# Export driver: syck
-# Author: Luckas Blade
 pt-BR:
   activerecord:
     attributes:
-      page: Página
       js: Javascript
+      page: "Página"
     models:
-      page: Página
-      pages: Páginas
+      page: "Página"
+      pages: "Páginas"
   pages:
     actions:
-      title: Gerenciar páginas
-      create_page: Nova página
-      edit_page: Editar página
+      create_page: "Nova página"
+      edit_page: "Editar página"
+      title: "Gerenciar páginas"
     create:
-      success: Página criada.
+      success: "Página criada."
     edit:
-      title: Editando página
+      title: "Editando página"
     form:
-      language_tip: Língua da página
+      language_tip: "Língua da página"
     index:
-      title: Lista de páginas
+      title: "Lista de páginas"
     new:
-      title: Nova página
+      title: "Nova página"
     update:
-      success: Página atualizada.
+      success: "Página atualizada."
