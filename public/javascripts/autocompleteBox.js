@@ -384,7 +384,7 @@ SearchItem.prototype = {
   html: '<li class="search" />',
 
   render: function () {
-    return $(this.html).text('Buscar por "' + this.query + '"');
+    return $(this.html).text('Search for "' + this.query + '"');
   },
 
   click: function () {

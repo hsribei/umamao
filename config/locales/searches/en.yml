@@ -10,7 +10,7 @@ en:
       empty: Your search did not match any questions.
       form:
         categories: Search for
-        detail: Filter
+        detail: Refine search
         send: Search
       search_text: Questions containing
       tags: within these tags

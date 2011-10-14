@@ -11,7 +11,7 @@ pt-BR:
     index:
       empty: "Não encontramos resultados para sua busca."
       form:
-        categories: Buscar por
+        categories: Filter by
         detail: Detalhar busca
         send: Buscar
       search_text: Perguntas contendo
