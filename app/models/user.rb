@@ -215,7 +215,7 @@ class User
   # are allowed in, if not, they have to do something (like confirm
   # email) before being allowed to log in.
   def active?
-    !self.new? && (self.confirmed_affiliation? || super)
+    true
   end
 
   def confirmed_affiliation?
