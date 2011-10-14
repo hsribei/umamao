@@ -65,7 +65,7 @@ module Support
       response.instance_variable_set(:@body, clean_body)
       response
     rescue *POSSIBLE_FETCH_ERRORS
-      add_error(@fetcher, $!)
+      add_error(@fetcher, $!) if $!.is_a?(URI::InvalidURIError)
       EmptyResponse.new
     end
 
