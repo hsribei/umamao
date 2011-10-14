@@ -1,0 +1,6 @@
+en:
+  editor:
+    add_image:
+      title: Add image
+      upload: Choose an image
+      url: or type an URL
