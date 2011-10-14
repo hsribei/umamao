@@ -23,9 +23,9 @@ pt-BR:
       unanswered_tab: Responda
       users: "usuários"
     landing:
-      headline: "Finally, um balcão de informações para a Internet."
+      headline: "Finalmente, um balcão de informações para a Internet."
       invitation_only: "Por enquanto, você precisa de um convite para conseguir se cadastrar."
-      pitch: "<p>Quando você vai à biblioteca, a não ser que você saiba <em>exatamente</em> o que está procurando, <strong>é impossível se encontrar sem pedir ajuda</strong>, seja no balcão de informações ou de um amigo que você sabe que conhece bem as prateleiras certas para o que você está procurando.</p><p>Não ia ser ótimo se você pudesse fazer o mesmo na Internet?</strong>? Agora você pode.</p>"
+      pitch: "<p>Quando você vai à biblioteca, a não ser que você saiba <em>exatamente</em> o que está procurando, <strong>é impossível se encontrar sem pedir ajuda</strong>, seja no balcão de informações ou de um amigo que você sabe que conhece bem as prateleiras certas para o que você está procurando.</p><p><strong>Não ia ser ótimo se você pudesse fazer o mesmo na Internet?</strong> Agora você pode.</p>"
     news_item:
       answer:
         topic:
