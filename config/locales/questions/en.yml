@@ -158,9 +158,9 @@ en:
       tooltip: Show questions tagged %{tag}
     tip:
       answer: answering questions;
-      call_to_action: "You can help:"
+      call_to_action: "You can help by:"
       explanation: Open questions are questions that have no answers with a positive number of votes.
-      vote: conting on existing answers.
+      vote: voting on existing answers.
     unanswered:
       empty: This group does not have any unanswered questions.
       expert: Experts
