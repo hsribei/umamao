@@ -118,7 +118,7 @@ private
                    else
                      html = Nokogiri::HTML(response_body)
                      html.xpath('//script').remove
-                     truncate(html.xpath('//body').text,
+                     truncate(html.xpath('//p').text,
                               :length => SUMMARY_SIZE,
                               :omission => ' …',
                               :separator => ' ')
