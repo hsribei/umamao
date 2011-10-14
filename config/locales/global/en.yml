@@ -4,6 +4,12 @@ en:
     created: created
     deleted: deleted
     updated: updated
+  characters_exceded:
+    one: character exceded
+    other: characters exceded
+  characters_left:
+    one: character left
+    other: characters left
   feeds:
     feed: Feed
     post_new_questions: Post new questions to
@@ -15,6 +21,11 @@ en:
   global:
     by: by
     current: Current
+    disable: Disable
+    edit:
+      error: Error while saving changes.
+      success: Changes saved.
+    enable: enable
     from: from %{site}
     group_not_found: The page %{url} doesn't exist
     or: or
@@ -23,6 +34,7 @@ en:
     preview: Preview
     previous: Previous
     share: share
+    waiting: Wait...
   languages:
     any: Any
     user: My Preferred Languages
@@ -43,6 +55,7 @@ en:
     create: Create
     destroy: Delete
     details: Details
+    done: Done
     edit: Edit
     more: More ...
     new: Add new %{model}
