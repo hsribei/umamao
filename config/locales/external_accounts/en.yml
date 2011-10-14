@@ -1,0 +1,13 @@
+en:
+  external_accounts:
+    connect: Connect
+    connected_as: "Connected as: %{name}"
+    connected_to:
+      success: "%{site} account connected with success."
+    connection_error: There was an error during authentication. Please try again later.
+    dac:
+      cancel: Cancel
+      code: RA
+      invalid_code: Invalid RA
+      submit: Submit
+    disconnect: Disconnect
