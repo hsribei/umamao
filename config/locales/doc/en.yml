@@ -1,33 +1,6 @@
 en:
   doc:
-    chat:
-      title: Chat Support
-    plans:
-      15millions: 15 millions page views/month
-      1million: 1 million page views/month
-      247_all_support: Web based, email, chat and phone 24/7 support
-      5millions: 5 millions page views/month
-      all_support: Web based, email, chat and phone support
-      basic_restrictions: No custom ads and no fully customizable UI
-      beta_info: For now all sites are free and all sites benefit from the same options as the Optimum plan, except for the support which is only web based, email and chat.
-      big_sites: Big Traffic Sites
-      custom_ads: Use your own ads
-      custom_analytics: Traffic stats
-      custom_domain: Custom domain
-      custom_themes: Make use of our pre-made custom themes
-      custom_ui: Fully customizable UI
-      free_plan: free plan
-      getting_popular: Getting Popular
-      huge_sites: Huge Traffic Sites
-      month: month
-      page_views: For Small/Private Sites
-      plans: Plans
-      private_site: Enable private/public access
-      small_private: Small/Private Sites
-      start_monetizing: start monetizing
-      support: Support
-      title: Plans and pricing
-      unlimited: Unlimited traffic each month
-      we_offer: We also offer a
-      web_support: Web based support
-      with_unlimited: with unlimited traffic with no custom ads and no custom domain.
+    privacy:
+      title: Privacy policy
+    tos:
+      title: Terms of use
