@@ -6,6 +6,7 @@ class SearchResult
   include Support::Voteable
   include ApplicationHelper
   include ActionView::Helpers::TextHelper
+  include Support::Xpath
 
   key :_id, String
   key :_type, String
@@ -103,8 +104,10 @@ private
   def fill_summary
     summary =
       truncate(Nokogiri::HTML(response_body).
-                 xpath("//meta[translate(@name, '#{('A'..'Z').to_a.to_s}', " <<
-                         "'#{('a'..'z').to_a.to_s}')='description']/@content").
+                 xpath("//meta[" <<
+                         case_insensitive_xpath(:attribute => :name,
+                                                :value => :description) <<
+                         "]/@content").
                  text,
                :length => SUMMARY_SIZE,
                :omission => ' …',
