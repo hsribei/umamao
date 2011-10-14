@@ -13,6 +13,9 @@ en:
       title: Page not found.
     options_label: "Other things to try:"
     search: Search
+    template:
+      body: ""
+      header: ""
     unprocessable_entity:
       explanation: Maybe you tried to change something you didn't have access to.
       title: The change you wanted was rejected.
