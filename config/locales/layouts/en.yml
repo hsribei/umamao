@@ -50,3 +50,12 @@ en:
       widgets: Widgets
     notifications:
       message: If you do not want to receive automatic notifications from %{domain} anymore, change your preferences in the notifications screen.
+    settings:
+      account_tab: Conta
+      external_accounts_tab: External accounts
+      follow_topics_tab: Topics
+      notifications_tab: Notifications
+      password_tab: Change password
+      profile_tab: Profile
+      resume_tab: Study/Work
+      title: Settings
