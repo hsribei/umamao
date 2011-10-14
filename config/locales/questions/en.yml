@@ -11,7 +11,7 @@ en:
         created_at: Asked
         language: Language
         tags: Tags
-        title: Title
+        title: What do you want to know?
         topic_ids: Topics
         updated_at: updated
         updated_by: updated by
@@ -42,7 +42,7 @@ en:
       title: Flag question
     form:
       adult_content: This question contains adult material.
-      body_tip: What is your question? Be descriptive.
+      body_tip: What's your question? Be descriptive.
       details: Details about your question (optional)
       language_tip: Select the language the question is asked in.
       tags_tip: Use tags to add more information about your question.
@@ -50,7 +50,7 @@ en:
       active: Active
       active_tooltip: Questions that have been updated recently
       all_tab: All questions
-      ask_question: Ask question
+      ask_question: New question
       empty: No one has asked any questions yet. Be the first!
       help_to_answer: Help us answer
       hot: Hot
@@ -80,9 +80,9 @@ en:
       success: Question moved to %{group}
     new:
       add_details: Add details
-      ask: Ask
+      ask: Post Your Question
       how_to_ask: How to ask
-      title: Ask question
+      title: Ask Question
     question:
       accepted_tooltip: This question has an answer that has been accepted
     retag:
@@ -127,6 +127,7 @@ en:
         one: This question has been viewed 1 time
         other: This question has been viewed %{count} times
       related_questions: Related questions
+      request_answer: "Ask to Answer"
       request_closing: Request closing
       request_closing_details: Request to close this question
       requested_users: Users asked to answer

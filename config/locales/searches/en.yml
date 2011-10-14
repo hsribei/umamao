@@ -2,9 +2,16 @@ en:
   searches:
     form:
       clear: Clear
+      search_all: Search questions, people and topics
       search_box_title: Check whether your question has already been asked
+      select_topics: Select topics
       tags_tip: Use [tag] to specify tags.
     index:
       empty: Your search did not match any questions.
+      form:
+        categories: Search for
+        detail: Filter
+        send: Search
       search_text: Questions containing
       tags: within these tags
+      title: Results
