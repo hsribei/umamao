@@ -1,11 +1,9 @@
 pt-BR:
   welcome:
-    feedback:
-      captcha_error: Resolva um cálculo matemático simples, por favor.
-      feedback_description: "Detalhes:"
-      feedback_title: "Assunto:"
-      title: Críticas, sugestões, elogios?
-      feedback_email: "Email (opcional):"
+    landing:
+      headline: Finally, um balcão de informações para a Internet.
+      pitch: <p>Quando você vai à biblioteca, a não ser que você saiba <em>exatamente</> o que está procurando, <strong>é impossível se encontrar sem pedir ajuda</strong>, seja no balcão de informações ou de um amigo que você sabe que conhece bem as prateleiras certas para o que você está procurando.</p><p>Não ia ser ótimo se você pudesse fazer o mesmo na Internet?</strong>? Agora você pode.</p>
+      invitation_only: Por enquanto, você precisa de um convite para conseguir se cadastrar.
     home:
       all_tab: Leia
       unanswered_tab: Responda
@@ -29,8 +27,6 @@ pt-BR:
       browse_all_or_by_tags: "Veja a %{full_list_of_questions} ou %{browse_by_tags}"
       full_list_of_questions: "lista completa de perguntas"
       browse_by_topics: "navegue por tópicos"
-      looking_for: "Procurando %{link}?"
-      exercises: listas de exercícios
     sidebar:
       admin: Administrar
       moderate: Moderar

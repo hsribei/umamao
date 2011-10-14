@@ -1,7 +1,10 @@
 pt-BR:
   layouts:
+    footer:
+      content_license: |
+        Todo o conteúdo gerado por usuários está sob uma <a href="http://creativecommons.org/licenses/by-sa/2.5/br/" target="_blank" rel="license">licença Creative Commons</a>, com atribuição obrigatória.
     application:
-      title: "Respostas maduras"
+      title: "Busca Colaborativa"
       questions: Perguntas
       questions_in: Perguntas em
       questions_tagged: tópico(s)

@@ -1,55 +1,39 @@
 en:
   welcome:
-    facts:
-      prices:
-        cols:
-          onsite: on site
-        stackexchange:
-          small: $129/month
-          medium: $999/month
-          large: $1299/month
-          onsite: $2500/month
-        shapado:
-          small: probably like $50 to $100/month on most hosting providers
-          medium: <=== ditto
-          large: probably like $500
-          onsite: probably $0 on your own server
-      features:
-        cols:
-          adaptable: adaptable
-          multitopic: multi-topic
-          multilanguage: multi-language
-          foss: free/open source
-          joel: will i make joel richer?
-        stackexchange:
-          adaptable: no
-          multitopic: no
-          multilanguage: no
-          foss: no
-          joel: yes!
-        shapado:
-          adaptable: yes!
-          multitopic: yes!
-          multilanguage: yes!
-          foss: yes!
-          joel: "no :/"
-    feedback:
-      title: Send your feedback
-      feedback_title: Title
-      feedback_description: Description
-      email_description: Please provide your email address so we can answer your message
-      captcha_error: Please, solve a simple math operation
-    index:
-      hot:     Hot
-      active:  Active
-      recent_questions: Recent questions
-      quick_question: Ask a question, we will find someone to answer
-      create_own_site: "Create your own Q&amp;A site in 8 seconds for free"
-      browse_all_or_by_tags: "See the %{full_list_of_questions} or %{browse_by_tags}"
-      full_list_of_questions: full list of questions
-      browse_by_tags: browse by tags
-    confirm_age:
-      warning: "WARNING: This page may contain explicit adult material."
-      notice: You may only enter this page if you are at least 18 years of age, or at least the age of majority in the jurisdiction where you reside or from which you access this page.
-      under_18: "I am under 18"
-      over_18: "I am over 18"
+    landing:
+      headline: Finally, an information desk for the Internet.
+      pitch: <p>When you go to a library, unless you know <em>exactly</em> what you're looking for, <strong>you just can't get around without asking for help</strong>, be it from the information desk or from a friend who you know has spent a lot of time around that technology, history or business section you're interested in.</p><p>Wouldn't it be great if you could do the same to <strong>find your way around the Internet</strong>? Now you can.</p>
+      invitation_only: For the moment, you need an invitation to be able to sign up.
+    home:
+      all_tab: News feed
+      unanswered_tab: Answer
+      notifications_tab: Notifications
+      empty_news_feed_explanation: |
+        This is your news feed: you choose %{users} and %{topics} to follow; when there's new content from them, you'll see it here. That way, your home page is personalized to show stuff that <em>you</em> find relevant.
+        <p>(While there's nothing in your news feed, here are the latest questions.)</p>
+
+      users: users
+      topics: topics
+      browse_all_or_by_tags: "See %{full_list_of_questions} or %{browse_by_tags}"
+      full_list_of_questions: "all questions"
+      browse_by_topics: "browse by topics"
+    sidebar:
+      admin: Administrate
+      moderate: Moderate
+    about:
+      title: Who are you?
+    notifications:
+      title: Notifications
+    news_item:
+      question:
+        user:
+          created: "%{origin} added a question."
+        topic:
+          created: "Question added to topic %{origin}."
+      answer:
+        user:
+          created: "%{origin} added an answer."
+        topic:
+          created: "Answer added to topic %{origin}."
+    unanswered:
+      title: Answer

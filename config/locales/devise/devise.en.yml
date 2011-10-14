@@ -17,13 +17,27 @@ en:
     sessions:
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
+      link: Log in
+      new:
+        remember_me: Remember me
+        submit: Sign me in
+        sign_in: Sign in
     passwords:
+      new:
+        submit: "Send me reset instructions"
+        forgot_your_password: Want to reset your password?
+      link: "Forgot your password?"
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
     confirmations:
+      new:
+        resend_confirmation_instructions: You need to confirm your email address
+        submit: Send me instructions
+      link: Didn't get the email confirmation link?
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
+      link: Sign up
       signed_up: 'You have signed up successfully. If enabled, a confirmation was sent to your e-mail.'
       updated: 'You updated your account successfully.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
