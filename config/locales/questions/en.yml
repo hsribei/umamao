@@ -127,11 +127,10 @@ en:
         one: This question has been viewed 1 time
         other: This question has been viewed %{count} times
       related_questions: Related questions
-      request_answer: Ask to Answer
+      request_answer: Invite to Answer
       request_closing: Request closing
       request_closing_details: Request to close this question
       requested_users: Users asked to answer
-      retag: Retag
       retract_request: You have already made a request. Would you like to retract it?
       share: Share this question on
       share_on: Share this question on %{site}

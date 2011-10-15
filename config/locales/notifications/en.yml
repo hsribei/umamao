@@ -1,0 +1,9 @@
+en:
+  notifications:
+    follow: "%{user} is following you on Umamao"
+    new_answer: "%{user} answered the question \"%{question}\""
+    new_answer_request: "%{user} invited you to answer the question \"{question}\""
+    new_comment: "%{user} commented on the question \"%{question}\""
+    new_question: "%{user} asked \"%{question}\" on topic %{topic}."
+    new_search_result: "%{user} added a link to the question \"%{question}\""
+

@@ -2,6 +2,8 @@ en:
   searches:
     form:
       clear: Clear
+      follow_topics: "Search topics"
+      ignore_topics: "Search topics"
       search_all: Search questions, people and topics
       search_box_title: Check whether your question has already been asked
       select_topics: Select topics
@@ -15,3 +17,27 @@ en:
       search_text: Questions containing
       tags: within these tags
       title: Results
+    question:
+      answers:
+        one: 1 answer
+        other: "%{count} answers"
+      followers:
+        one: 1 follower
+        other: "%{count} followers"
+    topic:
+      followers:
+        one: 1 follower
+        other: "%{count} followers"
+      questions:
+        one: 1 question
+        other: "%{count} questions"
+    user:
+      answers:
+        one: 1 answer
+        other: "%{count} answers"
+      followers:
+        one: 1 follower
+        other: "%{count} followers"
+      questions:
+        one: 1 question
+        other: "%{count} questions"

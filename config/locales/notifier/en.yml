@@ -1,5 +1,10 @@
 en:
   notifier:
+    closed_for_signup:
+      goodbye: "In case you didn't sign up to Umamao, please, ignore this email."
+      greeting: "Hi,"
+      message: "\n\
+        We still haven't opened to %{university}. Your email has been stored and you'll be notified as soon as we open to your university."
     favorited:
       message1: "%{user} added your question as a favorite on %{group}"
       message2: "The text of your question:"
@@ -32,8 +37,29 @@ en:
       message2: Anonymous user sent a feedback from IP address %{ip}
       message3: "Email address: %{email}"
       message4: "Subject: %{subject}"
+    new_question:
+      author: "%{user} added a new question to topic %{topic}:"
+      disable_html: "If you no longer wish to receive new question notifications on this topic by email, please visit <a href='%{disable_link}'>the topic page</a>."
+      disable_text: "If you no longer wish to receive new question notifications on this topic by email, please visit the topic page at:"
+      link_label: "To see the answer, please visit:"
+      question_link: |-
+        Check out the question at:
+        %{link}
     new_search_result:
       author: "%{user} added a link to the question \"%{question_link}\""
+    new_user_suggestion:
+      message: "%{origin} invited you to follow the topic %{entry}."
+    non_academic:
+      goodbye: "In case you haven't signed up for Umamao, please ignore this email."
+      greeting: "Hello,"
+      message: "\n\
+        We haven't opened up to non-academic users yet. We're recorded your email and will let you know when we're open to the general public. The list of currently-supported universities is:\n"
+
+
+
+
+
+      message2: To suggest a new university, please visit http://feedback.umamao.com or send us an email.
     report:
       message1: Report for group %{group.name}
       message2: Since %{since}
@@ -42,6 +68,10 @@ en:
       message5: "%{votes} votes were made"
       message7: The account has %{users} users.
       message8: Visit your group at %{link}
+    signup:
+      goodbye: "P.S.: If you didn't sign up for a Umamao account, please ignore this email."
+      greeting: "Hello,"
+      message: "Thank you for joining %{link}! To finish your signup, you need to verify your email address by clicking the link belowi: "
     survey:
       message: |
         You've been using %{application_name} for one week now, and we'd really
@@ -56,3 +86,5 @@ en:
         Thanks a lot!
 
       subject: How's everything goin'?
+    user_accepted_suggestion:
+      message: "%{user} accepted your suggestion and followed the topic %{entry}."

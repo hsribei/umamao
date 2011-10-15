@@ -1,0 +1,38 @@
+en:
+  settings:
+    account:
+      edit:
+        title: Account
+    avatars:
+      create:
+        error: "Couldn't update your profile picture."
+        success: Sucess! Your profile picture was updated.
+      destroy:
+        error: Something went wrong, we couldn't delete your profile picture.
+        success: It's gone!
+      edit:
+        destroy: Delete
+        submit: Send
+        title: Change picture
+        upload: Choose a picture (max %{limit})
+      update:
+        error: "Something went wrong, we couldn't update your profile picture."
+    follow_topics:
+      edit:
+        followed: "Topics followed"
+        ignored: "Topics ignored"
+    notifications:
+      edit:
+        description: "Which events would you liked to receive email updates about?"
+        new_answer: "New answers and comments on my entries"
+        submit: Update
+        title: "Notifications"
+    password:
+      edit:
+        error_changing_password: Couldn't change your password.
+        new_password_saved: New password saved.
+        submit: Change password
+    profile:
+      edit:
+        change_picture: Change picture
+        title: "Profile information"
