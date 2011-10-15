@@ -5,8 +5,8 @@ en:
       votes: Votes
   votes:
     control:
-      have_voted_down: Click to undo your down vote
-      have_voted_up: Click to undo your up vote
+      have_voted_down: Click to undo your downvote
+      have_voted_up: Click to undo your upvote
       to_vote_down: Click to vote down
       to_vote_up: Click to vote up
     create:

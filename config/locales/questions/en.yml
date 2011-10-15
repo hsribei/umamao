@@ -120,18 +120,17 @@ en:
       follow_up_questions: Follow up questions
       last_activity: Latest activity
       needs_connection:
-        message: In order to share on %{site}, you must connect\n\ your account. By clicking on the "Connect" button below, you will be\n\ redirected to %{site} site to authorize the use of your\n\ account. You will return back here at the end on the\n\ authorization process.
+        message: Click "Connect" below to start sharing on your %{site} account.
         title: Connect your account
-      needs_permission: Apparently, your account on %{site} is not connected with\n\ the necessary permissions to allow this action. Click\n\ "Connect" to enable them.
+      needs_permission: Apparently, your account on %{site} is not connected with the necessary permissions to allow this action. Click "Connect" to enable them.
       question_views:
         one: This question has been viewed 1 time
         other: This question has been viewed %{count} times
       related_questions: Related questions
-      request_answer: Ask to Answer
+      request_answer: Invite to Answer
       request_closing: Request closing
       request_closing_details: Request to close this question
       requested_users: Users asked to answer
-      retag: Retag
       retract_request: You have already made a request. Would you like to retract it?
       share: Share this question on
       share_on: Share this question on %{site}

@@ -15,6 +15,13 @@ en:
       topics: topics
       unanswered_tab: Answer
       users: users
+      hot: Popular
+      notifications_tab: Notifications
+      quick_question: Ask a question
+      recent_activities: News Feed
+      topics: topics
+      unanswered_tab: To Answer
+      users: users
     landing:
       headline: Finally, an information desk for the Internet.
       invitation_only: For the moment, you need an invitation to be able to sign up.

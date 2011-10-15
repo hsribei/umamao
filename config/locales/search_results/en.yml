@@ -38,3 +38,7 @@ en:
       flash_notice: Successfully sent link.
     destroy:
       flash_notice: Successfully removed link.
+    search_result:
+      flag: Flag
+    show:
+      flagged_as: Flagged as
