@@ -14,14 +14,14 @@ class Hash
   end
 end
 
-# Preserve original encoding of characters.
-# Must be loaded after Hash#to_yaml monkey patch
-# so that it can be properly loaded
-require 'yaml_waml'
-
 namespace :i18n do
   desc 'Canonize i18n files (deep sort keys)'
   task :canonize_files, :only, :needs  => :environment do |t, args|
+    # Preserve original encoding of characters.
+    # Must be loaded after Hash#to_yaml monkey patch
+    # so that it can be properly loaded
+    require 'yaml_waml'
+
     targets = args[:only].is_a?(String) ? args[:only].split(':') : ['en', 'pt-BR']
 
     Dir['./config/locales/*'].each do |directory|
