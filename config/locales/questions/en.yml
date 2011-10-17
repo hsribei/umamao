@@ -11,7 +11,7 @@ en:
         created_at: Asked
         language: Language
         tags: Tags
-        title: What are you looking for?
+        title: What do you want to know?
         topic_ids: Topics
         updated_at: updated
         updated_by: updated by
