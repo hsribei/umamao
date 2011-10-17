@@ -2,8 +2,8 @@ en:
   searches:
     form:
       clear: Clear
-      follow_topics: "Search topics"
-      ignore_topics: "Search topics"
+      follow_topics: Search topics
+      ignore_topics: Search topics
       search_all: Search questions, people and topics
       search_box_title: Check whether your question has already been asked
       select_topics: Select topics

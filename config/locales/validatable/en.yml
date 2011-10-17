@@ -1,10 +1,10 @@
 en:
   validatable:
-    can't be empty: "can't be empty"
-    doesn't match confirmation: "doesn't match the confirmation"
-    has already been taken: "has already been taken"
-    is invalid: "is invalid"
-    is not in the list: "is not on the list"
-    is reserved: "is reserved"
-    must be a number: "must be a number"
+    can't be empty: can't be empty
+    doesn't match confirmation: doesn't match the confirmation
+    has already been taken: has already been taken
+    is invalid: is invalid
+    is not in the list: is not on the list
+    is reserved: is reserved
+    must be a number: must be a number
     must be accepted: must be accepted
