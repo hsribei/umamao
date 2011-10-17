@@ -88,3 +88,8 @@ en:
       subject: How's everything goin'?
     user_accepted_suggestion:
       message: "%{user} accepted your suggestion and followed the topic %{entry}."
+    wait:
+      goodbye: If you didn't sign up for a Umamao account, please ignore this email.
+      greeting: Hello,
+      message: "\n\
+        Apparently the email %{email} doesn't belong to a university we're accepting sign ups from right now. However it's possible that we do accept emails from your university but our system couldn't recognize it. Check out if your university's name appears in the list below and email us on %{contact} so that we can grant you access. "
