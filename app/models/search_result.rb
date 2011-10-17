@@ -58,7 +58,51 @@ class SearchResult
     question.topics
   end
 
+  def on_add_vote(v, voter)
+    if v > 0
+      self.user.update_reputation(:answer_receives_up_vote, self.group)
+      voter.on_activity(:vote_up_answer, self.group)
+      self.question.on_answer_votes_balance_up self
+    else
+      self.user.update_reputation(:answer_receives_down_vote, self.group)
+      voter.on_activity(:vote_down_answer, self.group)
+      self.question.on_answer_votes_balance_down self
+    end
+
+    UserTopicInfo.vote_added!(self, v)
+    update_question_answered_with
+  end
+
+  def on_remove_vote(v, voter)
+    if v > 0
+      self.user.update_reputation(:answer_undo_up_vote, self.group)
+      voter.on_activity(:undo_vote_up_answer, self.group) if voter
+      self.question.on_answer_votes_balance_down self
+    else
+      self.user.update_reputation(:answer_undo_down_vote, self.group)
+      voter.on_activity(:undo_vote_down_answer, self.group) if voter
+      self.question.on_answer_votes_balance_up self
+    end
+
+    UserTopicInfo.vote_removed!(self, v)
+    update_question_answered_with
+  end
+
 private
+  def update_question_answered_with
+    # Update question 'answered' status
+    if !self.question.answered && self.votes_average >= 1
+      Question.set(self.question.id, {:answered_with_id => self.id})
+    elsif self.question.answered_with_id == self.id && self.votes_average < 1
+      other_good_answer = self.question.answers.detect { |answer|
+        answer.votes_average >= 1
+      }
+
+      answered_with_id = other_good_answer ? other_good_answer.id : nil
+
+      Question.set(self.question.id, {:answered_with_id => answered_with_id})
+    end
+  end
 
   def has_answer?
     !!answer

@@ -222,7 +222,7 @@ class Question
   # keep max_votes, min_votes and is_open up to date when a user
   # votes up an answer of self
   def on_answer_votes_balance_up(answer)
-    all_votes = self.answers.map{ |a| a.votes_average }
+    all_votes = self.search_results.map{ |a| a.votes_average }
     self.min_votes = all_votes.empty? ? 0 : all_votes.min
 
     if answer.votes_average > self.max_votes
@@ -242,7 +242,7 @@ class Question
   # keep max_votes, min_votes and is_open up to date when a user
   # votes down an answer of self
   def on_answer_votes_balance_down(answer)
-    all_votes = self.answers.map{ |a| a.votes_average }
+    all_votes = self.search_results.map{ |a| a.votes_average }
     self.max_votes = all_votes.empty? ? 0 : all_votes.max
 
     if answer.votes_average < self.min_votes
