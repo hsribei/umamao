@@ -8,10 +8,6 @@
   .url
     %p
       = shorten_url(search_result.url)
-  .summary
-    - if search_result.summary.present?
-      %p
-        = search_result.summary
   - if !hide_controls
     .controls
       .actions
