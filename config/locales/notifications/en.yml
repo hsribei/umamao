@@ -6,4 +6,3 @@ en:
     new_comment: "%{user} commented on the question \"%{question}\""
     new_question: "%{user} asked \"%{question}\" on topic %{topic}."
     new_search_result: "%{user} added a link to the question \"%{question}\""
-

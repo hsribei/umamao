@@ -1,31 +1,31 @@
 en:
   user_suggestions:
     delete:
-      notice: "Invitation deleted"
+      notice: Invitation deleted
     notifications:
       accepted_user_suggestion: "%{user} accepted your invitation and followed the topic %{topic}"
       new_user_suggestion: "%{user} invited you to follow the topic %{topic}"
     refuse:
-      notice: "Invitation refused"
+      notice: Invitation refused
     suggested:
-      suggest: "Suggest a topic"
-      suggest_to: "Invite someone to this topic"
-      user: "Topic Invitations"
+      suggest: Suggest a topic
+      suggest_to: Invite someone to this topic
+      user: Topic Invitations
     suggested_by:
       one: Invited by %{user}
       other: Invited by %{user} and %{others}
-    topic: "Invite to topic"
-    user: "Suggest topics"
+    topic: Invite to topic
+    user: Suggest topics
     user_follows_nothing: "%{user} doesn't follow any topics yet."
     user_suggest:
       notice:
         already_follow: "%{user} already follows the topic %{topic}"
-        invalid_topic: "This topic doesn't exist"
+        invalid_topic: This topic doesn't exist
         ok: "%{user} will receive an invitation to topic %{topic}"
-        suggestion_exists: "You've already invited %{user} to topic %{topic}"
-        user_is_origin: "You can't invite yourself to a topic"
+        suggestion_exists: You've already invited %{user} to topic %{topic}
+        user_is_origin: You can't invite yourself to a topic
       suggestion_box:
-        friend: "Suggested by you. Awaiting confirmation."
+        friend: Suggested by you. Awaiting confirmation.
         self_html:
           one: Suggest by %{origin} and one more person
           other: Suggested by %{origin} and %{count} other people

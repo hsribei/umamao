@@ -2,7 +2,7 @@ en:
   mailers:
     notifications:
       closed_for_signup:
-        subject: "Signing up for Umamao"
+        subject: Signing up for Umamao
       favorited:
         subject: "%{login} added your question as a favorite!"
       follow:
@@ -17,7 +17,7 @@ en:
       new_comment:
         subject: New comment on question "%{question}"
       new_question:
-        subject: "New question on topic %{topic}"
+        subject: New question on topic %{topic}
       new_search_result:
         subject_other: "%{name} posted a link on the question \"%{title}\""
         subject_owner: "%{name} posted a link on your question \"%{title}\""
@@ -25,5 +25,5 @@ en:
       report:
         subject: Report for the group %{group} of %{app}
       signup:
-        subject: "Please confirm this is your email on Umamao"
+        subject: Please confirm this is your email on Umamao
       user_accepted_suggestion: "%{user} accepted your suggestion and followed the topic %{entry}"
