@@ -84,7 +84,7 @@
   .secondary-navigation
     - tabs_tag :namespace => :welcome_home, :open_tabs => { :class => :tabs } do |tab|
       = tab.link 'Link', '#', :id => 'link', :class => 'current'
-      = tab.answer 'Nova Resposta', '#', :id => 'answer'
+      = tab.answer 'New Answer', '#', :id => 'answer'
   #link
     = form_for(@search_result,
                :url => question_search_results_path(@question.id, :format => :js),
