@@ -1,12 +1,12 @@
 en:
   ads:
     ad_links: Add a new %{type} ad
-    title: Add a new %{type} ad
+    create:
+      success: Ad was successfully created.
+    index:
+      add_adbard: Add a new Ad Bard ad
+      add_adsense: Add a new Google AdSense ad
+      title: Ads
     name: "Name:"
     position: "Position:"
-    index:
-      title: Ads
-      add_adsense: Add a new Google AdSense ad
-      add_adbard: Add a new Ad Bard ad
-    create:
-      success: "Ad was successfully created."
+    title: Add a new %{type} ad

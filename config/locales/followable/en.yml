@@ -1,0 +1,38 @@
+en:
+  followable:
+    flash:
+      follow: You're following %{followable}
+      unfollow: You've unfollowed %{followable}
+    follow: Follow
+    followers:
+      link:
+        one: <a href="%{link}" data-count="%{count}">1 follower</a>
+        other: <a href="%{link}" data-count="%{count}">%{count} followers</a>
+      one: 1 follower
+      other: "%{count} followers"
+      question:
+        link:
+          one: " <a href=\"%{link}\">1 person</a> follows this question."
+          other: <a href="%{link}">%{count} people</a> follow this question.
+        one: 1 person follows this question.
+        other: "%{count} people follow this question."
+      top_answerers: Enthusiasts
+    following:
+      link:
+        one: Following <a href="%{link}">1 person</a>
+        other: Following <a href="%{link}">%{count} people</a>
+      one: Following 1 person
+      other: Following %{count} people
+    suggestions:
+      topics: Topics suggestions
+      users: Users suggestions
+    topics:
+      link:
+        one: Following <a href="%{link}">1 topic</a>
+        other: Following <a href="%{link}">%{count} topics</a>
+      none: Following no topics
+      one: Following 1 topic
+      other: Following %{count} topics
+    unfollow: Unfollow
+    user_suggestions:
+      topics: User's topic suggestions

@@ -1,57 +1,59 @@
 pt-BR:
   layouts:
     application:
-      title: "Respostas maduras"
-      questions: Perguntas
-      questions_in: Perguntas em
-      questions_tagged: tópico(s)
       ask_question: Fazer Pergunta
-      tags: Tópicos
-      users: Usuários
-      unanswered: Sem Resposta
-      pages: Páginas
-      logout: Sair
-      logged: %{login}
-      search: Pesquisar
       forgot: Esqueceu?
-      log_in: Entrar
-      signup: Faça seu cadastro!
-      signup_button: Confirmar
-      settings: Configurações
+      home: "Início"
       languages: Idiomas
+      log_in: Entrar
+      logged: "%{login}"
+      logout: Sair
+      manage_ads: "Gerenciar anúncios"
       moderate: Moderar
-      manage_ads: Gerenciar anúncios
-      home: Início
-      profile: Perfil
-      subscribe: Assinar
-      welcome_from: Bem-vindo(a)! Você pode
-      now: !
+      now:
       openid:
         explaination: "Escolha uma conta que você quer usar para se cadastrar ou fazer login:"
+      pages: "Páginas"
+      profile: Perfil
+      questions: Perguntas
+      questions_in: Perguntas em
+      questions_tagged: "tópico(s)"
+      search: Pesquisar
+      settings: "Configurações"
+      signup: "Faça seu cadastro!"
+      signup_button: Confirmar
+      subscribe: Assinar
+      tags: "Tópicos"
+      title: Busca Colaborativa
+      unanswered: Sem Resposta
+      users: "Usuários"
+      welcome_from: "Bem-vindo(a)! Você pode"
+    footer:
+      content_license: "Todo o conteúdo gerado por usuários está sob uma <a href=\"http://creativecommons.org/licenses/by-sa/2.5/br/\" target=\"_blank\" rel=\"license\">licença Creative Commons</a>, com atribuição obrigatória.\n"
     manage:
-      dashboard: Principal
-      properties: Propriedades
-      widgets: Widgets
-      actions: Ações
-      stats: Estatísticas
-      members: Membros
-      reputation: Reputação
-      content: Conteúdo
-      theme: Tema
-      domain: Domínio
-      pages: Páginas
-      constrains: Restrições
-      rewards: Recompensas
-      general: Geral
+      actions: "Ações"
       announcements: Avisos
+      constrains: "Restrições"
+      content: "Conteúdo"
+      dashboard: Principal
+      domain: "Domínio"
+      general: Geral
+      members: Membros
+      pages: "Páginas"
+      properties: Propriedades
+      reputation: "Reputação"
+      rewards: Recompensas
+      stats: "Estatísticas"
+      theme: Tema
+      widgets: Widgets
     notifications:
       message: "Se você não quiser mais receber avisos de %{domain}, mude suas preferências na tela de avisos."
     settings:
-      title: Configurações
+      account_tab: Conta
+      external_accounts_tab: "Ligações externas"
+      follow_topics_tab: "Tópicos"
+      notifications_tab: "Notificações"
+      password_tab: Trocar senha
       profile_tab: Perfil
       resume_tab: Estudos/Trabalho
-      notifications_tab: Notificações
-      external_accounts_tab: Ligações externas
-      password_tab: Trocar senha
-      account_tab: Conta
-      follow_topics_tab: Tópicos
+      title: "Configurações"

@@ -1,8 +1,8 @@
 pt-BR:
   answer_requests:
     new:
-      invite_form: Convidar
       input: Digite o nome
+      invite_form: Convidar
       message: Mensagem (opcional)
       request_answer: Pedir resposta
-      title: Convidar usuário para responder
+      title: "Convidar usuário para responder"

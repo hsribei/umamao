@@ -24,71 +24,13 @@
 
 #title_landingpage
 
-  %h1 Qualquer pergunta, não qualquer resposta.
+  %h1=t("welcome.landing.headline")
 
 #content
 
-  %p
-
-    O Umamão é uma base de perguntas e respostas
-    expandida e melhorada constantemente por acadêmicos e
-    profissionais. Temos orgulho de produzir conteúdo de
-    qualidade.
-
-  %p
-    %strong
-
-      Se você é curioso e gosta de compartilhar conhecimento, o
-      Umamão é para você.
-
-  %p
-    = link_to 'Veja os tópicos mais populares do Umamão!', topics_path
-
-  %p
-    .quote
-      O Umamão é uma ótima oportunidade para tirar suas dúvidas
-      e ajudar seus amigos respondendo às deles. Aproveitem
-      as explicações de aluno para aluno!
-  %p
-    .quote_author
-      %strong
-        Rodolfo Azevedo
-      , professor do Instituto de Computação da Unicamp e usuário do Umamão
-
+  =t("welcome.landing.pitch")
 
 #signup
   %h3  #{ t('layouts.application.signup') }
-
-  = form_for @affiliation, :remote => true,
-    :url => affiliations_path(:format => :js),
-    :html => { "data-type" => "json" } do |f|
-    #landing_signup
-      .field
-        .label{:style => "position: relative; top: 12px"}
-          = f.label :email, "#{t('affiliations.form.email')}:"
-          = image_tag('icon_question.gif', :id => 'email-help')
-        .input
-          = f.email_field :email, :value => "", :tabindex => @signup_index
-        #help-box
-          %p
-
-            Precisamos do seu email acadêmico (algo como
-            seunome@suauniversidade.br) para confirmar seu vínculo com
-            a universidade (você pode escolher um email pessoal para
-            fazer login e receber atualizações depois).  Se você não
-            possui um, deixe o seu email pessoal que entraremos em
-            contato.
-      = image_tag("mamaopq.png", :id => "mamao_signup")
-      .submit
-        = image_tag("ajax-loader.gif", :id => "ajax-loader", :class => "hidden")
-        = f.submit t('layouts.application.signup_button'), :tabindex => @signup_index + 1
-
-#content_msg
-  %p
-    Alunos e professores da
-    %strong
-      = %w[USP Unicamp Unesp UFRJ UFMG UFBA PUC-Rio UFPI].map{ |uni| link_to(uni, topic_path(uni), :target => '_blank') }.join(', ')
-    e de muitas outras universidades já estão usando o Umamão!
-    %br
-    Junte-se a nós!
-
+  %p#invitation_only=t("welcome.landing.invitation_only")
+  = image_tag("mamaopq.png", :id => "mamao_signup")

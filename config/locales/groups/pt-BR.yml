@@ -1,38 +1,34 @@
-# Messages for Brazilian Portuguese (Português do Brasil)
-# Exported from translatewiki.net
-# Export driver: syck
-# Author: Luckas Blade
 pt-BR:
   activerecord:
     attributes:
       group:
-        description: Descrição
-        forum: Permitir mais do que uma resposta por usuário
-        language: Língua
+        description: "Descrição"
+        forum: "Permitir mais do que uma resposta por usuário"
+        language: "Língua"
         logo: Logotipo
         name: Nome
         registered_only: Somente pessoas registradas podem acessar o site
         state: Estado
-        subdomain: subdomínio
+        subdomain: "subdomínio"
     models:
-      default_tags_message: Não pode ter mais que 10 categorias predefinidas
+      default_tags_message: "Não pode ter mais que 10 categorias predefinidas"
       group: Site
       groups: Sites
   groups:
     create:
-      flash_notice: O seu site foi criado, você pode começar a configurá-lo.
+      flash_notice: "O seu site foi criado, você pode começar a configurá-lo."
     form:
       custom_html: Permitir HTML personalizado
       custom_js: Permitir javascript personalizado
-      description_legend: Você pode usar 400 caracteres para descrever o site.
+      description_legend: "Você pode usar 400 caracteres para descrever o site."
       isolate_group: Isolar o site de outros sites
     group:
       about: Sobre
       accept_group: Aceitar este site
-      allow_ads: Permitir anúncios
+      allow_ads: "Permitir anúncios"
       close: Fechar
       close_group: Fechar este site
-      disallow_ads: Não permitir anúncios
+      disallow_ads: "Não permitir anúncios"
     index:
       filter: Pesquisar sites
       name: Nome
@@ -41,8 +37,8 @@ pt-BR:
       title: Criar seu site
     show:
       accept_group: Aceitar este site
-      accept_group_with_custom_ads: Aceitar site e permitir anúncios personalizados
+      accept_group_with_custom_ads: "Aceitar site e permitir anúncios personalizados"
       close_group: Fechar este site
-      group_awaiting_acceptance: Este site está aguardando a aceitação de um moderador.
+      group_awaiting_acceptance: "Este site está aguardando a aceitação de um moderador."
       group_closed: Este site foi fechado.
       visit_group: Visitar este site

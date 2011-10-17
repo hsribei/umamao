@@ -2,11 +2,11 @@ pt-BR:
   admin:
     moderate:
       index:
-        title: Moderar
-        ban: Esconder
-        content: Conteúdo
-        item_title: Título
         all: Todos
-        flagged: Perguntas reportadas
+        ban: Esconder
         banned: Perguntas escondidas
-        need_tags: Editar tópicos
+        content: "Conteúdo"
+        flagged: Perguntas reportadas
+        item_title: "Título"
+        need_tags: "Editar tópicos"
+        title: Moderar

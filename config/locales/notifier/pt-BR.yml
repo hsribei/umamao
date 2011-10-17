@@ -1,38 +1,37 @@
 pt-BR:
   notifier:
-    global:
-      hi: "Oi, %{user}!"
-      user_page: "perfil"
-      signature: |
-        Abraço,
-        Equipe Umamão
-      founder_signature: |
-        Abraço,
-
-        Helder Ribeiro
-        %{application_name} Founder
+    closed_for_signup:
+      goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
+      greeting: "Olá,"
+      message: "\n\
+        Ainda não abrimos o cadastro para %{university}.  Seu e-mail\n\
+        foi guardado e você será avisado quando abrirmos para sua\n\
+        universidade.  Se esta não for sua universidade, por favor,\n\
+        nos avise pelo %{contact}!\n"
     favorited:
       message1: "%{user} adicionou sua pergunta as suas favoritas no %{group}"
       message2: "O texto da sua pergunta é:"
       message3: "Você pode vê-la aqui:"
     follow:
       message1: "%{user} está te seguindo no %{app}."
-      message2: 'Você pode segui-lo(a) clicando "Seguir" no seu %{user_page}.'
+      message2: "Você pode segui-lo(a) clicando \"Seguir\" no seu %{user_page}."
     give_advice:
       message1: "%{user} fez uma pergunta que talvez você saiba responder:"
       message2: "Para responder, responda aqui:"
       message3: "Ou se você souber de alguém que sabe responder, passe este link:"
       message4: ""
-    new_user_suggestion:
-      message: "%{origin} sugeriu que você seguisse o tópico %{entry}."
-    user_accepted_suggestion:
-      message: "%{user} aceitou sua sugestão e seguiu o tópico %{entry}."
+    global:
+      founder_signature: "Abraço,\n\n\
+        Helder Ribeiro\n\
+        %{application_name} Founder\n"
+      hi: Oi, %{user}!
+      signature: "Abraço,\n\
+        Equipe Umamão\n"
+      user_page: perfil
     new_answer:
       author: "%{user} respondeu:"
-      question: 'à pergunta "%{question}"'
       link_label: "Para ver a resposta, visite o link:"
-    new_search_result:
-      author: "%{user} adicionou um link à pergunta \"%{question_link}\""
+      question: "à pergunta \"%{question}\""
     new_comment:
       author: "%{user} comentou na pergunta \"%{question}\""
       link_label: "Para ver o comentário, visite a pergunta em:"
@@ -43,67 +42,57 @@ pt-BR:
       message4: "Assunto: %{subject}"
     new_question:
       author: "%{user} adicionou uma nova pergunta ao tópico %{topic}:"
-      question_link: "Veja a pergunta em:\n%{link}"
       disable_html: "Se não quiser mais receber por email as notificações deste tópico, visite a <a href='%{disable_link}'>página do tópico</a>."
       disable_text: "Se não quiser mais receber por email as notificações deste tópico, visite a página do tópico em:"
       link_label: "Para ver a resposta, visite o link:"
+      question_link: |-
+        Veja a pergunta em:
+        %{link}
+    new_search_result:
+      author: "%{user} adicionou um link à pergunta \"%{question_link}\""
+    new_user_suggestion:
+      message: "%{origin} sugeriu que você seguisse o tópico %{entry}."
+    non_academic:
+      goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
+      greeting: "Olá,"
+      message: "\n\
+        Ainda não abrimos o cadastro para usuários que não estejam\n\
+        vinculados a universidades.  Seu e-mail foi guardado e você\n\
+        será avisado(a) quando puder se cadastrar.  Caso este seja um\n\
+        e-mail acadêmico, por favor, avise-nos pelo %{contact}. A\n\
+        lista de universidades para as quais estamos abertos no\n\
+        momento é:\n"
+      message2: Para sugerir uma nova universidade, visite http://feedback.umamao.com ou envie-nos um email.
     report:
       message1: "Relatório do %{group}"
-      message2: "Desde %{since}"
+      message2: Desde %{since}
       message3: "%{questions} perguntas foram criadas"
       message4: "%{answers} respostas foram criadas"
       message5: "%{votes} votos foram computados"
       message7: "O site tem %{users} usuários."
-      message8: "Visite o site em %{link}"
+      message8: Visite o site em %{link}
     signup:
+      goodbye: "P.S.: Caso não tenha se cadastrado no site, por favor, desconsidere este email."
       greeting: "Olá,"
       message: "Obrigado por se juntar ao %{link}! Para completar seu cadastro, precisamos confirmar seu endereço de email acadêmico. Para fazer isso, é só clicar no link abaixo: "
-      goodbye: "P.S.: Caso não tenha se cadastrado no site, por favor, desconsidere este email."
-    wait:
-      greeting: "Olá,"
-      message: |
-
-        Aparentemente o email %{email} não pertence a nenhuma
-        universidade aberta para cadastro no momento. Entretanto pode
-        ser que sua universide esteja liberada e nosso sistema não
-        tenha reconhecido seu e-mail.  Verifique na lista abaixo se
-        consta o nome de sua universidade e avise-nos pelo email
-        %{contact} para que possamos liberar seu cadastro.
-
-      goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
-    closed_for_signup:
-      greeting: "Olá,"
-      message: |
-
-        Ainda não abrimos o cadastro para %{university}.  Seu e-mail
-        foi guardado e você será avisado quando abrirmos para sua
-        universidade.  Se esta não for sua universidade, por favor,
-        nos avise pelo %{contact}!
-
-      goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
-    non_academic:
-      greeting: "Olá,"
-      message: |
-
-        Ainda não abrimos o cadastro para usuários que não estejam
-        vinculados a universidades.  Seu e-mail foi guardado e você
-        será avisado(a) quando puder se cadastrar.  Caso este seja um
-        e-mail acadêmico, por favor, avise-nos pelo %{contact}. A
-        lista de universidades para as quais estamos abertos no
-        momento é:
-
-      message2: "Para sugerir uma nova universidade, visite http://feedback.umamao.com ou envie-nos um email."
-      goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
     survey:
+      message: "Faz uma semana que você começou a usar o %{application_name}, e a gente\n\
+        queria muito de saber como tem sido sua experiência. Tem como você tirar\n\
+        um minutinho para responder à nossa pesquisa de opinião por favor?\n\n\
+        https://docs.google.com/spreadsheet/viewform?hl=pt_BR&formkey=dDA2ckZmVnc5ZXRfWXJaWGJhdUJzdnc6MQ#gid=0\n\n\
+        Seu feedback é muito importante para tornar o %{application_name}\n\
+        melhor para você.\n\n\
+        Muito obrigado!\n"
       subject: Tudo indo bem?
-      message: |
-        Faz uma semana que você começou a usar o %{application_name}, e a gente
-        queria muito de saber como tem sido sua experiência. Tem como você tirar
-        um minutinho para responder à nossa pesquisa de opinião por favor?
-
-        https://docs.google.com/spreadsheet/viewform?hl=pt_BR&formkey=dDA2ckZmVnc5ZXRfWXJaWGJhdUJzdnc6MQ#gid=0
-
-        Seu feedback é muito importante para tornar o %{application_name}
-        melhor para você.
-
-        Muito obrigado!
+    user_accepted_suggestion:
+      message: "%{user} aceitou sua sugestão e seguiu o tópico %{entry}."
+    wait:
+      goodbye: "Caso não tenha se cadastrado no site, por favor, desconsidere este email."
+      greeting: "Olá,"
+      message: "\n\
+        Aparentemente o email %{email} não pertence a nenhuma\n\
+        universidade aberta para cadastro no momento. Entretanto pode\n\
+        ser que sua universide esteja liberada e nosso sistema não\n\
+        tenha reconhecido seu e-mail.  Verifique na lista abaixo se\n\
+        consta o nome de sua universidade e avise-nos pelo email\n\
+        %{contact} para que possamos liberar seu cadastro.\n"

@@ -1,25 +1,32 @@
 pt-BR:
+  activerecord:
+    attributes:
+      answer:
+        body: Resposta
+        created_at: Criada
+        share: Compartilhar
+    models:
+      answer: Resposta
+      answer_count:
+        one: resposta
+        other: respostas
+      answers: Respostas
   answers:
-    form:
-      comment_label: Comentar nesta resposta
-      answer_label: Responder à pergunta
-      comment_submit: Comentar
-      submit: Responder
-      not_logged: "É necessário <a href=\"%{link}\">se identificar</a> para responder à pergunta."
-      already_answered: "Você já respondeu a essa pergunta. Se deseja contribuir com mais informações, <a href=\"%{link}\">edite sua resposta</a>."
+    ban: Esconder
+    create:
+      flash_error: "Alguma coisa deu errado com a sua resposta.\n  Lembre-se que:\n  - Respostas vazias ou repetidas não são permitidas;\n  - Você precisa esperar 20 segundos para postar outra resposta;\n  - Você só pode postar uma resposta por pergunta."
+      flash_notice: Resposta enviada.
     edit:
       title: Editando resposta
-    create:
-      flash_notice: "Resposta enviada."
-      flash_error:  "Alguma coisa deu errado com a sua resposta.
-  \n  Lembre-se que:
-  \n - Respostas vazias ou repetidas não são permitidas;
-  \n - Você precisa esperar 20 segundos para postar outra resposta;
-  \n - Você só pode postar uma resposta por pergunta."
-    show:
-      share_success: Pergunta compartilhada com sucesso no %{site}.
-      title: Resposta de "%{user_name}" a "%{question_title}"
-      flagged_as: Reportada como
+    form:
+      already_answered: "Você já respondeu a essa pergunta. Se deseja contribuir com mais informações, <a href=\"%{link}\">edite sua resposta</a>."
+      answer_label: "Responder à pergunta"
+      comment_label: Comentar nesta resposta
+      comment_submit: Comentar
+      not_logged: "É necessário <a href=\"%{link}\">se identificar</a> para responder à pergunta."
+      submit: Responder
+    revert:
+      title: Reverter resposta
     share_body:
       facebook: Resposta
       facebook_named: Resposta de %{name}
@@ -27,22 +34,10 @@ pt-BR:
       twitter: Resposta no %{site}
       twitter_named: Resposta de %{name} no %{site}
       twitter_self: Respondi no %{site}
+    show:
+      flagged_as: Reportada como
+      share_success: Pergunta compartilhada com sucesso no %{site}.
+      title: Resposta de "%{user_name}" a "%{question_title}"
+    sure_ban: "Certeza que você quer esconder esta resposta?"
     update:
-      flash_notice: "Resposta atualizada."
-    revert:
-      title: "Reverter resposta"
-    ban: Esconder
-    sure_ban: Certeza que você quer esconder esta resposta?
-
-  activerecord:
-    models:
-      answers: Respostas
-      answer: Resposta
-      answer_count:
-        one: resposta
-        other: respostas
-    attributes:
-      answer:
-        share: Compartilhar
-        created_at: Criada
-        body: Resposta
+      flash_notice: Resposta atualizada.

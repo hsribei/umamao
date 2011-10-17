@@ -1,134 +1,178 @@
 en:
+  activerecord:
+    attributes:
+      question:
+        answers:
+          one: Answer
+          other: Answers
+        asked_by: Asked by
+        body: Body
+        closed: Closed
+        created_at: Asked
+        language: Language
+        tags: Tags
+        title: What do you want to know?
+        topic_ids: Topics
+        updated_at: updated
+        updated_by: updated by
+        views: Views
+        votes: Votes
+    models:
+      file_count:
+        one: file
+        other: files
+      question: Question
+      question_count:
+        one: question
+        other: questions
+      questions: Questions
   questions:
-    index:
-      title: All questions
-      hot:     Hot
-      active:  Active
-      votes:   Votes
-      newest:  Newest
-      oldest:  Oldest
-      ask_question: Ask question
-      empty: "No one has asked any questions yet. Be the first!"
-      help_to_answer: Help us answer
-      unanswered_questions: Unanswered questions
-      hot_tooltip: Questions with the most activity over the last 5 days
-      active_tooltip: Questions that have been updated recently
-      votes_tooltip:  Questions with the most votes
-      newest_tooltip: The most recently asked questions
-    show:
-      answers: Answers
-      another_answers: Other answers
-      solution: Solution
-      share: "Share this question on"
-      share_on: "Share this question on %{site}"
-      related_questions: Related questions
-      flags: Reported as
+    answer:
+      add_comment: Add comment...
       flag: Flag
-      flagged_as: Flagged as
-      viewed: viewed
-      to_answer_question: to answer this question
-      watch_tooltip: "Watch this question"
-      accepted_tooltip: "One of the answers was accepted as the correct answer."
-      unwatch_tooltip: "Stop watching this question"
-      favorite_tooltip: "Add this question to your favorites"
-      unfavorite_tooltip: "Remove this question from your favorites"
-      asked_on: "asked on"
-      last_activity: Latest activity
-      retag: Retag
-      unauthenticated_retag: You need an account to retag questions
-      request_closing: Request closing
-      request_closing_details: Request to close this question
-      close: Close
-      ban: Ban
-      retract_request: You have already made a request. Would you like to retract it?
-      close_reason: "The question has been closed for the following reason:"
+      pick_answer: Pick as solution
+      share_new_answer: Share your answer with others!
+      unset_answer: Unset solution?
+    create:
+      error: It was not possible to create your question.
+      flash_notice: The question was successfully created.
+    edit:
+      title: Editing question
+    flag:
+      title: Flag question
+    form:
+      adult_content: This question contains adult material.
+      body_tip: What's your question? Be descriptive.
+      details: Details about your question (optional)
+      language_tip: Select the language the question is asked in.
+      tags_tip: Use tags to add more information about your question.
+    index:
+      active: Active
+      active_tooltip: Questions that have been updated recently
+      all_tab: All questions
+      ask_question: New question
+      empty: No one has asked any questions yet. Be the first!
+      help_to_answer: Help us answer
+      hot: Hot
+      hot_tooltip: Questions with the most activity over the last 5 days
+      newest: Newest
+      newest_tooltip: The most recently asked questions
+      oldest: Oldest
+      title: All questions
+      unanswered_questions: Unanswered questions
+      unanswered_tab: Open questions
+      votes: Votes
+      votes_tooltip: Questions with the most votes
+    model:
+      messages:
+        body_too_short: The question's body should have at least 5 characters.
+        empty_tags: Sorry, you need to use at least one tag.
+        title_too_long: The title is too long. It should not contain more than 100 characters.
+        title_too_short: The question should have at least 5 characters.
+        too_many_tags: Sorry, you can only enter 9 tags maximum.
+        too_short: Seems too short. Please use more words than %{count} to be more specific.
+    move:
+      group_label: "Move to the group with slug:"
+      submit: Move!
+      title: "Move question: %{title}"
+    move_to:
+      group_dont_exists: The group %{group} does not exist
+      success: Question moved to %{group}
+    new:
+      add_details: Add details
+      ask: Post Your Question
+      how_to_ask: How to ask
+      title: Ask Question
+    question:
+      accepted_tooltip: This question has an answer that has been accepted
+    retag:
+      title: Retag
+    retag_form:
+      cancel: Cancel
+      submit: Update tags!
+      title: Update tags
+    retag_to:
+      failure: Sorry, the tags could not be updated.
+      success: The tags have been updated successfully.
+    revert:
+      title: Revert question
+    search_result:
+      add_comment: Add comment
+      flag: Flag
+    shared:
+      flag: Flag
+    show:
+      accepted_tooltip: One of the answers was accepted as the correct answer.
+      add_follow_up_question: Add follow up question
+      another_answers: Other answers
+      answers: Answers
       answers_title:
         one: "%{count} answer"
         other: "%{count} answers"
-      title: Answer with
-    retag:
-      title: Retag
-    answer:
-      pick_answer: Pick as solution
-      unset_answer: Unset solution?
+      asked_on: asked on
+      ban: Ban
+      close: Close
+      close_reason: "The question has been closed for the following reason:"
+      favorite_tooltip: Add this question to your favorites
       flag: Flag
-      add_comment: Add comment...
-    question:
-      accepted_tooltip: This question has an answer that has been accepted
-    form:
-      body_tip: What is your question? Be descriptive.
-      language_tip: Select the language the question is asked in.
-      tags_tip:  Use tags to add more information about your question.
-      adult_content: This question contains adult material.
-    flag:
-      title:   Flag question
-    edit:
-      title: Editing question
-    unanswered:
-      title: Unanswered questions
-      tags: Unanswered tags
-      empty: "This group does not have any unanswered questions."
-      my_tags: My tags
-      expert: Experts
+      flagged_as: Flagged as
+      flags: Reported as
+      follow_up_questions: Follow up questions
+      last_activity: Latest activity
+      needs_connection:
+        message: Click "Connect" below to start sharing on your %{site} account.
+        title: Connect your account
+      needs_permission: Apparently, your account on %{site} is not connected with the necessary permissions to allow this action. Click "Connect" to enable them.
+      question_views:
+        one: This question has been viewed 1 time
+        other: This question has been viewed %{count} times
+      related_questions: Related questions
+      request_answer: Invite to Answer
+      request_closing: Request closing
+      request_closing_details: Request to close this question
+      requested_users: Users asked to answer
+      retract_request: You have already made a request. Would you like to retract it?
+      share: Share this question on
+      share_on: Share this question on %{site}
+      solution: Solution
+      stats: Questions Stats
+      title: Answer with
+      to_answer_question: to answer this question
+      topic_followers:
+        one: and its topics are followed by 1 person.
+        other: and its topics are followed by %{count} people.
+      unauthenticated_retag: You need an account to retag questions
+      unfavorite_tooltip: Remove this question from your favorites
+      unknown_destination: Invalid sharing destination.
+      unwatch_tooltip: Stop watching this question
+      view: View question
+      viewed: viewed
+      watch_tooltip: Watch this question
+    solve:
+      flash_notice: The question was solved.
     tags:
+      filter: Search for tags
+      retag: Edit topics
+      tag: Add topics
       title: Tags
       tooltip: Show questions tagged %{tag}
-      filter: Search for tags
-    new:
-      title: Ask question
-      how_to_ask: How to ask
-    create:
-      flash_notice: "The question was successfully created."
-    update:
-      flash_notice: "The question was successfully updated."
-    solve:
-      flash_notice: "The question was solved."
+    tip:
+      answer: answering questions;
+      call_to_action: "You can help by:"
+      explanation: Open questions are questions that have no answers with a positive number of votes.
+      vote: voting on existing answers.
+    unanswered:
+      empty: This group does not have any unanswered questions.
+      expert: Experts
+      explanation: Open questions are those questions whose answers still have no votes. Contribute voting on the questions with appropriate answers.
+      my_tags: My tags
+      tags: Unanswered tags
+      title: Unanswered questions
     unsolve:
-      flash_notice: "The question is not solved anymore."
-    watch:
-      success:      "You will now receive notifications by email for every new answer to this question."
+      flash_notice: The question is not solved anymore.
     unwatch:
-      success:      "You will not receive notifications by email for every new answer to this question anymore."
-    revert:
-      title: "Revert question"
-    move:
-      title:        "Move question: %{title}"
-      group_label:  "Move to the group with slug:"
-      submit:       "Move!"
-    move_to:
-      success:      "Question moved to %{group}"
-      group_dont_exists: "The group %{group} does not exist"
-    shared:
-      flag: Flag
-    retag_form:
-      title:  "Update tags"
-      submit: "Update tags!"
-      cancel: "Cancel"
-    retag_to:
-      success: "The tags have been updated successfully."
-      failure: "Sorry, the tags could not be updated."
-    model:
-      messages:
-        too_short: "Seems too short. Please use more words than %{count} to be more specific."
-        too_many_tags: Sorry, you can only enter 9 tags maximum.
-        empty_tags: Sorry, you need to use at least one tag.
-        title_too_long: "The title is too long. It should not contain more than 100 characters."
-
-  activerecord:
-    models:
-      questions: Questions
-      question: Question
-    attributes:
-      question:
-        title: Title
-        body: Body
-        tags: Tags
-        asked_by: Asked by
-        answers: Answers
-        views: Views
-        votes: Votes
-        language: Language
-        created_at: Asked
-        updated_at: updated
-        updated_by: updated by
-        closed: Closed
+      success: You will not receive notifications by email for every new answer to this question anymore.
+    update:
+      flash_notice: The question was successfully updated.
+    watch:
+      success: You will now receive notifications by email for every new answer to this question.

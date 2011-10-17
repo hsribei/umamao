@@ -1,8 +1,9 @@
 require 'uri'
 
 module Support
-  class ResponseBodyFetcher
+  class ResponseFetcher
     class TooManyRedirectionsError < StandardError; end
+    class EmptyResponse; def body; nil; end; end
 
     POSSIBLE_FETCH_ERRORS = [Errno::ECONNREFUSED,
                              Errno::ECONNRESET,
@@ -54,15 +55,18 @@ module Support
         else response.error!
         end
       end
-      response_body = fetcher.call(uri.to_s, REDIRECTION_LIMIT).body
-      begin
-        ActiveSupport::Multibyte::Unicode.tidy_bytes(response_body)
-      rescue StandardError
-        ActiveSupport::Multibyte::Unicode.tidy_bytes(response_body, true)
-      end
+      response = fetcher.call(uri.to_s, REDIRECTION_LIMIT)
+      clean_body = begin
+                     ActiveSupport::Multibyte::Unicode.tidy_bytes(response.body)
+                   rescue StandardError
+                     ActiveSupport::Multibyte::Unicode.tidy_bytes(response.body,
+                                                                  true)
+                   end
+      response.instance_variable_set(:@body, clean_body)
+      response
     rescue *POSSIBLE_FETCH_ERRORS
-      add_error(@fetcher, $!)
-      ''
+      add_error(@fetcher, $!) if $!.is_a?(URI::InvalidURIError)
+      EmptyResponse.new
     end
 
   private

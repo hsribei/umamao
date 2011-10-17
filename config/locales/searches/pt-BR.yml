@@ -1,43 +1,43 @@
 pt-BR:
   searches:
-    index:
-      empty: "Não encontramos resultados para sua busca."
-      tags: nestes tópicos
-      search_text: Perguntas contendo
-      title: Resultados
-      form:
-        detail: Detalhar busca
-        categories: Buscar por
-        send: Buscar
     form:
       clear: Limpar
+      follow_topics: "Buscar tópicos"
+      ignore_topics: "Buscar tópicos"
+      search_all: "Buscar por perguntas, tópicos e usuários"
       search_box_title: "Veja se a sua pergunta já foi feita por alguém"
-      tags_tip: Use [tópico] para especificar tópicos.
-      search_all: Buscar por perguntas, tópicos e usuários
-      follow_topics: Buscar tópicos
-      ignore_topics: Buscar tópicos
-      select_topics: Selecionar tópicos
+      select_topics: "Selecionar tópicos"
+      tags_tip: "Use [tópico] para especificar tópicos."
+    index:
+      empty: "Não encontramos resultados para sua busca."
+      form:
+        categories: Filter by
+        detail: Detalhar busca
+        send: Buscar
+      search_text: Perguntas contendo
+      tags: "nestes tópicos"
+      title: Resultados
     question:
       answers:
         one: 1 resposta
-        other: %{count} respostas
+        other: "%{count} respostas"
       followers:
         one: 1 seguidor
-        other: %{count} seguidores
-    user:
-      answers:
-        one: 1 resposta
-        other: %{count} respostas
-      followers:
-        one: 1 seguidor
-        other: %{count} seguidores
-      questions:
-        one: 1 pergunta
-        other: %{count} perguntas
+        other: "%{count} seguidores"
     topic:
       followers:
         one: 1 seguidor
-        other: %{count} seguidores
+        other: "%{count} seguidores"
       questions:
         one: 1 pergunta
-        other: %{count} perguntas
+        other: "%{count} perguntas"
+    user:
+      answers:
+        one: 1 resposta
+        other: "%{count} respostas"
+      followers:
+        one: 1 seguidor
+        other: "%{count} seguidores"
+      questions:
+        one: 1 pergunta
+        other: "%{count} perguntas"

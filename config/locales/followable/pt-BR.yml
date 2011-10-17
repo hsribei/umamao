@@ -1,38 +1,38 @@
 pt-BR:
   followable:
-    follow: Seguir
-    unfollow: Não seguir
-    following:
-      one: "Seguindo 1 pessoa"
-      other: "Seguindo %{count} pessoas"
-      link:
-        one: "Seguindo <a href=\"%{link}\">1 pessoa</a>"
-        other: "Seguindo <a href=\"%{link}\">%{count} pessoas</a>"
-    followers:
-      one: "1 seguidor(a)"
-      other: "%{count} seguidores"
-      link:
-        one: "<a href=\"%{link}\" data-count=\"%{count}\">1 seguidor(a)</a>"
-        other: "<a href=\"%{link}\" data-count=\"%{count}\">%{count} seguidores</a>"
-      question:
-        one: "1 pessoa segue esta pergunta."
-        other: "%{count} pessoas seguem esta pergunta."
-        link:
-          one: " <a href=\"%{link}\">1 pessoa</a> segue esta pergunta."
-          other: "<a href=\"%{link}\">%{count} pessoas</a> seguem esta pergunta."
-      top_answerers: Entusiastas
     flash:
       follow: "Você está seguindo %{followable}"
       unfollow: "Você parou de seguir %{followable}"
+    follow: Seguir
+    followers:
+      link:
+        one: <a href="%{link}" data-count="%{count}">1 seguidor(a)</a>
+        other: <a href="%{link}" data-count="%{count}">%{count} seguidores</a>
+      one: 1 seguidor(a)
+      other: "%{count} seguidores"
+      question:
+        link:
+          one: " <a href=\"%{link}\">1 pessoa</a> segue esta pergunta."
+          other: <a href="%{link}">%{count} pessoas</a> seguem esta pergunta.
+        one: 1 pessoa segue esta pergunta.
+        other: "%{count} pessoas seguem esta pergunta."
+      top_answerers: Entusiastas
+    following:
+      link:
+        one: Seguindo <a href="%{link}">1 pessoa</a>
+        other: Seguindo <a href="%{link}">%{count} pessoas</a>
+      one: Seguindo 1 pessoa
+      other: Seguindo %{count} pessoas
+    suggestions:
+      topics: "Sugestões de tópicos"
+      users: "Sugestões de usuários"
     topics:
-      one: "Seguindo 1 tópico"
-      other: "Seguindo %{count} tópicos"
-      none: "Nenhum tópico seguido"
       link:
         one: "Seguindo <a href=\"%{link}\">1 tópico</a>"
         other: "Seguindo <a href=\"%{link}\">%{count} tópicos</a>"
-    suggestions:
-      users: "Sugestões de usuários"
-      topics: "Sugestões de tópicos"
+      none: "Nenhum tópico seguido"
+      one: "Seguindo 1 tópico"
+      other: "Seguindo %{count} tópicos"
+    unfollow: "Não seguir"
     user_suggestions:
-      topics: Sugestões de tópicos por usuários
+      topics: "Sugestões de tópicos por usuários"

@@ -9,8 +9,6 @@
         = link_to t("invitations.invite"), new_invitation_path
       - else
         = link_to t("invitations.left", :count => current_user.invitations_left), new_invitation_path
-    - if Affiliation.count(:user_id => current_user.id) > 0
-      .navigation= t('welcome.home.looking_for', :link => link_to(t('welcome.home.exercises'), topic_path('Resolução-de-exercício')))
 
   -# Topic suggestions
   - if logged_in?

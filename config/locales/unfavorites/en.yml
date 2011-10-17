@@ -1,10 +1,9 @@
 en:
-  unfavorites:
-    create:
-      unauthenticated: "You need an account to remove a favorite"
-      success:         "The question has been removed from your favorities"
-
   activerecord:
     models:
-      favorites: Favorites
       favorite: Favorite
+      favorites: Favorites
+  unfavorites:
+    create:
+      success: The question has been removed from your favorities
+      unauthenticated: You need an account to remove a favorite

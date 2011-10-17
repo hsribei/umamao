@@ -1,0 +1,61 @@
+en:
+  invitations:
+    accepted:
+      title: Accepted invites
+    form:
+      labels:
+        message: "Personal message (optional):"
+        recipient_email: "Person's e-mail:"
+      title: Invite by e-mail
+    index:
+      empty:
+        accepted: No invite accepted.
+        pending: No invite pending. What about inviting someone?
+      title: Invites
+      titles:
+        accepted: Accepted invites
+        pending: Pending invites
+    invite: Invite other people
+    left:
+      one: 1 invite available
+      other: "%{count} invites available"
+    model:
+      attributes:
+        accepted_at: accepted
+        sent_at: sent
+    new:
+      accepted:
+        one: 1 accepted invite
+        other: "%{count} accepted invites"
+      add_contact: Add contact
+      email: Type the e-mail
+      error: An error happened. Please try again later.
+      import:
+        continue: Continue
+        notice: You'll be redirected to an external page to allow access to your contacts.
+        title: Import contacts
+      invalid_emails: "The following e-mails are invalid and couldn't be invited:"
+      invite: Invite
+      left:
+        none: You have no invites available.
+        one: You have 1 invite available.
+        other: You have %{count} invites available.
+      message: Message (optional)
+      name_or_email: Type a name or e-mail
+      pending:
+        one: 1 pending invite
+        other: "%{count} pending invites"
+      remove_all: Remove all
+      selected: Selected contacts
+      title: Invite people
+      wait: Please wait while we load your contacts. This may take a few minutes.
+    new_invitation_student:
+      invite: invite
+      invite_form: Invite
+      more: More
+      pending: pending
+      reinvite: resend invite
+      title: "%{name} invite"
+    pending:
+      title: Pending invites
+    sent: Invite sent

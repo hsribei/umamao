@@ -1,12 +1,16 @@
 pt-BR:
   signup_wizard:
-    connect: "Conectar contas"
+    connect: Conectar contas
+    connect_profiles:
+      find_friends: "Achar amigos que já estão no Umamão"
+      import_profile_picture: Importar a foto do seu perfil
+      share_stuff: "Compartilhar coisas que você achar interessante"
+      title: "Conecte suas contas para:"
+      trust_us: "Nós nunca postamos nada sem você mandar."
+    finish: Terminar
     follow: "Seguir pessoas e tópicos"
-    skip: "Ir direto para o site"
-    finish: "Terminar"
-    introduction: |
-      Quando você segue pessoas e tópicos do seu interesse,
-      o Umamão consegue exibir conteúdo mais relevante para você.
-      <strong>Conecte suas contas para encontrar amigos e receber sugestões!</strong>
-    wait: |
-      Por favor, aguarde enquanto procuramos pessoas e tópicos relevantes.
+    introduction: "Quando você segue pessoas e tópicos do seu interesse,\n\
+      o Umamão consegue exibir conteúdo mais relevante para você.\n\
+      <strong>Conecte suas contas para encontrar amigos e receber sugestões!</strong>\n"
+    skip: Ir direto para o site
+    wait: "Por favor, aguarde enquanto procuramos pessoas e tópicos relevantes.\n"

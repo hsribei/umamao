@@ -2,11 +2,11 @@ pt-BR:
   activerecord:
     attributes:
       member:
-        role: Função
+        role: "Função"
   members:
-    index:
-      title: "Membro do site de %{name}"
-      title_isolate: "Membro de %{name}"
-      manage_members_title: Gerenciar membros
     form:
-      login_tip: "Digite para procurar"
+      login_tip: Digite para procurar
+    index:
+      manage_members_title: Gerenciar membros
+      title: Membro do site de %{name}
+      title_isolate: Membro de %{name}

@@ -1,8 +1,9 @@
 en:
   shared:
-    topbar:
-      logged_as: "Logged in as %{login}"
-      admin: Admin
-      user_page: My page
     current_tags:
       title: Selected tags
+    topbar:
+      admin: Admin
+      logged_as: Logged in as %{login}
+      user_page: My page
+    wait_to_print: "Preparing print version, please wait..."

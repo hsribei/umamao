@@ -1,0 +1,7 @@
+en:
+  agreement:
+    agree: I have read and agree
+    continue: Continue
+    do_not_agree: I don't agree with the terms.
+    errors:
+      did_not_agree: You must agree with the terms of service and the privacy police

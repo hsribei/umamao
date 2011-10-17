@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CustomHtml
   include MongoMapper::EmbeddedDocument
 
@@ -11,9 +12,7 @@ class CustomHtml
                                            "pt" => "qual é a sua pergunta? seja descritivo.",
                                            "ja" => "あなたの質問はなんですか？"}
   key :question_help, Hash, :default => {
-"en" => "Provide as much details as possible so that it will have more
-chance to be answered instead of being endlessly discussed.
-Try to be clear and simple.",
+"en" => "",
 "el" => "Δώστε όσες περισσότερες λεπτομέρειες γίνεται ώστε να έχει περισσότερες
 πιθανότητες να απαντηθεί από το να συζητιέται ες αεί.
 Προσπαθήστε να είστε σαφής και απλός.",

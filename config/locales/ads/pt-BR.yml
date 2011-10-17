@@ -1,12 +1,12 @@
 pt-BR:
   ads:
-    ad_links: Adicionar anúncio (%{type})
-    title: Adicionar novo anúncio (%{type})
-    name: "Nome:"
-    position: "Posição:"
-    index:
-      title: Anúncios
-      add_adsense: Adicionar anúncio AdSense
-      add_adbard: Adicionar anúncio Ad Bard
+    ad_links: "Adicionar anúncio (%{type})"
     create:
       success: "Anúncio criado."
+    index:
+      add_adbard: "Adicionar anúncio Ad Bard"
+      add_adsense: "Adicionar anúncio AdSense"
+      title: "Anúncios"
+    name: "Nome:"
+    position: "Posição:"
+    title: "Adicionar novo anúncio (%{type})"

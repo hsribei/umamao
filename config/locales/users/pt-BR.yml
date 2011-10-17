@@ -1,150 +1,148 @@
 pt-BR:
+  activerecord:
+    attributes:
+      user:
+        academic_email: "Email acadêmico"
+        activated_at: ativado em
+        activation_code: "Código de ativação"
+        age: Idade
+        asked_by: feita por
+        avatar: Foto
+        bio: Biografia curta
+        birthday: "Aniversário"
+        created_at: entrou
+        current_password: Senha atual
+        description: Biografia longa
+        email: Email
+        fullname: Nome Completo
+        gender:
+          female: Feminino
+          male: Masculino
+          title: "Gênero"
+        language: Idioma
+        language_filter: Filtrar por idioma
+        last_logged_at: "último login"
+        location: "Localização"
+        login: Login
+        name: Nome e sobrenome
+        password: Senha
+        password_confirmation: Repetir senha
+        preferred_languages: "Seleciona os idiomas que você sabe"
+        preferred_tags: "Tópicos seguidos"
+        reputation: "Reputação"
+        timezone: "Fuso-horário"
+        updated_at: atualizado em
+        website: Website
+    models:
+      user: "Usuário"
+      users: "Usuários"
   users:
-    inline_edition:
-      empty_bio: Sua biografia curta está vazia, escreva-a agora!
-      empty_description: Sua biografia longa está vazia, escreva-a agora!
-    validation:
-      errors:
-        did_not_agree: |
-          Você deve concordar com os termos de uso e a política de privacidade
-        empty_name: Seu nome não pode ser vazio
-        long_name: Seu nome não pode exceder 100 caracteres
-        empty_email: Seu email não pode ser vazio
-        dup_email: Este email já existe no site
-        invalid_email: Este email é inválido
-        password_match: A senha não confere
-        invalid_password: A senha é inválida
-        empty_password: A senha não pode ser vazia
-        long_bio: Sua biografia curta não pode exceder 140 caracteres
-        long_description: Sua biografia longa não pode exceder 500 caracteres
-    index:
-      title: Todos os usuários
-      empty: "Este site não tem nenhum usuário. Participe cadastrando-se neste site."
-      filter: "Procurar usuários"
-      reputation: Reputação
-      newest: Recentes
-      oldest: Antigos
-      name: Nome
-      reputation_tooltip: Usuários ordenados por reputação
-      newest_tooltip: Usuários que acabaram de entrar
-      oldest_tooltip: Usuários que entraram primeiro
-      name_tooltip: Usuários em ordem alfabética
-    new:
-      title: Criar conta
-      submit: Criar conta
-      invitation:
-          title: "Você veio a convite de %{user}:"
-      affiliation_message: "Seu e-mail acadêmico %{email} foi confirmado!
-       Agora basta terminar seu cadastro preenchendo o formulário abaixo."
-      agree: |
-        Li e concordo com a <a href="%{privacy}" target="_blank">política de
-        privacidade</a> e com os <a href="%{tos}" target="_blank">termos de
-        uso</a> do site.
-      already_registered: Já tem conta no Umamão? <a href="/users/login">Faça login</a> para entrar.
-    news_update:
-      question:
-        user:
-          created: "%{origin} adicionou uma pergunta."
-        topic:
-          created: "Pergunta adicionada ao tópico %{origin}."
-      answer:
-        user:
-          created: "%{origin} adicionou uma resposta."
-        topic:
-          created: "Resposta adicionada ao tópico %{origin}."
+    actions:
+      edit_others_posts: editar entradas alheias
+      edit_wiki_post: "editar wikis comunitários"
+      flag: reportar
+      retag_others_questions: "alterar tópicos de perguntas alheias"
+      vote_down: dar voto negativo
+      vote_to_close_any_question: pedir fechamento de pergunta
+      vote_to_close_own_question: "pedir fechamento de pergunta própria"
+      vote_up: dar voto positivo
+    annoying:
+      resend_confirmation_email: "Reenviar e-mail de confirmação."
+      resent_confirmation: Verifique seu e-mail pessoal!
+      unconfirmed_non_academic_email: "Você ainda não confirmou seu e-mail pessoal!"
+    create:
+      confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
+      flash_error: "Desculpe, não foi possível criar sua conta. Por favor, verifique\n\
+        os erros.\n"
+      welcome: "Cadastro feito. Bem-vindo(a) ao Umamão!"
     edit:
-      title: Configurações
-      submit: Salvar
       enable_twitter: Conecte suas contas do Twitter e do Facebook
-    show:
-      title: "%{user}"
-      views: visitas
-      profile: Perfil
-      tab:
-        news_updates: Atualizações
-        questions: Perguntas
-        answers: Respostas
-        search_results: Links
-      no_news_updates: Nenhuma atualização ainda.
-      no_questions: Nenhuma pergunta ainda.
-      no_answers: Nenhuma resposta ainda.
-      atom:
-        title: "%{site_name} - Atualizações de %{user}"
-        question: "Pergunta:"
-        answer: "Resposta para:"
-      upvotes_count: "Total de votos positivo recebidos: %{upvotes_count}"
+      submit: Salvar
+      title: "Configurações"
+    follow:
+      flash_notice: "O usuário %{user} foi adicionado ao seu grupo de amigos"
     form:
+      academic_email: "Email acadêmico:"
+      activities_notification: "de atividades do sistema: novos seguidores, medalhas ganhas, etc."
+      avatar_tip: Troque a foto do seu perfil no Gravatar
       change_password: Trocar de senha
       email: "Email pessoal:"
-      academic_email: "Email acadêmico:"
+      give_advice_notification: "de perguntas nos meus tópicos de interesse"
+      information: "Informações pessoais"
       name: "Nome e sobrenome:"
+      new_answer_notification: de novas respostas
+      notifications: Receber emails
       password: "Senha:"
       password_confirmation: "Repetir senha:"
-      information: Informações pessoais
-      notifications: Receber emails
-      new_answer_notification: de novas respostas
-      give_advice_notification: de perguntas nos meus tópicos de interesse
-      activities_notification: "de atividades do sistema: novos seguidores, medalhas ganhas, etc."
-      reports_notification: com relatório das últimas atividades do site (apenas para admins)
-      avatar_tip: "Troque a foto do seu perfil no Gravatar"
-      show_more_lang: "Mostrar mais idiomas"
+      reports_notification: "com relatório das últimas atividades do site (apenas para admins)"
+      show_more_lang: Mostrar mais idiomas
       university: "Universidade:"
-    annoying:
-      unconfirmed_non_academic_email: "Você ainda não confirmou seu e-mail pessoal!"
-      resend_confirmation_email: "Reenviar e-mail de confirmação."
-      resent_confirmation: "Verifique seu e-mail pessoal!"
-    create:
-      flash_error: |
-        Desculpe, não foi possível criar sua conta. Por favor, verifique
-        os erros.
-      welcome: "Cadastro feito. Bem-vindo(a) ao Umamão!"
-      confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
+    index:
+      empty: "Este site não tem nenhum usuário. Participe cadastrando-se neste site."
+      filter: "Procurar usuários"
+      name: Nome
+      name_tooltip: "Usuários em ordem alfabética"
+      newest: Recentes
+      newest_tooltip: "Usuários que acabaram de entrar"
+      oldest: Antigos
+      oldest_tooltip: "Usuários que entraram primeiro"
+      reputation: "Reputação"
+      reputation_tooltip: "Usuários ordenados por reputação"
+      title: "Todos os usuários"
+    inline_edition:
+      empty_bio: "Sua biografia curta está vazia, escreva-a agora!"
+      empty_description: "Sua biografia longa está vazia, escreva-a agora!"
     messages:
       errors:
         reputation_needed: "Você precisa de pelo menos %{min_reputation} de reputação para %{action}"
-    actions:
-      vote_up: dar voto positivo
-      vote_down: dar voto negativo
-      flag: reportar
-      edit_others_posts: "editar entradas alheias"
-      edit_wiki_post: "editar wikis comunitários"
-      retag_others_questions: "alterar tópicos de perguntas alheias"
-      vote_to_close_own_question: "pedir fechamento de pergunta própria"
-      vote_to_close_any_question: "pedir fechamento de pergunta"
-  activerecord:
-    models:
-      users: Usuários
-      user: Usuário
-    attributes:
-      user:
-        login: Login
-        email: Email
-        academic_email: Email acadêmico
-        name: Nome e sobrenome
-        current_password: Senha atual
-        password: Senha
-        password_confirmation: Repetir senha
-        created_at: criado em
-        updated_at: atualizado em
-        activation_code: Código de ativação
-        activated_at: ativado em
-        language: Idioma
-        asked_by: feita por
-        timezone: Fuso-horário
-        preferred_tags: Tópicos seguidos
-        preferred_languages: Seleciona os idiomas que você sabe
-        last_logged_at: último login
-        created_at: entrou
-        reputation: Reputação
-        avatar: Foto
-        language_filter: Filtrar por idioma
-        website: Website
-        birthday: Aniversário
-        age: Idade
-        bio: Biografia curta
-        description: Biografia longa
-        location: Localização
-        gender:
-          title: Gênero
-          male: Masculino
-          female: Feminino
+    new:
+      affiliation_message: "Seu e-mail acadêmico %{email} foi confirmado! Agora basta terminar seu cadastro preenchendo o formulário abaixo."
+      agree: "Li e concordo com a <a href=\"%{privacy}\" target=\"_blank\">política de\n\
+        privacidade</a> e com os <a href=\"%{tos}\" target=\"_blank\">termos de\n\
+        uso</a> do site.\n"
+      already_registered: "Já tem conta no Umamão? <a href=\"/users/login\">Faça login</a> para entrar."
+      invitation:
+        title: "Você veio a convite de %{user}:"
+      submit: Criar conta
+      title: Criar conta
+    news_update:
+      answer:
+        topic:
+          created: "Resposta adicionada ao tópico %{origin}."
+        user:
+          created: "%{origin} adicionou uma resposta."
+      question:
+        topic:
+          created: "Pergunta adicionada ao tópico %{origin}."
+        user:
+          created: "%{origin} adicionou uma pergunta."
+    show:
+      atom:
+        answer: "Resposta para:"
+        question: "Pergunta:"
+        title: "%{site_name} - Atualizações de %{user}"
+      no_answers: Nenhuma resposta ainda.
+      no_news_updates: "Nenhuma atualização ainda."
+      no_questions: Nenhuma pergunta ainda.
+      profile: Perfil
+      tab:
+        answers: Respostas
+        news_updates: "Atualizações"
+        questions: Perguntas
+        search_results: Links
+      title: "%{user}"
+      upvotes_count: "Total de votos positivo recebidos: %{upvotes_count}"
+      views: visitas
+    validation:
+      errors:
+        did_not_agree: "Você deve concordar com os termos de uso e a política de privacidade\n"
+        dup_email: "Este email já existe no site"
+        empty_email: "Seu email não pode ser vazio"
+        empty_name: "Seu nome não pode ser vazio"
+        empty_password: "A senha não pode ser vazia"
+        invalid_email: "Este email é inválido"
+        invalid_password: "A senha é inválida"
+        long_bio: "Sua biografia curta não pode exceder 140 caracteres"
+        long_description: "Sua biografia longa não pode exceder 500 caracteres"
+        long_name: "Seu nome não pode exceder 100 caracteres"
+        password_match: "A senha não confere"
