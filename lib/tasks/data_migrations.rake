@@ -1230,9 +1230,9 @@ namespace :data do
     task :update_question_is_open_flag => :environment do
       Question.find_each do |q|
         print "-"
-        if SearchResult.first(:question_id => Question.first.id,
+        if q.is_open && SearchResult.first(:question_id => q.id,
                               :votes_average => { :$gt => 0 })
-          q.is_open = true
+          q.is_open = false
           q.save
         end
       end
