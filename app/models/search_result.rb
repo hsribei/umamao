@@ -121,7 +121,7 @@ private
   end
 
   def response_body_present?
-    @response.body.present?
+    response_body.present?
   end
 
   def response_body_text?
@@ -129,7 +129,7 @@ private
   end
 
   def response_body
-    @response.body
+    @response ? @response.body : ''
   end
 
   def fetch_response_body
