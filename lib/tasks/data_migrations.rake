@@ -1226,5 +1226,25 @@ namespace :data do
       end
     end
 
+    desc "Prune topics that don't have any questions or followers"
+    task :prune_topics => :environment do
+      prune_topic = lambda do |t|
+        if t.questions.count.zero? && t.follower_ids.count.zero?
+          begin
+            t.delete
+            print '.'
+          rescue
+            print 'E'
+          end
+        else
+          print 'F'
+        end
+      end
+
+      # Prune topics that have zero counts
+      Topic.find_each(:questions_count => 0,
+                      :followers_count => 0,
+                      &prune_topic)
+    end
   end
 end
