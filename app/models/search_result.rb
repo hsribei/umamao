@@ -36,6 +36,8 @@ class SearchResult
   has_many :flags, :as => 'flaggeable', :dependent => :destroy
   has_many :notifications, :as => 'reason', :dependent => :destroy
 
+  has_many :news_updates, :as => "entry", :dependent => :destroy
+
   validate :fetch_response_body,
            :if => :url_present?,
            :unless => [:title_present?, :summary_present?]
@@ -103,7 +105,6 @@ class SearchResult
     news_updates.first
   end
 
-  
   def create_news_update
     NewsUpdate.create(:author => self.user, :entry => self,
                       :created_at => self.created_at,
@@ -114,7 +115,9 @@ class SearchResult
   handle_asynchronously :create_news_update
 
   def hide_news_update
-    self.question.news_update.hide!
+    if self.question.news_update
+      self.question.news_update.hide!
+    end
   end
 
   def unhide_news_update
