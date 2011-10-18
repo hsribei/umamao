@@ -37,7 +37,7 @@ pt-BR:
           created: "Pergunta adicionada ao tópico %{origin}."
         user:
           created: "%{origin} adicionou uma pergunta."
-      search_result:
+      searchresult:
         user:
           created: "%{origin} adicionou uma resposta a %{question}"
         topic:

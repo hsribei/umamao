@@ -33,7 +33,7 @@ en:
           created: Question added to topic %{origin}.
         user:
           created: "%{origin} added a question."
-      search_result:
+      searchresult:
         user:
           created: "%{origin} added an answer to %{question}"
         topic:
