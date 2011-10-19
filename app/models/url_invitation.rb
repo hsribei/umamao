@@ -23,13 +23,13 @@ class UrlInvitation
   end
 
   def increment_clicks
-    update_attributes(:clicks_count => clicks_count + 1)
+    increment(:clicks_count => 1)
   end
 
   def add_invitee(invitee)
     unless invitee_ids.include?(invitee.id)
-      update_attributes(:invitee_ids => invitee_ids << invitee.id,
-                        :sign_ups_count => sign_ups_count + 1)
+      push_uniq(:invitee_ids => invitee.id)
+      increment(:sign_ups_count => 1)
     end
   end
 
