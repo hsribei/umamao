@@ -15,7 +15,7 @@ module Support
                    URI.parse(url.insert(0, parsed_uri.port == 443 ? 'https://' :
                                                                     'http://'))
                  end
-      scrub_hash if twitter?
+      scrub_hash if twitter? && parsed_uri.fragment
     rescue URI::InvalidURIError
       raise
     end
