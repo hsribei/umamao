@@ -6,5 +6,5 @@
   %li.entry.item.getting_started
     -# Question Summary
     = link_to image_tag("getting_started_close.png", :class => "close-image"), set_not_new_user_path(current_user), {:class => 'close-link'}
-    %h3= link_to title, question_path(getting_started), {:title => truncate(getting_started.body, :length => 200), :class => "question"}
+    %h3= link_to title, question_answer_path(getting_started.question, getting_started), {:title => truncate(title, :length => 200), :class => "question"}
     .clear
