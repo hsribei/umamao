@@ -18,4 +18,7 @@ $(document).ready(function() {
     });
   });
 
+  $('#url_field_wrapper').delegate('.url_field', 'click', function() {
+    $(this).select();
+  });
 });

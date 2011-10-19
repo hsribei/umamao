@@ -4,11 +4,20 @@
       .navigation= link_to t(".admin"), manage_properties_path
     - if current_user.mod_of?(current_group)
       .navigation= link_to t(".moderate"), moderate_path
-    .navigation
-      - if current_user.invitations_left == "unlimited"
-        = link_to t("invitations.invite"), new_invitation_path
-      - else
-        = link_to t("invitations.left", :count => current_user.invitations_left), new_invitation_path
+    - if current_user.url_invitation
+      .navigation
+        #url_field_wrapper
+          = url_field_tag :ref, root_url(:ref => current_user.url_invitation.ref), :readonly => true, :class => :url_field
+        #url_invitation_information
+          %span.number
+            = current_user.url_invitation.clicks_count
+          = "#{t(:clicks, :scope => [:url_invitations, :sidebar])},"
+          %span.number
+            = current_user.url_invitation.sign_ups_count
+          = "#{t(:sign_ups, :scope => [:url_invitations, :sidebar])},"
+          %span.number
+            = current_user.url_invitation.invites_left
+          = t(:left, :scope => [:url_invitations, :sidebar])
 
   -# Topic suggestions
   - if logged_in?
