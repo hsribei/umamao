@@ -166,9 +166,16 @@ class CommentsController < ApplicationController
   end
 
   def find_scope
-    @question = Question.by_slug(params[:question_id])
-    @answer = @question.answers.find(params[:answer_id]) unless params[:answer_id].blank?
-    @search_result = SearchResult.find(params[:search_result_id])
+    if params[:question_id].present?
+      if @question = Question.find_by_slug_or_id(params[:question_id])
+        if params[:answer_id]
+          @answer = @question.answers.find(params[:answer_id])
+        elsif params[:search_result_id]
+          @search_result =
+            @question.search_results.find(params[:search_result_id])
+        end
+      end
+    end
   end
 
   def scope
@@ -176,12 +183,13 @@ class CommentsController < ApplicationController
   end
 
   def full_scope
-    unless @answer.nil?
+    if @answer
       [@question, @answer]
+    elsif @search_result
+      [@question, @search_result]
     else
       [@question]
     end
   end
   helper_method :full_scope
-
 end
