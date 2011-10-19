@@ -1,6 +1,7 @@
 en:
   url_invitations:
     sidebar:
+      title: Invite other people
       clicks: clicks
       sign_ups: sign ups
       left: left
