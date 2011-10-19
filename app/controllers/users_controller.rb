@@ -56,6 +56,12 @@ class UsersController < ApplicationController
       end
     end
 
+    if params[:ref]
+      unless @url_invitation = UrlInvitation.find_by_ref(params[:ref])
+        redirect_to(root_path(:focus => 'signup')) and return
+      end
+    end
+
     @user = User.new
 
     # User added by invitation
@@ -104,7 +110,7 @@ class UsersController < ApplicationController
 
     end
 
-    if @invitation || @affiliation || @group_invitation
+    if @invitation || @affiliation || @group_invitation || @url_invitation
       @user.timezone = AppConfig.default_timezone
       render 'new', :layout => 'welcome'
     else
@@ -146,6 +152,15 @@ class UsersController < ApplicationController
     end
 
     if @user.save
+      if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
+        track_event(:signed_up_through_invitation,
+                    :invitee_id => @user.id,
+                    :invitee_name => @user.name,
+                    :inviter_id => @url_invitation.inviter.id,
+                    :inviter_name => @url_invitation.inviter.name)
+        @url_invitation.add_invitee(@user)
+      end
+
       if invitation && invitation.topics
         invitation.topics.each do |topic|
           topic.add_follower!(@user)

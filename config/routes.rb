@@ -319,6 +319,11 @@ Shapado::Application.routes.draw do
 
   match '/content-search' => 'opensearch#index', :as => :opensearch
 
+  # Signup via invitation link.
+  scope :constraints => lambda { |request| request.params[:ref] } do
+    match '/' => 'url_invitations#show'
+  end
+
   match '/:group_invitation' => 'users#new'
 
   root :to => 'welcome#index'
