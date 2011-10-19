@@ -1,0 +1,11 @@
+pt-BR:
+  url_invitations:
+    sidebar:
+      clicks: cliques
+      sign_ups: registros
+      left: sobrando
+    show:
+      no_invites_left: "Desculpe, o número de convites desta URL foi temporariamente alcançado."
+      not_found: "Desculpe, não encontramos convite para esta URL."
+    messages:
+      less_or_equal: deve ser menor ou igual a %{number}

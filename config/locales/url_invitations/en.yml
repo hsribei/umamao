@@ -1,0 +1,11 @@
+en:
+  url_invitations:
+    sidebar:
+      clicks: clicks
+      sign_ups: sign ups
+      left: left
+    show:
+      no_invites_left: Sorry, the number of invites on that URL has been temporarily reached.
+      not_found: Sorry, no invites were found for this URL.
+    messages:
+      less_or_equal: should be less or equal than %{number}
