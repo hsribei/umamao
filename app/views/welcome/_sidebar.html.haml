@@ -13,7 +13,7 @@
   -# Topic suggestions
   - if logged_in?
     = render_cell :suggestions, :users, :single_column => true
-    = render_cell :suggestions, :topics, :single_column => true
+    -#= render_cell :suggestions, :topics, :single_column => true
 
   - current_group.widgets.each do |widget|
     .widget.block{:id => widget.name}
