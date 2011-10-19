@@ -15,11 +15,11 @@
     = f.label :title, t('.name'), :class => "label"
     = f.text_field :title, :class => "text_field"
   .group
-    = f.label :description, t('.description'), :class => "label"
-    = f.text_area :description, :class => "editor-input", :id => "topic-input", :rows => "auto", :cols => "auto"
-    %label.label
+    -# f.label :description, t('.description'), :class => "label"
+    -# f.text_area :description, :class => "editor-input", :id => "topic-input", :rows => "auto", :cols => "auto"
+    -#%label.label
       = t("global.preview")
-    #topic-preview.markdown
+    -##topic-preview.markdown
 
     .group.navform
       = f.submit t("scaffold.update")

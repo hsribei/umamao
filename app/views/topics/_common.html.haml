@@ -6,10 +6,12 @@
 .secondary-navigation
   .navtitle
     &= @topic.title
-%br
 
-.markdown
-  = markdown(@topic.description)
+-#FIXME: remove descripion while there is no i18n for it
+-#%br
+
+-#.markdown
+  -# markdown(@topic.description)
 
 .controls
   .actions
