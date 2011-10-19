@@ -153,9 +153,7 @@ class UsersController < ApplicationController
 
     if @user.save
       if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
-        track_event(:sign_up,
-                    :invitee_id => @user.id,
-                    :inviter_id => @url_invitation.inviter.id)
+        tracking_properties[:invited_by] = @url_invitation.inviter.id
         @url_invitation.add_invitee(@user)
       end
 
