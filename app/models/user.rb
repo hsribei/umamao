@@ -107,6 +107,7 @@ class User
 
   before_create :create_friend_list, :create_notification_opts
   before_create :generate_uuid
+  after_create Proc.new { |user| UrlInvitation.generate(user) }
 
   timestamps!
 
