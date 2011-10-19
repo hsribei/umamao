@@ -6,6 +6,7 @@
       .navigation= link_to t(".moderate"), moderate_path
     - if current_user.url_invitation
       .navigation
+        = t(:title, :scope => [:url_invitations, :sidebar])
         #url_field_wrapper
           = url_field_tag :ref, root_url(:ref => current_user.url_invitation.ref), :readonly => true, :class => :url_field
         #url_invitation_information
