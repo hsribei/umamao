@@ -14,9 +14,9 @@
         .origin
           - if question.topics.any?
             - topic = question.topics.first
-            .description= t(".#{entry_type}.topic.#{action}", :origin => link_to_topic(topic))
+            .description= t(".#{entry_type}.topic.#{action}", :origin => link_to_topic(topic), :question => link_to(question.title, url_for(question.title), :class => "question_entry"))
           - else
-            .description= t(".#{entry_type}.user.#{action}", :origin => link_to(author.name, url_for(author)))
+            .description= t(".#{entry_type}.user.#{action}", :origin => link_to(author.name, url_for(author)), :question => link_to(question.title, url_for(question.title), :class => "question_entry"))
       - if entry_type == "answer"
         = render :partial => 'questions/answer', :object => entry, :locals => {:question => question, :answer => entry, :hide_controls => true}
 
