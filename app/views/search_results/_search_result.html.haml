@@ -28,5 +28,5 @@
     = render :partial => 'shared/comments',
              :locals => { :commentable => search_result,
                           :source => question_path(question),
-                          :path_scope => [search_result] }
+                          :path_scope => [question, search_result] }
 

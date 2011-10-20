@@ -223,7 +223,7 @@ window.Utils = {
   },
 
   poshytipfy: function(){
-    $("#sidebar .topic-list .topic, #topic-suggestions .topic-list .topic").poshytip(
+    $("#sidebar .topic-list .topic, #topic-suggestions .topic-list .topic").not('.suggestion').poshytip(
         $.extend(Utils.poshytip_sidebar_options, Utils.poshytip_default_options)
     );
     $(".entry.item .summary .origin .description a:not(.nickname), "
