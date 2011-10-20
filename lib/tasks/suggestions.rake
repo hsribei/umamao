@@ -5,10 +5,10 @@ namespace :suggestions do
       if suggestion.entry.blank?
         suggestion.user.remove_suggestion(suggestion)
       elsif suggestion.user &&
-          !suggestion.user.suggestion_list.
-          topic_suggestion_ids.include?(suggestion.id) &&
-          !suggestion.user.suggestion_list.user_suggestion_ids.
-          include?(suggestion.id)
+        !suggestion.user.suggestion_list.
+        topic_suggestion_ids.include?(suggestion.id) &&
+        !suggestion.user.suggestion_list.user_suggestion_ids.
+        include?(suggestion.id)
         suggestion.destroy
       end
     end
