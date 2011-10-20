@@ -1246,5 +1246,15 @@ namespace :data do
                       :followers_count => 0,
                       &prune_topic)
     end
+
+    desc "Remove all related topics from all topics"
+    task :drop_related_topics => :environment do
+      Topic.find_each(:batch => 100) do |t|
+        error_ids = t.set(:related_topic_ids, [])
+        error_count = t.set(:related_topics_count, {})
+
+        print(error_ids.is_a?(Hash) || error_count.is_a?(Hash) ? 'E' : '.')
+      end
+    end
   end
 end
