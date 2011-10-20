@@ -54,27 +54,18 @@ module TopicsHelper
       end
 
     desc = Rails.cache.fetch("topic_tt_desc.#{topic.id}.#{topic.updated_at}") do
-      if topic.description.present?
-        text = strip_tags(markdown(topic.description, :render_links => false))
-        link_to truncate_words(text), topic_path(topic)
-      else
-        link_to t('topics.tooltip.describe', :title => topic.title),
+      link_to t('topics.tooltip.describe', :title => topic.title),
           edit_topic_path(topic)
-      end
     end
 
     "<div class='tooltip topic-tooltip'><span class='followers-count'>#{
         t('followable.followers', :count => topic.followers_count)
-    }</span>#{button_or_nothing}
-    <hr/><div class='description'>#{desc}</div></div>"
+    }</span>#{button_or_nothing}</div>"
+
   end
 
   def topic_help_text(topic)
-    if topic.description.present?
-      truncate_words(remove_links(topic.description), 100)
-    else
-      topic.title
-    end
+    topic.title
   end
 
   def embed_topic_tag(topic, method)
