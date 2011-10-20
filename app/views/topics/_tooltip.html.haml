@@ -2,8 +2,4 @@
   .followers-count= t('followable.followers', :count => topic.followers_count)
   = render(:partial => "topics/follow", :locals => {:topic => topic, :block => "block"})
   %hr
-  -# FIXME: remove topic's description while there is no i18n for it
-  -# if topic.description.present?
-    .description= topic.description
-  -# else
   = link_to t('topics.tooltip.describe', :title => topic.title), edit_topic_path(topic)

@@ -7,12 +7,6 @@
   .navtitle
     &= @topic.title
 
--#FIXME: remove descripion while there is no i18n for it
--#%br
-
--#.markdown
-  -# markdown(@topic.description)
-
 .controls
   .actions
     = link_to t('scaffold.edit'), edit_topic_path(@topic)
