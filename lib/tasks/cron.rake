@@ -7,12 +7,7 @@ end
 namespace :cron_tasks do
   desc "Refreshes each topic's list of related topics"
   task :refresh_related_topics => :environment do
-    Rails.logger.info "Refreshing list of related topics..."
-    Topic.find_each do |topic|
-      next if topic.questions_count == 0
-      topic.find_related_topics
-      topic.save :validate => false
-    end
+    Rake::Task["data:migrate:regenerate_related_topics"].execute
   end
 
   task :send_survey_to_newcomers => :environment do
