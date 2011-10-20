@@ -994,9 +994,9 @@ namespace :data do
 
     desc "Rebuild filter indexes for questions, users and topics"
     task :rebuild_indexes => :environment do
-      Question.all.each {|q| q.save :validate => false}
-      Topic.all.each {|q| q.save :validate => false}
-      User.all.each {|q| q.save :validate => false}
+      User.find_each {|q| print '-';  q.update_search_index(true)}
+      Question.find_each{|q| print '-'; q.update_search_index(true)}
+      Topic.find_each{|q| print '-';  q.update_search_index(true)}
     end
 
     desc "Migrate news items to polymorphic version"
