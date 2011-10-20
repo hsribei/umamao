@@ -14,11 +14,12 @@ en:
       subject: "%{inviter} invited you to join Umamão!"
       text_link_label: "To accept this invitation, click this link:"
     request_answer:
-      answer: Click here to answer
+      answer: Go check it out!
       goodbye: "\n\
         Cheers,\n\
         Umamão Team\n"
       greeting: Hello %{invited},
       sender: "%{user} thinks you know the answer to the question %{question}"
       subject: "%{user} asked you to answer a question on Umamão"
-      text_link_label: "To answer the question, click on this link:"
+      text_link_label: "Go check it out and see if you can help :)"
+      html_link_label: "Go check it out and see if you can help :)"
