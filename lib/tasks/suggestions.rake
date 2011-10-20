@@ -22,4 +22,13 @@ namespace :suggestions do
       user.save :validate => false
     end
   end
+
+  desc "Delete all generated suggestions for all users"
+  task :delete_all => :environment do
+      Suggestion.find_each(:batch_size => 10_000,
+                           :origin_id => nil) do |s|
+        print( s.destroy ? '.' : 'E' )
+      end
+    end
+  end
 end
