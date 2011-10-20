@@ -1256,5 +1256,16 @@ namespace :data do
         print(error_ids.is_a?(Hash) || error_count.is_a?(Hash) ? 'E' : '.')
       end
     end
+
+    desc "Regenerate related topics for all topics"
+    task :regenerate_related_topics => :environment do
+      Topic.find_each(:batch => 100) do |t|
+        if t.update_related_topics!
+          print '.'
+        else
+          print 'F'
+        end
+      end
+    end
   end
 end
