@@ -60,7 +60,7 @@ module TopicsHelper
 
     "<div class='tooltip topic-tooltip'><span class='followers-count'>#{
         t('followable.followers', :count => topic.followers_count)
-    }</span>#{button_or_nothing}"
+    }</span>#{button_or_nothing}</div>"
 
   end
 
