@@ -6,3 +6,4 @@ pt-BR:
       message: Mensagem (opcional)
       request_answer: Pedir resposta
       title: "Convidar usuário para responder"
+      user_invited: "Usuário convidado"
