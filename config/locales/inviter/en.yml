@@ -19,7 +19,7 @@ en:
         Cheers,\n\
         Umamão Team\n"
       greeting: Hello %{invited},
+      html_link_label: Go check it out and see if you can help :)
       sender: "%{user} thinks you know the answer to the question %{question}"
       subject: "%{user} asked you to answer a question on Umamão"
-      text_link_label: "Go check it out and see if you can help :)"
-      html_link_label: "Go check it out and see if you can help :)"
+      text_link_label: Go check it out and see if you can help :)

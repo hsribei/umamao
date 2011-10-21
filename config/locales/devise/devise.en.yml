@@ -46,7 +46,10 @@ en:
       unlocked: 'Your account was successfully unlocked. You are now signed in.'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: 'Please confirm your email'
+        greeting: 'Hello, %{name}'
+        message: "Thanks for joining %{link}! To complete your your sign up process we need you to confirm your email address. To do that you just have to click the link below:"
+        goodbye: In case you haven't signed up in our site ignore this message.
       reset_password_instructions:
         subject: 'Reset password instructions'
       unlock_instructions:
