@@ -30,6 +30,7 @@ class SearchResult
   has_one :answer, :dependent => :destroy
   has_many :comments,
            :foreign_key => 'commentable_id',
+           :order => 'created_at asc',
            :dependent => :destroy
   has_many :flags, :as => 'flaggeable', :dependent => :destroy
   has_many :notifications, :as => 'reason', :dependent => :destroy
