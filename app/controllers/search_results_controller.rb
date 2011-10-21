@@ -28,10 +28,11 @@ class SearchResultsController < ApplicationController
                      :form_message => notice_message,
                      :message => notice_message,
                      :html =>
-                       render_to_string(:partial => "questions/search_result",
+                       render_to_string(:partial => 'search_results/search_result',
                                         :object => @search_result,
-                                        :locals => { :question =>
-                                                       @question }) })
+                                        :locals =>
+                                          { :question => @question,
+                                            :hide_controls => false }) })
         end
         format.json { head(:created) }
       else

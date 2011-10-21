@@ -117,10 +117,11 @@ class AnswersController < ApplicationController
                          t(:flash_notice, :scope => "answers.create"),
                        :message => t(:flash_notice, :scope => "answers.create"),
                        :html =>
-                         render_to_string(:partial => "questions/search_result",
+                         render_to_string(:partial => 'search_results/search_result',
                                           :object => @answer.search_result,
-                                          :locals => { :question =>
-                                                         @question }) })
+                                          :locals =>
+                                            { :question => @question,
+                                              :hide_controls => false }) })
           end
         else
           error = t(:flash_error, :scope => "answers.create")
