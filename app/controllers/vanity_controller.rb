@@ -1,6 +1,7 @@
 class VanityController < ApplicationController
   include Vanity::Rails::Dashboard
 
+  before_filter :login_required
   before_filter :only_allow_admins
 
 private
