@@ -102,7 +102,8 @@ class AnswersController < ApplicationController
 
           track_event(:answered_question,
                       :question_answers_count => @question.search_results.count,
-                      :own_question => @question.user_id == @answer.user_id)
+                      :own_question => @question.user_id == @answer.user_id,
+                      :latency => (@answer.created_at - @question.created_at).to_i / 60)
 
           format.html do
             flash[:notice] = t(:flash_notice, :scope => "answers.create")
