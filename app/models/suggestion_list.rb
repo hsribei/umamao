@@ -210,8 +210,9 @@ class SuggestionList
     end
   end
   
-  # Suggest topics related to the user's affiliations.
+  # Suggest topics listed in shapado.yml
   def suggest_first_topics
+    return if AppConfig.topic_suggestion.blank?
     AppConfig.topic_suggestion.each do |id_or_slug|
       t = Topic.find_by_slug_or_id(id_or_slug)
       self.suggest(t, "popular") if t.present?
