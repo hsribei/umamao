@@ -57,6 +57,7 @@ gem 'twitter', '~> 1.1.0'
 gem 'twitter-text', '~>1.1.1'
 gem 'twitter_oauth', '~>0.3.6'
 gem 'uuidtools', '~>2.1.1'
+gem 'vanity', '1.6.1' # Version 1.7.1 is screwed up.
 gem 'warden', '~>0.10.7'
 gem 'whatlanguage', '~>1.0.0'
 
