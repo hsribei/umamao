@@ -209,18 +209,21 @@ class SuggestionList
       self.suggest(group_invitation.topics, "group_invitation")
     end
   end
+  
+  # Suggest topics related to the user's affiliations.
+  def suggest_first_topics
+    AppConfig.topic_suggestion.each do |id_or_slug|
+      t = Topic.find_by_slug_or_id(id_or_slug)
+      self.suggest(t, "popular") if t.present?
+    end
+  end
 
   # Populate the user's suggestion list for the signup wizard.
   def find_first_suggestions
     if self.topic_suggestions.blank? &&
         self.user_suggestions.blank?
-      self.suggest_from_group_invitation
-      self.suggest_university_topics
+      self.suggest_first_topics
       self.suggest_users_from_outside
-      self.suggest_from_dac
-      if self.topic_suggestion_ids.size < 20
-        self.suggest_popular_topics(20 - self.topic_suggestion_ids.size)
-      end
     end
   end
 
