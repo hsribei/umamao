@@ -148,60 +148,6 @@ class SuggestionList
                  :reason => "popular")
   end
 
-  def suggest_users_from_dac(student_class)
-    self.suggest(Affiliation.query(
-      :student_id.in => student_class.students.map(&:id),
-      :user_id.ne => nil).map(&:user),
-      :reason => "dac")
-
-    previous_year = AcademicProgramClass.first(
-              :academic_program_id => student_class.academic_program_id,
-              :year => student_class.year - 1)
-    if previous_year
-      self.suggest(Affiliation.query(
-        :student_id.in => previous_year.students.map(&:id),
-        :user_id.ne => nil).map(&:user),
-        :reason => "dac")
-    end
-
-    next_year = AcademicProgramClass.first(
-              :academic_program_id => student_class.academic_program_id,
-              :year => student_class.year + 1)
-    if next_year
-      self.suggest(Affiliation.query(
-        :student_id.in => next_year.students.map(&:id),
-        :user_id.ne => nil).map(&:user),
-        :reason => "dac")
-    end
-  end
-
-
-  def suggest_from_dac
-    if affiliation = Affiliation.first(:user_id => self.user.id.to_s, :email => /@dac.unicamp.br$/) and student = affiliation.student
-      suggestions = []
-
-      # Suggest topics
-      if student.academic_program_class
-        suggestions << student.academic_program_class.academic_program
-      end
-
-      self.suggest(suggestions +
-                   student.registered_courses.map(&:course),
-                   :reason => "dac")
-
-      # Suggest users
-      suggest_users_from_dac(student.academic_program_class) if student.academic_program_class
-    end
-  end
-
-  # Suggest topics related to the user's affiliations.
-  def suggest_university_topics
-    if self.user.affiliations.present?
-      self.user.affiliations.each do |affiliation|
-        self.suggest(affiliation.university.university_topics, "university")
-      end
-    end
-  end
 
   # Suggest topics related to the user's group invitation.
   def suggest_from_group_invitation
@@ -241,7 +187,7 @@ class SuggestionList
     kept_suggestions = []
 
     self.topic_suggestions.each do |topic_suggestion|
-      if ["external", "university", "dac"].include?(topic_suggestion.reason) &&
+      if ["external"].include?(topic_suggestion.reason) &&
           topic_suggestion.entry.present?
         kept_suggestions << topic_suggestion
       else
