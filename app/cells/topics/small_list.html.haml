@@ -17,7 +17,7 @@
       - @user_topics.each do |user_topic|
         - topic = user_topic.topic
         %li
-          .topic
+          .topic.suggestion
             %span.topic-title
               = link_to_topic(topic, :render_follow_button => false)
           = render :partial => "follow", :locals => {:topic => topic}

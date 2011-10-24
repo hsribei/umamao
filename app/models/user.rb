@@ -103,8 +103,11 @@ class User
 
   key :last_read_notifications_at, Time
 
+  has_one :url_invitation, :foreign_key => :inviter_id, :dependent => :destroy
+
   before_create :create_friend_list, :create_notification_opts
   before_create :generate_uuid
+  after_create Proc.new { |user| UrlInvitation.generate(user) }
 
   timestamps!
 

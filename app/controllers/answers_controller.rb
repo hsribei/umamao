@@ -102,7 +102,8 @@ class AnswersController < ApplicationController
 
           track_event(:answered_question,
                       :question_answers_count => @question.search_results.count,
-                      :own_question => @question.user_id == @answer.user_id)
+                      :own_question => @question.user_id == @answer.user_id,
+                      :latency => (@answer.created_at - @question.created_at).to_i / 60)
 
           format.html do
             flash[:notice] = t(:flash_notice, :scope => "answers.create")
@@ -116,10 +117,11 @@ class AnswersController < ApplicationController
                          t(:flash_notice, :scope => "answers.create"),
                        :message => t(:flash_notice, :scope => "answers.create"),
                        :html =>
-                         render_to_string(:partial => "questions/search_result",
+                         render_to_string(:partial => 'search_results/search_result',
                                           :object => @answer.search_result,
-                                          :locals => { :question =>
-                                                         @question }) })
+                                          :locals =>
+                                            { :question => @question,
+                                              :hide_controls => false }) })
           end
         else
           error = t(:flash_error, :scope => "answers.create")

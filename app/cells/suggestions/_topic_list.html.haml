@@ -3,7 +3,7 @@
   - unless topic.is_a? Topic
     - topic, users = topic
   %li
-    .topic.information
+    .topic.information.suggestion
       %span.topic-title
         = link_to_topic(topic, :render_follow_button => false)
     .controls

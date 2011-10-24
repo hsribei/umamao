@@ -7,14 +7,12 @@ group :development do
   gem 'compass', '~> 0.11.1'
   gem 'compass-colors', '~> 0.3.1'
   gem 'fancy-buttons', '~>1.1.1'
+  gem 'grit'
   gem 'RedCloth', '~> 4.1.1'
   gem 'ruby-debug'
   gem 'ruby-prof'
-  gem 'grit'
   gem 'yaml_waml', '0.3.0'
 end
-
-gem 'rails', :git => 'git://github.com/umamao/rails.git', :branch => '3-0-7'
 
 gem 'bitly'
 gem 'bson_ext', :require => 'bson'
@@ -45,12 +43,12 @@ gem 'nokogiri'
 gem 'omniauth'
 gem 'postmark', '~>0.9.0'
 gem 'postmark-rails', '~>0.4.0'
+gem 'rails', :git => 'git://github.com/umamao/rails.git', :branch => '3-0-7'
 gem 'rake', '0.8.7'
 gem 'rdiscount', '~>1.6.3.1'
 gem 'remotipart'
 gem 'responders'
 gem 'rmagick'
-gem 'ruby-debug'
 gem 'ruby-openid', :require => 'openid'
 gem 'ruby-stemmer', '~>0.8.2', :require => 'lingua/stemmer'
 gem 'sanitize', '~>1.2.1'
@@ -63,16 +61,16 @@ gem 'warden', '~>0.10.7'
 gem 'whatlanguage', '~>1.0.0'
 
 group :test do
-  gem "rspec"
-  gem "rspec-rails", "~> 2.0.0"
+  gem "autotest-rails"
+  gem "capybara"
+  gem "capybara-envjs"
+  gem "cucumber-rails"
+  gem "database_cleaner"
   gem "factory_girl", :git => 'git://github.com/thoughtbot/factory_girl.git'
   gem "factory_girl_rails", :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
   gem "faker"
-  gem "autotest-rails"
-  gem "database_cleaner"
-  gem "cucumber-rails"
-  gem "capybara"
-  gem "capybara-envjs"
   gem "launchy"
+  gem "rspec"
+  gem "rspec-rails", "~> 2.0.0"
   gem "ruby-debug"
 end
