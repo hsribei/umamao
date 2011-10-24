@@ -79,7 +79,7 @@
 
 = render(:partial => 'question_responding_helper',
          :object => ab_test(:question_responding_helpers),
-         :locals => { :question => @question })
+         :locals => { :question => @question, :bing_results => @bing_results })
 
 .loader{:style => 'display: none;'}
   = waiting_tag

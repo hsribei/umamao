@@ -1,4 +1,4 @@
-- unless bing_results.count == 0
+- if bing_results.respond_to?(:count) && bing_results.count == 0
   #bing_results_wrapper
     .text
       = t(:bing_results, :scope => [:questions, :responding_helpers])
