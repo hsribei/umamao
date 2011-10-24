@@ -7,7 +7,7 @@
 - question = entry_type == 'question' ? entry : entry.question
 - question_link = question_path(question)
 
-- unless question.banned || entry.banned
+- if !question.banned && !entry.banned #do ab test
   %li.entry.item
     -# News_item Summary
     .summary
@@ -15,7 +15,8 @@
       .origin
 
         .description= t(".#{entry_type}.#{origin_type}.#{action}", :origin => link_to_model(news_item.origin, origin.name), :question => link_to(question.title, question_link, :class => "question_entry"))
-      -# if entry_type == "answer"
+
+      - if entry_type == "answer"
         = render :partial => 'questions/answer', :object => entry, :locals => {:question => question, :answer => entry, :hide_controls => true}
 
       -# News_item Stats
