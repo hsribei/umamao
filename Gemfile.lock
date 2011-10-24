@@ -304,6 +304,8 @@ GEM
     rack-test (0.5.7)
       rack (>= 1.0)
     rake (0.8.7)
+    rbing (1.1.0)
+      httparty (>= 0.4.0)
     rdiscount (1.6.3.2)
     redis (2.2.2)
     redis-namespace (1.0.3)
@@ -430,6 +432,7 @@ DEPENDENCIES
   postmark-rails (~> 0.4.0)
   rails!
   rake (= 0.8.7)
+  rbing (= 1.1.0)
   rdiscount (~> 1.6.3.1)
   remotipart
   responders
