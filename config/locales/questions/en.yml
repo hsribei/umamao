@@ -176,3 +176,5 @@ en:
       flash_notice: The question was successfully updated.
     watch:
       success: You will now receive notifications by email for every new answer to this question.
+    responding_helpers:
+      search_on_google: "Search on Google:"

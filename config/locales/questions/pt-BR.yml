@@ -182,3 +182,5 @@ pt-BR:
       flash_notice: Pergunta atualizada.
     watch:
       success: "Você será avisado de novidades nesta pergunta."
+    responding_helpers:
+      search_on_google: "Procure no Google:"

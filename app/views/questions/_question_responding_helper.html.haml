@@ -1,4 +1,8 @@
-- if helper == :google_link
-  = link_to_google_search(question.title)
-- elsif helper == :bing_results
-  Bing search results
+#question_responding_helper
+  - if helper == :google_link
+    #google_link
+      .text
+        = t(:search_on_google, :scope => [:questions, :responding_helpers])
+      = link_to_google_search(question.title)
+  - elsif helper == :bing_results
+    Bing search results

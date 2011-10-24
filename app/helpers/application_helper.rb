@@ -356,7 +356,7 @@ module ApplicationHelper
 
   def link_to_google_search(string)
     url = 'http://www.google.com.br/search?q=' << CGI.escape(string)
-    link_to(url, url)
+    link_to(string, url, :class => 'google_search_link')
   end
 end
 
