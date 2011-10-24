@@ -158,8 +158,9 @@ class SuggestionList
   
   # Suggest topics listed in shapado.yml
   def suggest_first_topics
-    return if AppConfig.topic_suggestion.blank?
-    AppConfig.topic_suggestion.each do |id_or_slug|
+    topics = configured_suggestions
+    return if topics.blank?
+    topics.each do |id_or_slug|
       t = Topic.find_by_slug_or_id(id_or_slug)
       self.suggest(t, "popular") if t.present?
     end
@@ -196,15 +197,12 @@ class SuggestionList
     end
 
     count = Hash.new(0) # Scores for suggestions
-    UserTopicInfo.find_each(:user_id => user.id, 
-                            :followed_at.ne => nil) do |user_topic|
-      topic = user_topic.topic
-      topic.related_topics.each do |related_topic|
-        next if self.user.following?(related_topic) ||
-          self.uninteresting_topic_ids.include?(related_topic.id) ||
-          kept_suggestions.any?{|suggestion| suggestion.entry == related_topic}
-        count[related_topic.id] += 1
-      end
+    topics = configured_suggestions
+    topics.each do |topic|
+      next if self.user.following?(topic) ||
+        self.uninteresting_topic_ids.include?(topic.id) ||
+        kept_suggestions.any?{|suggestion| suggestion.entry == topic}
+      count[topic.id] += 1
     end
 
     self.topic_suggestions = kept_suggestions
@@ -217,4 +215,8 @@ class SuggestionList
     end
   end
 
+protected
+  def configured_suggestions
+    AppConfig.topic_suggestion
+  end
 end
