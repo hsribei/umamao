@@ -1,5 +1,13 @@
 class SearchResultsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :only => [:create, :destroy, :flag]
+
+  def show
+    @search_result = SearchResult.find_by_id(params[:search_result_id])
+    track_event(:clicked_search_result,
+                :search_result_id => @search_result.id,
+                :url => @search_result.url)
+    redirect_to(@search_result.url)
+  end
 
   def create
     @question = Question.find_by_id(params[:question_id])
