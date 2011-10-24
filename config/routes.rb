@@ -324,6 +324,8 @@ Shapado::Application.routes.draw do
     match '/' => 'url_invitations#show'
   end
 
+  match '/g/:url/:search_result_id' => 'search_results#show'
+
   match '/:group_invitation' => 'users#new'
 
   root :to => 'welcome#index'
