@@ -200,7 +200,7 @@ class UserTopicInfo
       user_topic.save
     else
       UserTopicInfo.create(
-        :topic_id => topic.id, :user_id => user.id, :votes_balance => vote)
+        :topic_id => topic.id, :user_id => user.id, :votes_balance => increment)
     end
   end
 

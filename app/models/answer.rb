@@ -186,8 +186,10 @@ class Answer < Comment
   end
 
   def unhide_news_update
+    if self.question.news_update && self.question.answers_count == 1
     # if this is the last question, reshow question's news_update
-    self.question.news_update.show! if self.question.answers_count == 1
+      self.question.news_update.show!
+    end
   end
 
   def new_answer_notification

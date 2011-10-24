@@ -11,10 +11,6 @@ en:
         <p>(While there's nothing in your news feed, here are the latest questions.)</p>
 
       full_list_of_questions: all questions
-      notifications_tab: Notifications
-      topics: topics
-      unanswered_tab: Answer
-      users: users
       hot: Popular
       notifications_tab: Notifications
       quick_question: Ask a question

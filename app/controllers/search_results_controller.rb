@@ -1,5 +1,13 @@
 class SearchResultsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :only => [:create, :destroy, :flag]
+
+  def show
+    @search_result = SearchResult.find_by_id(params[:search_result_id])
+    track_event(:clicked_search_result,
+                :search_result_id => @search_result.id,
+                :url => @search_result.url)
+    redirect_to(@search_result.url)
+  end
 
   def create
     @question = Question.find_by_id(params[:question_id])
@@ -15,7 +23,8 @@ class SearchResultsController < ApplicationController
             track_event(:commented, :commentable => @search_result.class.name)
           end
         end
-        track_event(:added_link)
+        track_event(:added_link, 
+                    :latency => (@search_result.created_at - @question.created_at).to_i / 60)
         notice_message = t(:flash_notice, :scope => "search_results.create")
         format.html do
           flash[:notice] = notice_message
@@ -27,10 +36,11 @@ class SearchResultsController < ApplicationController
                      :form_message => notice_message,
                      :message => notice_message,
                      :html =>
-                       render_to_string(:partial => "questions/search_result",
+                       render_to_string(:partial => 'search_results/search_result',
                                         :object => @search_result,
-                                        :locals => { :question =>
-                                                       @question }) })
+                                        :locals =>
+                                          { :question => @question,
+                                            :hide_controls => false }) })
         end
         format.json { head(:created) }
       else

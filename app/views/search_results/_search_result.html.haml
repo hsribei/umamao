@@ -4,14 +4,10 @@
       = vote_box(search_result, question_path(question), question.closed)
     = avatar_for(search_result.user, :size => 32, :link => true)
   .title
-    = link_to(search_result.title, search_result.url)
+    = link_to(search_result.title, trackable_search_result_url(search_result))
   .url
     %p
       = shorten_url(search_result.url)
-  .summary
-    - if search_result.summary.present?
-      %p
-        = search_result.summary
   - if !hide_controls
     .controls
       .actions
@@ -32,5 +28,5 @@
     = render :partial => 'shared/comments',
              :locals => { :commentable => search_result,
                           :source => question_path(question),
-                          :path_scope => [search_result] }
+                          :path_scope => [question, search_result] }
 

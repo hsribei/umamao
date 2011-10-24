@@ -53,7 +53,7 @@ en:
     create:
       confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
       flash_error: Sorry, we couldn't create your account. Is there any field missing?
-      welcome: Success! Welcome to Umamao! 
+      welcome: Success! Welcome to Umamao!
     edit:
       enable_twitter: Enable your Facebook or Twitter accounts
       submit: Save

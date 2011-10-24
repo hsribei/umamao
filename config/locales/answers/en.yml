@@ -42,7 +42,7 @@ en:
     show:
       flagged_as: Flaggerd as
       share_success: Answer shared successfully on %{site}.
-      title: \"%{user_name}\"\'s answer to \"%{question_title}\"
+      title: "\"%{user_name}\"'s answer to \"%{question_title}\""
     sure_ban: Are you sure you want to hide this answer?
     update:
       flash_notice: Answer was successfully updated.
