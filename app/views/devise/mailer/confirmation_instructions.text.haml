@@ -1,8 +1,0 @@
-- group = @resource.instance_variable_get("@group")
-- domain = ActionMailer::Base.default_url_options[:host]
-
-= t('.greeting', :name => @resource.first_name)
-= t('.message', :link => link_to('Umamão', domain))
-
-= link_to t('.email_link'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
-= t('.goodbye')
