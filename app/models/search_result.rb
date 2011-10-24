@@ -17,6 +17,7 @@ class SearchResult
   key :question_id, String, :index => true
   key :group_id, String, :index => true
   key :flags_count, Integer, :default => 0
+  key :banned, Boolean, :default => false
 
   timestamps!
 
@@ -47,7 +48,10 @@ class SearchResult
                    :unless => :summary_present?,
                    :if => [:response_body_present?, :response_body_text?]
 
-  after_create :notify_watchers, :unless => :has_answer?
+  after_create :create_news_update,
+    :notify_watchers, :unless => :has_answer?
+
+  before_destroy  :unhide_news_update
 
   # https://github.com/jnunemaker/mongomapper/issues/207
   before_destroy Proc.new { |sr| sr.answer.destroy if sr.answer }
@@ -87,6 +91,35 @@ class SearchResult
 
     UserTopicInfo.vote_removed!(self, v)
     update_question_answered_with
+  end
+
+  def body
+    ""
+  end
+
+  # Returns the (only) associated news update.
+  # We need this because has_one doesn't work.
+  def news_update
+    news_updates.first
+  end
+
+  
+  def create_news_update
+    NewsUpdate.create(:author => self.user, :entry => self,
+                      :created_at => self.created_at,
+                      :action => 'created')
+
+    hide_news_update
+  end
+  handle_asynchronously :create_news_update
+
+  def hide_news_update
+    self.question.news_update.hide!
+  end
+
+  def unhide_news_update
+    # if this is the last question, reshow question's news_update
+    self.question.news_update.show! if self.question.answers_count == 1
   end
 
 private

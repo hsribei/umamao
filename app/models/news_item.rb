@@ -68,7 +68,7 @@ class NewsItem
                :origin => origin)
 
     if recipient.is_a? User
-      if news_update.entry.is_a?(Question) || news_update.entry.is_a?(Answer)
+      if news_update.entry.is_a?(Question) || news_update.entry.is_a?(SearchResult)
         if news_update.entry.is_a?(Question)
           question = news_update.entry
         else

@@ -13,8 +13,8 @@
       %h3= link_to title, question_path(question), :title => truncate(entry.body, :length => 200)
       .origin
 
-        .description= t(".#{entry_type}.#{origin_type}.#{action}", :origin => link_to_model(news_item.origin, origin.name))
-      - if entry_type == "answer"
+        .description= t(".#{entry_type}.#{origin_type}.#{action}", :origin => link_to_model(news_item.origin, origin.name), :question => link_to_model(question, question.title))
+      -# if entry_type == "answer"
         = render :partial => 'questions/answer', :object => entry, :locals => {:question => question, :answer => entry, :hide_controls => true}
 
       -# News_item Stats
