@@ -1,0 +1,11 @@
+<% group = @resource.instance_variable_get("@group") %>
+<% domain = ActionMailer::Base.default_url_options[:host] %>
+<%= t('.greeting', :name => @resource.first_name) %>
+
+<%= t('.message', :link => AppConfig.application_name) %>
+
+<%= confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+
+<%= t('.goodbye') %>
+
+<%= t('notifier.global.signature') %>

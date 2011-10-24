@@ -65,7 +65,8 @@ class ApplicationController < ActionController::Base
 
   def track_event(event, properties = {})
     user_id = current_user ? current_user.id : properties.delete(:user_id)
-    unless (user = User.find_by_id(user_id)) && user.admin?
+    if (user = User.find_by_id(user_id)) &&
+      !AppConfig.untrackable_user_emails.include?(user.email)
       Tracking::EventTracker.delay.track_event([event,
                                                 user_id,
                                                 request.ip,

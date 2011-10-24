@@ -2,8 +2,11 @@
 - domain = ActionMailer::Base.default_url_options[:host]
 
 %p= t('.greeting', :name => @resource.first_name)
+
 %p= t('.message', :link => link_to('Umamão', domain))
 
-%p= link_to t('.email_link'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%p= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+
 %p= t('.goodbye')
 
+%p= simple_format(t('notifier.global.signature'))

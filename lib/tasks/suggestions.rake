@@ -5,10 +5,10 @@ namespace :suggestions do
       if suggestion.entry.blank?
         suggestion.user.remove_suggestion(suggestion)
       elsif suggestion.user &&
-          !suggestion.user.suggestion_list.
-          topic_suggestion_ids.include?(suggestion.id) &&
-          !suggestion.user.suggestion_list.user_suggestion_ids.
-          include?(suggestion.id)
+        !suggestion.user.suggestion_list.
+        topic_suggestion_ids.include?(suggestion.id) &&
+        !suggestion.user.suggestion_list.user_suggestion_ids.
+        include?(suggestion.id)
         suggestion.destroy
       end
     end
@@ -20,6 +20,15 @@ namespace :suggestions do
     User.query.each do |user|
       user.refresh_suggestions
       user.save :validate => false
+    end
+  end
+
+  desc "Delete all generated suggestions for all users"
+  task :delete_all => :environment do
+      Suggestion.find_each(:batch_size => 10_000,
+                           :origin_id => nil) do |s|
+        print( s.destroy ? '.' : 'E' )
+      end
     end
   end
 end
