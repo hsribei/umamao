@@ -354,9 +354,10 @@ module ApplicationHelper
     end
   end
 
-  def link_to_google_search(string)
-    url = 'http://www.google.com.br/search?q=' << CGI.escape(string)
-    link_to(string, url, :class => 'google_search_link')
+  def link_to_google_search(string, options = { :id => :google_search_link })
+    link_to(string,
+            'http://www.google.com.br/search?q=' << CGI.escape(string),
+            options)
   end
 end
 

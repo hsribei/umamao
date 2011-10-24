@@ -1,6 +1,6 @@
 #question_responding_helper
-  - if helper == :google_link
-    #google_link
+  - if helper == :google_search_link
+    #google_search_link_wrapper
       .text
         = t(:search_on_google, :scope => [:questions, :responding_helpers])
       = link_to_google_search(question.title)
