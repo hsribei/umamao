@@ -77,6 +77,11 @@
                           :hide_controls => false,
                           :search_result => search_result })
 
+#question_responding_helper
+  - if (helper = ab_test(:question_responding_helpers)) != :none
+    = render(:partial => 'question_responding_helper',
+             :locals => { :helper => helper, :question => @question })
+
 .loader{:style => 'display: none;'}
   = waiting_tag
 
