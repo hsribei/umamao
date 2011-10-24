@@ -1230,12 +1230,7 @@ namespace :data do
     task :prune_topics => :environment do
       prune_topic = lambda do |t|
         if t.questions.count.zero? && t.follower_ids.count.zero?
-          begin
-            t.delete
-            print '.'
-          rescue
-            print 'E'
-          end
+          print( t.delete ? '.' : 'E' )
         else
           print 'F'
         end
