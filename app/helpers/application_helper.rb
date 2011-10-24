@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
 
+require 'cgi'
 require 'uri'
 
 module ApplicationHelper
@@ -351,6 +352,11 @@ module ApplicationHelper
     if object_super = object_class.superclass
       find_link_to_method(object_super)
     end
+  end
+
+  def link_to_google_search(string)
+    url = 'http://www.google.com.br/search?q=' << CGI.escape(string)
+    link_to(url, url)
   end
 end
 
