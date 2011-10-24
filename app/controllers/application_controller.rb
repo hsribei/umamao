@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   before_filter :track_user
   layout :set_layout
 
+  use_vanity :current_user
+
   DEVELOPMENT_DOMAIN = 'localhost.lan'
   TEST_DOMAIN = '127.0.0.1'
 
