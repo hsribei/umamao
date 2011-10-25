@@ -163,6 +163,17 @@ class Topic
     self.related_topics
   end
 
+  def update_related_topics!
+    self.find_related_topics
+
+    # if an error happens during set, set will return a Hash with it
+    errors_ids = self.set(:related_topic_ids, self.related_topics_id)
+    errors_count = self.set(:related_topics_count, self.related_topics_count)
+
+    # only return true if both fields could be updated properly
+    !(errors_ids.is_a?(Hash) || errors_count.is_a?(Hash))
+  end
+
   # Return a Hash [Topic, Integer] giving the co-occurrence of
   # questions between self and the others.
   def related_topics_with_count

@@ -27,7 +27,7 @@ en:
 
       hi: Hi, %{user}!
       signature: "Cheers,\n\
-        Umamão Team\n"
+        Umamao Team\n"
       user_page: user page
     new_answer:
       message: "%{user} answered %{new_answer} to the question %{question}"
