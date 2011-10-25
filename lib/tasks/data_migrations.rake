@@ -1264,5 +1264,13 @@ namespace :data do
       end
     end
 
+    desc "Update NewsItems' news_update_entry_type"
+    task :update_news_items_news_update_entry_type => :environment do
+      NewsItem.find_each(:news_update_entry_type => nil) do |ni|
+        print '-'
+        ni.set(:news_update_entry_item => ni.news_update.entry_type)
+      end
+    end
+
   end
 end
