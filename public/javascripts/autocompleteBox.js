@@ -415,7 +415,7 @@ function solrConversion(data) {
                        data.title + makeDesc("Usuário"));
     break;
   case "Topic":
-    var question = data.question_count == 1 ? " pergunta" : " perguntas";
+    var question = data.question_count == 1 ? " question" : " questions";
     data.url = "/topics/" + data.id;
     data.html = makeLi(data.title +
                        makeDesc(data.question_count + question));
