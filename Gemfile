@@ -14,6 +14,7 @@ group :development do
   gem 'yaml_waml', '0.3.0'
 end
 
+gem 'airbrake', '3.0.4'
 gem 'bitly'
 gem 'bson_ext', :require => 'bson'
 gem 'carrierwave' # file upload manager
@@ -30,7 +31,6 @@ gem 'faker'
 gem 'fog' # connect to storage services such as cloudfiles
 gem 'goalie'
 gem 'haml', '~> 3.1.1'
-gem 'hoptoad_notifier'
 gem 'jammit', '~>0.6.0'
 gem 'jnunemaker-validatable', :require => 'validatable', :git => "git://github.com/umamao/validatable.git"
 gem 'jquery-rails'
