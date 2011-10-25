@@ -97,7 +97,11 @@ class NewsItem
   end
 
   def title
-    self.news_update.entry.title
+    t = self.news_update.entry.title
+    if t.blank? && news_update.entry_type == "SearchResult"
+      t = self.news_update.entry.url
+    end
+    t
   end
 
   def hide!
