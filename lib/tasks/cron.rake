@@ -10,11 +10,13 @@ namespace :cron_tasks do
   end
 
   task :send_survey_to_newcomers => :environment do
-    days_ago = 7.days.ago
-    User.find_each(:created_at => { :$gte => (days_ago + 1).midnight,
-                                    :$lt => days_ago.midnight },
+    User.find_each(:created_at => { :$gte => 8.days.ago.midnight,
+                                    :$lt => 7.days.ago.midnight },
                    :batch_size => 10) do |user|
-      Notifier.delay.survey(user)
+    unless SentSurveyMail.first(:user_id => user.id)
+      SentSurveyMail.create(:user_id => user.id)
+        Notifier.delay.survey(user)
+      end
     end
   end
 end
