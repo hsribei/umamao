@@ -198,8 +198,11 @@ class Notifier < ActionMailer::Base
   end
 
   def survey(user)
-    @user = user
-    mail(:to => user.email,
-         :subject => t(:subject, :scope => [:notifier, :survey]))
+    unless SentSurveyMail.first(:user_id => user.id)
+      SentSurveyMail.create(:user_id => user.id)
+      @user = user
+      mail(:to => user.email,
+           :subject => t(:subject, :scope => [:notifier, :survey]))
+    end
   end
 end
