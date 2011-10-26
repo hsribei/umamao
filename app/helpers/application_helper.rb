@@ -354,18 +354,25 @@ module ApplicationHelper
     end
   end
 
-  def link_to_google_search(string, options = {})
-    default_options = { :id => :google_search_link, :target => :blank  }
-    link_to(string,
-            'http://www.google.com/search?q=' << CGI.escape(string),
+  def link_to_search(engine, query_string, options = {})
+    url = case engine
+          when :google then 'http://www.google.com/search?q='
+          when :bing then 'http://bing.com/search?q='
+          end << CGI.escape(query_string)
+    default_options = { :target => :_blank  }
+    link_to(options.delete(:content) || query_string,
+            url,
             default_options.merge(options))
   end
 
-  def link_to_bing_search(string, options = {})
-    default_options = { :id => :bing_search_link, :target => :blank }
-    link_to(string,
-            'http://bing.com/search?q=' << CGI.escape(string),
-            default_options.merge(options))
+  def link_to_google_search(query_string, options = {})
+    default_options = { :id => :google_search_link, :target => :_blank  }
+    link_to_search(:google, query_string, default_options.merge(options))
+  end
+
+  def link_to_bing_search(query_string, options = {})
+    default_options = { :id => :bing_search_link }
+    link_to_search(:bing, query_string, default_options.merge(options))
   end
 end
 
