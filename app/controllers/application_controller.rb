@@ -263,27 +263,9 @@ class ApplicationController < ActionController::Base
   end
 
   def page_title
-    if @page_title
-      if current_group.name == AppConfig.application_name
-        "#{@page_title} - #{AppConfig.application_name}: #{t("layouts.application.title")}"
-      else
-        if current_group.isolate
-          "#{@page_title} - #{current_group.name} #{current_group.legend}"
-        else
-          "#{@page_title} - #{current_group.name} - #{AppConfig.application_name} -  #{current_group.legend}"
-        end
-      end
-    else
-      if current_group.name == AppConfig.application_name
-        "#{AppConfig.application_name} - #{t("layouts.application.title")}"
-      else
-        if current_group.isolate
-          "#{current_group.name} - #{current_group.legend}"
-        else
-          "#{current_group.name} - #{current_group.legend} - #{AppConfig.application_name}"
-        end
-      end
-    end
+    title = "#{AppConfig.application_name} - " <<
+              "#{t(:title, :scope => [:layouts, :application])}"
+    @page_title ? title.insert(0, "#{@page_title} - ") : title
   end
   helper_method :page_title
 

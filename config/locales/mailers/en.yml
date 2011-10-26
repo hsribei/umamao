@@ -4,16 +4,16 @@ en:
       closed_for_signup:
         subject: Signing up for Umamao
       favorited:
-        subject: "%{login} added your question as a favorite!"
+        subject: "%{name} added your question as a favorite!"
       follow:
-        subject: "%{login} is now following you on %{app}"
+        subject: "%{name} is now following you on %{app}"
       give_advice:
         friend_subject: "Your friend needs help: %{question_title}"
         subject: "We need your advice: %{question_title}"
       new_answer:
-        subject_friend: Your friend %{login} answered the question %{title}
-        subject_other: "%{login} answered the question %{title}"
-        subject_owner: "%{login} answered your question %{title}"
+        subject_friend: Your friend %{name} answered the question %{title}
+        subject_other: "%{name} answered the question %{title}"
+        subject_owner: "%{name} answered your question %{title}"
       new_comment:
         subject: New comment on question "%{question}"
       new_question:
