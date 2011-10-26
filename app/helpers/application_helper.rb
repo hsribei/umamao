@@ -354,10 +354,18 @@ module ApplicationHelper
     end
   end
 
-  def link_to_google_search(string, options = { :id => :google_search_link })
+  def link_to_google_search(string, options = {})
+    default_options = { :id => :google_search_link, :target => :blank  }
     link_to(string,
-            'http://www.google.com.br/search?q=' << CGI.escape(string),
-            options)
+            'http://www.google.com/search?q=' << CGI.escape(string),
+            default_options.merge(options))
+  end
+
+  def link_to_bing_search(string, options = {})
+    default_options = { :id => :bing_search_link, :target => :blank }
+    link_to(string,
+            'http://bing.com/search?q=' << CGI.escape(string),
+            default_options.merge(options))
   end
 end
 

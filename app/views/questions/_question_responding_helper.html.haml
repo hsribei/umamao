@@ -6,4 +6,6 @@
         = t(:search_on_google, :scope => [:questions, :responding_helpers])
       = link_to_google_search(question.title)
   - when :bing_results
-    = render(:partial => 'bing_results', :object => bing_results)
+    = render(:partial => 'bing_results',
+             :object => bing_results,
+             :locals => { :question => question })

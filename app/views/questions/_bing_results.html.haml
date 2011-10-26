@@ -1,7 +1,13 @@
-- if bing_results.respond_to?(:count) && bing_results.count != 0
-  #bing_results_wrapper
+#bing_results_wrapper
+  - if bing_results.count == 0
     .text
-      = t(:bing_results, :scope => [:questions, :responding_helpers])
+      = t(:no_bing_results, :scope => [:questions, :responding_helpers])
+      = link_to_bing_search(question.title)
+  - else
+    .text
+      = t(:bing_results,
+          :results_count => bing_results.count,
+          :scope => [:questions, :responding_helpers])
     #bing_results
       - bing_results.each do |bing_result|
         = render(:partial => 'bing_result', :object => bing_result)
