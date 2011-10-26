@@ -167,7 +167,6 @@ class QuestionsController < ApplicationController
     end
 
     set_page_title(@question.title)
-    add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
 
     @follow_up_question = {
       :parent_question_id => @question.id,
@@ -182,7 +181,6 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }
-      format.atom
     end
   end
 
