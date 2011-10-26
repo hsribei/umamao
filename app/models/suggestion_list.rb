@@ -160,8 +160,7 @@ class SuggestionList
   def suggest_first_topics
     topics = configured_suggestions
     return if topics.blank?
-    topics.each do |id_or_slug|
-      t = Topic.find_by_slug_or_id(id_or_slug)
+    topics.each do |t|
       self.suggest(t, "popular") if t.present?
     end
   end
@@ -217,6 +216,11 @@ class SuggestionList
 
 protected
   def configured_suggestions
-    AppConfig.topic_suggestion
+    ids = AppConfig.topic_suggestion
+    if ids.blank?
+      []
+    else
+      ids.map{ |id| Topic.find_by_slug_or_id(id) }.select{ |t| t.present?}
+    end
   end
 end
