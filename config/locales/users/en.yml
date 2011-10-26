@@ -132,6 +132,8 @@ en:
       title: User %{user}
       upvotes_count: "Total upvotes received: %{upvotes_count}"
       views: views
+    signup:
+      submit: Sign up
     validation:
       errors:
         did_not_agree: You must agree to the terms of use and privacy policy

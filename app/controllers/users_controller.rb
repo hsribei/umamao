@@ -60,6 +60,17 @@ class UsersController < ApplicationController
       unless @url_invitation = UrlInvitation.find_by_ref(params[:ref])
         redirect_to(root_path(:focus => 'signup')) and return
       end
+
+      # A/B test for ref link invitation
+      if ab_test(:signup_method_helpers) == :users_new
+        @user = User.new
+        @user.timezone = AppConfig.default_timezone
+        render 'new', :layout => 'welcome'
+      else
+        redirect_to(root_path(:url_invitation => @url_invitation.ref))
+      end
+      return
+
     end
 
     @user = User.new
@@ -155,6 +166,7 @@ class UsersController < ApplicationController
       if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
         tracking_properties[:invited_by] = @url_invitation.inviter.id
         @url_invitation.add_invitee(@user)
+        track! :signup_method
       end
 
       if invitation && invitation.topics
