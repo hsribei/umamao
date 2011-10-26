@@ -6,7 +6,7 @@
   - else
     .text
       = t(:bing_results,
-          :results_count => bing_results.count,
+          :results_count => bing_results_count,
           :scope => [:questions, :responding_helpers])
       = link_to_bing_search(question.title)
     #bing_results

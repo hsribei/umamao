@@ -7,5 +7,6 @@
       = link_to_google_search(question.title)
   - when :bing_results
     = render(:partial => 'bing_results',
-             :object => bing_results,
-             :locals => { :question => question })
+             :object => bing_response[:results],
+             :locals => { :question => question,
+                          :bing_results_count => bing_response[:total_results_count] })
