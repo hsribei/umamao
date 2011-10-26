@@ -5,7 +5,7 @@
 - entry = news_item.news_update.entry
 - entry_type = news_item.news_update.entry_type.downcase
 - question = entry_type == 'question' ? entry : entry.question
-- question_link = question_path(question)
+- question_link = question_path(question, :ab_test => true)
 
 - if !question.banned && !entry.banned #do ab test
   %li.entry.item
