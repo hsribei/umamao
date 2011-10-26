@@ -109,6 +109,11 @@ hr#colruler
   width: 350px
 
 #signup
+  #title
+    h3
+      top-bottom: 1em
+      margin-bottom: 0em
+
   $signup-columns: 9
   // true means it's the last column in the row
   +column($signup-columns, true)
@@ -120,27 +125,21 @@ hr#colruler
   margin-top: 30px
 
   form
-    +blueprint-form-sizes(258px)
-  .label
-    text-align: left
-    line-height: 1
-    height: 39px
-    label
-      height: 39px
-    label[for=user_email]
-      vertical-align: -100%
-    label[for=user_password]
-      vertical-align: -100%
-    label[for=user_password_confirmation]
-      vertical-align: -100%
-    label[for=user_name]
-      padding: 6px 0px 0px
-    img
-      margin-bottom: -2px
-      margin-right: 2px
+    +blueprint-form-sizes(210px)
 
   .field
-    margin-left: 60px
+    text-align: right
+  .label
+    width: 60px
+    text-align: left
+    display: inline
+  .input
+    display: inline
+
+  .field.agree .field_with_errors
+    // Quick and dirty way of avoiding the text to go to the next line
+    display: inline
+
   #invitation_only
     margin-top: 40px
   #mamao_signup
