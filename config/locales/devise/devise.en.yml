@@ -26,6 +26,8 @@ en:
       new:
         submit: "Send me reset instructions"
         forgot_your_password: Want to reset your password?
+      edit:
+        submit: Submit
       link: "Forgot your password?"
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
