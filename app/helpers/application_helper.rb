@@ -318,6 +318,8 @@ module ApplicationHelper
   end
 
   def shorten_url(url, options = {})
+    # the default length is 63 so both head and tail will have 30
+    # characters, plus the 3-character '...' divider
     options = {:length => 63}.merge(options)
     half_length = (options[:length] - 3) / 2
     uri = URI.parse(url)
