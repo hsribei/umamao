@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   # create at most one participant and one conversion in a random group for all
   # our untracked users. This is necessary because `use_vanity` is a class-level
   # macro, and can't be conditionally evaluated per-request.
-  use_vanity :vanity_identity
+  use_vanity :_vanity_identity
 
-  def vanity_identity
+  def _vanity_identity
     if current_user
       current_user.tracked? ? current_user.id : UNTRACKED_IDENTITY
     end
