@@ -1012,6 +1012,12 @@ Time.zone.now ? 1 : 0)
     end
   end
 
+  def tracked?
+    if AppConfig.untrackable_user_emails
+      !AppConfig.untrackable_user_emails.include?(email)
+    end
+  end
+
   protected
   def password_required?
     (encrypted_password.blank? || !password.blank?)

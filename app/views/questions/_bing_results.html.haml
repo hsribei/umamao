@@ -6,8 +6,14 @@
   - else
     .text
       = t(:bing_results,
-          :results_count => bing_results.count,
+          :results_count => bing_results_count,
           :scope => [:questions, :responding_helpers])
+      = link_to_bing_search(question.title)
     #bing_results
       - bing_results.each do |bing_result|
         = render(:partial => 'bing_result', :object => bing_result)
+    = link_to_bing_search(question.title,
+                          :id => :more_results,
+                          :content => t(:more_results_on_bing,
+                                        :scope => [:questions,
+                                                   :responding_helpers]))
