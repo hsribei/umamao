@@ -24,7 +24,11 @@ class ApplicationController < ActionController::Base
   # create at most one participant and one conversion in a random group for all
   # our untracked users. This is necessary because `use_vanity` is a class-level
   # macro, and can't be conditionally evaluated per-request.
-  use_vanity { |c| c.current_user.tracked? ? c.current_user.id : UNTRACKED_IDENTITY }
+  use_vanity do |c|
+    if c.current_user
+      c.current_user.tracked? ? c.current_user.id : UNTRACKED_IDENTITY
+    end
+  end
 
   DEVELOPMENT_DOMAIN = 'localhost.lan'
   TEST_DOMAIN = '127.0.0.1'
