@@ -27,7 +27,9 @@ class ApplicationController < ActionController::Base
   use_vanity :vanity_identity
 
   def vanity_identity
-    (current_user && current_user.tracked?) ? current_user.id : UNTRACKED_IDENTITY
+    if current_user
+      current_user.tracked? ? current_user.id : UNTRACKED_IDENTITY
+    end
   end
 
   DEVELOPMENT_DOMAIN = 'localhost.lan'
