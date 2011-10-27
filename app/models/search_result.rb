@@ -50,8 +50,8 @@ class SearchResult
                    :unless => :summary_present?,
                    :if => [:response_body_present?, :response_body_text?]
 
-  after_create :create_news_update,
-    :notify_watchers, :unless => :has_answer?
+  after_create :create_news_update
+  after_create :notify_watchers, :unless => :has_answer?
 
   before_destroy  :unhide_news_update
 
