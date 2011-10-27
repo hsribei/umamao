@@ -126,7 +126,9 @@ private
   end
 
   def response_body_text?
-    @response.content_type.split('/').first == 'text'
+    if @response.content_type
+      @response.content_type.split('/').first == 'text'
+    end
   end
 
   def response_body
