@@ -333,7 +333,7 @@ module ApplicationHelper
     end
     "#{uri.scheme}://#{uri.host}#{port.call(uri)}#{relevant_path.call(uri)}"
   rescue URI::InvalidURIError
-    truncate(url, :length => options[:legth])
+    truncate(url, :length => options[:length])
   end
 
   def markdown2txt(string)
