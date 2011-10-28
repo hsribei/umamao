@@ -49,7 +49,7 @@ en:
     annoying:
       resend_confirmation_email: Resend confirmation e-mail.
       resent_confirmation: Check your e-mail!
-      unconfirmed_non_academic_email: You have not conformed your e-mail yet!
+      unconfirmed_non_academic_email: You have not confirmed your e-mail yet!
     create:
       confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
       flash_error: Sorry, we couldn't create your account. Is there any field missing?
@@ -132,6 +132,8 @@ en:
       title: User %{user}
       upvotes_count: "Total upvotes received: %{upvotes_count}"
       views: views
+    signup:
+      submit: Sign up
     validation:
       errors:
         did_not_agree: You must agree to the terms of use and privacy policy

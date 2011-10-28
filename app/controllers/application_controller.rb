@@ -1,6 +1,7 @@
 # -*- coding: undecided -*-
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
+require 'singleton'
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
@@ -17,6 +18,27 @@ class ApplicationController < ActionController::Base
   before_filter :ensure_domain
   before_filter :track_user
   layout :set_layout
+
+  # Vanity expects an object that responds to #id.
+  class UntrackedUser
+    include Singleton
+
+    def id
+      '03571a60f217cf68f795875d108a73fa21e0c2bcce7f'
+    end
+  end
+
+  # This is a turnaround for the shortcomings of the vanity gem. This code will
+  # create at most one participant and one conversion in a random group for all
+  # our untracked users. This is necessary because `use_vanity` is a class-level
+  # macro, and can't be conditionally evaluated per-request.
+  use_vanity :_vanity_identity
+
+  def _vanity_identity
+    if current_user
+      current_user.tracked? ? current_user : UntrackedUser.instance
+    end
+  end
 
   DEVELOPMENT_DOMAIN = 'localhost.lan'
   TEST_DOMAIN = '127.0.0.1'
@@ -75,6 +97,16 @@ class ApplicationController < ActionController::Base
                                                 user_id,
                                                 request.ip,
                                                 properties])
+    end
+  end
+
+  def track_bingo(event)
+    with_trackable_users { track!(event) }
+  end
+
+  def with_trackable_users
+    unless current_user && !current_user.tracked?
+      yield
     end
   end
 

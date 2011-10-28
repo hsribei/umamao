@@ -27,3 +27,4 @@ Shapado::Application.configure do
 end
 
 Sass::Plugin.options[:debug_info] = true
+Vanity.playground.collecting = true
