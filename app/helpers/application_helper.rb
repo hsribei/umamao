@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Methods added to this helper will be available to all templates in the application.
 
+require 'cgi'
 require 'uri'
 
 module ApplicationHelper
@@ -356,6 +357,27 @@ module ApplicationHelper
     if object_super = object_class.superclass
       find_link_to_method(object_super)
     end
+  end
+
+  def link_to_search(engine, query_string, options = {})
+    url = case engine
+          when :google then 'http://www.google.com/search?q='
+          when :bing then 'http://bing.com/search?q='
+          end << CGI.escape(query_string)
+    default_options = { :target => :_blank  }
+    link_to(options.delete(:content) || query_string,
+            url,
+            default_options.merge(options))
+  end
+
+  def link_to_google_search(query_string, options = {})
+    default_options = { :id => :google_search_link }
+    link_to_search(:google, query_string, default_options.merge(options))
+  end
+
+  def link_to_bing_search(query_string, options = {})
+    default_options = { :id => :bing_search_link }
+    link_to_search(:bing, query_string, default_options.merge(options))
   end
 end
 
