@@ -25,7 +25,7 @@ class SearchResultsController < ApplicationController
         end
         track_event(:added_link,
                     :latency => (@search_result.created_at - @question.created_at).to_i / 60)
-        track_bing(:new_search_result)
+        track_bingo(:new_search_result)
         notice_message = t(:flash_notice, :scope => "search_results.create")
         format.html do
           flash[:notice] = notice_message
