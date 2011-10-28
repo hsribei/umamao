@@ -366,7 +366,7 @@ module ApplicationHelper
   end
 
   def link_to_google_search(query_string, options = {})
-    default_options = { :id => :google_search_link, :target => :_blank  }
+    default_options = { :id => :google_search_link }
     link_to_search(:google, query_string, default_options.merge(options))
   end
 
