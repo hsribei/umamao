@@ -26,8 +26,10 @@ en:
         %{application_name} Founder
 
       hi: Hi, %{user}!
-      signature: "Cheers,\n\
-        Umamao Team\n"
+      signature: |
+        Cheers,
+        Umamao Team
+
       user_page: user page
     new_answer:
       message: "%{user} answered %{new_answer} to the question %{question}"
