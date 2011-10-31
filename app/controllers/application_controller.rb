@@ -1,7 +1,6 @@
 # -*- coding: undecided -*-
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
-require 'singleton'
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
@@ -19,15 +18,6 @@ class ApplicationController < ActionController::Base
   before_filter :track_user
   layout :set_layout
 
-  # Vanity expects an object that responds to #id.
-  class UntrackedUser
-    include Singleton
-
-    def id
-      '03571a60f217cf68f795875d108a73fa21e0c2bcce7f'
-    end
-  end
-
   # This is a turnaround for the shortcomings of the vanity gem. This code will
   # create at most one participant and one conversion in a random group for all
   # our untracked users. This is necessary because `use_vanity` is a class-level
@@ -36,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def _vanity_identity
     if current_user
-      current_user.tracked? ? current_user : UntrackedUser.instance
+      current_user.tracked? ? current_user : Umamao::UntrackedUser.instance
     end
   end
 
