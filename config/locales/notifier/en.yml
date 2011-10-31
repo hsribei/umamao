@@ -54,7 +54,8 @@ en:
     new_search_result:
       author: "%{user} added a link to the question \"%{question_link}\""
     new_user_suggestion:
-      message: "%{origin} invited you to follow the topic %{entry}."
+      html_message: "%{origin} invited you to follow the topic %{entry}."
+      text_message: "%{origin} invited you to follow the topic %{entry}:"
     non_academic:
       goodbye: In case you haven't signed up for Umamao, please ignore this email.
       greeting: Hello,
