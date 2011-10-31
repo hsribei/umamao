@@ -73,18 +73,14 @@ en:
       greeting: Hello,
       message: "Thank you for joining %{link}! To finish your signup, you need to verify your email address by clicking the link belowi: "
     survey:
-      message: |
-        You've been using %{application_name} for one week now, and we'd really
-        like to know how it's been for you. Could you take a couple minutes to
-        fill out our survey please?
+      message: |-
+        You've been using %{application_name} for one week now, and we'd really like to know how it's been for you. Could you take a couple minutes to fill out our survey please?
 
         http://survey.io/survey/933ea
 
-        We're eager to hear what you think and make %{application_name} the best
-        possible for you.
+        We're eager to hear what you think and make %{application_name} the best possible for you.
 
         Thanks a lot!
-
       subject: How's everything goin'?
     user_accepted_suggestion:
       message: "%{user} accepted your suggestion and followed the topic %{entry}."
