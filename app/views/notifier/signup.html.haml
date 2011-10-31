@@ -2,7 +2,7 @@
 
 = simple_format(t('.message', :link => "umamao.com"))
 
-= link_to 'Confirmar meu email.', new_user_url(:affiliation_token => @affiliation_token)
+= link_to t('.confirm_email'), new_user_url(:affiliation_token => @affiliation_token)
 
 %p= simple_format(t('notifier.global.signature'))
 
