@@ -126,7 +126,8 @@ private
   end
 
   def response_body_text?
-    @response.content_type.split('/').first == 'text'
+    @response.content_type.respond_to?(:split) &&
+      @response.content_type.split('/').first == 'text'
   end
 
   def response_body

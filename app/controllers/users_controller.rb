@@ -58,6 +58,7 @@ class UsersController < ApplicationController
 
     if params[:ref]
       unless @url_invitation = UrlInvitation.find_by_ref(params[:ref])
+        flash[:notice] = t(:not_found, :scope => [:url_invitations, :show])
         redirect_to(root_path(:focus => 'signup')) and return
       end
 

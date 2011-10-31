@@ -318,20 +318,25 @@ module ApplicationHelper
               :class => "waiting")
   end
 
-  def shorten_url(url)
+  def shorten_url(url, options = {})
+    # the default length is 63 so both head and tail will have 30
+    # characters, plus the 3-character '...' divider
+    options = {:length => 63}.merge(options)
+    half_length = (options[:length] - 3) / 2
     uri = URI.parse(url)
     port = lambda { |uri| [80, 443].include?(uri.port) ? '' : ":#{uri.port}" }
     relevant_path = lambda do |uri|
       request_uri =
         uri.to_s[((uri.scheme.to_s + uri.host.to_s).to_s.length + 3)..-1].to_s
-      head = truncate(request_uri[0..(request_uri.length / 2.0).ceil - 1], :length => 30)
+      head = truncate(request_uri[0..(request_uri.length / 2.0).ceil - 1],
+                      :length => half_length)
       tail = truncate(request_uri.reverse[0..(request_uri.length / 2) - 1],
-                      :length => 30).reverse
+                      :length => half_length).reverse
       (head + tail).sub('......', '...').squeeze('/')
     end
     "#{uri.scheme}://#{uri.host}#{port.call(uri)}#{relevant_path.call(uri)}"
   rescue URI::InvalidURIError
-    truncate(url, :length => 100)
+    truncate(url, :length => options[:length])
   end
 
   def markdown2txt(string)
@@ -366,7 +371,7 @@ module ApplicationHelper
   end
 
   def link_to_google_search(query_string, options = {})
-    default_options = { :id => :google_search_link, :target => :_blank  }
+    default_options = { :id => :google_search_link }
     link_to_search(:google, query_string, default_options.merge(options))
   end
 

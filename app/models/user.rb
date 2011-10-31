@@ -1013,9 +1013,9 @@ Time.zone.now ? 1 : 0)
   end
 
   def tracked?
-    if AppConfig.untrackable_user_emails
-      !AppConfig.untrackable_user_emails.include?(email)
-    end
+    untracked_emails = AppConfig.untrackable_user_emails
+    untracked_emails.respond_to?(:include?) ? !untracked_emails.include?(email) :
+                                              true
   end
 
   protected
