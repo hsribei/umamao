@@ -150,7 +150,7 @@ class QuestionsController < ApplicationController
     end
 
     if params[:ab_test].present?
-      track! :search_results_news_items
+      track_bing(:search_results_news_items)
     end
 
     if params[:group_invitation]
