@@ -32,9 +32,12 @@ en:
 
       user_page: user page
     new_answer:
-      message: "%{user} answered %{new_answer} to the question %{question}"
+      link_label: "To see the answer, see this link:"
+      message: "%{user} answered:"
+      question: to the question "%{question}"
     new_comment:
       author: "%{user} commented on the question \"%{question}\""
+      link_label: "To see the comment, see the question:"
     new_feedback:
       message1: The user %{user} <%{email}> sent a feedback
       message2: Anonymous user sent a feedback from IP address %{ip}
