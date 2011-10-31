@@ -28,6 +28,7 @@
                       :method => :delete,
                       :class =>"cancel"
       #search_result_flag_div
+      .splitter
       = render :partial => 'search_results/comments',
                :locals => { :commentable => search_result,
                             :source => question_path(question),

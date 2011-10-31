@@ -278,4 +278,16 @@ $(document).ready(function() {
   $('form#new_search_result').live('submit', function() {
     $('.loader').show();
   });
+
+  $('.comment_text_area').focus(function() {
+    this.rows = "3";
+    $(this).closest(".group").find(".navform.hidden").show();
+  });
+
+  $('.comment_text_area').blur(function() {
+    if(this.value == ""){
+      this.rows = "1";
+      $(this).closest(".group").find(".navform.hidden").hide();
+    }
+  });
 });
