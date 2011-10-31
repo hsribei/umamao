@@ -51,7 +51,7 @@ en:
     notifications:
       message: If you do not want to receive automatic notifications from %{domain} anymore, change your preferences in the notifications screen.
     settings:
-      account_tab: Conta
+      account_tab: Account
       external_accounts_tab: External accounts
       follow_topics_tab: Topics
       notifications_tab: Notifications

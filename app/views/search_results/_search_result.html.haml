@@ -4,7 +4,10 @@
       = vote_box(search_result, question_path(question), question.closed)
     = avatar_for(search_result.user, :size => 32, :link => true)
   .title
-    = link_to(search_result.title, search_result.url)
+    - title = search_result.title
+    - if title.blank? || title == search_result.url
+      - title = shorten_url(search_result.url, :length => 45)
+    = link_to(title, trackable_search_result_url(search_result))
   .url
     %p
       = shorten_url(search_result.url)

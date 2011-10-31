@@ -326,6 +326,8 @@ Shapado::Application.routes.draw do
 
   match '/vanity(/:action(/:id(.:format)))', :controller => :vanity, :as => :vanity
 
+  match '/g' => 'search_results#show'
+
   match '/:group_invitation' => 'users#new'
 
   root :to => 'welcome#index'

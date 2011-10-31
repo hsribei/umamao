@@ -26,6 +26,8 @@ en:
       new:
         submit: "Send me reset instructions"
         forgot_your_password: Want to reset your password?
+      edit:
+        submit: Submit
       link: "Forgot your password?"
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
@@ -47,9 +49,9 @@ en:
     mailer:
       confirmation_instructions:
         subject: 'Please confirm your email'
-        greeting: 'Hello, %{name}'
-        message: "Thanks for joining %{link}! To complete your your sign up process we need you to confirm your email address. To do that you just have to click the link below:"
-        goodbye: In case you haven't signed up in our site ignore this message.
+        greeting: 'Hello, %{name}!'
+        message: "Thanks for joining %{link}! To complete your sign up process we need you to confirm your email address. You can do that by clicking the link below:"
+        goodbye: In case you haven't signed up to Umamao, please ignore this message.
       reset_password_instructions:
         subject: 'Reset password instructions'
       unlock_instructions:

@@ -1,8 +1,12 @@
 #question_responding_helper
-  - if helper == :google_search_link
+  - case question_responding_helper
+  - when :google_search_link
     #google_search_link_wrapper
       .text
         = t(:search_on_google, :scope => [:questions, :responding_helpers])
       = link_to_google_search(question.title)
-  - elsif helper == :bing_results
-    = render(:partial => 'bing_results', :object => Bing.web(question.title).web.results)
+  - when :bing_results
+    = render(:partial => 'bing_results',
+             :object => bing_response[:results],
+             :locals => { :question => question,
+                          :bing_results_count => bing_response[:total_results_count] })

@@ -31,6 +31,9 @@
   =t("welcome.landing.pitch")
 
 #signup
-  %h3  #{ t('layouts.application.signup') }
-  %p#invitation_only=t("welcome.landing.invitation_only")
-  = image_tag("mamaopq.png", :id => "mamao_signup")
+  - if @user.blank?
+    %h3  #{ t('layouts.application.signup') }
+    %p#invitation_only=t("welcome.landing.invitation_only")
+    = image_tag("mamaopq.png", :id => "mamao_signup")
+  - else
+    = render :partial => 'users/signup'

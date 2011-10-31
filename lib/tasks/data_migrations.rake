@@ -1226,6 +1226,43 @@ namespace :data do
       end
     end
 
+    desc "Prune topics that don't have any questions or followers"
+    task :prune_topics => :environment do
+      prune_topic = lambda do |t|
+        if t.questions.count.zero? && t.follower_ids.count.zero?
+          print( t.delete ? '.' : 'E' )
+        else
+          print 'F'
+        end
+      end
+
+      # Prune topics that have zero counts
+      Topic.find_each(:questions_count => 0,
+                      :followers_count => 0,
+                      &prune_topic)
+    end
+
+    desc "Remove all related topics from all topics"
+    task :drop_related_topics => :environment do
+      Topic.find_each(:batch => 100) do |t|
+        error_ids = t.set(:related_topic_ids, [])
+        error_count = t.set(:related_topics_count, {})
+
+        print(error_ids.is_a?(Hash) || error_count.is_a?(Hash) ? 'E' : '.')
+      end
+    end
+
+    desc "Regenerate related topics for all topics"
+    task :regenerate_related_topics => :environment do
+      Topic.find_each(:batch => 100) do |t|
+        if t.update_related_topics!
+          print '.'
+        else
+          print 'F'
+        end
+      end
+    end
+
     desc "Update question is_open flag"
     task :update_question_is_open_flag => :environment do
       Question.find_each do |q|

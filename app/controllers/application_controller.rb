@@ -1,6 +1,7 @@
 # -*- coding: undecided -*-
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
+require 'singleton'
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
@@ -18,7 +19,26 @@ class ApplicationController < ActionController::Base
   before_filter :track_user
   layout :set_layout
 
-  use_vanity :current_user
+  # Vanity expects an object that responds to #id.
+  class UntrackedUser
+    include Singleton
+
+    def id
+      '03571a60f217cf68f795875d108a73fa21e0c2bcce7f'
+    end
+  end
+
+  # This is a turnaround for the shortcomings of the vanity gem. This code will
+  # create at most one participant and one conversion in a random group for all
+  # our untracked users. This is necessary because `use_vanity` is a class-level
+  # macro, and can't be conditionally evaluated per-request.
+  use_vanity :_vanity_identity
+
+  def _vanity_identity
+    if current_user
+      current_user.tracked? ? current_user : UntrackedUser.instance
+    end
+  end
 
   DEVELOPMENT_DOMAIN = 'localhost.lan'
   TEST_DOMAIN = '127.0.0.1'
@@ -67,7 +87,8 @@ class ApplicationController < ActionController::Base
 
   def track_event(event, properties = {})
     user_id = current_user ? current_user.id : properties.delete(:user_id)
-    unless (user = User.find_by_id(user_id)) && user.admin?
+    if (user = User.find_by_id(user_id)) &&
+      !AppConfig.untrackable_user_emails.include?(user.email)
       Tracking::EventTracker.delay.track_event([event,
                                                 user_id,
                                                 request.ip,
@@ -76,6 +97,16 @@ class ApplicationController < ActionController::Base
                                                 user_id,
                                                 request.ip,
                                                 properties])
+    end
+  end
+
+  def track_bingo(event)
+    with_trackable_users { track!(event) }
+  end
+
+  def with_trackable_users
+    unless current_user && !current_user.tracked?
+      yield
     end
   end
 
@@ -262,27 +293,9 @@ class ApplicationController < ActionController::Base
   end
 
   def page_title
-    if @page_title
-      if current_group.name == AppConfig.application_name
-        "#{@page_title} - #{AppConfig.application_name}: #{t("layouts.application.title")}"
-      else
-        if current_group.isolate
-          "#{@page_title} - #{current_group.name} #{current_group.legend}"
-        else
-          "#{@page_title} - #{current_group.name} - #{AppConfig.application_name} -  #{current_group.legend}"
-        end
-      end
-    else
-      if current_group.name == AppConfig.application_name
-        "#{AppConfig.application_name} - #{t("layouts.application.title")}"
-      else
-        if current_group.isolate
-          "#{current_group.name} - #{current_group.legend}"
-        else
-          "#{current_group.name} - #{current_group.legend} - #{AppConfig.application_name}"
-        end
-      end
-    end
+    title = "#{AppConfig.application_name} - " <<
+              "#{t(:title, :scope => [:layouts, :application])}"
+    @page_title ? title.insert(0, "#{@page_title} - ") : title
   end
   helper_method :page_title
 
