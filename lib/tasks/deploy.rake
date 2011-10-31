@@ -71,6 +71,7 @@ namespace :deploy do
     puts "Config files."
     idx.add("config/shapado.yml", File.read("config/shapado.yml"))
     idx.add("config/database.yml", File.read("config/database.yml"))
+    idx.add("config/vanity.yml", File.read("config/vanity.yml"))
 
     # Fill base commit number
     idx.add("COMMIT", master.id)

@@ -24,7 +24,7 @@
 
 #question, #question-list, .question
   position: relative
-  margin-bottom: 3em
+  margin-bottom: 2em
   +pie-clearfix
   .body-col
     #topic-autocomplete-input, .add-topic, .cancel-reclassify
@@ -298,3 +298,47 @@ form
 .editor_hack
   position: absolute
   left: -1000px
+
+#answer_with_form_wrapper
+  float: left
+  margin-bottom: 2em
+
+#question_responding_helper
+  float: left
+
+#question_responding_helper #google_search_link_wrapper
+  font-size: 1.1em
+  background: url('/images/favicons/google.png') top left no-repeat
+
+#question_responding_helper #google_search_link_wrapper .text
+  display: inline
+  color: #999
+  padding-left: 20px
+
+#question_responding_helper #bing_results_wrapper
+  background: url('/images/favicons/bing.ico') top left no-repeat
+
+#question_responding_helper #bing_results_wrapper .text
+  font-size: 1.2em
+  color: #999
+  margin-left: 20px
+
+#question_responding_helper #bing_results_wrapper #more_results
+  display: block
+  margin-top: 1.5em
+
+#question_responding_helper #bing_results_wrapper #bing_results .bing_result
+  font-size: 1.1em
+  margin-top: 1em
+
+#question_responding_helper #bing_results_wrapper #bing_results .bing_result .url
+  text-decoration: underline
+
+#question_responding_helper #bing_results_wrapper #bing_results .bing_result .display_url
+  margin-top: -0.3em
+  color: #009933
+
+#question_responding_helper #bing_results_wrapper #bing_results .bing_result .description
+  margin-top: -0.5em
+  font-family: Verdana, Tahoma, sans-serif
+  color: #444

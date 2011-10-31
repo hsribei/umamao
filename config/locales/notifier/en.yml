@@ -11,8 +11,8 @@ en:
       message2: "The text of your question:"
       message3: "You can see it here:"
     follow:
-      message1: "%{user} is now following your questions and answers on %{app}"
-      message2: You may follow him back by clicking on the button "Follow" on his %{user_page}
+      message1: "%{user} is now following you on %{app}."
+      message2: "You may follow them back by clicking on the button \"Follow\" on their %{user_page}."
     give_advice:
       message1: "%{user} just asked a question you might be able to answer:"
       message2: "To answer, just reply to this message here:"
@@ -30,7 +30,7 @@ en:
         Cheers,
         Umamao Team
 
-      user_page: user page
+      user_page: profile page
     new_answer:
       link_label: "To see the answer, see this link:"
       message: "%{user} answered:"
