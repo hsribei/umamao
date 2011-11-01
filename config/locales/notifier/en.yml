@@ -26,13 +26,18 @@ en:
         %{application_name} Founder
 
       hi: Hi, %{user}!
-      signature: "Cheers,\n\
-        Umamao Team\n"
+      signature: |
+        Cheers,
+        Umamao Team
+
       user_page: profile page
     new_answer:
-      message: "%{user} answered %{new_answer} to the question %{question}"
+      link_label: "To see the answer, see this link:"
+      message: "%{user} answered:"
+      question: to the question "%{question}"
     new_comment:
       author: "%{user} commented on the question \"%{question}\""
+      link_label: "To see the comment, see the question:"
     new_feedback:
       message1: The user %{user} <%{email}> sent a feedback
       message2: Anonymous user sent a feedback from IP address %{ip}
@@ -49,7 +54,8 @@ en:
     new_search_result:
       author: "%{user} added a link to the question \"%{question_link}\""
     new_user_suggestion:
-      message: "%{origin} invited you to follow the topic %{entry}."
+      html_message: "%{origin} invited you to follow the topic %{entry}."
+      text_message: "%{origin} invited you to follow the topic %{entry}:"
     non_academic:
       goodbye: In case you haven't signed up for Umamao, please ignore this email.
       greeting: Hello,
@@ -67,22 +73,19 @@ en:
       message7: The account has %{users} users.
       message8: Visit your group at %{link}
     signup:
+      confirm_email: Confirm my email.
       goodbye: "P.S.: If you didn't sign up for a Umamao account, please ignore this email."
       greeting: Hello,
-      message: "Thank you for joining %{link}! To finish your signup, you need to verify your email address by clicking the link belowi: "
+      message: "Thank you for joining %{link}! To finish your signup, you need to verify your email address by clicking the link below: "
     survey:
-      message: |
-        You've been using %{application_name} for one week now, and we'd really
-        like to know how it's been for you. Could you take a couple minutes to
-        fill out our survey please?
+      message: |-
+        You've been using %{application_name} for one week now, and we'd really like to know how it's been for you. Could you take a couple minutes to fill out our survey please?
 
         http://survey.io/survey/933ea
 
-        We're eager to hear what you think and make %{application_name} the best
-        possible for you.
+        We're eager to hear what you think and make %{application_name} the best possible for you.
 
         Thanks a lot!
-
       subject: How's everything goin'?
     user_accepted_suggestion:
       message: "%{user} accepted your suggestion and followed the topic %{entry}."

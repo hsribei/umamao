@@ -1,0 +1,15 @@
+<%link = url_for(:host => @report.group.domain, :controller => "welcome",
+                 :action => "index") %>
+<%= t('notifier.global.hi', :user => h(@user.first_name)) %>
+
+<%= t('.message1', :group => @report.group.name) %>
+
+<%= t('.message2', :since => @report.since) %>
+
+<%= t('.message3', :questions => @report.questions) %>
+<%= t('.message4', :answers => @report.answers) %>
+<%= t('.message5', :votes => @report.votes) %>
+
+<%= t('.message7', :users => @report.users) %>
+
+<%= t('.message8', :link => link) %>
