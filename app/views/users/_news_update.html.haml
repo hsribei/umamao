@@ -4,19 +4,20 @@
 - entry_type = news_update.entry_type.downcase
 - question = (entry_type == 'question') ? entry : entry.question
 - title = h(question.title)
+- question_link = question_path(question, :ab_test => true)
 
 - unless question.banned || entry.banned
   %li.entry.item
     -# News_update Summary
     .summary
       - cache("user_news_update.#{entry.id}.#{entry.updated_at}.#{question.updated_at}") do
-        %h3= link_to title, question_path(question), :title => truncate(entry.body, :length => 200)
+        %h3= link_to title, question_link, :title => truncate(entry.body, :length => 200)
         .origin
           - if question.topics.any?
             - topic = question.topics.first
-            .description= t(".#{entry_type}.topic.#{action}", :origin => link_to_topic(topic))
+            .description= t(".#{entry_type}.topic.#{action}", :origin => link_to_topic(topic), :question => link_to(question.title, question_link, :class => "question_entry"))
           - else
-            .description= t(".#{entry_type}.user.#{action}", :origin => link_to(author.name, url_for(author)))
+            .description= t(".#{entry_type}.user.#{action}", :origin => link_to(author.name, url_for(author)), :question => link_to(question.title, question_link, :class => "question_entry"))
       - if entry_type == "answer"
         = render :partial => 'questions/answer', :object => entry, :locals => {:question => question, :answer => entry, :hide_controls => true}
 
