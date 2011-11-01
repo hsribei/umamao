@@ -19,15 +19,7 @@ class WelcomeController < ApplicationController
     session[:user_return_to] = params[:return_to]
 
     @affiliation = Affiliation.new
-
-    if @ref = params[:url_invitation]
-      @user = User.new
-      @user.timezone = AppConfig.default_timezone
-      @signin_index, @signup_index = [6, 1]
-    else
-      @signin_index, @signup_index = [1, 5]
-    end
-
+    @signin_index, @signup_index = [1, 5]
     render 'landing', :layout => 'welcome'
   end
 

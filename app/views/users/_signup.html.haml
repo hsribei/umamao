@@ -3,7 +3,7 @@
 = form_for @user, :url => users_path(:ab_test => true), :html => {:class => "form"} do |f|
   = f.hidden_field :invitation_token
   = f.hidden_field :affiliation_token
-  = hidden_field_tag :ref, @ref
+  = hidden_field_tag :ref, @url_invitation.ref
   .field
     .label
       = f.label :email, t(:email, :scope => "users.form")
