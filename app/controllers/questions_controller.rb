@@ -149,7 +149,7 @@ class QuestionsController < ApplicationController
       return
     end
 
-    if params[:ab_test].present?
+    if params[:r].present?
       track_bingo(:search_results_news_items)
     end
 
