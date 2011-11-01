@@ -68,7 +68,7 @@ class NewsItem
                :origin => origin)
 
     if recipient.is_a? User
-      if news_update.entry.is_a?(Question) || news_update.entry.is_a?(Answer)
+      if news_update.entry.is_a?(Question) || news_update.entry.is_a?(SearchResult)
         if news_update.entry.is_a?(Question)
           question = news_update.entry
         else
@@ -97,17 +97,19 @@ class NewsItem
   end
 
   def title
-    self.news_update.entry.title
+    t = self.news_update.entry.title
+    if t.blank? && news_update.entry_type == "SearchResult"
+      t = self.news_update.entry.url
+    end
+    t
   end
 
   def hide!
-    self.visible = false
-    self.save!
+    self.set(:visible => false)
   end
 
   def show!
-    self.visible = true
-    self.save!
+    self.set(:visible => true)
   end
 
   # if the news_item doesn't include a ignored topic and
