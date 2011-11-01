@@ -1,5 +1,7 @@
 task :cron => :environment do
+  Rake::Task["cron_tasks:send_survey_to_newcomers"].execute
   Rake::Task["cron_tasks:refresh_related_topics"].execute
+  Rake::Task["suggestions:refresh"].execute
 end
 
 namespace :cron_tasks do
@@ -10,9 +12,11 @@ namespace :cron_tasks do
 
   task :send_survey_to_newcomers => :environment do
     User.find_each(:created_at => { :$gte => 8.days.ago.midnight,
-                                    :$lt => 7.day.ago.midnight },
+                                    :$lt => 7.days.ago.midnight },
                    :batch_size => 10) do |user|
-      Notifier.delay.survey(user)
+      unless SentSurveyMail.first(:user_id => user.id)
+        Notifier.delay.survey(user)
+      end
     end
   end
 end

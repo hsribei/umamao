@@ -176,3 +176,8 @@ en:
       flash_notice: The question was successfully updated.
     watch:
       success: You will now receive notifications by email for every new answer to this question.
+    responding_helpers:
+      search_on_google: "Search on Google:"
+      bing_results: "%{results_count} results on Bing for:"
+      no_bing_results: "No results on Bing for:"
+      more_results_on_bing: More results on Bing

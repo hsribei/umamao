@@ -1,0 +1,7 @@
+.bing_result
+  = link_to(bing_result.title, bing_result.url, :class => :url)
+  %p{:class => :display_url}= bing_result.display_url
+  - begin
+    %p{:class => :description}= bing_result.description
+  - rescue
+    = ""

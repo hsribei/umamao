@@ -70,6 +70,12 @@
 
   = render :partial => "shared/comments", :locals => {:commentable => @question, :source => source, :path_scope => [@question]}
 
+- if ab_test(:answer_with_form_position) == :above
+  = render(:partial => 'answer_with_form',
+           :locals => { :question => @question,
+                        :search_result => @search_result,
+                        :answer => @answer })
+
 #search_results
   - @search_results.each do |search_result|
     = render(:partial => 'search_results/search_result',
@@ -77,44 +83,15 @@
                           :hide_controls => false,
                           :search_result => search_result })
 
-.loader{:style => 'display: none;'}
-  = waiting_tag
+- if ab_test(:answer_with_form_position) == :below
+  = render(:partial => 'answer_with_form',
+           :locals => { :question => @question,
+                        :search_result => @search_result,
+                        :answer => @answer })
 
-- if logged_in? && !@question.closed
-  .secondary-navigation
-    %h2{:id => :title}= t(:title, :scope => [:questions, :show])
-    - tabs_tag :namespace => :welcome_home, :open_tabs => { :class => :tabs } do |tab|
-      = tab.link 'Link', '#', :id => 'link', :class => 'current'
-      = tab.answer 'New Post', '#', :id => 'answer'
-  #link
-    = form_for(@search_result,
-               :url => question_search_results_path(@question.id, :format => :js),
-               :html => { :class => 'form bp',
-                          :remote => true,
-                          :novalidate => true,
-                          :'data-type' => 'json' }) do |f|
-      = render :partial => "search_results/form", :locals => { :f => f,
-                                                               :question_id => @question.id,
-                                                               :user_id => current_user.id,
-                                                               :group_id => current_group.id }
-      .group.navform
-        = submit_tag 'Adicionar Link', :class => "button"
-  #answer{:class => 'editor_hack'}
-    = form_for(@answer,
-               :url => question_answers_path(@question.id, :format => :js),
-               :html => { :class => "form mainAnswerForm bp editor",
-                          :remote => true,
-                          :'data-type' => 'json' }) do |f|
-      = render :partial => "answers/form", :locals => { :f => f, :markdown => true }
-      .group.navform
-        = submit_tag t("answers.form.submit"), :class => "button"
-      -# Image upload prompt; hidden by default
-      = render :partial => "shared/image_prompt", :locals => { :entry_type => "answer" }
-- else
-  - if not logged_in?
-    %p= t("answers.form.not_logged", :link => new_user_session_path)
-  - else
-    = render :partial => "questions/already_answered", :locals => { :answer => Answer.first(:question_id => @question.id, :user_id => current_user.id) }
+= render(:partial => 'question_responding_helper',
+         :object => ab_test(:question_responding_helpers),
+         :locals => { :question => @question, :bing_response => @bing_response })
 
 - content_for :sidebar do
   - if logged_in? && current_user != @question.user
