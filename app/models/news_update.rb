@@ -20,8 +20,7 @@ class NewsUpdate
 
   def on_question_status_change(status)
     self.news_items.each do |ni|
-      ni.open_question = status
-      ni.save
+      ni.set(:open_question => status)
     end
   end
 

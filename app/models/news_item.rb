@@ -105,13 +105,11 @@ class NewsItem
   end
 
   def hide!
-    self.visible = false
-    self.save(:validate => false)
+    self.set(:visible => false)
   end
 
   def show!
-    self.visible = true
-    self.save(:validate => false)
+    self.set(:visible => true)
   end
 
   # if the news_item doesn't include a ignored topic and
