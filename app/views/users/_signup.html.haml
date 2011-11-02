@@ -29,8 +29,8 @@
       = f.text_field :name, :tabindex => @signup_index + 3
 
   .field.agree
-    = f.check_box :agrees_with_terms_of_service, :tabindex => @signup_index + 4
+    = f.hidden_field :agrees_with_terms_of_service, :value => 1
     = t("users.new.agree", :privacy => privacy_path, :tos => tos_path)
 
   .submit
-    = submit_tag t('.submit'), :tabindex => @signup_index + 5
+    = submit_tag t('.submit'), :tabindex => @signup_index + 4
