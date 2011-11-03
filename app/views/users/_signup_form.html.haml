@@ -7,6 +7,7 @@
   = f.hidden_field :affiliation_token
   - if @url_invitation
     = hidden_field_tag :ref, @url_invitation.ref
+  = hidden_field_tag :group_invitation, @group_invitation.try(:slug)
   .field
     .label
       = f.label :email, t(:email, :scope => "users.form")
