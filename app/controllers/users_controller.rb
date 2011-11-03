@@ -77,7 +77,8 @@ class UsersController < ApplicationController
 
     if @invitation || @group_invitation
       @user.timezone = AppConfig.default_timezone
-      render 'new', :layout => 'welcome'
+      @signin_index, @signup_index = [6, 1]
+      render 'welcome/landing', :layout => 'welcome'
     else
       return redirect_to(root_path(:focus => "signup"))
     end
