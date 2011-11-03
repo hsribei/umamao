@@ -33,6 +33,11 @@ en:
           created: Question added to topic %{origin}.
         user:
           created: "%{origin} added a question."
+      searchresult:
+        topic:
+          created: Answer to %{question} added to %{origin}.
+        user:
+          created: "%{origin} added an answer to %{question}"
     notifications:
       title: Notifications
     sidebar:

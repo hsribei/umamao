@@ -72,6 +72,7 @@ pt-BR:
       message7: "O site tem %{users} usuários."
       message8: Visite o site em %{link}
     signup:
+      confirm_email: Confirmar meu email.
       goodbye: "P.S.: Caso não tenha se cadastrado no site, por favor, desconsidere este email."
       greeting: "Olá,"
       message: "Obrigado por se juntar ao %{link}! Para completar seu cadastro, precisamos confirmar seu endereço de email acadêmico. Para fazer isso, é só clicar no link abaixo: "

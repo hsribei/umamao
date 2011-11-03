@@ -239,11 +239,21 @@ class UsersController < ApplicationController
 
     @order_info = {:will_sort => false}
 
+    # A/B test for news items
+    ni_sr = ab_test(:news_items_search_results_helpers)
+    ni_sr = :answer
+    if ni_sr == :answer
+      options = {:entry_type => {:$ne => "SearchResult"}}
+    else
+      options = {:entry_type => {:$ne => "Answer"}}
+    end
+
+
     @page = params[:page] || 1
-    @items = @user.news_updates.paginate(:author_id => @user.id,
-                                         :per_page => 10,
-                                         :page => @page,
-                                         :order => :created_at.desc)
+    @items = @user.news_updates.paginate(options.merge(
+      {:author_id => @user.id, :per_page => 10,
+       :page => @page, :order => :created_at.desc}))
+
     respond_to do |format|
       format.html
       format.atom

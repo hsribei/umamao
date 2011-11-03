@@ -1,0 +1,17 @@
+<% link = url_for(:host => @group.domain, :controller => "questions",
+                  :action => "show", :id => @question.to_param)  %>
+
+<%= t('notifier.global.hi', :user => @question.user.first_name) %>
+
+
+<%= t('.message1', :user => @user.name, :group => @group.name) %>
+
+<%= t('.message2') %>
+
+<%= @question.title %>
+
+<%= t('.message3') %>
+
+<%= link %>
+
+<%= t('notifier.global.signature') %>

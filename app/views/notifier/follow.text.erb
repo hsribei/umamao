@@ -1,0 +1,8 @@
+<% link = url_for(:host => AppConfig.domain, :controller => "users", :action => "show", :id => @user.to_param) %>
+<%= t('notifier.global.hi', :user => @followed.first_name) %>
+
+<%= t('.message1', :user => @user.name, :app => AppConfig.application_name) %>
+<%= t('.message2', :user_page => t('notifier.global.user_page')) %>
+<%= link %>
+
+<%= t('notifier.global.signature') %>
