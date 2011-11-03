@@ -17,4 +17,10 @@
 
     =t("layouts.footer.content_license")
 
+  %ul
+    %li
+      = link_to t('doc.tos.title'), tos_path, :target => '_blank'
+    %li
+      = link_to t('doc.privacy.title'), privacy_path, :target => '_blank'
+
 ~ AppConfig.conversion_tracking_code if flash[:conversion]
