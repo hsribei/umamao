@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include Subdomains
 
+  DEVELOPMENT_DOMAIN = 'localhost.lan'
+  TEST_DOMAIN = '127.0.0.1'
+
   protect_from_forgery
 
   after_filter :flash_to_session
@@ -26,12 +29,25 @@ class ApplicationController < ActionController::Base
 
   def _vanity_identity
     if current_user
-      current_user.tracked? ? current_user : Umamao::UntrackedUser.instance
+      if current_user.tracked?
+        current_user
+      else
+        set_vanity_cookie(Umamao::UntrackedUser.instance.id)
+        Umamao::UntrackedUser.instance
+      end
     end
   end
 
-  DEVELOPMENT_DOMAIN = 'localhost.lan'
-  TEST_DOMAIN = '127.0.0.1'
+  # This identifier recognizes untracked users' identities via cookies even if
+  # they're not logged in. It's used in our vanity experiment files.
+  def identify_vanity
+    if identity = _vanity_identity
+      identity.id
+    else
+      set_vanity_cookie(SecureRandom.hex(16)) unless cookies[:vanity_id]
+      cookies[:vanity_id]
+    end
+  end
 
   protected
 
@@ -326,5 +342,11 @@ class ApplicationController < ActionController::Base
 
   def build_datetime(params, name)
     Time.zone.parse("#{params["#{name}(1i)"]}-#{params["#{name}(2i)"]}-#{params["#{name}(3i)"]} #{params["#{name}(4i)"]}:#{params["#{name}(5i)"]}") rescue nil
+  end
+
+  private
+
+  def set_vanity_cookie(value)
+    cookies[:vanity_id] = { :value => value, :expires => Time.now + 10.years }
   end
 end
