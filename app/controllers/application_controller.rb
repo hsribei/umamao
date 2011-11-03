@@ -347,6 +347,8 @@ class ApplicationController < ActionController::Base
   private
 
   def set_vanity_cookie(value)
-    cookies[:vanity_id] = { :value => value, :expires => Time.now + 10.years }
+    unless cookies[:vanity_id] == value
+      cookies[:vanity_id] = { :value => value, :expires => Time.now + 10.years }
+    end
   end
 end
