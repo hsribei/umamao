@@ -42,7 +42,9 @@ class CommentsController < ApplicationController
                                              }),
                    :count => render_to_string(:partial => "comments/count",
                                               :locals => {
-                                                :commentable => @comment.commentable
+                                                :commentable => @comment.commentable,
+                                                :inline => @comment.commentable.is_a?(SearchResult) &&
+                                                           ab_test(:inline_comment_helpers) == :inline
                                               })
                  }.to_json)
         end

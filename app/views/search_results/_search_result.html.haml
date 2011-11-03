@@ -29,8 +29,8 @@
                       :class =>"cancel"
       #search_result_flag_div
       .splitter
-      = render :partial => 'search_results/comments',
+      = render :partial => 'shared/comments',
                :locals => { :commentable => search_result,
                             :source => question_path(question),
-                            :path_scope => [question, search_result] }
-
+                            :path_scope => [question, search_result],
+                            :inline => true}

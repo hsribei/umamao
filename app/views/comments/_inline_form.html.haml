@@ -1,0 +1,21 @@
+
+.inline_comment
+  - # TODO maybe add a title
+  - @comment = Comment.new
+  = form_tag(url_for(local_assigns[:path_scope] + [@comment]) + ".js",
+    :class => "form inlineCommentForm",
+    :remote => true, "data-type" => "json") do
+    .group
+      = hidden_field_tag "source", source, :id => "source_#{commentable.id}"
+
+      = text_area_tag("body", @comment.body,
+                      :class => "comment_text_area markdown_editor placeholder",
+                      :id => "comment_#{commentable.id}",
+                      :rows => 1, :cols => 'auto',
+                      :placeholder => t(:leave_comment, :scope => [:helpers, :placeholder]),
+                      "data-autocomplete-url" => autocomplete_url)
+      %ul.autocomplete-list{:id => "comment_#{commentable.id}_list"}
+      %br.clear
+
+      .navform.hidden
+        = submit_tag t("comments.shared.comment_submit"), :class => "button"
