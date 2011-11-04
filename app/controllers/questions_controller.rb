@@ -196,8 +196,14 @@ class QuestionsController < ApplicationController
       @question.topics = Question.find_by_id(@question.parent_question_id).topics
     end
 
+    @bing_response = Support::Bing.search(@question.title) if params[:s]
+
     respond_to do |format|
-      format.html # new.html.erb
+      if params[:s].present?
+        format.html { render :action => 'new_as_search.html.haml' }
+      else
+        format.html # new.html.erb
+      end
       format.json  { render :json => @question.to_json }
     end
   end
