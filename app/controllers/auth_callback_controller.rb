@@ -38,10 +38,15 @@ class AuthCallbackController < ApplicationController
         UserExternalAccount.create(auth_hash.merge(:user => current_user))
     end
 
-    respond_with(@external_account, :status => :created) do |format|
-      track_event("connected_#{@external_account.provider}".to_sym)
-      flash[:connected_to] = @external_account.provider
-      format.html { redirect_to session["omniauth_return_url"] }
+    if @external_account and @external_account.user.id == current_user.id
+      respond_with(@external_account, :status => :created) do |format|
+        track_event("connected_#{@external_account.provider}".to_sym)
+        flash[:connected_to] = @external_account.provider
+        format.html { redirect_to session["omniauth_return_url"] }
+      end
+    else
+      flash[:error] = I18n.t("external_accounts.connection_error")
+      redirect_to session["omniauth_return_url"]
     end
   end
 end
