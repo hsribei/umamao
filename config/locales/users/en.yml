@@ -97,7 +97,7 @@ en:
     new:
       affiliation_message: Your academic e-mail %{email} was confirmed! Now just finish your registration by filling out the form below.
       agree: |
-        I read and agree with the <a href="%{privacy}" target="_blank">privacy policy</a> and the <a href="%{tos}" target="_blank">terms of use</a>.
+        By signing up you agree to our <a href="%{privacy}" target="_blank">privacy policy</a> and <a href="%{tos}" target="_blank">terms of use</a>.
 
       already_registered: Already have an account on Umamao? <a href="/users/login">Sign in</a> to start.
       invitation:
