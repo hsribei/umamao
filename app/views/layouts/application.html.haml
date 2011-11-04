@@ -38,9 +38,12 @@
         #home-link
           = link_to t('.home'), root_path
 
-        #main-right
-          = render :partial => "shared/other_actions"
-          - unless new_question_search_test
+        - if new_question_search_test
+          #main-right-smaller
+            = render :partial => "shared/other_actions"
+        - else
+          #main-right-bigger
+            = render :partial => "shared/other_actions"
             .vertical-bar
             #ask-question
               = link_to t('.ask_question'), new_question_path
