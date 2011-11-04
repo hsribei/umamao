@@ -10,6 +10,18 @@
   .navtitle
     = t("questions.new.title")
 
+- content_for :sidebar do
+  - if @results.present?
+    %h3= t("searches.index.sidebar_title")
+    %ul#long-search-results.items
+      - @results.each do |result|
+        - result_class = result.class.collection_name.singularize
+        %li.item{:class => result_class}
+          = render(:partial => result_class,
+                   :locals => {result_class.to_sym => result})
+  - else
+    = t(".empty")
+
 - form_for(@question, :html => {:class => "form editor",
                                 :id => "ask_question"}) do |f|
   = render :partial => "questions/form", :locals => {:f => f}
