@@ -7,10 +7,19 @@ class SearchesController < ApplicationController
       @results = Support::Search.query(params[:q],
                                        :page => params[:page] || 1,
                                        :in => @in)
+
+      if params[:s].present?
+        @question = Question.new(:title => params[:q])
+        @bing_results = Support::Bing.search(@question.title)
+      end
     end
 
     respond_to do |format|
-      format.html
+      if params[:s].present?
+        format.html { render :action => 'search_as_new_question.html.haml' }
+      else
+        format.html
+      end
     end
   end
 
