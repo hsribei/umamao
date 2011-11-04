@@ -1,11 +1,13 @@
 # -*- coding: undecided -*-
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
-require 'singleton'
 
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include Subdomains
+
+  DEVELOPMENT_DOMAIN = 'localhost.lan'
+  TEST_DOMAIN = '127.0.0.1'
 
   protect_from_forgery
 
@@ -19,15 +21,6 @@ class ApplicationController < ActionController::Base
   before_filter :track_user
   layout :set_layout
 
-  # Vanity expects an object that responds to #id.
-  class UntrackedUser
-    include Singleton
-
-    def id
-      '03571a60f217cf68f795875d108a73fa21e0c2bcce7f'
-    end
-  end
-
   # This is a turnaround for the shortcomings of the vanity gem. This code will
   # create at most one participant and one conversion in a random group for all
   # our untracked users. This is necessary because `use_vanity` is a class-level
@@ -36,12 +29,25 @@ class ApplicationController < ActionController::Base
 
   def _vanity_identity
     if current_user
-      current_user.tracked? ? current_user : UntrackedUser.instance
+      if current_user.tracked?
+        current_user
+      else
+        set_vanity_cookie(Umamao::UntrackedUser.instance.id)
+        Umamao::UntrackedUser.instance
+      end
     end
   end
 
-  DEVELOPMENT_DOMAIN = 'localhost.lan'
-  TEST_DOMAIN = '127.0.0.1'
+  # This identifier recognizes untracked users' identities via cookies even if
+  # they're not logged in. It's used in our vanity experiment files.
+  def identify_vanity
+    if identity = _vanity_identity
+      identity.id
+    else
+      set_vanity_cookie(SecureRandom.hex(16)) unless cookies[:vanity_id]
+      cookies[:vanity_id]
+    end
+  end
 
   protected
 
@@ -336,5 +342,13 @@ class ApplicationController < ActionController::Base
 
   def build_datetime(params, name)
     Time.zone.parse("#{params["#{name}(1i)"]}-#{params["#{name}(2i)"]}-#{params["#{name}(3i)"]} #{params["#{name}(4i)"]}:#{params["#{name}(5i)"]}") rescue nil
+  end
+
+  private
+
+  def set_vanity_cookie(value)
+    unless cookies[:vanity_id] == value
+      cookies[:vanity_id] = { :value => value, :expires => Time.now + 10.years }
+    end
   end
 end

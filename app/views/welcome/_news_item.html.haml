@@ -5,15 +5,25 @@
 - entry = news_item.news_update.entry
 - entry_type = news_item.news_update.entry_type.downcase
 - question = entry_type == 'question' ? entry : entry.question
+- question_link = question_path(question, :r => 1)
+- if entry_type == "searchresult"
+  - link = trackable_search_result_url(entry, 1)
+- else
+  - link = question_link
 
-- unless question.banned || entry.banned
+- if !question.banned && !entry.banned #do ab test
   %li.entry.item
     -# News_item Summary
     .summary
-      %h3= link_to title, question_path(question), :title => truncate(entry.body, :length => 200)
+      %h3= link_to title, link, :title => truncate(entry.body, :length => 200)
+      - if entry_type == "searchresult"
+        .search_result_url
+          %p
+            = shorten_url(entry.url)
       .origin
 
-        .description= t(".#{entry_type}.#{origin_type}.#{action}", :origin => link_to_model(news_item.origin, origin.name))
+        .description= t(".#{entry_type}.#{origin_type}.#{action}", :origin => link_to_model(news_item.origin, origin.name), :question => link_to(question.title, question_link, :class => "question_entry"))
+
       - if entry_type == "answer"
         = render :partial => 'questions/answer', :object => entry, :locals => {:question => question, :answer => entry, :hide_controls => true}
 

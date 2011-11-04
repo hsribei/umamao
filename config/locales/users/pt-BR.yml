@@ -97,9 +97,7 @@ pt-BR:
         reputation_needed: "Você precisa de pelo menos %{min_reputation} de reputação para %{action}"
     new:
       affiliation_message: "Seu e-mail acadêmico %{email} foi confirmado! Agora basta terminar seu cadastro preenchendo o formulário abaixo."
-      agree: "Li e concordo com a <a href=\"%{privacy}\" target=\"_blank\">política de\n\
-        privacidade</a> e com os <a href=\"%{tos}\" target=\"_blank\">termos de\n\
-        uso</a> do site.\n"
+      agree: "Ao fazer o cadastro você está concordando com nossa <a href=\"%{privacy}\" target=\"_blank\">política de privacidade</a> e nossos <a href=\"%{tos}\" target=\"_blank\">termos de uso</a>"
       already_registered: "Já tem conta no Umamão? <a href=\"/users/login\">Faça login</a> para entrar."
       invitation:
         title: "Você veio a convite de %{user}:"
@@ -116,6 +114,11 @@ pt-BR:
           created: "Pergunta adicionada ao tópico %{origin}."
         user:
           created: "%{origin} adicionou uma pergunta."
+      searchresult:
+        topic:
+          created: "Resposta para %{question} adicionadaa ao tópico %{origin}."
+        user:
+          created: "%{origin} adicionou uma resposta a %{question}"
     show:
       atom:
         answer: "Resposta para:"

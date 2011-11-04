@@ -2,9 +2,12 @@ en:
   inviter:
     invitation:
       click_here: Click here
-      goodbye: "We hope to see you soon!\n\n\
-        Cheers,\n\
-        Umamao Team\n"
+      goodbye: |
+        We hope to see you soon!
+
+        Cheers,
+        Umamao Team
+
       greeting: Hello!
       html_link_label: "To accept the invitation, %{link}, or type this URL into your browser:"
       sender: "%{user} thinks you should join Umamão:"
@@ -15,9 +18,11 @@ en:
       text_link_label: "To accept this invitation, click this link:"
     request_answer:
       answer: Go check it out!
-      goodbye: "\n\
-        Cheers,\n\
-        Umamao Team\n"
+      goodbye: |
+
+        Cheers,
+        Umamao Team
+
       greeting: Hello %{invited},
       html_link_label: Go check it out and see if you can help :)
       sender: "%{user} thinks you know the answer to the question %{question}"

@@ -37,6 +37,11 @@ pt-BR:
           created: "Pergunta adicionada ao tópico %{origin}."
         user:
           created: "%{origin} adicionou uma pergunta."
+      searchresult:
+        topic:
+          created: "Resposta para %{question} adicionadaa ao tópico %{origin}."
+        user:
+          created: "%{origin} adicionou uma resposta a %{question}"
     notifications:
       title: "Notificações"
     sidebar:
