@@ -11,7 +11,7 @@
       = link_to_bing_search(question.title)
     #bing_results
       - bing_results.each do |bing_result|
-        = render(:partial => 'bing_result', :object => bing_result)
+        = render(:partial => 'questions/bing_result', :object => bing_result)
     = link_to_bing_search(question.title,
                           :id => :more_results,
                           :content => t(:more_results_on_bing,
