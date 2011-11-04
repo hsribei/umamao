@@ -2,8 +2,13 @@ class SearchResultsController < ApplicationController
   before_filter :login_required, :only => [:create, :destroy, :flag]
 
   def show
-    if params[:r].present?
-      track_bingo(:search_results_news_items)
+    if (source = params[:r]).present?
+      source = source.to_i
+      if source == Umamao::PAGE_MAPPING['welcome#index']
+        track_bingo(:search_results_news_items)
+      elsif source == Umamao::PAGE_MAPPING['questions#show']
+        track_bingo(:inline_click_search_result)
+      end
     end
 
     @search_result = SearchResult.find_by_id(params[:search_result_id])
