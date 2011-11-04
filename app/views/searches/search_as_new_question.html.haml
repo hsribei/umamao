@@ -12,7 +12,7 @@
 
 - form_for(@question, :html => {:class => "form editor",
                                 :id => "ask_question"}) do |f|
-  = render :partial => "form", :locals => {:f => f}
+  = render :partial => "questions/form", :locals => {:f => f}
 
   .group.navform
 
@@ -22,6 +22,6 @@
 = render :partial => "shared/image_prompt",
   :locals => { :entry_type => "question" }
 
-= render(:partial => 'question_responding_helper',
+= render(:partial => 'questions/question_responding_helper',
          :object => ab_test(:question_responding_helpers),
-         :locals => { :question => @question, :bing_response => @bing_response })
+         :locals => { :question => @question, :bing_response => @bing_results })
