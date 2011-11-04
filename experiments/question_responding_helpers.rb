@@ -1,6 +1,5 @@
 ab_test 'Question responding helpers' do
   alternatives :none, :google_search_link, :bing_results
   metrics :question_posted
-  identify { |c| c.current_user ? c.current_user.id :
-                                  Umamao::UntrackedUser.instance.id }
+  identify { |c| c.identify_vanity }
 end
