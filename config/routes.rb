@@ -99,6 +99,8 @@ Shapado::Application.routes.draw do
   match '/auth/:provider/callback' => 'auth_callback#callback'
   match '/auth/dac' => 'affiliations#add_dac_student', :via => :post
   match '/auth/failure' => 'auth_callback#failure'
+  match '/auth/signup_with_provider' => 'auth_callback#signup_with_provider'
+  match '/auth/sign_in_and_associate_provider' => 'auth_callback#sign_in_and_associate_provider', :via => :post
 
   namespace :settings do
     match 'profile' => 'profile#edit', :via => :get

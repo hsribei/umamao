@@ -149,7 +149,7 @@ class UsersController < ApplicationController
       if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
         tracking_properties[:invited_by] = @url_invitation.inviter.id
         @url_invitation.add_invitee(@user)
-        track_bingo(:signup_method)
+        track_bingo(:signup_action)
       end
 
       if invitation && invitation.topics

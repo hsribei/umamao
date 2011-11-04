@@ -3,7 +3,12 @@ class AuthCallbackController < ApplicationController
   before_filter :login_required, :only => :create_external_account
 
   def callback
-    create_external_account
+    auth_hash = request.env['omniauth.auth']
+    if not user_signed_in? && auth_hash['provider'] == 'facebook'
+      signup_with_provider
+    else
+      create_external_account
+    end
   end
 
   def failure
@@ -47,6 +52,49 @@ class AuthCallbackController < ApplicationController
     else
       flash[:error] = I18n.t("external_accounts.connection_error")
       redirect_to session["omniauth_return_url"]
+    end
+  end
+
+  def signup_with_provider
+    auth_hash = request.env['omniauth.auth']
+
+    user_info = auth_hash["user_info"]
+    email = user_info["email"]
+    user = User.find_by_email(email)
+
+    if user
+      if user.external_accounts.first(:provider => auth_hash['provider'])
+        sign_in user
+        redirect_to root_path
+      else
+        session["omniauth-hash"] = auth_hash
+        @email = auth_hash["user_info"]["email"]
+        @user = User.new
+        render :signup_with_provider
+      end
+    else
+      if user = User.create_with_provider(auth_hash)
+        sign_in user
+        redirect_to wizard_path("follow")
+      else
+        head(:unprocessable_entity)
+      end
+    end
+  end
+
+  def sign_in_and_associate_provider
+    auth_hash = session['omniauth-hash']
+    user = User.find_by_email(auth_hash["user_info"]["email"])
+    if user.valid_password?(params[:user][:password])
+      session.delete('omniauth-hash')
+      sign_in user
+      UserExternalAccount.create(auth_hash.merge(:user => user))
+      redirect_to root_url
+    else
+      flash[:error] = I18n.t('auth_callback.invalid_password')
+      @email = auth_hash["user_info"]["email"]
+      @user = User.new
+      render :signup_with_provider
     end
   end
 end

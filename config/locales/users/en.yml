@@ -138,6 +138,7 @@ en:
       upvotes_count: "Total upvotes received: %{upvotes_count}"
       views: views
     signup:
+      sign_up_with_facebook: Sign up with Facebook
       submit: Sign up
     validation:
       errors:
