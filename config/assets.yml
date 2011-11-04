@@ -43,6 +43,9 @@ javascripts:
     - public/javascripts/modules/topic_autocomplete.js
     - public/javascripts/modules/question_autocomplete.js
     - public/javascripts/modules/new_question.js
+  new_question_as_search:
+    - public/javascripts/modules/topic_autocomplete.js
+    - public/javascripts/modules/new_question_as_search.js
   new_question_list:
     - public/javascripts/modules/topic_autocomplete.js
     - public/javascripts/modules/new_question_list.js
