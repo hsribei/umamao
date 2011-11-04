@@ -4,7 +4,7 @@
 - comments = commentable.comments
 - inline = local_assigns[:inline]
 
-- show_message = true
+- hide_message = false
 - message = nil
 
 - if inline
@@ -14,7 +14,7 @@
         :locals => {:source => source,
           :commentable => commentable,
           :path_scope => path_scope, :inline => true}
-      - show_message = false
+      - hide_message = true
     - else
       %p= t("answers.form.not_logged", :link => new_user_session_path) 
   - else
@@ -23,7 +23,7 @@
   - if comments.blank?
     - message = "ADICIONAR MENSAGEM"
 
-= render :partial => 'comments/count', :locals => {:commentable => commentable, :inline => inline, :message => message, :show => show_message}
+= render :partial => 'comments/count', :locals => {:commentable => commentable, :inline => inline, :message => message, :hide => hide_message}
 
 .comments_wrapper
   .comments
