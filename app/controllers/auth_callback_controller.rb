@@ -74,6 +74,8 @@ class AuthCallbackController < ApplicationController
       end
     else
       if user = User.create_with_provider(auth_hash)
+        track_bingo(:signup_action)
+
         sign_in user
         redirect_to wizard_path("follow")
       else
