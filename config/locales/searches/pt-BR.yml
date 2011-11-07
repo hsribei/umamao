@@ -15,9 +15,11 @@ pt-BR:
         categories: Filter by
         detail: Detalhar busca
         send: Buscar
+      related_searches: Buscas relacionadas
       search_text: Perguntas contendo
       tags: "nestes tópicos"
       title: Resultados
+      user_results: Usuários
     question:
       answers:
         one: 1 resposta

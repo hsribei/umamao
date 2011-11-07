@@ -15,9 +15,11 @@ en:
         categories: Search for
         detail: Refine search
         send: Search
+      related_searches: Related searches
       search_text: Questions containing
       tags: within these tags
       title: Results
+      user_results: User results
     question:
       answers:
         one: 1 answer
