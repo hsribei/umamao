@@ -11,16 +11,21 @@
     = t("questions.new.title")
 
 - content_for :sidebar do
-  - if @results.present?
-    %h3= t("searches.index.sidebar_title")
-    %ul#long-search-results.items
-      - @results.each do |result|
+  - if @related_results && @related_results.count > 0
+    %h3= t("searches.index.related_results")
+    %ul#sidebar-search-results.items
+      - @related_results.each do |result|
         - result_class = result.class.collection_name.singularize
         %li.item{:class => result_class}
-          = render(:partial => result_class,
+          = render(:partial => "sidebar_#{result_class}",
                    :locals => {result_class.to_sym => result})
-  - else
-    = t(".empty")
+  - if @user_results && @user_results.count > 0
+    %h3= t("searches.index.user_results")
+    %ul#sidebar-search-results.items
+      - @user_results.each do |result|
+        %li.item{:class => :user}
+          = render(:partial => "sidebar_user",
+                   :locals => {:user => result})
 
 - form_for(@question, :html => {:class => "form editor",
                                 :id => "ask_question"}) do |f|

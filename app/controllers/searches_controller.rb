@@ -4,13 +4,19 @@ class SearchesController < ApplicationController
     @in = (params[:in] || []).map(&:to_sym)
 
     if params[:q].present?
-      @results = Support::Search.query(params[:q],
-                                       :page => params[:page] || 1,
-                                       :in => @in)
-
       if params[:s].present?
         @question = Question.new(:title => params[:q])
+        @related_results = Support::Search.query(params[:q],
+                                                 :page => 1,
+                                                 :in => [:topic, :question])
+        @user_results = Support::Search.query(params[:q],
+                                              :page => 1,
+                                              :in => [:user])
         @bing_results = Support::Bing.search(@question.title)
+      else
+        @results = Support::Search.query(params[:q],
+                                         :page => params[:page] || 1,
+                                         :in => @in)
       end
     end
 
