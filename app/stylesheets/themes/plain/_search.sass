@@ -29,6 +29,28 @@
       width: 7em
       text-align: center
 
+  #search-results
+    +column(12)
+    +no-bullets
+    background-color: white
+    border: 1px solid black
+    padding: 0
+    margin-top: 35px
+    font-size: 1.2em
+    z-index: 2
+    li
+      padding: 0.25em
+      cursor: pointer
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      &.active
+        background: #eeeeee
+        color: blue
+      .desc
+        font-size: 0.8em
+        color: #777777
+
 #search
   .search-form-wrap
     border: 1px solid black
