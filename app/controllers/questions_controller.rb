@@ -235,7 +235,6 @@ class QuestionsController < ApplicationController
 
         track_event(:asked_question, :body_present => @question.body.present?,
                     :topics_count => @question.topics.size)
-        track_bingo(:question_posted)
 
         format.html do
           flash[:notice] = t(:flash_notice, :scope => "questions.create")
