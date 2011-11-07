@@ -1,0 +1,45 @@
+- content_for :js do
+  = include_javascripts :content_edit, :new_question_as_search
+  = javascript_include_tag "#{AppConfig.wmd_location}/jquery.wmd.min.js"
+  = javascript_include_tag "#{AppConfig.wmd_location}/jquery.wmd.mathjax.js"
+
+- content_for :css do
+  = stylesheet_link_tag "#{AppConfig.wmd_location}/wmd.css"
+
+- content_for :subtabs do
+  .navtitle
+    = t("questions.new.title")
+
+- content_for :sidebar do
+  - if @related_results && @related_results.count > 0
+    %h3= t("searches.index.related_results")
+    %ul#sidebar-search-results.items
+      - @related_results.each do |result|
+        - result_class = result.class.collection_name.singularize
+        %li.item{:class => result_class}
+          = render(:partial => "sidebar_#{result_class}",
+                   :locals => {result_class.to_sym => result})
+  - if @user_results && @user_results.count > 0
+    %h3= t("searches.index.user_results")
+    %ul#sidebar-search-results.items
+      - @user_results.each do |result|
+        %li.item{:class => :user}
+          = render(:partial => "sidebar_user",
+                   :locals => {:user => result})
+
+- form_for(@question, :html => {:class => "form editor",
+                                :id => "ask_question"}) do |f|
+  = render :partial => "questions/form", :locals => {:f => f}
+
+  .group.navform
+
+    = f.submit t("questions.new.ask")
+    = link_to t('scaffold.cancel'), questions_path, :class => "button cancel"
+
+= render :partial => "shared/image_prompt",
+  :locals => { :entry_type => "question" }
+
+= render(:partial => 'questions/bing_results',
+         :object => @bing_results[:results],
+         :locals => { :question => @question,
+                      :bing_results_count => @bing_results[:total_results_count] })
