@@ -3,5 +3,9 @@
     %h3  #{ t('layouts.application.signup') }
   = render :partial => 'users/signup_form'
 - else
-  %h3 #{ t('.sign_up_with_facebook') }
-  = link_to image_tag('share/facebook_32.png'), '/auth/facebook'
+  .facebook-signup
+    %a.fb_button.fb_button_large{:href => "/auth/facebook"}
+      %span.fb_button_text= t('.sign_up_with_facebook')
+
+    .field.agree
+      = t(:agree, :scope => 'users.new', :privacy => privacy_path, :tos => tos_path)
