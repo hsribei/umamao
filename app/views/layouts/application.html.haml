@@ -30,18 +30,20 @@
         #logo
           = link_to image_tag("shorter_logo.png", :class => "group_logo", :height => 42, :alt => AppConfig.application_name), domain_url(:custom => current_group.domain)
 
-        -# Search AB/Test
-        - new_question_search_test = true # simulating ab test
-        = render :partial => new_question_search_test ? "shared/new_question_search" : "shared/search"
+        - new_question_as_search = ab_test(:new_question_as_search)
+        - if new_question_as_search == :old_search_scheme
+          = render(:partial => "shared/search")
+        - elsif new_question_as_search == :new_search_scheme
+          = render(:partial => "shared/new_question_search")
 
         .vertical-bar
         #home-link
           = link_to t('.home'), root_path
 
-        - if new_question_search_test
+        - if new_question_as_search == :new_search_scheme
           #main-right-smaller
             = render :partial => "shared/other_actions"
-        - else
+        - elsif new_question_as_search == :old_search_scheme
           #main-right-bigger
             = render :partial => "shared/other_actions"
             .vertical-bar
