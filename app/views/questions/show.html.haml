@@ -89,9 +89,11 @@
                         :search_result => @search_result,
                         :answer => @answer })
 
-= render(:partial => 'question_responding_helper',
-         :object => ab_test(:question_responding_helpers),
-         :locals => { :question => @question, :bing_response => @bing_response })
+#question_responding_helper
+  = render(:partial => 'bing_results',
+           :object => @bing_response[:results],
+           :locals => { :question => @question,
+                        :bing_results_count => @bing_response[:total_results_count] })
 
 - content_for :sidebar do
   - if logged_in? && current_user != @question.user
