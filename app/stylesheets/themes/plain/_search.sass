@@ -115,6 +115,19 @@ ul.items#long-search-results
     .title, .details
       margin-bottom: 3px
 
+#sidebar
+  #sidebar-search-results, #user-search-results
+    &.items
+      li.item
+        &.question, .topic, .user
+        margin: 0
+        border: 0
+        &.user
+        .picture
+          padding-right: 5px
+          float: left
+          width: 24px
+
 #sidebar .long-search
   input[type=text]
     border: 1px solid black
