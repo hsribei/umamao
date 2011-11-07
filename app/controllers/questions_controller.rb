@@ -178,9 +178,7 @@ class QuestionsController < ApplicationController
     }
     @follow_up_questions = Question.children_of(@question)
 
-    if ab_test(:question_responding_helpers) == :bing_results
-      @bing_response = Support::Bing.search(@question.title)
-    end
+    @bing_response = Support::Bing.search(@question.title)
 
     respond_to do |format|
       format.html
