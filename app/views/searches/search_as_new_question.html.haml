@@ -39,8 +39,7 @@
 = render :partial => "shared/image_prompt",
   :locals => { :entry_type => "question" }
 
-#question_responding_helper
-  = render(:partial => 'questions/bing_results',
-           :object => @bing_results[:results],
-           :locals => { :question => @question,
-                        :bing_results_count => @bing_results[:total_results_count] })
+= render(:partial => 'questions/bing_results',
+         :object => @bing_results[:results],
+         :locals => { :question => @question,
+                      :bing_results_count => @bing_results[:total_results_count] })
