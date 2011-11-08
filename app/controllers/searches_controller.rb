@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
 
   def index
-    if params[:q].blank?
+    if params[:q].blank? && params[:question].blank?
       redirect_to root_path
       return
     end
@@ -10,6 +10,7 @@ class SearchesController < ApplicationController
 
     if ab_test(:new_question_as_search) == :new_search_scheme
       @question = Question.new(params[:q] ? { :title => params[:q] } : {})
+      @question.safe_update(%w[body parent_question_id], params[:question])
       @bing_results = Support::Bing.search(@question.title)
     end
 

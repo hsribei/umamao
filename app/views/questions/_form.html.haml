@@ -29,6 +29,9 @@
       %hr
       .group
         = render :partial => "shared/classify", :locals => {:classifiable => @question, :ajax_add => false}
+- else
+  = f.hidden_field :body
+
 
 - if current_group.language.nil? && AppConfig.enable_i18n
   .group
