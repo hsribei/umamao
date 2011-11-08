@@ -56,24 +56,6 @@ class UsersController < ApplicationController
       end
     end
 
-    if params[:ref]
-      unless @url_invitation = UrlInvitation.find_by_ref(params[:ref])
-        flash[:notice] = t(:not_found, :scope => [:url_invitations, :show])
-        redirect_to(root_path(:focus => 'signup')) and return
-      end
-
-      # A/B test for ref link invitation
-      if ab_test(:signup_method_helpers) == :users_new
-        @user = User.new
-        @user.timezone = AppConfig.default_timezone
-        render 'new', :layout => 'welcome'
-      else
-        redirect_to(root_path(:url_invitation => @url_invitation.ref))
-      end
-      return
-
-    end
-
     @user = User.new
 
     # User added by invitation
@@ -93,38 +75,10 @@ class UsersController < ApplicationController
 
     end
 
-    # User added by affiliation
-    if params[:affiliation_token]
-      @affiliation = Affiliation.
-        find_by_affiliation_token(params[:affiliation_token])
-
-      if @affiliation.present?
-        if @affiliation.user.present?
-
-          # If the user already exists but hasn't confirmed his
-          # affiliation, we confirm it here and proceed with the sign
-          # in.
-          if @affiliation.user.active?
-            redirect_to(root_url)
-          else
-            @affiliation.confirm
-            @affiliation.save!
-            @affiliation.reload # We need to reload the user.
-            sign_in_and_redirect(:user, @affiliation.user)
-          end
-
-          return
-
-        else
-          @user.affiliation_token = @affiliation.affiliation_token
-        end
-      end
-
-    end
-
-    if @invitation || @affiliation || @group_invitation || @url_invitation
+    if @invitation || @group_invitation
       @user.timezone = AppConfig.default_timezone
-      render 'new', :layout => 'welcome'
+      @signin_index, @signup_index = [6, 1]
+      render 'welcome/landing', :layout => 'welcome'
     else
       return redirect_to(root_path(:focus => "signup"))
     end

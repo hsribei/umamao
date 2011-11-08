@@ -1,0 +1,42 @@
+- options ||= {}
+- params ||= {}
+- @signup_index ||= 0
+
+= form_for @user, :url => users_path(params), :html => {:class => "form"} do |f|
+  = f.hidden_field :invitation_token
+  = f.hidden_field :affiliation_token
+  - if @url_invitation
+    = hidden_field_tag :ref, @url_invitation.ref
+  = hidden_field_tag :group_invitation, @group_invitation.try(:slug)
+  .field
+    .label
+      = f.label :email, t(:email, :scope => "users.form")
+    .input
+      = f.email_field :email, :tabindex => @signup_index
+
+  .field
+    .label
+      = f.label :password, t(:password, :scope => "users.form")
+    .input
+      = f.password_field :password, :tabindex => @signup_index + 1
+
+  .field
+    .label
+      = f.label :password_confirmation, t(:password_confirmation, :scope => "users.form")
+    .input
+      = f.password_field :password_confirmation, :tabindex => @signup_index + 2
+
+  .field
+    .label
+      = f.label :name, t(:name, :scope => "users.form")
+    .input
+      = f.text_field :name, :tabindex => @signup_index + 3
+
+  .field.agree
+    = f.hidden_field :agrees_with_terms_of_service, :value => 1
+    = t(:agree, :scope => 'users.new', :privacy => privacy_path, :tos => tos_path)
+
+  .submit
+    = submit_tag t(:submit, :scope => 'users.new'), :tabindex => @signup_index + 4
+    - if options && options[:already_registered]
+      = t(:already_registered, :scope => 'users.new')

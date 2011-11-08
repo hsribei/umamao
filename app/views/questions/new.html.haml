@@ -12,7 +12,7 @@
 
 - form_for(@question, :html => {:class => "form editor",
                                 :id => "ask_question"}) do |f|
-  = render :partial => "form", :locals => {:f => f, :topics => true}
+  = render :partial => "form", :locals => {:f => f, :description => true, :details => true, :topics => true}
 
   .group.navform
 
