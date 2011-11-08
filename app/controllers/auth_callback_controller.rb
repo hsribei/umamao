@@ -73,13 +73,18 @@ class AuthCallbackController < ApplicationController
         render :signup_with_provider
       end
     else
-      if user = User.create_with_provider(auth_hash)
-        track_bingo(:signup_action)
+      if session['sign_up_allowed']
+        if user = User.create_with_provider(auth_hash)
+          track_bingo(:signup_action)
 
-        sign_in user
-        redirect_to wizard_path("follow")
+          sign_in user
+          redirect_to wizard_path("follow")
+        else
+          head(:unprocessable_entity)
+        end
       else
-        head(:unprocessable_entity)
+        flash[:error] = I18n.t("welcome.landing.invitation_only")
+        redirect_to root_path
       end
     end
   end
