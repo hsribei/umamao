@@ -5,6 +5,7 @@ pt-BR:
       follow_topics: "Buscar tópicos"
       ignore_topics: "Buscar tópicos"
       search_all: "Buscar por perguntas, tópicos e usuários"
+      search_anything: Buscar qualquer coisa
       search_box_title: "Veja se a sua pergunta já foi feita por alguém"
       select_topics: "Selecionar tópicos"
       tags_tip: "Use [tópico] para especificar tópicos."
@@ -14,9 +15,11 @@ pt-BR:
         categories: Filter by
         detail: Detalhar busca
         send: Buscar
+      related_searches: Buscas relacionadas
       search_text: Perguntas contendo
       tags: "nestes tópicos"
       title: Resultados
+      user_results: Usuários
     question:
       answers:
         one: 1 resposta

@@ -5,6 +5,7 @@ en:
       follow_topics: Search topics
       ignore_topics: Search topics
       search_all: Search questions, people and topics
+      search_anything: Search anything
       search_box_title: Check whether your question has already been asked
       select_topics: Select topics
       tags_tip: Use [tag] to specify tags.
@@ -14,9 +15,11 @@ en:
         categories: Search for
         detail: Refine search
         send: Search
+      related_searches: Related searches
       search_text: Questions containing
       tags: within these tags
       title: Results
+      user_results: User results
     question:
       answers:
         one: 1 answer
