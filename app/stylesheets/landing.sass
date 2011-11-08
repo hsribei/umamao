@@ -49,12 +49,18 @@ body.bp
   #submit_button
     +column(2, true)
   #remember_me
-    +column(4)
+    +column(3)
     line-height: 2
   #recover_password
-    +append(2)
+    +column(3)
+    line-height: 2
+  #facebook_sign_in
+    float: right
     +column(4, true)
     line-height: 2
+    .fb_button
+      float: right
+
   input[type=submit]
     width: 70px
     margin-top: 6px

@@ -19,6 +19,10 @@
     #recover_password
       = link_to t("devise.passwords.link"), new_password_path("user")
 
+    #facebook_sign_in
+      %a.fb_button.fb_button_small{:href => "/auth/facebook"}
+        %span.fb_button_text= t('.sign_in_with_facebook')
+
 - content_for :js do
   = include_javascripts :landing
 
