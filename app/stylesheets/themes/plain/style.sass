@@ -119,11 +119,18 @@
   margin-top: 15px
   margin-bottom: 15px
 
-#main-right
-  +column(8, true)
+=main-right
   float: right
   #ask-question, .vertical-bar, #other-actions
     float: right
+
+#main-right-smaller
+  +main-right
+  +column(5, true)
+
+#main-right-bigger
+  +main-right
+  +column(8, true)
 
 #ask-question
   display: inline

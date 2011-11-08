@@ -1,3 +1,7 @@
+- description ||= false
+- details ||= false
+- topics ||= false
+
 = f.error_messages
 .group
   = f.label :title, "#{t(:title, :scope => "activerecord.attributes.question")}", :class => "label"
@@ -5,24 +9,26 @@
     "data-autocomplete-url" => autocomplete_url
   - if @question.new?
     %ul#question-search-results.autocomplete-list
-  .description
-    = current_group.question_prompt
+  - if description
+    .description
+      = current_group.question_prompt
 
-#question-details
-  .group
-    = f.label :body, t("questions.form.details"), :class => "label"
-    - details_class = "editor-input"
-    - details_class += " shorter-details" if @question.new?
-    = f.text_area :body, :class => details_class, :id => "question-input", :rows => "auto", :cols => "auto", "data-autocomplete-url" => autocomplete_url
-    %ul#inline-autocomplete-list.autocomplete-list
-    = render :partial => "content_images/content_images",
-      :locals => { :entry => @question }
-    = render :partial => "shared/preview_pane"
-
-  - if topics
-    %hr
+- if details
+  #question-details
     .group
-      = render :partial => "shared/classify", :locals => {:classifiable => @question, :ajax_add => false}
+      = f.label :body, t("questions.form.details"), :class => "label"
+      - details_class = "editor-input"
+      - details_class += " shorter-details" if @question.new?
+      = f.text_area :body, :class => details_class, :id => "question-input", :rows => "auto", :cols => "auto", "data-autocomplete-url" => autocomplete_url
+      %ul#inline-autocomplete-list.autocomplete-list
+      = render :partial => "content_images/content_images",
+        :locals => { :entry => @question }
+      = render :partial => "shared/preview_pane"
+
+    - if topics
+      %hr
+      .group
+        = render :partial => "shared/classify", :locals => {:classifiable => @question, :ajax_add => false}
 
 - if current_group.language.nil? && AppConfig.enable_i18n
   .group

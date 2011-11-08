@@ -1,5 +1,56 @@
 // Autocomplete box style
 
+#new_question_form_wrapper
+  +column(14)
+  margin: 5px 0 5px 20px
+
+  #new_question_form
+    +column(14)
+
+    #search-field
+      +column(10)
+      border: 2px solid #bbb
+      padding: 0.3em 0.5em
+      height: 1.5em
+      background-color: white
+      font-size: 1.2em
+
+    #submit_button
+      +column(2)
+      +search-button
+      border: 1px solid rgba(0, 0, 0, 0.1)
+      border-radius: 2px
+      color: #eee
+      cursor: pointer
+      font-size: 1.2em
+      font-weight: bold
+      height: 35px
+      padding: auto 8px
+      width: 7em
+      text-align: center
+
+  #search-results
+    +column(12)
+    +no-bullets
+    background-color: white
+    border: 1px solid black
+    padding: 0
+    margin-top: 35px
+    font-size: 1.2em
+    z-index: 2
+    li
+      padding: 0.25em
+      cursor: pointer
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      &.active
+        background: #eeeeee
+        color: blue
+      .desc
+        font-size: 0.8em
+        color: #777777
+
 #search
   .search-form-wrap
     border: 1px solid black
@@ -7,12 +58,14 @@
     padding: 0.25em
     height: 1.5em
     background-color: white
+
   #search-field
     border: none
     width: 316px
     background-color: white
     font-size: 1.2em
     vertical-align: top
+
   #search-results
     +column(12)
     +no-bullets
@@ -83,6 +136,19 @@ ul.items#long-search-results
       color: #222
     .title, .details
       margin-bottom: 3px
+
+#sidebar
+  #sidebar-search-results, #user-search-results
+    &.items
+      li.item
+        &.question, .topic, .user
+        margin: 0
+        border: 0
+        &.user
+        .picture
+          padding-right: 5px
+          float: left
+          width: 24px
 
 #sidebar .long-search
   input[type=text]
