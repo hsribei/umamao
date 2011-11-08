@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
 
     if ab_test(:new_question_as_search) == :new_search_scheme
       @question = Question.new(params[:q] ? { :title => params[:q] } : {})
-      @bing_results = Support::Bing.search(@question.title)
+      @bing_results = Support::Bing.search(@question.title, :max_results => 10)
     end
 
     if params[:q].present?
