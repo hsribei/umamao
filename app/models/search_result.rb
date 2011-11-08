@@ -175,7 +175,8 @@ private
   end
 
   def fill_title
-    title = truncate(Nokogiri::HTML(response_body).xpath('//title').text,
+    title = truncate(Nokogiri::HTML(response_body, nil, 'utf-8').
+                     xpath('//title').text,
                      :length => TITLE_SIZE,
                      :omission => ' …',
                      :separator => ' ')
@@ -185,7 +186,7 @@ private
 
   def fill_summary
     summary =
-      truncate(Nokogiri::HTML(response_body).
+      truncate(Nokogiri::HTML(response_body, nil, 'utf-8').
                  xpath("//meta[" <<
                          case_insensitive_xpath(:attribute => :name,
                                                 :value => :description) <<
@@ -198,7 +199,7 @@ private
     self.summary = if summary.present?
                      summary
                    else
-                     html = Nokogiri::HTML(response_body)
+                     html = Nokogiri::HTML(response_body, nil, 'utf-8')
                      html.xpath('//script').remove
                      truncate(html.xpath('//p').text,
                               :length => SUMMARY_SIZE,
