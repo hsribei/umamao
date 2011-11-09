@@ -43,7 +43,7 @@ class AuthCallbackController < ApplicationController
         UserExternalAccount.create(auth_hash.merge(:user => current_user))
     end
 
-    if @external_account and @external_account.user.id == current_user.id
+    if @external_account && @external_account.user.id == current_user.id
       respond_with(@external_account, :status => :created) do |format|
         track_event("connected_#{@external_account.provider}".to_sym)
         flash[:connected_to] = @external_account.provider
