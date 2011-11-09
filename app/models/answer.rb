@@ -177,13 +177,8 @@ class Answer < Comment
     NewsUpdate.create(:author => self.user, :entry => self,
                       :created_at => self.created_at, :action => 'created')
 
-    hide_news_update
   end
   handle_asynchronously :create_news_update
-
-  def hide_news_update
-    self.question.news_update.hide!
-  end
 
   def unhide_news_update
     if self.question.news_update && self.question.answers_count == 1

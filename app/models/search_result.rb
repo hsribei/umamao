@@ -110,15 +110,8 @@ class SearchResult
                       :created_at => self.created_at,
                       :action => 'created')
 
-    hide_news_update
   end
   handle_asynchronously :create_news_update
-
-  def hide_news_update
-    if self.question.news_update
-      self.question.news_update.hide!
-    end
-  end
 
   def unhide_news_update
     # if this is the last question, reshow question's news_update
