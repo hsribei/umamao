@@ -12,11 +12,6 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.group = current_group
 
-    # for ab_test(:inline_comment_helpers)
-    if @comment.commentable.is_a?(SearchResult)
-      track_bingo(:inline_commented)
-    end
-
     if saved = @comment.save
       current_user.on_activity(:comment_question, current_group)
       track_event(:commented, :commentable => scope.class.name)

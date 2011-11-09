@@ -17,19 +17,9 @@ class VotesController < ApplicationController
     if params[:vote_up] || params['vote_up.x'] || params['vote_up.y']
       vote_type = "vote_up"
       vote.value = 1
-
-      # for ab_test(:inline_comment_helpers)
-      if vote.voteable_type == "SearchResult"
-        track_bingo(:inline_upvoted)
-      end
     elsif params[:vote_down] || params['vote_down.x'] || params['vote_down.y']
       vote_type = "vote_down"
       vote.value = -1
-
-      # for ab_test(:inline_comment_helpers)
-      if vote.voteable_type == "SearchResult"
-        track_bingo(:inline_downvoted)
-      end
     end
 
     saved = vote.save
