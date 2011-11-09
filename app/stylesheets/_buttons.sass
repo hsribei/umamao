@@ -43,3 +43,9 @@
   border: 0
   padding: 4px 10px 4px 7px
   margin: 1px
+
+=search-button
+  $ask-button-color: #f84249
+  +button-colors
+  +button-hover-colors(white, $ask-button-color, $ask-button-color)
+  background-color: darken($ask-button-color, 20%)

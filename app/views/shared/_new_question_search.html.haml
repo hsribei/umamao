@@ -1,0 +1,9 @@
+#new_question_form_wrapper
+  = form_tag(search_path, :id => 'new_question_form', :method => :get) do
+    = text_field_tag('q',
+                     t('searches.form.search_anything'),
+                     { :id => 'search-field',
+                       :class => 'inactive',
+                       'data-autocomplete-url' => autocomplete_url })
+    = submit_tag(t('searches.index.form.send'), :id => 'submit_button')
+  %ul#search-results.autocomplete-list
