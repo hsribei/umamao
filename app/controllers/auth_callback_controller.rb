@@ -75,7 +75,7 @@ class AuthCallbackController < ApplicationController
     else
       if session['sign_up_allowed']
         if user = User.create_with_provider(auth_hash)
-          track_bingo(:signup_action)
+          track_bingo(:signed_up_action)
 
           sign_in user
           redirect_to wizard_path("follow")
