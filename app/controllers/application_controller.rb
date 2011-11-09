@@ -189,6 +189,7 @@ class ApplicationController < ActionController::Base
       handle_event_tracking = lambda do |event|
         Rails.cache.write(key, Date.today.to_s)
         track_event(:used_today)
+        track_bingo(:used_today)
       end
       if last_day_used_at = Rails.cache.read(key)
         if last_day_used_at != Date.today.to_s
