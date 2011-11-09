@@ -149,10 +149,6 @@ class QuestionsController < ApplicationController
       return
     end
 
-    if params[:r].present?
-      track_bingo(:search_results_news_items)
-    end
-
     if params[:group_invitation]
       session[:group_invitation] = params[:group_invitation]
     end
