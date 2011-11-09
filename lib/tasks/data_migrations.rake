@@ -1305,7 +1305,7 @@ namespace :data do
     task :update_news_items_news_update_entry_type => :environment do
       NewsItem.find_each(:news_update_entry_type => nil) do |ni|
         print '-'
-        ni.set(:news_update_entry_item => ni.news_update.entry_type)
+        ni.set(:news_update_entry_type => ni.news_update.entry_type)
       end
     end
 
