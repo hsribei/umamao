@@ -13,6 +13,7 @@
 @import footer
 @import compass/typography/lists/inline-block-list
 @import tooltip
+@import "partials/facebook"
 
 body.bp
   a, a:visited, a:hover
@@ -37,9 +38,10 @@ body.bp
   .label
     line-height: 1
   #email_label
-    +column(4)
+    +column(2)
+    +append(2)
   #password_label
-    +append(4)
+    +append(2)
     +column(2, true)
   #email_field
     +column(4)
@@ -51,9 +53,17 @@ body.bp
     +column(4)
     line-height: 2
   #recover_password
-    +append(2)
-    +column(4, true)
+    +append(4)
+    +column(2, true)
     line-height: 2
+  #horizontal_bar
+    padding-top: 15px
+    +column(10)
+    line-height: 2
+  #facebook_sign_in
+    text-align: center
+    line-height: 2
+    +column(10, true)
   input[type=submit]
     width: 70px
     margin-top: 6px
@@ -297,3 +307,14 @@ ul#team
     list-style: none
     li + li
       margin-top: 10px
+
+#signup .facebook-signup
+  padding-top: 78px
+  padding-bottom: 78px
+  text-align: center
+  .fb_button
+    margin-top: 15px
+    margin-bottom: 15px
+  .agree
+    text-align: center
+

@@ -1,0 +1,4 @@
+en:
+  auth_callback:
+    invalid_password: "Invalid password."
+    password_required: "Type your Umamao password to associate your Facebook account with your Umamao account."

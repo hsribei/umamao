@@ -136,6 +136,9 @@ pt-BR:
       title: "%{user}"
       upvotes_count: "Total de votos positivo recebidos: %{upvotes_count}"
       views: visitas
+    signup:
+      sign_up_with_facebook: Cadastrar-se com o Facebook
+      submit: Cadastrar-se
     validation:
       errors:
         did_not_agree: "Você deve concordar com os termos de uso e a política de privacidade\n"
