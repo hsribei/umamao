@@ -17,6 +17,7 @@ module Support
                              URI::InvalidURIError]
     REDIRECTION_LIMIT = 5
     TIMEOUT = 10
+    USER_AGENT = 'Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0'
 
     include ActiveSupport::Inflector
 
@@ -40,7 +41,8 @@ module Support
       fetcher = lambda do |uri, redirections_left|
         raise TooManyRedirectionsError if redirections_left == 0
         parsed_uri = URI.parse(uri)
-        request = Net::HTTP::Get.new(request_uri.call(parsed_uri))
+        request = Net::HTTP::Get.new(request_uri.call(parsed_uri),
+                                     'User-Agent' => USER_AGENT)
         http = Net::HTTP.new(parsed_uri.host || 'http', parsed_uri.port)
         http.open_timeout = http.read_timeout = TIMEOUT
         if parsed_uri.port == 443
