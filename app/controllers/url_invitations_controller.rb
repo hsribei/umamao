@@ -12,6 +12,7 @@ class UrlInvitationsController < ApplicationController
           @user = User.new
           @user.timezone = AppConfig.default_timezone
           @signin_index, @signup_index = [6, 1]
+          session['sign_up_allowed'] = true
           render 'welcome/landing', :layout => 'welcome'
         else
           flash[:notice] =

@@ -1018,6 +1018,25 @@ Time.zone.now ? 1 : 0)
                                               true
   end
 
+  def self.create_with_provider(auth_hash)
+    user_info = auth_hash["user_info"]
+    email = user_info["email"]
+    password = ActiveSupport::SecureRandom.base64(20)
+
+    user = User.create(:email => email,
+                       :agrees_with_terms_of_service => true,
+                       :name => user_info["name"],
+                       :password => password,
+                       :password_confirmation => password)
+
+    if user
+      UserExternalAccount.create(auth_hash.merge(:user => user))
+      user.confirm!
+    end
+
+    user
+  end
+
   protected
   def password_required?
     (encrypted_password.blank? || !password.blank?)

@@ -1,0 +1,15 @@
+.secondary-navigation
+  .navtitle= t('layouts.application.signup')
+  %p= t('auth_callback.password_required')
+  = form_for @user, :url => auth_sign_in_and_associate_provider_path, :html => {:class => "form"} do |f|
+    .group
+      =f.label :email, t(:email, :scope => "users.form"), :class => "label"
+      .info
+        .input #{ @email }
+  
+    .group
+      = f.label :password, t(:password, :scope => "users.form"), :class => "label"
+      = f.password_field :password, :tabindex => 0, :class => "password text_field"
+  
+    .group.navform
+      = f.submit t('users.signup.submit'), :tabindex => 1

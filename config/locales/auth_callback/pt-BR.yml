@@ -1,0 +1,4 @@
+"pt-BR":
+  auth_callback:
+    invalid_password: "Senha inválida."
+    password_required: "Digite a sua senha do Umamão para associar sua conta do Facebook com a sua conta no Umamão."

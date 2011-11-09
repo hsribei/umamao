@@ -78,6 +78,7 @@ class UsersController < ApplicationController
     if @invitation || @group_invitation
       @user.timezone = AppConfig.default_timezone
       @signin_index, @signup_index = [6, 1]
+      session['sign_up_allowed'] = true
       render 'welcome/landing', :layout => 'welcome'
     else
       return redirect_to(root_path(:focus => "signup"))
@@ -121,7 +122,7 @@ class UsersController < ApplicationController
       if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
         tracking_properties[:invited_by] = @url_invitation.inviter.id
         @url_invitation.add_invitee(@user)
-        track_bingo(:signup_method)
+        track_bingo(:signed_up_action)
       end
 
       if invitation && invitation.topics
