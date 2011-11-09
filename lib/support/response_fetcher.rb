@@ -41,8 +41,8 @@ module Support
       fetcher = lambda do |uri, redirections_left|
         raise TooManyRedirectionsError if redirections_left == 0
         parsed_uri = URI.parse(uri)
-        request = Net::HTTP::Get.new(request_uri.call(parsed_uri))
-        request['User-Agent'] = USER_AGENT
+        request = Net::HTTP::Get.new(request_uri.call(parsed_uri),
+                                     'User-Agent' => USER_AGENT)
         http = Net::HTTP.new(parsed_uri.host || 'http', parsed_uri.port)
         http.open_timeout = http.read_timeout = TIMEOUT
         if parsed_uri.port == 443
