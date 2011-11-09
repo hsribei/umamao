@@ -35,6 +35,7 @@ gem 'jammit', '~>0.6.0'
 gem 'jnunemaker-validatable', :require => 'validatable', :git => "git://github.com/umamao/validatable.git"
 gem 'jquery-rails'
 gem 'koala', '~> 0.10.0'
+gem 'language_detector', '0.1.2', :git => 'https://github.com/feedbackmine/language_detector.git'
 gem 'mechanize', :require => false
 gem 'mongo'
 gem 'mongo_mapper', :git => 'git://github.com/umamao/mongomapper.git'
