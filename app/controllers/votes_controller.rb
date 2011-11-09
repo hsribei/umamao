@@ -8,6 +8,8 @@ class VotesController < ApplicationController
 
   # TODO: refactor
   def create
+    track_bingo(:voted)
+
     vote = Vote.new(:voteable_type => params[:voteable_type],
                     :voteable_id => params[:voteable_id],
                     :user => current_user)

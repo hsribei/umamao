@@ -40,9 +40,14 @@ class ApplicationController < ActionController::Base
 
   # This identifier recognizes untracked users' identities via cookies even if
   # they're not logged in. It's used in our vanity experiment files.
-  def identify_vanity
+  #
+  # Options:
+  # exclude_guests: don't track non-logged visitors _at all_.
+  def identify_vanity(options = {})
     if identity = _vanity_identity
       identity.id
+    elsif options[:exclude_guests]
+      Umamao::UntrackedUser.instance.id
     else
       set_vanity_cookie(SecureRandom.hex(16)) unless cookies[:vanity_id]
       cookies[:vanity_id]
@@ -189,6 +194,7 @@ class ApplicationController < ActionController::Base
       handle_event_tracking = lambda do |event|
         Rails.cache.write(key, Date.today.to_s)
         track_event(:used_today)
+        track_bingo(:used_today)
       end
       if last_day_used_at = Rails.cache.read(key)
         if last_day_used_at != Date.today.to_s

@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
   before_filter :check_permissions, :except => [:create]
 
   def create
+    track_bingo(:commented)
+
     @comment = Comment.new
     @comment.body = params[:body]
     @comment.commentable = scope
