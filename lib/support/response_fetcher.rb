@@ -14,7 +14,8 @@ module Support
                              SocketError,
                              Timeout::Error,
                              TooManyRedirectionsError,
-                             URI::InvalidURIError]
+                             URI::InvalidURIError,
+                             ArgumentError]
     REDIRECTION_LIMIT = 5
     TIMEOUT = 10
     USER_AGENT = 'Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0'
