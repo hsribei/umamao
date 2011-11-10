@@ -77,6 +77,8 @@
                         :answer => @answer })
 
 #search_results
+  - if ab_test(:answer_with_form_position) == :above
+    .new
   - @search_results.each do |search_result|
     = render(:partial => 'search_results/search_result',
              :locals => { :question => @question,

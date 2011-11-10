@@ -45,7 +45,11 @@ $(document).ready(function() {
       success: function(data) {
         $('.loader').hide();
         var search_result = $(data.html);
-        $('#search_results').append(search_result);
+        if($(".new").length > 0){
+          $('.new').prepend(search_result);
+        }else{
+          $('#search_results').append(search_result);
+        }
         highlightEffect(search_result);
         $('#search_result_url').val('');
       },
