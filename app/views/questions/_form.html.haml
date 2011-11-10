@@ -29,6 +29,11 @@
       %hr
       .group
         = render :partial => "shared/classify", :locals => {:classifiable => @question, :ajax_add => false}
+- else
+  - @question.topics.each do |topic|
+    = hidden_field_tag "question[topics][]", topic.title
+  = f.hidden_field :body
+
 
 - if current_group.language.nil? && AppConfig.enable_i18n
   .group
