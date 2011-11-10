@@ -6,6 +6,7 @@ class SearchResultsController < ApplicationController
     track_event(:clicked_search_result,
                 :search_result_id => @search_result.id,
                 :url => @search_result.url)
+    track_bingo(:clicked_search_result)
     redirect_to(@search_result.url)
   end
 
@@ -23,8 +24,9 @@ class SearchResultsController < ApplicationController
             track_event(:commented, :commentable => @search_result.class.name)
           end
         end
-        track_event(:added_link, 
+        track_event(:added_link,
                     :latency => (@search_result.created_at - @question.created_at).to_i / 60)
+        track_bingo(:new_search_result)
         notice_message = t(:flash_notice, :scope => "search_results.create")
         format.html do
           flash[:notice] = notice_message

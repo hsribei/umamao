@@ -182,3 +182,8 @@ pt-BR:
       flash_notice: Pergunta atualizada.
     watch:
       success: "Você será avisado de novidades nesta pergunta."
+    responding_helpers:
+      bing_results: "Resultados de busca:"
+      no_bing_results: "Procure por <strong>%{query}</strong> no %{bing_link} / %{google_link}"
+      provided_by: Resultados de busca providos pelo Bing
+      keep_searching: "Continue procurando no %{bing_link} / %{google_link}"

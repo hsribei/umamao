@@ -29,16 +29,26 @@
       #main-bar{:class => @active_tab}
         #logo
           = link_to image_tag("shorter_logo.png", :class => "group_logo", :height => 42, :alt => AppConfig.application_name), domain_url(:custom => current_group.domain)
-        = render :partial => "shared/search"
+
+        - new_question_as_search = ab_test(:new_question_as_search)
+        - if new_question_as_search == :old_search_scheme
+          = render(:partial => "shared/search")
+        - elsif new_question_as_search == :new_search_scheme
+          = render(:partial => "shared/new_question_search")
+
         .vertical-bar
         #home-link
           = link_to t('.home'), root_path
 
-        #main-right
-          = render :partial => "shared/other_actions"
-          .vertical-bar
-          #ask-question
-            = link_to t('.ask_question'), new_question_path
+        - if new_question_as_search == :new_search_scheme
+          #main-right-smaller
+            = render :partial => "shared/other_actions"
+        - elsif new_question_as_search == :old_search_scheme
+          #main-right-bigger
+            = render :partial => "shared/other_actions"
+            .vertical-bar
+            #ask-question
+              = link_to t('.ask_question'), new_question_path
 
         -# Removed
           = render :partial => "shared/search"

@@ -226,7 +226,7 @@ window.Utils = {
     $("#sidebar .topic-list .topic, #topic-suggestions .topic-list .topic").not('.suggestion').poshytip(
         $.extend(Utils.poshytip_sidebar_options, Utils.poshytip_default_options)
     );
-    $(".entry.item .summary .origin .description a:not(.nickname), "
+    $(".entry.item .summary .origin .description a:not(.nickname .question_entry), "
       + "#questions .topic-list .topic, #question .topic-list .topic, "
       + ".question .topic-list .topic, "
       + "#question-list #classify-ul .topic").poshytip(

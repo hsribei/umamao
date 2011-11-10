@@ -9,7 +9,8 @@
 
 .controls
   .actions
-    = link_to t('scaffold.edit'), edit_topic_path(@topic)
+    - if logged_in? && current_user.can_modify?(@topic)
+      = link_to t('scaffold.edit'), edit_topic_path(@topic)
     - if @topic.allow_question_lists
       .featured
         = link_to t('.new_question_list'), new_question_list_path(:main_topic => @topic.slug, :class => "featured")

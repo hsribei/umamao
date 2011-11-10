@@ -49,7 +49,7 @@ en:
     annoying:
       resend_confirmation_email: Resend confirmation e-mail.
       resent_confirmation: Check your e-mail!
-      unconfirmed_non_academic_email: You have not conformed your e-mail yet!
+      unconfirmed_non_academic_email: You have not confirmed your e-mail yet!
     create:
       confirm: "Obrigado por se cadastrar! Antes de entrar, você precisa confirmar seu email acadêmico. Em breve você deve receber um email com o link de confirmação."
       flash_error: Sorry, we couldn't create your account. Is there any field missing?
@@ -97,7 +97,7 @@ en:
     new:
       affiliation_message: Your academic e-mail %{email} was confirmed! Now just finish your registration by filling out the form below.
       agree: |
-        I read and agree with the <a href="%{privacy}" target="_blank">privacy policy</a> and the <a href="%{tos}" target="_blank">terms of use</a>.
+        By signing up you agree to our <a href="%{privacy}" target="_blank">privacy policy</a> and <a href="%{tos}" target="_blank">terms of use</a>.
 
       already_registered: Already have an account on Umamao? <a href="/users/login">Sign in</a> to start.
       invitation:
@@ -115,6 +115,11 @@ en:
           created: Question add to topic %{origin}.
         user:
           created: "%{origin} added a question."
+      searchresult:
+        topic:
+          created: Answer to %{question} added to %{origin}.
+        user:
+          created: "%{origin} added an answer to %{question}"
     show:
       atom:
         answer: "Answer to:"
@@ -132,6 +137,9 @@ en:
       title: User %{user}
       upvotes_count: "Total upvotes received: %{upvotes_count}"
       views: views
+    signup:
+      sign_up_with_facebook: Sign up with Facebook
+      submit: Sign up
     validation:
       errors:
         did_not_agree: You must agree to the terms of use and privacy policy

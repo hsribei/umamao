@@ -35,6 +35,7 @@ gem 'jammit', '~>0.6.0'
 gem 'jnunemaker-validatable', :require => 'validatable', :git => "git://github.com/umamao/validatable.git"
 gem 'jquery-rails'
 gem 'koala', '~> 0.10.0'
+gem 'language_detector', '0.1.2', :git => 'https://github.com/feedbackmine/language_detector.git'
 gem 'mechanize', :require => false
 gem 'mongo'
 gem 'mongo_mapper', :git => 'git://github.com/umamao/mongomapper.git'
@@ -45,6 +46,7 @@ gem 'postmark', '~>0.9.0'
 gem 'postmark-rails', '~>0.4.0'
 gem 'rails', :git => 'git://github.com/umamao/rails.git', :branch => '3-0-7'
 gem 'rake', '0.8.7'
+gem 'rbing', '1.1.0'
 gem 'rdiscount', '~>1.6.3.1'
 gem 'remotipart'
 gem 'responders'
@@ -57,6 +59,7 @@ gem 'twitter', '~> 1.1.0'
 gem 'twitter-text', '~>1.1.1'
 gem 'twitter_oauth', '~>0.3.6'
 gem 'uuidtools', '~>2.1.1'
+gem 'vanity', '1.6.1' # Version 1.7.1 is screwed up.
 gem 'warden', '~>0.10.7'
 gem 'whatlanguage', '~>1.0.0'
 

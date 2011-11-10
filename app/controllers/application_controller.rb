@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   include Subdomains
 
+  DEVELOPMENT_DOMAIN = 'localhost.lan'
+  TEST_DOMAIN = '127.0.0.1'
+
   protect_from_forgery
 
   after_filter :flash_to_session
@@ -18,8 +21,38 @@ class ApplicationController < ActionController::Base
   before_filter :track_user
   layout :set_layout
 
-  DEVELOPMENT_DOMAIN = 'localhost.lan'
-  TEST_DOMAIN = '127.0.0.1'
+  # This is a turnaround for the shortcomings of the vanity gem. This code will
+  # create at most one participant and one conversion in a random group for all
+  # our untracked users. This is necessary because `use_vanity` is a class-level
+  # macro, and can't be conditionally evaluated per-request.
+  use_vanity :_vanity_identity
+
+  def _vanity_identity
+    if current_user
+      if current_user.tracked?
+        current_user
+      else
+        set_vanity_cookie(Umamao::UntrackedUser.instance.id)
+        Umamao::UntrackedUser.instance
+      end
+    end
+  end
+
+  # This identifier recognizes untracked users' identities via cookies even if
+  # they're not logged in. It's used in our vanity experiment files.
+  #
+  # Options:
+  # exclude_guests: don't track non-logged visitors _at all_.
+  def identify_vanity(options = {})
+    if identity = _vanity_identity
+      identity.id
+    elsif options[:exclude_guests]
+      Umamao::UntrackedUser.instance.id
+    else
+      set_vanity_cookie(SecureRandom.hex(16)) unless cookies[:vanity_id]
+      cookies[:vanity_id]
+    end
+  end
 
   protected
 
@@ -75,6 +108,16 @@ class ApplicationController < ActionController::Base
                                                 user_id,
                                                 request.ip,
                                                 properties])
+    end
+  end
+
+  def track_bingo(event)
+    with_trackable_users { track!(event) }
+  end
+
+  def with_trackable_users
+    unless current_user && !current_user.tracked?
+      yield
     end
   end
 
@@ -151,6 +194,7 @@ class ApplicationController < ActionController::Base
       handle_event_tracking = lambda do |event|
         Rails.cache.write(key, Date.today.to_s)
         track_event(:used_today)
+        track_bingo(:used_today)
       end
       if last_day_used_at = Rails.cache.read(key)
         if last_day_used_at != Date.today.to_s
@@ -304,5 +348,13 @@ class ApplicationController < ActionController::Base
 
   def build_datetime(params, name)
     Time.zone.parse("#{params["#{name}(1i)"]}-#{params["#{name}(2i)"]}-#{params["#{name}(3i)"]} #{params["#{name}(4i)"]}:#{params["#{name}(5i)"]}") rescue nil
+  end
+
+  private
+
+  def set_vanity_cookie(value)
+    unless cookies[:vanity_id] == value
+      cookies[:vanity_id] = { :value => value, :expires => Time.now + 10.years }
+    end
   end
 end

@@ -176,3 +176,8 @@ en:
       flash_notice: The question was successfully updated.
     watch:
       success: You will now receive notifications by email for every new answer to this question.
+    responding_helpers:
+      bing_results: "Search results:"
+      no_bing_results: "Search for <strong>%{query}</strong> on %{bing_link} / %{google_link}"
+      provided_by: Search results provided by Bing
+      keep_searching: "Keep searching on %{bing_link} / %{google_link}"

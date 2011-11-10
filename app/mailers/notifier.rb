@@ -4,27 +4,6 @@ class Notifier < ActionMailer::Base
 
   helper :application
 
-  def give_advice(user, group, question, following = false)
-    @user = user
-    @group = group
-    @question = question
-    @following = following
-
-    @domain = group.domain
-
-    scope = "mailers.notifications.give_advice"
-
-    if following
-      subject = I18n.t("friend_subject", :scope => scope,
-                     :question_title => question.title)
-    else
-      subject = I18n.t("subject", :scope => scope,
-                     :question_title => question.title)
-    end
-
-    mail(:to => user.email, :subject => subject)
-  end
-
   def new_question(user, group, question, topic)
     @user = user
     @group = group
@@ -179,19 +158,7 @@ class Notifier < ActionMailer::Base
     mail(:to => affiliation.email, :subject => t("mailers.notifications.signup.subject"))
   end
 
-  def closed_for_signup(affiliation)
-    @university = affiliation.university
-    @email = affiliation.email
-    mail(:to => affiliation.email, :subject => t("mailers.notifications.closed_for_signup.subject"))
-  end
-
   def wait(waiting_user)
-    @open_universities = University.open_for_signup
-    @email = waiting_user.email
-    mail(:to => waiting_user.email, :subject => t("mailers.notifications.closed_for_signup.subject"))
-  end
-
-  def non_academic(waiting_user)
     @open_universities = University.open_for_signup
     @email = waiting_user.email
     mail(:to => waiting_user.email, :subject => t("mailers.notifications.closed_for_signup.subject"))
@@ -199,6 +166,7 @@ class Notifier < ActionMailer::Base
 
   def survey(user)
     @user = user
+    SentSurveyMail.create(:user_id => user.id)
     mail(:to => user.email,
          :subject => t(:subject, :scope => [:notifier, :survey]))
   end

@@ -56,12 +56,6 @@ class UsersController < ApplicationController
       end
     end
 
-    if params[:ref]
-      unless @url_invitation = UrlInvitation.find_by_ref(params[:ref])
-        redirect_to(root_path(:focus => 'signup')) and return
-      end
-    end
-
     @user = User.new
 
     # User added by invitation
@@ -81,38 +75,11 @@ class UsersController < ApplicationController
 
     end
 
-    # User added by affiliation
-    if params[:affiliation_token]
-      @affiliation = Affiliation.
-        find_by_affiliation_token(params[:affiliation_token])
-
-      if @affiliation.present?
-        if @affiliation.user.present?
-
-          # If the user already exists but hasn't confirmed his
-          # affiliation, we confirm it here and proceed with the sign
-          # in.
-          if @affiliation.user.active?
-            redirect_to(root_url)
-          else
-            @affiliation.confirm
-            @affiliation.save!
-            @affiliation.reload # We need to reload the user.
-            sign_in_and_redirect(:user, @affiliation.user)
-          end
-
-          return
-
-        else
-          @user.affiliation_token = @affiliation.affiliation_token
-        end
-      end
-
-    end
-
-    if @invitation || @affiliation || @group_invitation || @url_invitation
+    if @invitation || @group_invitation
       @user.timezone = AppConfig.default_timezone
-      render 'new', :layout => 'welcome'
+      @signin_index, @signup_index = [6, 1]
+      session['sign_up_allowed'] = true
+      render 'welcome/landing', :layout => 'welcome'
     else
       return redirect_to(root_path(:focus => "signup"))
     end
@@ -155,6 +122,7 @@ class UsersController < ApplicationController
       if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
         tracking_properties[:invited_by] = @url_invitation.inviter.id
         @url_invitation.add_invitee(@user)
+        track_bingo(:signed_up_action)
       end
 
       if invitation && invitation.topics
@@ -244,11 +212,21 @@ class UsersController < ApplicationController
 
     @order_info = {:will_sort => false}
 
+    # A/B test for news items
+    ni_sr = ab_test(:news_items_search_results_helpers)
+    ni_sr = :answer
+    if ni_sr == :answer
+      options = {:entry_type => {:$ne => "SearchResult"}}
+    else
+      options = {:entry_type => {:$ne => "Answer"}}
+    end
+
+
     @page = params[:page] || 1
-    @items = @user.news_updates.paginate(:author_id => @user.id,
-                                         :per_page => 10,
-                                         :page => @page,
-                                         :order => :created_at.desc)
+    @items = @user.news_updates.paginate(options.merge(
+      {:author_id => @user.id, :per_page => 10,
+       :page => @page, :order => :created_at.desc}))
+
     respond_to do |format|
       format.html
       format.atom

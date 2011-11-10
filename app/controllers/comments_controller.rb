@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
   before_filter :check_permissions, :except => [:create]
 
   def create
+    track_bingo(:commented)
+
     @comment = Comment.new
     @comment.body = params[:body]
     @comment.commentable = scope
@@ -42,7 +44,9 @@ class CommentsController < ApplicationController
                                              }),
                    :count => render_to_string(:partial => "comments/count",
                                               :locals => {
-                                                :commentable => @comment.commentable
+                                                :commentable => @comment.commentable,
+                                                :inline => @comment.commentable.is_a?(SearchResult) &&
+                                                           ab_test(:inline_comment_helpers) == :inline
                                               })
                  }.to_json)
         end
@@ -63,6 +67,18 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = current_scope.find(params[:id])
+
+    unless current_user.can_modify?(@comment)
+      format.html do
+        redirect_to [@comment.commentable, @comment]
+      end
+      format.js do
+        render :json => {:status => :error,
+          :message => t("global.permission_denied")
+        }
+      end
+      return
+    end
 
     raise Goalie::NotFound unless @comment
 

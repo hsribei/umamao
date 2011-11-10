@@ -30,6 +30,7 @@ en:
         url: URL
     placeholder:
       comment: Why is this relevant?
+      leave_comment: Leave a comment
   search_results:
     attributes:
       search_result:

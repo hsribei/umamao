@@ -1,16 +1,46 @@
 class SearchesController < ApplicationController
 
   def index
+    if params[:q].blank? && params[:question].blank?
+      redirect_to root_path
+      return
+    end
+
     @in = (params[:in] || []).map(&:to_sym)
 
+    if ab_test(:new_question_as_search) == :new_search_scheme
+      @question = Question.new(params[:q] ? { :title => params[:q] } : {})
+      # FIXME: rearrange logic.
+      if params[:question].present?
+        @question.safe_update(%w[body parent_question_id], params[:question])
+      end
+      if @question.parent_question_id
+        @question.topics = Question.find_by_id(@question.parent_question_id).topics
+      end
+      @bing_results = Support::Bing.search(@question.title)
+    end
+
     if params[:q].present?
-      @results = Support::Search.query(params[:q],
-                                       :page => params[:page] || 1,
-                                       :in => @in)
+      if ab_test(:new_question_as_search) == :new_search_scheme
+        @related_results = Support::Search.query(params[:q],
+                                                 :page => 1,
+                                                 :in => [:topic, :question])
+        @user_results = Support::Search.query(params[:q],
+                                              :page => 1,
+                                              :in => [:user])
+      else
+        @results = Support::Search.query(params[:q],
+                                         :page => params[:page] || 1,
+                                         :in => @in)
+      end
     end
 
     respond_to do |format|
-      format.html
+      if ab_test(:new_question_as_search) == :new_search_scheme
+        format.html { render :action => 'search_as_new_question.html.haml' }
+      else
+        format.html
+      end
     end
   end
 

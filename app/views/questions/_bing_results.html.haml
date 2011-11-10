@@ -1,0 +1,24 @@
+- bing_link = link_to_bing_search(question.title, :content => 'Bing')
+- google_link = link_to_google_search(question.title, :content => 'Google')
+
+#bing_results_wrapper
+  - if bing_results.count == 0
+    %p#no_results
+      = t(:no_bing_results,
+          :query => question.title,
+          :bing_link => bing_link,
+          :google_link => google_link,
+          :scope => [:questions, :responding_helpers])
+  - else
+    .text
+      = t(:bing_results, :scope => [:questions, :responding_helpers])
+    #bing_results
+      - bing_results.each do |bing_result|
+        = render(:partial => 'questions/bing_result', :object => bing_result)
+    %p#provided_by
+      = t(:provided_by, :scope => [:questions, :responding_helpers])
+      |
+      = t(:keep_searching,
+          :bing_link => bing_link,
+          :google_link => google_link,
+          :scope => [:questions, :responding_helpers])

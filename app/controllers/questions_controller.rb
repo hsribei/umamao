@@ -167,7 +167,6 @@ class QuestionsController < ApplicationController
     end
 
     set_page_title(@question.title)
-    add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
 
     @follow_up_question = {
       :parent_question_id => @question.id,
@@ -175,29 +174,44 @@ class QuestionsController < ApplicationController
     }
     @follow_up_questions = Question.children_of(@question)
 
+    @bing_response = Support::Bing.search(@question.title)
+
     respond_to do |format|
       format.html
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }
-      format.atom
     end
   end
 
   # GET /questions/new
   # GET /questions/new.xml
   def new
-    @question = Question.new(params[:question])
-    if @question.parent_question_id.present?
-      @question.topics = Question.find_by_id(@question.parent_question_id).topics
-    end
+    if ab_test(:new_question_as_search) == :new_search_scheme
+      if params[:question].present?
+        redirect_to search_path(:q => params[:question].delete(:title),
+                                :question => params[:question])
+      else
+        redirect_to root_path
+      end
+    else
+      @question = Question.new(params[:question])
+      if @question.parent_question_id.present?
+        @question.topics = Question.find_by_id(@question.parent_question_id).topics
+      end
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json  { render :json => @question.to_json }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json  { render :json => @question.to_json }
+      end
     end
   end
 
   # GET /questions/1/edit
   def edit
+    @question = Question.find_by_slug_or_id(params[:id])
+    unless current_user.can_modify?(@question)
+      redirect_to @question
+      return
+    end
   end
 
   # POST /questions
@@ -229,6 +243,7 @@ class QuestionsController < ApplicationController
 
         track_event(:asked_question, :body_present => @question.body.present?,
                     :topics_count => @question.topics.size)
+        track_bingo(:asked_question)
 
         format.html do
           flash[:notice] = t(:flash_notice, :scope => "questions.create")

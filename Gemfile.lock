@@ -97,6 +97,12 @@ GIT
     jnunemaker-validatable (1.8.4)
       activesupport (>= 2.3.4)
 
+GIT
+  remote: https://github.com/feedbackmine/language_detector.git
+  revision: 89102790194150b3a8110ce691f9989b8ce70f8d
+  specs:
+    language_detector (0.1.2)
+
 GEM
   remote: http://gemcutter.org/
   specs:
@@ -304,7 +310,12 @@ GEM
     rack-test (0.5.7)
       rack (>= 1.0)
     rake (0.8.7)
+    rbing (1.1.0)
+      httparty (>= 0.4.0)
     rdiscount (1.6.3.2)
+    redis (2.2.2)
+    redis-namespace (1.0.3)
+      redis (< 3.0.0)
     remotipart (0.3.4)
     responders (0.6.2)
     rest-client (1.6.1)
@@ -366,6 +377,9 @@ GEM
       oauth (>= 0.3.6)
     tzinfo (0.3.27)
     uuidtools (2.1.2)
+    vanity (1.6.1)
+      redis (~> 2.0)
+      redis-namespace (~> 1.0.0)
     warden (0.10.7)
       rack (>= 1.0.0)
     whatlanguage (1.0.0)
@@ -413,6 +427,7 @@ DEPENDENCIES
   jnunemaker-validatable!
   jquery-rails
   koala (~> 0.10.0)
+  language_detector (= 0.1.2)!
   launchy
   mechanize
   mongo
@@ -424,6 +439,7 @@ DEPENDENCIES
   postmark-rails (~> 0.4.0)
   rails!
   rake (= 0.8.7)
+  rbing (= 1.1.0)
   rdiscount (~> 1.6.3.1)
   remotipart
   responders
@@ -440,6 +456,7 @@ DEPENDENCIES
   twitter-text (~> 1.1.1)
   twitter_oauth (~> 0.3.6)
   uuidtools (~> 2.1.1)
+  vanity (= 1.6.1)
   warden (~> 0.10.7)
   whatlanguage (~> 1.0.0)
   yaml_waml (= 0.3.0)

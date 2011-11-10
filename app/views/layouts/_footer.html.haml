@@ -1,36 +1,26 @@
-= cache "umamao_footer", :expires_in => 1.week do
-  #footer
-    %ul
-      %li
-        = link_to 'Quem somos', about_url
-        \|
-      %li
-        = link_to 'Feedback', 'http://feedback.umamao.com', :target => '_blank'
-        \|
-      %li
-        = link_to 'Blog', 'http://blog.umamao.com', :target => '_blank'
-        \|
-      %li
-        = link_to 'Twitter', 'http://twitter.com/umamao', :target => '_blank'
-        \|
-      %li
-        = link_to 'Facebook', 'http://www.facebook.com/#!/pages/Umamao/110957438924904', :target => '_blank'
-    %p
-      %a{:rel => "license", :href => "http://creativecommons.org/licenses/by-sa/2.5/br/"}
-        %img{:alt => "Licença Creative Commons", :style => "border-width:0",
-             :src => "http://i.creativecommons.org/l/by-sa/2.5/br/88x31.png"}
-      = link_to image_tag('agpl.png', :alt => "Licença AGPL"), 'http://www.gnu.org/licenses/agpl.html'
-      %br
+#footer
+  %ul
+    %li
+      = link_to 'Blog', 'http://blog.umamao.com', :target => '_blank'
+    %li
+      = link_to 'Twitter', 'http://twitter.com/umamao', :target => '_blank'
+    %li
+      = link_to 'Facebook', 'http://www.facebook.com/umamao', :target => '_blank'
+    %li
+      = link_to 'Github', 'http://www.github.com/umamao', :target => '_blank'
+  %p
+    %a{:rel => "license", :href => "http://creativecommons.org/licenses/by-sa/2.5/br/"}
+      %img{:alt => "Creative Commons", :style => "border-width:0",
+           :src => "http://i.creativecommons.org/l/by-sa/2.5/br/88x31.png"}
+    = link_to image_tag('agpl.png', :alt => "AGPL"), 'http://www.gnu.org/licenses/agpl.html'
+    %br
 
-      Todo o conteúdo gerado por usuários está sob uma
-      = link_to "licença Creative Commons", "http://creativecommons.org/licenses/by-sa/2.5/br/", :rel => "license"
-      (a mesma da Wikipédia!), com atribuição obrigatória.
+    =t("layouts.footer.content_license")
 
-    %p
-      O Umamão é software livre sob
-      licença #{link_to 'AGPL', 'http://pt.wikipedia.org/wiki/GNU_Affero_General_Public_License'}.
-      O código é um <em>fork</em> do projeto
-      = link_to 'Shapado', 'http://shapado.com'
-      e está disponível no #{link_to 'Github', 'http://github.com/umamao/umamao'}.
+  %ul
+    %li
+      = link_to t('doc.tos.title'), tos_path, :target => '_blank'
+    %li
+      = link_to t('doc.privacy.title'), privacy_path, :target => '_blank'
 
-  ~ AppConfig.conversion_tracking_code if flash[:conversion]
+~ AppConfig.conversion_tracking_code if flash[:conversion]

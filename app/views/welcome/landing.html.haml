@@ -19,6 +19,13 @@
     #recover_password
       = link_to t("devise.passwords.link"), new_password_path("user")
 
+    #horizontal_bar
+      %hr
+
+    #facebook_sign_in
+      %a.fb_button.fb_button_medium{:href => "/auth/facebook"}
+        %span.fb_button_text= t('.sign_in_with_facebook')
+
 - content_for :js do
   = include_javascripts :landing
 
@@ -31,6 +38,9 @@
   =t("welcome.landing.pitch")
 
 #signup
-  %h3  #{ t('layouts.application.signup') }
-  %p#invitation_only=t("welcome.landing.invitation_only")
-  = image_tag("mamaopq.png", :id => "mamao_signup")
+  - if @user.blank?
+    %h3  #{ t('layouts.application.signup') }
+    %p#invitation_only=t("welcome.landing.invitation_only")
+    = image_tag("mamaopq.png", :id => "mamao_signup")
+  - else
+    = render :partial => 'users/signup'
