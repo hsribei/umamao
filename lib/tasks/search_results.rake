@@ -11,4 +11,17 @@ namespace :search_results do
       end
     end
   end
+
+  desc "Recalculate votes count"
+  task :recalculate_votes_count => :environment do
+    SearchResult.find_each(:batch_size => 10_000) do |sr|
+      votes_count = sr.votes.count
+      if votes_count != sr.votes_count
+        sr.set(:votes_count => votes_count)
+        print 'C'
+      else
+        print '.'
+      end
+    end
+  end
 end
