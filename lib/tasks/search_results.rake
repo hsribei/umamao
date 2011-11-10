@@ -24,4 +24,19 @@ namespace :search_results do
       end
     end
   end
+
+  desc "Refill titles"
+  task :refill_titles => :environment do
+    SearchResult.find_each(:batch_size => 10_000) do |sr|
+      old_title = sr.title
+      sr.send('fetch_response_body')
+      sr.send('fill_title')
+      if sr.title != old_title
+        sr.set(:title => sr.title)
+        print 'C'
+      else
+        print '.'
+      end
+    end
+  end
 end
