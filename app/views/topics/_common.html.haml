@@ -9,7 +9,7 @@
 
 .controls
   .actions
-    - if current_user.can_modify?(@topic)
+    - if logged_in? && current_user.can_modify?(@topic)
       = link_to t('scaffold.edit'), edit_topic_path(@topic)
     - if @topic.allow_question_lists
       .featured
