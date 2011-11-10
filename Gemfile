@@ -14,7 +14,7 @@ group :development do
   gem 'yaml_waml', '0.3.0'
 end
 
-gem 'airbrake', '3.0.4'
+gem 'airbrake', '3.0.5'
 gem 'bitly'
 gem 'bson_ext', :require => 'bson'
 gem 'carrierwave' # file upload manager
