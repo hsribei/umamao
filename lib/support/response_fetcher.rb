@@ -26,7 +26,7 @@ module Support
 
     def initialize(uri, params)
       @fetcher = params[:fetcher]
-      @uri = URL.new(uri).uri
+      @uri = URL.new(uri.strip).uri
     rescue URI::InvalidURIError
       add_error(@fetcher, $!)
     end
