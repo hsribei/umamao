@@ -68,6 +68,18 @@ class CommentsController < ApplicationController
   def edit
     @comment = current_scope.find(params[:id])
 
+    unless current_user.can_modify?(@comment)
+      format.html do
+        redirect_to [@comment.commentable, @comment]
+      end
+      format.js do
+        render :json => {:status => :error,
+          :message => t("global.permission_denied")
+        }
+      end
+      return
+    end
+
     raise Goalie::NotFound unless @comment
 
     respond_to do |format|
