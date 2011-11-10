@@ -4,6 +4,6 @@ en:
       title: Selected tags
     topbar:
       admin: Admin
-      logged_as: Logged in as %{login}
+      logged_as: Signed in as %{login}
       user_page: My page
     wait_to_print: Preparing print version, please wait...
