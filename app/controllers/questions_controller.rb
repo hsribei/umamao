@@ -206,6 +206,11 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @question = Question.find_by_slug_or_id(params[:id])
+    unless current_user.can_modify?(@question)
+      redirect_to @question
+      return
+    end
   end
 
   # POST /questions

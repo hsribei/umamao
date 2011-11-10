@@ -382,7 +382,8 @@ Time.zone.now ? 1 : 0)
 
   def can_modify?(model)
     return false unless model.respond_to?(:user)
-    self.admin? || self == model.user
+    self.admin? ||
+      (self == model.user && !(model.is_a?(Topic)))
   end
 
   def groups(options = {})

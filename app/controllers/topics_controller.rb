@@ -79,6 +79,10 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find_by_slug_or_id(params[:id])
+    unless current_user.can_modify?(@topic)
+      redirect_to @topic
+      return
+    end
 
     raise Goalie::NotFound unless @topic
 
