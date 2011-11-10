@@ -44,6 +44,7 @@ $(document).ready(function() {
     return {
       success: function(data) {
         $('.loader').hide();
+        $('#new_search_result #search_result_comment').val('');
         var search_result = $(data.html);
         $('#search_results').append(search_result);
         highlightEffect(search_result);
