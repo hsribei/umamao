@@ -15,7 +15,7 @@ en:
     shared:
       add_comment: Add comment...
       comment_submit: Comment
-      not_logged: <a href="%{link}">Login</a> to leave a comment.
+      not_logged: <a href="%{link}">Sign in</a> to leave a comment.
       reply: Reply
       said: said
     update:
