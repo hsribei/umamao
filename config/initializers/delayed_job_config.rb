@@ -10,10 +10,10 @@ Delayed::Worker.destroy_failed_jobs = false
 # so that we can receive e-mails when some task raises an error or fail
 module MongoMapper::Document
   def error(job, exception)
-    notify_hoptoad(exception)
+    Airbrake.notify(exception)
   end
 
   def failure
-    HoptoadNotifier.notify(:error_class   => "Delayed::Job failed")
+    Airbrake.notify(:error_class => 'Delayed::Job failed')
   end
 end

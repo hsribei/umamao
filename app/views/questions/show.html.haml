@@ -63,8 +63,8 @@
         - if logged_in?
           - if current_user.can_modify?(@question)
             = link_to t('scaffold.edit'), edit_question_path(@question), :class => "button"
-
-        = link_to t('.add_follow_up_question'), new_question_path(:question => @follow_up_question), :target => '_blank', :class => 'featured'
+        - if ab_test(:new_question_as_search) == :old_search_scheme
+          = link_to t('.add_follow_up_question'), new_question_path(:question => @follow_up_question), :target => '_blank', :class => 'featured'
 
         #question_flag_div
 
@@ -77,6 +77,8 @@
                         :answer => @answer })
 
 #search_results
+  - if ab_test(:answer_with_form_position) == :above
+    .new
   - @search_results.each do |search_result|
     = render(:partial => 'search_results/search_result',
              :locals => { :question => @question,

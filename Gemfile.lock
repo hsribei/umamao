@@ -114,6 +114,9 @@ GEM
     ZenTest (4.5.0)
     abstract (1.0.0)
     addressable (2.2.4)
+    airbrake (3.0.5)
+      activesupport
+      builder
     arel (2.0.9)
     autotest-rails (4.1.0)
       ZenTest
@@ -215,9 +218,6 @@ GEM
       mime-types (~> 1.15)
     haml (3.1.1)
     hashie (1.0.0)
-    hoptoad_notifier (2.4.9)
-      activesupport
-      builder
     httparty (0.7.4)
       crack (= 0.1.8)
     i18n (0.5.0)
@@ -394,6 +394,7 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (~> 4.1.1)
+  airbrake (= 3.0.5)
   autotest-rails
   bitly
   bson_ext
@@ -422,7 +423,6 @@ DEPENDENCIES
   goalie
   grit
   haml (~> 3.1.1)
-  hoptoad_notifier
   jammit (~> 0.6.0)
   jnunemaker-validatable!
   jquery-rails
