@@ -1,13 +1,5 @@
-- if Rails.env.production? && !AppConfig.analytics_id.blank? && (!current_group.has_custom_analytics || current_group.analytics_id.blank?)
-  = googlean_script(AppConfig.analytics_id, AppConfig.googlean_domain)
+- if Rails.env.production? && (!current_user || current_user && current_user.tracked?)
+  - if AppConfig.analytics_id && AppConfig.googlean_domain
+    = googlean_script(AppConfig.analytics_id, AppConfig.googlean_domain)
 
-- elsif Rails.env.production? && current_group.has_custom_analytics && current_group.analytics_vendor == 'googlean' && request.domain == AppConfig.domain
-
-  = googlean_script(AppConfig.analytics_id, AppConfig.googlean_domain)
-  = googlean_script(current_group.analytics_id, current_group.domain)
-
-- elsif Rails.env.production? && current_group.has_custom_analytics && current_group.analytics_vendor == 'googlean' && request.domain != AppConfig.domain
-
-  = googlean_script(current_group.analytics_id, current_group.domain)
-
-~ AppConfig.analytics_javascripts if Rails.env.production?
+  ~ AppConfig.analytics_javascripts
