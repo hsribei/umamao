@@ -13,7 +13,7 @@ en:
     edit:
       title: Edit comment
     shared:
-      add_comment: Add comment...
+      add_comment: Add comment
       comment_submit: Comment
       not_logged: <a href="%{link}">Sign in</a> to leave a comment.
       reply: Reply
