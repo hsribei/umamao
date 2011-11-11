@@ -311,13 +311,13 @@ $(document).ready(function() {
   });
 
   $('.inline_comment .comment_text_area').focus(function() {
-    this.rows = "3";
+    $(this).addClass('focussed');
     $(this).closest(".group").find(".navform.hidden").show();
   });
 
   $('.inline_comment .comment_text_area').blur(function() {
     if(this.value == ""){
-      this.rows = "1";
+      $(this).removeClass('focussed');
       $(this).closest(".group").find(".navform.hidden").hide();
     }
   });
