@@ -1,6 +1,7 @@
 !!! Strict
 %html{ "xml:lang" => I18n.locale, :lang => I18n.locale, :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
+    = yield :optimizely
     %title
       &= page_title
     = include_stylesheets :landing, :media => 'all'

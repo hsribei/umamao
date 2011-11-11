@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   # Options:
   # exclude_guests: don't track non-logged visitors _at all_.
   def identify_vanity(options = {})
-    if identity = _vanity_identity
+    if (identity = _vanity_identity) && !options[:preserve_identity]
       identity.id
     elsif options[:exclude_guests]
       Umamao::UntrackedUser.instance.id
