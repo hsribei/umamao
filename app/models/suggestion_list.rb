@@ -95,12 +95,7 @@ class SuggestionList
     end
     return if !suggestion
 
-    if entry_type.constantize < Topic
-      self.topic_suggestion_ids.delete(suggestion.id)
-    elsif entry_type == "User"
-      self.user_suggestion_ids.delete(suggestion.id)
-    end
-    suggestion.reject!
+    self.remove_from_suggestions!([suggestion.id, suggestion.entry.id])
   end
 
   # Mark something as uninteresting. Uninteresting users and topics
@@ -124,7 +119,7 @@ class SuggestionList
   def refuse_suggestion(suggestion)
     entry = suggestion.entry
     self.mark_as_uninteresting(entry)
-    self.remove_suggestion(suggestion)
+    suggestion.reject!
   end
 
   # Find suggestions from the user's external accounts.
