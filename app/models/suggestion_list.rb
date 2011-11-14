@@ -214,6 +214,19 @@ class SuggestionList
     end
   end
 
+  def remove_from_suggestions!(ids)
+    ids = [ids] if ids.is_a?(String)
+
+    user.
+      collection.
+      update({ :user_id =>  user.id },
+             { :$pull_all =>
+                 { 'suggestion_list.topic_suggestion_ids' => ids,
+                   'suggestion_list.user_suggestion_ids' => ids,
+                   'suggestion_list.uninteresting_user_ids' => ids,
+                   'suggestion_list.uninteresting_topic_ids' => ids } })
+  end
+
 protected
   def configured_suggestions
     ids = AppConfig.topic_suggestion
