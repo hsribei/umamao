@@ -21,6 +21,10 @@
   %meta{:name => "description", :content => question_body.gsub(/<\/?[^>]*>/, "")[0, 255] }
   %link{:rel => "canonical", :href => question_url(@question) }
 
+- if current_user.blank?
+  - content_for :hellobar do
+    ~ AppConfig.hellobar_code_snippet
+
 = error_messages_for 'answer'
 
 #question.commentable
