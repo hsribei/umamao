@@ -35,9 +35,9 @@ window.inlineEdition = {
         // Basic DOM changings
         $(settings.selector)
 	  .addClass("inline_editable")
-	  .after("<a class=\"edit_link inline_link\" href=\"javascript:return false\">Editar </a>")
-	  .after("<a class=\"cancel_link inline_link\" href=\"javascript:return false\">Cancelar </a>")
-	  .after("<a class=\"save_link inline_link\" href=\"javascript:return false\">Salvar </a>");
+	  .after("<a class=\"edit_link inline_link\" href=\"javascript:return false\">" + I18n.edit + "</a>")
+	  .after("<a class=\"cancel_link inline_link\" href=\"javascript:return false\">" + I18n.cancel + "</a>")
+	  .after("<a class=\"save_link inline_link\" href=\"javascript:return false\">" + I18n.save + "</a>");
 
 	$(settings.selector)
 	  .parent()

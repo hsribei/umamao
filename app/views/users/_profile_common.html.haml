@@ -38,4 +38,5 @@
           = markdown(@user.description)
     -else
       = markdown(@user.description)
-    %div= t('users.show.upvotes_count', :upvotes_count => @user.upvotes_count)
+    .upvotes_count
+      = t('users.show.upvotes_count', :upvotes_count => @user.upvotes_count)

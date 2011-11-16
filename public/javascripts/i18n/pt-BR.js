@@ -1,3 +1,6 @@
 var I18n = {
-  on_leave_page: "Você pode perder suas mudanças"
+  cancel: "Cancelar",
+  edit: "Editar",
+  on_leave_page: "Você pode perder suas mudanças",
+  save: "Salvar"
 };
