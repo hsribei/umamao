@@ -10,6 +10,8 @@ en:
       give_advice:
         friend_subject: "Your friend needs help: %{question_title}"
         subject: "We need your advice: %{question_title}"
+      invitation_converted:
+        subject: Someone you invited just signed up!
       new_answer:
         subject_friend: Your friend %{name} answered the question %{title}
         subject_other: "%{name} answered the question %{title}"

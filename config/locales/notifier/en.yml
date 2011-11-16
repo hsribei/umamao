@@ -31,6 +31,13 @@ en:
         Umamao Team
 
       user_page: profile page
+    invitation_converted:
+      message_html: |
+        %{user} just accepted your invitation and signed up to Umamao. You can go to <a href='%{profile_link}'>%{first_name}'s profile</a> to follow them and suggest topics to help them get started. Thanks a lot for helping us spread the word, keep 'em coming! :)
+      message_text: |
+        %{user} just accepted your invitation and signed up to Umamao. You can go to %{first_name}'s profile to follow them and suggest topics to help them get started. Thanks a lot for helping us spread the word, keep 'em coming! :)
+        You can find %{first_name)'s profile at %{profile_link}
+      subject: %{name} accepted your invitation to get in touch with Umamao
     new_answer:
       link_label: "To see the answer, see this link:"
       message: "%{user} answered:"
