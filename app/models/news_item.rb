@@ -117,7 +117,6 @@ class NewsItem
   def should_be_hidden?(ignored_topic_ids = [])
     entry = self.news_update.entry
 
-    !! (entry.is_a?(Question) and entry.answers_count > 0) or
-      ( (entry.topic_ids & ignored_topic_ids).any? )
+    !! ((entry.topic_ids & ignored_topic_ids).any?)
   end
 end
