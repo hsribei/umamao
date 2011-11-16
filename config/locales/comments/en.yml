@@ -6,6 +6,9 @@ en:
       none: Add coment
       one: 1 comment
       other: "%{count} comments"
+    count_inline:
+      one: 1 other comment
+      other: "%{count} other comments"
     create:
       flash_notice: Thanks for your comment
     destroy:
