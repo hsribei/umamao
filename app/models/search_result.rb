@@ -228,4 +228,8 @@ private
                       { :$inc => { :flags_count => 1 } },
                       :upsert => true)
   end
+
+  def topic_ids
+    self.question.topic_ids
+  end
 end
