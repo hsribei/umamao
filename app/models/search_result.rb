@@ -168,8 +168,7 @@ private
   end
 
   def fill_title
-    title = truncate(Nokogiri::HTML(response_body, nil, 'utf-8').
-                     xpath('//title').text,
+    title = truncate(Support::Embedly.new(url).title,
                      :length => TITLE_SIZE,
                      :omission => ' …',
                      :separator => ' ')
