@@ -116,7 +116,6 @@ class NewsItem
   # it's not a question that should be hidden
   def should_be_hidden?(ignored_topic_ids = [])
     entry = self.news_update.entry
-
-    !! ((entry.topic_ids & ignored_topic_ids).any?)
+    (entry.topic_ids & ignored_topic_ids).any?
   end
 end
