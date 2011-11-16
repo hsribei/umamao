@@ -3,8 +3,6 @@ require 'uri'
 module Support
   class Embedly
 
-    USER_AGENT = 'Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0'
-
     def initialize(uri)
       key =  AppConfig.embedly['key']
       @uri = URI("http://api.embed.ly/1/oembed?key=#{key}&url=#{URI.encode(uri)}")
