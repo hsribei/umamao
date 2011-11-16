@@ -321,4 +321,9 @@ $(document).ready(function() {
       $(this).closest(".group").find(".navform.hidden").hide();
     }
   });
+
+  $('.hidden_until_url_is_clicked').hide();
+  $("#search_result_url").focus(function () {
+    $('.hidden_until_url_is_clicked').show();
+  });
 });
