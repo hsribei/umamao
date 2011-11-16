@@ -1,9 +1,25 @@
-= f.label(:url)
-= f.text_field(:url, :type => :url)
 = f.hidden_field(:question_id, :value => question_id)
 = f.hidden_field(:group_id, :value => group_id)
 = f.hidden_field(:user_id, :value => user_id)
-= f.label(:comment)
-= f.text_area(:comment,
-              :class => 'placeholder',
-              :placeholder => t(:comment, :scope => [:helpers, :placeholder]))
+
+- if ab_test(:link_only_answer_form) == :link_only_answer_form
+  #search_result_area
+    = f.text_field(:url, :type => :url, :class => "link_only_answer_form",
+                   :placeholder => t("search_results.add_link"))
+    .hidden_until_url_is_clicked
+      = f.label(:comment)
+      = f.text_area(:comment,
+                    :class => 'placeholder',
+                    :placeholder => t(:comment, :scope => [:helpers, :placeholder]))
+      .submit_button
+        = submit_tag t("search_results.add_link"), :class => "button"
+- else
+  = f.label(:url)
+  = f.text_field(:url, :type => :url)
+
+  = f.label(:comment)
+  = f.text_area(:comment,
+                :class => 'placeholder',
+                :placeholder => t(:comment, :scope => [:helpers, :placeholder]))
+  .group.navform
+    = submit_tag t("search_results.add_link"), :class => "button"
