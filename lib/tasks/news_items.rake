@@ -20,4 +20,24 @@ namespace :news_items do
   task :clear_verified_attribute => :environment do
     NewsItem.unset({:verified.ne => nil}, :verified)
   end
+
+  desc 'Fix hidden news items visibility'
+  task :fix_hidden_visibility => :environment do
+    # The number of users that ignore topics is very low
+    # So this rake task first turn all news_items visible
+    # and after that hide the news items that should be
+    # hidden
+    NewsItem.set({}, :visible => true)
+    i = 0
+    User.find_each do |u|
+      print '.'
+      if (ignored_topic_ids = u.ignored_topic_ids).present?
+        NewsItem.find_each(:recipient_id => u.id) do |ni|
+          i = i + 1
+          ni.set(:visible => false) if ni.should_be_hidden?(ignored_topic_ids)
+        end
+      end
+    end
+    puts i
+  end
 end
