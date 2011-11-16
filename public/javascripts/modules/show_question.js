@@ -322,7 +322,6 @@ $(document).ready(function() {
     }
   });
 
-  $('.hidden_until_url_is_clicked').hide();
   $("#search_result_url").focus(function () {
     $('.hidden_until_url_is_clicked').show();
   });
