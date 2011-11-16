@@ -143,6 +143,10 @@ class AnswersController < ApplicationController
 
   def edit
     @question = @answer.question
+    unless current_user.can_modify?(@answer)
+      redirect_to [@question, @answer]
+      return
+    end
   end
 
   def update

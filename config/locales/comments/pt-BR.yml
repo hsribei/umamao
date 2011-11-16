@@ -15,6 +15,7 @@ pt-BR:
     shared:
       add_comment: "Adicionar comentário"
       comment_submit: Comentar
+      not_logged: "<a href=\"%{link}\">Identifique-se</a> para deixar um comentário."
       reply: Responder
       said: disse
     update:

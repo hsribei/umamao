@@ -23,7 +23,8 @@ pt-BR:
       answer_label: "Responder à pergunta"
       comment_label: Comentar nesta resposta
       comment_submit: Comentar
-      not_logged: "É necessário <a href=\"%{link}\">se identificar</a> para responder à pergunta."
+      not_logged: "É necessário %{link} para responder à pergunta."
+      sign_in: se identificar
       submit: Responder
     revert:
       title: Reverter resposta

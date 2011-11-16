@@ -186,8 +186,9 @@ class QuestionsController < ApplicationController
   # GET /questions/new.xml
   def new
     if ab_test(:new_question_as_search) == :new_search_scheme
-      if params[:question] && params[:question][:title].present?
-        redirect_to search_path(:q => params[:question][:title])
+      if params[:question].present?
+        redirect_to search_path(:q => params[:question].delete(:title),
+                                :question => params[:question])
       else
         redirect_to root_path
       end
@@ -206,6 +207,11 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @question = Question.find_by_slug_or_id(params[:id])
+    unless current_user.can_modify?(@question)
+      redirect_to @question
+      return
+    end
   end
 
   # POST /questions

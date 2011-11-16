@@ -11,6 +11,7 @@
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
     = include_javascripts :base
     = javascript_include_tag AppConfig.mathjax_location
+    = yield :hellobar
     = yield :js
     %link{"rel" => "search", "type" => "application/opensearchdescription+xml", "href" => "/content-search.xml", "title" => "Content Search"}
 

@@ -14,9 +14,11 @@ module Support
                              SocketError,
                              Timeout::Error,
                              TooManyRedirectionsError,
-                             URI::InvalidURIError]
+                             URI::InvalidURIError,
+                             ArgumentError]
     REDIRECTION_LIMIT = 5
     TIMEOUT = 10
+    USER_AGENT = 'Mozilla/5.0 (X11; Linux i686; rv:6.0) Gecko/20100101 Firefox/6.0'
 
     include ActiveSupport::Inflector
 
@@ -24,7 +26,7 @@ module Support
 
     def initialize(uri, params)
       @fetcher = params[:fetcher]
-      @uri = URL.new(uri).uri
+      @uri = URL.new(uri.strip).uri
     rescue URI::InvalidURIError
       add_error(@fetcher, $!)
     end
@@ -40,7 +42,8 @@ module Support
       fetcher = lambda do |uri, redirections_left|
         raise TooManyRedirectionsError if redirections_left == 0
         parsed_uri = URI.parse(uri)
-        request = Net::HTTP::Get.new(request_uri.call(parsed_uri))
+        request = Net::HTTP::Get.new(request_uri.call(parsed_uri),
+                                     'User-Agent' => USER_AGENT)
         http = Net::HTTP.new(parsed_uri.host || 'http', parsed_uri.port)
         http.open_timeout = http.read_timeout = TIMEOUT
         if parsed_uri.port == 443
@@ -65,7 +68,6 @@ module Support
       response.instance_variable_set(:@body, clean_body)
       response
     rescue *POSSIBLE_FETCH_ERRORS
-      add_error(@fetcher, $!) if $!.is_a?(URI::InvalidURIError)
       EmptyResponse.new
     end
 

@@ -6,6 +6,7 @@ class SearchResultsController < ApplicationController
     track_event(:clicked_search_result,
                 :search_result_id => @search_result.id,
                 :url => @search_result.url)
+    track_bingo(:clicked_search_result)
     redirect_to(@search_result.url)
   end
 

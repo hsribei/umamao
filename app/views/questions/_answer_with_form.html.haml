@@ -32,7 +32,13 @@
         -# Image upload prompt; hidden by default
         = render :partial => "shared/image_prompt", :locals => { :entry_type => "answer" }
   - else
-    - if not logged_in?
-      %p= t("answers.form.not_logged", :link => new_user_session_path)
+    - if logged_in?
+      = render :partial => "questions/already_answered",
+               :locals => { :answer => Answer.first(:question_id => @question.id,
+                                                    :user_id => current_user.id) }
     - else
-      = render :partial => "questions/already_answered", :locals => { :answer => Answer.first(:question_id => @question.id, :user_id => current_user.id) }
+      %p= t(:not_logged,
+            :scope => [:answers, :form],
+            :link => link_to(t(:sign_in, :scope => [:answers, :form]),
+                             root_path(:return_to => request.path,
+                                       :group_invitation => session[:group_invitation])))

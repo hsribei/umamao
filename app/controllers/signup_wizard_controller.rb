@@ -8,6 +8,7 @@ class SignupWizardController < ApplicationController
       current_user.save!
       redirect_to root_path
     else
+      @current_step = params[:current_step]
       render :layout => "welcome"
     end
   end

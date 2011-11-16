@@ -30,6 +30,7 @@ pt-BR:
         url: URL
     placeholder:
       comment: "Por que isso é relevante?"
+      leave_comment: "Deixe um comentário"
   search_results:
     attributes:
       search_result:

@@ -1,12 +1,33 @@
 - source = local_assigns[:source]
 - commentable = local_assigns[:commentable]
 - path_scope = local_assigns[:path_scope]
+- comments = commentable.comments
+- inline = local_assigns[:inline]
 
-= render :partial => 'comments/count', :locals => {:commentable => commentable}
+- hide_message = false
+- message = nil
+
+- if inline
+  - if comments.blank?
+    - hide_message = true
+    - if logged_in?
+      = render :partial => "comments/form",
+        :locals => {:source => source,
+          :commentable => commentable,
+          :path_scope => path_scope, :inline => true}
+    - else
+      %p= t("comments.shared.not_logged", :link => new_user_session_path) 
+  - else
+    = render :partial => "comments/comment", :object => comments[0], :locals => {:source => source, :mini => true}
+    - comments = comments[1 .. comments.count]
+  - if comments.blank?
+    - message = t("comments.shared.add_comment")
+
+= render :partial => 'comments/count', :locals => {:commentable => commentable, :inline => inline, :message => message, :hide => hide_message}
 
 .comments_wrapper
   .comments
-    - commentable.comments.each do |comment|
+    - comments.each do |comment|
       = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
   - if logged_in?
     .forms
