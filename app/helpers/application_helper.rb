@@ -379,5 +379,14 @@ module ApplicationHelper
     default_options = { :id => :bing_search_link }
     link_to_search(:bing, query_string, default_options.merge(options))
   end
+
+  def tweet_button(options = {})
+    link_to(nil,
+            'https://twitter.com/share',
+            :class => 'twitter-share-button',
+            :'data-text' => options[:'data-text'],
+            :'data-url' => options[:'data-url'],
+            :'data-count' => 'none')
+  end
 end
 
