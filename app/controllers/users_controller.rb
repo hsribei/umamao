@@ -118,11 +118,16 @@ class UsersController < ApplicationController
       end
     end
 
+    debugger
     if @user.save
       if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
         tracking_properties[:invited_by] = @url_invitation.inviter.id
         @url_invitation.add_invitee(@user)
         track_bingo(:signed_up_action)
+        sign_in(@url_invitation.inviter)
+        if ab_test(:inline_comment_helpers)
+          Notifier.delay.converted_invitation(@url_invitation.inviter, @user)
+        end
       end
 
       if invitation && invitation.topics
