@@ -82,20 +82,21 @@ class SuggestionList
   # suggestion.
   def remove_suggestion(suggestion_or_entry)
     return if suggestion_or_entry.blank?
-    if suggestion_or_entry.is_a?(Suggestion)
-      suggestion = suggestion_or_entry
-      entry_type = suggestion.entry_type
-    else
-      entry_id = suggestion_or_entry.id
-      entry_type = suggestion_or_entry.class <= Topic ? "Topic" : "User"
-      suggestion = Suggestion.first(
-        :entry_id => entry_id, :entry_type => entry_type,
-        :rejected_at => nil, :accepted_at => nil,
-        :origin_id => nil, :user_id => self.user.id)
-    end
-    return if !suggestion
 
-    self.remove_from_suggestions!([suggestion.id, suggestion.entry.id])
+    suggestion =
+      if suggestion_or_entry.is_a?(Suggestion)
+        suggestion_or_entry
+      else
+        Suggestion.first({ :entry_id => entry_id, :entry_type => entry_type,
+                           :rejected_at => nil, :accepted_at => nil,
+                           :origin_id => nil, :user_id => self.user.id })
+      end
+
+    if suggestion
+      self.remove_from_suggestions!(suggestion.id, suggestion.entry_id)
+    else
+      self.remove_from_suggestions!(suggestion_or_entry.id)
+    end
   end
 
   # Mark something as uninteresting. Uninteresting users and topics
