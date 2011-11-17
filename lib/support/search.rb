@@ -53,8 +53,7 @@ module Support::Search
     per_page = options[:per_page] || 25
     start = (page - 1) * per_page
 
-    # TODO: escape the query
-    query_path = "/solr/select?wt=json&q=#{q}&start=#{start}" +
+    query_path = "/solr/select?wt=json&q=#{CGI.escape(q)}&start=#{start}" +
       "&rows=#{per_page}"
 
     solr_response_raw =
