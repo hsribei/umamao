@@ -478,7 +478,7 @@ function initSearchBox() {
     if (query.match(/\?$/)) {
       searchBox.input.closest("form").submit();
     } else {
-      window.location.href = '/search?q=' + query;
+      window.location.href = '/search?q=' + encode(query);
     }
   };
 
