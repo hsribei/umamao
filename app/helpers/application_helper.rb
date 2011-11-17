@@ -388,5 +388,45 @@ module ApplicationHelper
             :'data-url' => options[:url],
             :'data-count' => 'none')
   end
+
+  def facebook_button(options)
+    if options[:action] == :share
+      link_to('Share',
+              nil,
+              :name => 'fb_share',
+              :type => 'button')
+    elsif [:like, :recommend].include?(options[:action])
+      options = { :class => :'fb-like',
+                  :'data-action' => options[:action],
+                  :'data-href' => options[:url],
+                  :'data-layout' => :button_count,
+                  :'data-send' => :false,
+                  :'data-show-faces' => :false,
+                  :'data-width' => '450' }
+      "<div #{options.map { |h| "#{h.first}=\"#{h.last}\"" }.join(' ')}></div>"
+    elsif options[:action] == :feed
+      body = %{<span class="fb_share_size_Small ">
+                 <span style="cursor:pointer;" class="FBConnectButton FBConnectButton_Small">
+                   <span class="FBConnectButton_Text">Share</span>
+                 </span>
+                 <span class="fb_share_count_nub_right fb_share_no_count"></span>
+                 <span class="fb_share_count fb_share_no_count fb_share_count_right">
+                   <span class="fb_share_count_inner">&nbsp;</span>
+                 </span>
+               </span>}
+      link_to(raw(body),
+              url_for({ :host => 'www.facebook.com/dialog/feed',
+                        :app_id => AppConfig.facebook['app_id'],
+                        :caption => options[:caption],
+                        :description => options[:description],
+                        :link => options[:url],
+                        :message => options[:message],
+                        :name => options[:name],
+                        :picture => 'http://umamao.com/images/default_logo.png',
+                        :redirect_uri => options[:redirect_uri] }),
+              :target => :_blank,
+              :style => 'text-decoration: none;')
+    end
+  end
 end
 
