@@ -4,8 +4,7 @@ namespace :suggestions do
     Suggestion.find_each(:batch_size => 10_000) do |suggestion|
       if !suggestion.user || !suggestion.entry
         if suggestion.user && suggestion.entry_id.present?
-          suggestion.user.remove_from_suggestions!([suggestion.id,
-                                                    suggestion.entry_id])
+          suggestion.propagate_destruction(:delayed => false)
         end
         suggestion.delete
         print('.')
