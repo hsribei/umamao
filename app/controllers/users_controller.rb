@@ -17,7 +17,7 @@ class UsersController < ApplicationController
                :page => params[:page] || 1}
     options[:login] = /^#{Regexp.escape(params[:q])}/ if params[:q]
 
-    @users = current_group.paginate_users(options)
+    @users = User.paginate(options)
 
     respond_to do |format|
       format.html
