@@ -20,8 +20,13 @@ class Suggestion
     self.destroy
   end
 
-  def propagate_destruction
-    user && user.remove_suggestion(entry)
+  def propagate_destruction(options = { :delayed => true })
+    if user
+      if options[:delayed]
+        user.delay.remove_suggestion(self)
+      else
+        user.remove_suggestion(self)
+      end
+    end
   end
-  handle_asynchronously :propagate_destruction
 end
