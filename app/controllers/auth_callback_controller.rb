@@ -4,7 +4,7 @@ class AuthCallbackController < ApplicationController
 
   def callback
     auth_hash = request.env['omniauth.auth']
-    if not user_signed_in? && auth_hash['provider'] == 'facebook'
+    if !user_signed_in? && auth_hash['provider'] == 'facebook'
       signup_with_provider
     else
       create_external_account
