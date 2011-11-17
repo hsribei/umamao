@@ -10,3 +10,9 @@ en:
       left: left
       sign_ups: sign ups
       title: Share this link to invite people
+    share:
+      twitter:
+        text: Click this link to sign up to Umamao
+      facebook:
+        text: Click this link to sign up to Umamao
+        name: Invitation to Umamao - Find Together

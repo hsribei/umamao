@@ -7,8 +7,30 @@
     - if current_user.url_invitation
       .navigation
         = t(:title, :scope => [:url_invitations, :sidebar])
+        #url_share
+          #twitter
+            = tweet_button(:text => t(:text,
+                                      :scope => [:url_invitations,
+                                                 :share,
+                                                 :twitter]),
+                           :url => root_url(:ref => current_user.url_invitation.ref))
+          #facebook
+            = facebook_button(:action => :feed,
+                              :description => t(:description,
+                                                :scope => [:url_invitations,
+                                                           :share,
+                                                           :facebook]),
+                              :name => t(:description,
+                                         :scope => [:url_invitations,
+                                                    :share,
+                                                    :facebook]),
+                              :redirect_uri => root_url,
+                              :url => root_url(:ref => current_user.url_invitation.ref))
         #url_field_wrapper
-          = url_field_tag :ref, root_url(:ref => current_user.url_invitation.ref), :readonly => true, :class => :url_field
+          = url_field_tag(:ref,
+                          root_url(:ref => current_user.url_invitation.ref),
+                          :readonly => true,
+                          :class => :url_field)
         #url_invitation_information
           %span.number
             = current_user.url_invitation.clicks_count
@@ -28,3 +50,15 @@
   - current_group.widgets.each do |widget|
     .widget.block{:id => widget.name}
       = render :partial => widget.partial_name, :locals => {:widget => widget}
+
+- content_for :js do
+  = AppConfig.javascript['facebook']['fb_root']
+  = javascript_include_tag AppConfig.javascript['twitter']['widgets']
+  -# Note: only one of Facebook's javascript excerpts may be included or else
+  -# they'll conflict and not work. Choose 'sdk' if you want the
+  -# 'like/recommend' buttons or 'share' if you want the 'share' button. Keep
+  -# in mind that the 'like/recommend' buttons may need OpenGraph meta tags to
+  -# work properly. See http://developers.facebook.com/docs/reference/plugins/like
+  -#
+  -#= AppConfig.javascript['facebook']['sdk']
+  = javascript_include_tag AppConfig.javascript['facebook']['share']
