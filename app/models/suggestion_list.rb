@@ -210,17 +210,17 @@ class SuggestionList
     end
   end
 
-  def remove_from_suggestions!(ids)
-    ids = [ids] if ids.is_a?(String)
-
-    user.
-      collection.
-      update({ :user_id =>  user.id },
-             { :$pull_all =>
-                 { 'suggestion_list.topic_suggestion_ids' => ids,
-                   'suggestion_list.user_suggestion_ids' => ids,
-                   'suggestion_list.uninteresting_user_ids' => ids,
-                   'suggestion_list.uninteresting_topic_ids' => ids } })
+  def remove_from_suggestions!(*ids)
+    ids.each do |an_id|
+      user.
+        collection.
+        update({ :_id =>  user.id },
+               { :$pull =>
+                   { 'suggestion_list.user_suggestion_ids' => an_id,
+                     'suggestion_list.topic_suggestion_ids' => an_id,
+                     'suggestion_list.uninteresting_user_ids' => an_id,
+                     'suggestion_list.uninteresting_topic_ids' => an_id } })
+    end
   end
 
 protected
