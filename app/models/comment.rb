@@ -25,8 +25,6 @@ class Comment
 
   validates_presence_of :user
 
-  validate :disallow_spam
-
   before_save :adjust_newlines
   after_create :new_comment_notification,
                :unless => :created_together_with_search_result
