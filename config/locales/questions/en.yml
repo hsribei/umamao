@@ -80,7 +80,7 @@ en:
       success: Question moved to %{group}
     new:
       add_details: Add details
-      ask: Post Your Question
+      ask: Post As New Question
       how_to_ask: How to ask
       title: Ask Question
     question:

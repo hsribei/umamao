@@ -17,7 +17,7 @@ class SearchesController < ApplicationController
       if @question.parent_question_id
         @question.topics = Question.find_by_id(@question.parent_question_id).topics
       end
-      @bing_results = Support::Bing.search(@question.title)
+      @bing_results = Support::Bing.search(@question.title, :max_results => 10)
     end
 
     if params[:q].present?

@@ -32,9 +32,7 @@
   = render :partial => "questions/form", :locals => {:f => f}
 
   .group.navform
-
-    = f.submit t("questions.new.ask")
-    = link_to t('scaffold.cancel'), questions_path, :class => "button cancel"
+    = f.submit(t('questions.new.ask'), :id => :post_as_new_question)
 
 = render :partial => "shared/image_prompt",
   :locals => { :entry_type => "question" }
