@@ -6,6 +6,10 @@
 - content_for :sidebar do
   = render :partial => 'shared/share_body', :locals => { :opts => { :content => @answer.id, :class_name => Answer.to_s.underscore } }
 
+- if current_user.blank?
+  - content_for :hellobar do
+    ~ AppConfig.hellobar_code_snippet
+
 #question
   %h1.navtitle.title.entry-title
     &= link_to @answer.title, @question

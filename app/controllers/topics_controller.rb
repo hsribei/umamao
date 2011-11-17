@@ -54,13 +54,20 @@ class TopicsController < ApplicationController
       @topic.indirect_question_lists.paginate(:per_page => 6,
                                               :order => :created_at.desc)
 
-    @news_items = NewsItem.paginate(
+    ni_sr = ab_test(:news_items_search_results_helpers)
+    if ni_sr == :answer
+      options = {:news_update_entry_type => {:$ne => "SearchResult"}}
+    else
+      options = {:news_update_entry_type => {:$ne => "Answer"}}
+    end
+
+    @news_items = NewsItem.paginate({
       :recipient_id => @topic.id,
       :recipient_type => "Topic",
       :per_page => 30,
       :page => params[:page] || 1,
       :order => :created_at.desc,
-      :visible => true)
+      :visible => true}.merge(options))
 
     @questions = Question.paginate(
       :topic_ids => @topic.id, :banned => false,
@@ -72,6 +79,10 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find_by_slug_or_id(params[:id])
+    unless current_user.admin?
+      redirect_to @topic
+      return
+    end
 
     raise Goalie::NotFound unless @topic
 

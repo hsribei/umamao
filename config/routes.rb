@@ -96,9 +96,11 @@ Shapado::Application.routes.draw do
   post '/agreement' => 'agreement#update'
   get '/agreement/refuse' => 'agreement#refuse', :as => :refuse_agreement
 
-  match '/auth/:provider/callback' => 'settings/external_accounts#create'
+  match '/auth/:provider/callback' => 'auth_callback#callback'
   match '/auth/dac' => 'affiliations#add_dac_student', :via => :post
-  match '/auth/failure' => 'settings/external_accounts#failure'
+  match '/auth/failure' => 'auth_callback#failure'
+  match '/auth/signup_with_provider' => 'auth_callback#signup_with_provider'
+  match '/auth/sign_in_and_associate_provider' => 'auth_callback#sign_in_and_associate_provider', :via => :post
 
   namespace :settings do
     match 'profile' => 'profile#edit', :via => :get
@@ -116,7 +118,7 @@ Shapado::Application.routes.draw do
     match 'account' => 'account#update', :via => :put
     match 'follow_topics' => 'follow_topics#edit', :via => :get
     match 'ignore_topics' => 'ignore_topics#edit', :via => :get
-    resources :external_accounts, :only => [:index, :destroy]
+    resources :external_accounts, :only => [:index, :destroy, :create]
   end
 
   resources :users, :except => [:edit, :update] do

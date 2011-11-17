@@ -14,9 +14,6 @@
         = link_to t("layouts.application.logout"), destroy_user_session_path
   - else
     .log-in
-      - if session[:group_invitation]
-        = link_to t("layouts.application.log_in"),
-          new_user_path(:group_invitation => session[:group_invitation])
-      - else
-        = link_to t("layouts.application.log_in"),
-        root_path(:focus => "signup", :return_to => request.url)
+      = link_to(t(:log_in, :scope => [:layouts, :application]),
+                root_path(:return_to => request.path,
+                          :group_invitation => session[:group_invitation]))

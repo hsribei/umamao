@@ -17,7 +17,7 @@ en:
     sessions:
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
-      link: Log in
+      link: Sign in
       new:
         remember_me: Remember me
         submit: Sign me in
@@ -28,7 +28,7 @@ en:
         forgot_your_password: Want to reset your password?
       edit:
         submit: Submit
-      link: "Forgot your password?"
+      link: "Can't sign in?"
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
     confirmations:

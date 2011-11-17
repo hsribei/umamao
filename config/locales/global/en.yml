@@ -30,7 +30,7 @@ en:
     group_not_found: The page %{url} doesn't exist
     or: or
     permission_denied: Permission denied
-    please_login: Please log in
+    please_login: Please sign in
     preview: Preview
     previous: Previous
     share: share

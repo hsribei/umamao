@@ -46,7 +46,7 @@
           - if answer.versions.count > 0
             = link_to t("wiki.history.link", :default => "history"), history_question_answer_path(question, answer)
 
-          - if logged_in?
+          - if logged_in? && current_user.can_modify?(answer)
             = link_to t('scaffold.edit'), edit_question_answer_path(question, answer)
         .updated{:title => answer.updated_at}
           .time_ago

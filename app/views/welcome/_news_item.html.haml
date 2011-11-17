@@ -5,9 +5,9 @@
 - entry = news_item.news_update.entry
 - entry_type = news_item.news_update.entry_type.downcase
 - question = entry_type == 'question' ? entry : entry.question
-- question_link = question_path(question, :r => 1)
+- question_link = question_path(question)
 - if entry_type == "searchresult"
-  - link = trackable_search_result_url(entry, 1)
+  - link = trackable_search_result_url(entry)
 - else
   - link = question_link
 

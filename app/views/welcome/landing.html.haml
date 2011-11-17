@@ -19,6 +19,13 @@
     #recover_password
       = link_to t("devise.passwords.link"), new_password_path("user")
 
+    #horizontal_bar
+      %hr
+
+    #facebook_sign_in
+      %a.fb_button.fb_button_medium{:href => "/auth/facebook"}
+        %span.fb_button_text= t('.sign_in_with_facebook')
+
 - content_for :js do
   = include_javascripts :landing
 
@@ -36,4 +43,6 @@
     %p#invitation_only=t("welcome.landing.invitation_only")
     = image_tag("mamaopq.png", :id => "mamao_signup")
   - else
+    - content_for :optimizely do
+      ~ AppConfig.optimizely_code_snippet
     = render :partial => 'users/signup'

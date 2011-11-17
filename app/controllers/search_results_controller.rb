@@ -2,14 +2,11 @@ class SearchResultsController < ApplicationController
   before_filter :login_required, :only => [:create, :destroy, :flag]
 
   def show
-    if params[:r].present?
-      track_bingo(:search_results_news_items)
-    end
-
     @search_result = SearchResult.find_by_id(params[:search_result_id])
     track_event(:clicked_search_result,
                 :search_result_id => @search_result.id,
                 :url => @search_result.url)
+    track_bingo(:clicked_search_result)
     redirect_to(@search_result.url)
   end
 

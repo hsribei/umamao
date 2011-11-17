@@ -30,6 +30,7 @@ pt-BR:
         url: URL
     placeholder:
       comment: "Por que isso é relevante?"
+      leave_comment: "Deixe um comentário"
   search_results:
     attributes:
       search_result:
@@ -42,3 +43,4 @@ pt-BR:
       flag: Reportar
     show:
       flagged_as: Reportado como
+    add_link: Adicionar Link

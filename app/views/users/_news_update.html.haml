@@ -4,7 +4,7 @@
 - entry_type = news_update.entry_type.downcase
 - question = (entry_type == 'question') ? entry : entry.question
 - title = h(question.title)
-- question_link = question_path(question, :ab_test => true)
+- question_link = question_path(question)
 
 - unless question.banned || entry.banned
   %li.entry.item

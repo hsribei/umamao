@@ -42,10 +42,9 @@ class Answer < Comment
   versionable_keys :body
   filterable_keys :body
 
-  validate :disallow_spam
-
   after_create :create_news_update, :new_answer_notification,
     :increment_user_topic_answers_count
+  after_update :update_search_result
   before_destroy :unhide_news_update, :decrement_user_topic_answers_count
 
   ensure_index([[:user_id, 1], [:question_id, 1]])
@@ -177,13 +176,8 @@ class Answer < Comment
     NewsUpdate.create(:author => self.user, :entry => self,
                       :created_at => self.created_at, :action => 'created')
 
-    hide_news_update
   end
   handle_asynchronously :create_news_update
-
-  def hide_news_update
-    self.question.news_update.hide!
-  end
 
   def unhide_news_update
     if self.question.news_update && self.question.answers_count == 1
@@ -243,6 +237,30 @@ class Answer < Comment
   end
 
   def save_with_search_result
+    search_result = new_search_result
+    if save && search_result.save
+      true
+    else
+      search_result.errors.full_messages.each do |error|
+        errors.add_to_base(error)
+      end
+      search_result.destroy
+      false
+    end
+  end
+
+  def update_search_result
+    if !self.search_result
+      create_search_result
+      return
+    end
+
+    self.search_result.set({:title => title(:truncated => true),
+                                  :summary => summary})
+  end
+
+protected
+  def new_search_result
     search_result =
       SearchResult.new(:title => title(:truncated => true),
                        :summary => summary,
@@ -255,14 +273,10 @@ class Answer < Comment
                                  url_helpers.
                                  question_answer_url(question, id))
     self.search_result_id = search_result.id
-    if save && search_result.save
-      true
-    else
-      search_result.errors.full_messages.each do |error|
-        errors.add_to_base(error)
-      end
-      search_result.destroy
-      false
-    end
+    search_result
+  end
+
+  def create_search_result
+    new_search_result.save
   end
 end

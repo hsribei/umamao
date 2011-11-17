@@ -28,7 +28,8 @@ en:
       answer_label: Answer the question
       comment_label: Comment on this answer
       comment_submit: Comment
-      not_logged: Please <a href="%{link}">login</a> to answer question.
+      not_logged: Please %{link} to answer question.
+      sign_in: sign in
       submit: Answer
     revert:
       title: Revert answer

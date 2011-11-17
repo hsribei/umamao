@@ -382,7 +382,8 @@ Time.zone.now ? 1 : 0)
 
   def can_modify?(model)
     return false unless model.respond_to?(:user)
-    self.admin? || self == model.user
+    self.admin? ||
+      (self == model.user && !(model.is_a?(Topic)))
   end
 
   def groups(options = {})
@@ -1016,6 +1017,25 @@ Time.zone.now ? 1 : 0)
     untracked_emails = AppConfig.untrackable_user_emails
     untracked_emails.respond_to?(:include?) ? !untracked_emails.include?(email) :
                                               true
+  end
+
+  def self.create_with_provider(auth_hash)
+    user_info = auth_hash["user_info"]
+    email = user_info["email"]
+    password = ActiveSupport::SecureRandom.base64(20)
+
+    user = User.create(:email => email,
+                       :agrees_with_terms_of_service => true,
+                       :name => user_info["name"],
+                       :password => password,
+                       :password_confirmation => password)
+
+    if user
+      UserExternalAccount.create(auth_hash.merge(:user => user))
+      user.confirm!
+    end
+
+    user
   end
 
   protected

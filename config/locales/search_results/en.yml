@@ -30,6 +30,7 @@ en:
         url: URL
     placeholder:
       comment: Why is this relevant?
+      leave_comment: Leave a comment
   search_results:
     attributes:
       search_result:
@@ -42,3 +43,4 @@ en:
       flag: Flag
     show:
       flagged_as: Flagged as
+    add_link: Add Link

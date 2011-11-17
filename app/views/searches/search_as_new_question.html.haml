@@ -37,7 +37,8 @@
 = render :partial => "shared/image_prompt",
   :locals => { :entry_type => "question" }
 
-= render(:partial => 'questions/bing_results',
-         :object => @bing_results[:results],
-         :locals => { :question => @question,
-                      :bing_results_count => @bing_results[:total_results_count] })
+- if @bing_results[:results].present?
+  = render(:partial => 'questions/bing_results',
+           :object => @bing_results[:results],
+           :locals => { :question => @question,
+                        :bing_results_count => @bing_results[:total_results_count] })

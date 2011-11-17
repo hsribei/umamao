@@ -44,8 +44,13 @@ $(document).ready(function() {
     return {
       success: function(data) {
         $('.loader').hide();
+        $('#new_search_result #search_result_comment').val('');
         var search_result = $(data.html);
-        $('#search_results').append(search_result);
+        if($(".new").length > 0){
+          $('.new').prepend(search_result);
+        }else{
+          $('#search_results').append(search_result);
+        }
         highlightEffect(search_result);
         $('#search_result_url').val('');
       },
@@ -88,6 +93,32 @@ $(document).ready(function() {
         comments.closest(".commentable").find(".ccontrol").replaceWith(data.count);
         highlightEffect(comment);
         textarea.val("");
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, comment[0]]);
+      },
+
+      error: function (data) {
+        if(data.status == "unauthenticate") {
+          Utils.redirectToSignIn();
+        }
+      }
+    };
+  });
+
+  // Send new comment.
+  Utils.clickObject("form.inlineCommentForm", function () {
+    var form = $(this);
+    var comments = $(this).closest(".commentable").find(".comments");
+    var form_div = $(this).closest(".commentable").find(".inline_comment");
+    var button = $(this).find(".button");
+
+    return {
+      success: function (data) {
+        // TODO: center screen on new comment.
+        window.onbeforeunload = null;
+        var comment = $(data.html);
+        form_div.html(comment);
+        highlightEffect(comment);
+        comments.closest(".commentable").find(".ccontrol a").show();
         MathJax.Hub.Queue(['Typeset', MathJax.Hub, comment[0]]);
       },
 
@@ -277,5 +308,21 @@ $(document).ready(function() {
 
   $('form#new_search_result').live('submit', function() {
     $('.loader').show();
+  });
+
+  $('.inline_comment .comment_text_area').focus(function() {
+    $(this).addClass('focussed');
+    $(this).closest(".group").find(".navform.hidden").show();
+  });
+
+  $('.inline_comment .comment_text_area').blur(function() {
+    if(this.value == ""){
+      $(this).removeClass('focussed');
+      $(this).closest(".group").find(".navform.hidden").hide();
+    }
+  });
+
+  $("#search_result_url").focus(function () {
+    $('.hidden_until_url_is_clicked').show();
   });
 });

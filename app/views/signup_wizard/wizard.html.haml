@@ -3,3 +3,7 @@
   = include_javascripts :suggestions, :signup_follow
 
 = render_cell "signup_wizard", :wizard
+
+- if @current_step == "follow"
+  - content_for :optimizely do
+    ~ AppConfig.optimizely_code_snippet

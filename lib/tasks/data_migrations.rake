@@ -1226,22 +1226,6 @@ namespace :data do
       end
     end
 
-    desc "Prune topics that don't have any questions or followers"
-    task :prune_topics => :environment do
-      prune_topic = lambda do |t|
-        if t.questions.count.zero? && t.follower_ids.count.zero?
-          print( t.delete ? '.' : 'E' )
-        else
-          print 'F'
-        end
-      end
-
-      # Prune topics that have zero counts
-      Topic.find_each(:questions_count => 0,
-                      :followers_count => 0,
-                      &prune_topic)
-    end
-
     desc "Remove all related topics from all topics"
     task :drop_related_topics => :environment do
       Topic.find_each(:batch => 100) do |t|
@@ -1305,7 +1289,7 @@ namespace :data do
     task :update_news_items_news_update_entry_type => :environment do
       NewsItem.find_each(:news_update_entry_type => nil) do |ni|
         print '-'
-        ni.set(:news_update_entry_item => ni.news_update.entry_type)
+        ni.set(:news_update_entry_type => ni.news_update.entry_type)
       end
     end
 

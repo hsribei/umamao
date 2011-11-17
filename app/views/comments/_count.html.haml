@@ -1,3 +1,12 @@
+- message = local_assigns[:message]
+- hide = local_assigns[:hide]
+- if message.blank?
+  - inline = local_assigns[:inline]
+  - count = inline ? commentable.comments.count  - 1 : commentable.comments.count
+  - if inline
+    - message = t("comments.count_inline", :count => count)
+  - else
+    - message = t("comments.count", :count => count)
 .ccontrol
-  %a{:href => "", :class => "ccontrol-link"}
-    = t("comments.count", :count => commentable.comments.count)
+  %a{:href => "", :class => "ccontrol-link", :style => "display: #{hide ? 'none' : ''}"}
+    = message

@@ -2,10 +2,21 @@ desc "Deploy app based on current master branch."
 task :deploy do
   Rake::Task["deploy:update_production_branch"].invoke
   Rake::Task["deploy:push_production_branch"].invoke
+  Rake::Task['airbrake_deploy'].invoke('production')
+end
+
+task :airbrake_deploy, :env, :needs => :environment do |task, args|
+  require 'grit'
+  revision = Grit::Repo.new('.').commits('master').first.id
+  `rake airbrake:deploy \
+     TO=#{args[:env]} \
+     REVISION=#{revision} \
+     USER=#{`whoami`.chomp} \
+     API_KEY=#{AppConfig.airbrake['api_key']} \
+     REPO=#{AppConfig.airbrake['repo']}`
 end
 
 namespace :deploy do
-
   task :environment do
     require 'grit'
     require 'yaml'

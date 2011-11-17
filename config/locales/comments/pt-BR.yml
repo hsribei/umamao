@@ -6,6 +6,9 @@ pt-BR:
       none: "Adicionar comentário"
       one: "1 comentário"
       other: "%{count} comentários"
+    count_inline:
+      one: "mais 1 comentário"
+      other: "mais %{count} comentários"
     create:
       flash_notice: "Comentário enviado."
     destroy:
@@ -15,6 +18,7 @@ pt-BR:
     shared:
       add_comment: "Adicionar comentário"
       comment_submit: Comentar
+      not_logged: "<a href=\"%{link}\">Identifique-se</a> para deixar um comentário."
       reply: Responder
       said: disse
     update:

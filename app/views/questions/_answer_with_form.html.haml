@@ -2,37 +2,53 @@
   .loader{:style => 'display: none;'}
     = waiting_tag
   - if logged_in? && !@question.closed
-    .secondary-navigation
-      %h2{:id => :title}= t(:title, :scope => [:questions, :show])
-      - tabs_tag :namespace => :welcome_home, :open_tabs => { :class => :tabs } do |tab|
-        = tab.link 'Link', '#', :id => 'link', :class => 'current'
-        = tab.answer 'New Post', '#', :id => 'answer'
-    #link
+    - if ab_test(:link_only_answer_form) == :link_only_answer_form
       = form_for(@search_result,
-                 :url => question_search_results_path(@question.id, :format => :js),
-                 :html => { :class => 'form bp',
-                            :remote => true,
-                            :novalidate => true,
-                            :'data-type' => 'json' }) do |f|
+                   :url => question_search_results_path(@question.id, :format => :js),
+                   :html => { :class => 'form bp',
+                              :remote => true,
+                              :novalidate => true,
+                              :'data-type' => 'json' }) do |f|
         = render :partial => "search_results/form", :locals => { :f => f,
                                                                  :question_id => @question.id,
                                                                  :user_id => current_user.id,
                                                                  :group_id => current_group.id }
-        .group.navform
-          = submit_tag 'Adicionar Link', :class => "button"
-    #answer{:class => 'editor_hack'}
-      = form_for(@answer,
-                 :url => question_answers_path(@question.id, :format => :js),
-                 :html => { :class => "form mainAnswerForm bp editor",
-                            :remote => true,
-                            :'data-type' => 'json' }) do |f|
-        = render :partial => "answers/form", :locals => { :f => f, :markdown => true }
-        .group.navform
-          = submit_tag t("answers.form.submit"), :class => "button"
-        -# Image upload prompt; hidden by default
-        = render :partial => "shared/image_prompt", :locals => { :entry_type => "answer" }
-  - else
-    - if not logged_in?
-      %p= t("answers.form.not_logged", :link => new_user_session_path)
     - else
-      = render :partial => "questions/already_answered", :locals => { :answer => Answer.first(:question_id => @question.id, :user_id => current_user.id) }
+      .secondary-navigation
+        %h2{:id => :title}= t(:title, :scope => [:questions, :show])
+        - tabs_tag :namespace => :welcome_home, :open_tabs => { :class => :tabs } do |tab|
+          = tab.link 'Link', '#', :id => 'link', :class => 'current'
+          = tab.answer 'New Post', '#', :id => 'answer'
+      #link
+        = form_for(@search_result,
+                   :url => question_search_results_path(@question.id, :format => :js),
+                   :html => { :class => 'form bp',
+                              :remote => true,
+                              :novalidate => true,
+                              :'data-type' => 'json' }) do |f|
+          = render :partial => "search_results/form", :locals => { :f => f,
+                                                                   :question_id => @question.id,
+                                                                   :user_id => current_user.id,
+                                                                   :group_id => current_group.id }
+      #answer{:class => 'editor_hack'}
+        = form_for(@answer,
+                   :url => question_answers_path(@question.id, :format => :js),
+                   :html => { :class => "form mainAnswerForm bp editor",
+                              :remote => true,
+                              :'data-type' => 'json' }) do |f|
+          = render :partial => "answers/form", :locals => { :f => f, :markdown => true }
+          .group.navform
+            = submit_tag t("answers.form.submit"), :class => "button"
+          -# Image upload prompt; hidden by default
+          = render :partial => "shared/image_prompt", :locals => { :entry_type => "answer" }
+  - else
+    - if logged_in?
+      = render :partial => "questions/already_answered",
+               :locals => { :answer => Answer.first(:question_id => @question.id,
+                                                    :user_id => current_user.id) }
+    - else
+      %p= t(:not_logged,
+            :scope => [:answers, :form],
+            :link => link_to(t(:sign_in, :scope => [:answers, :form]),
+                             root_path(:return_to => request.path,
+                                       :group_invitation => session[:group_invitation])))

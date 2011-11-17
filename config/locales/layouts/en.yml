@@ -5,14 +5,14 @@ en:
       forgot: Forgot?
       home: Home
       languages: Languages
-      log_in: Login
-      logged: Logged in as %{login}
-      logout: Log out
+      log_in: Sign in
+      logged: Signed in as %{login}
+      logout: Sign out
       manage_ads: Manage ads
       moderate: Moderate
       now: now!
       openid:
-        explaination: "If you would like to register or just log in, please select your OpenID provider:"
+        explaination: "If you would like to register or just sign in, please select your OpenID provider:"
       pages: Pages
       profile: Profile
       questions: Questions

@@ -28,7 +28,7 @@ en:
       questions: Questions
   questions:
     answer:
-      add_comment: Add comment...
+      add_comment: Add comment
       flag: Flag
       pick_answer: Pick as solution
       share_new_answer: Share your answer with others!

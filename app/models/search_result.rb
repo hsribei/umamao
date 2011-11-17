@@ -110,15 +110,8 @@ class SearchResult
                       :created_at => self.created_at,
                       :action => 'created')
 
-    hide_news_update
   end
   handle_asynchronously :create_news_update
-
-  def hide_news_update
-    if self.question.news_update
-      self.question.news_update.hide!
-    end
-  end
 
   def unhide_news_update
     # if this is the last question, reshow question's news_update
@@ -175,8 +168,7 @@ private
   end
 
   def fill_title
-    title = truncate(Nokogiri::HTML(response_body, nil, 'utf-8').
-                     xpath('//title').text,
+    title = truncate(Support::Embedly.new(url).title,
                      :length => TITLE_SIZE,
                      :omission => ' …',
                      :separator => ' ')
@@ -234,5 +226,9 @@ private
     collection.update({ :_id => _id} ,
                       { :$inc => { :flags_count => 1 } },
                       :upsert => true)
+  end
+
+  def topic_ids
+    self.question.topic_ids
   end
 end
