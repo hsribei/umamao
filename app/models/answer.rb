@@ -42,8 +42,6 @@ class Answer < Comment
   versionable_keys :body
   filterable_keys :body
 
-  validate :disallow_spam
-
   after_create :create_news_update, :new_answer_notification,
     :increment_user_topic_answers_count
   after_update :update_search_result
