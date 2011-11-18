@@ -11,8 +11,8 @@ en:
       sign_ups: sign ups
       title: Share this link to invite people
     share:
-      twitter:
-        text: Click this link to sign up to Umamao
       facebook:
-        description: Click this link to sign up to Umamao
-        name: Invitation to Umamao - Find Together
+        description: "Find whatever you need with a little help from your friends."
+        name: "Join me on Umamao!"
+      twitter:
+        text: Join me on Umamao and find whatever you need with a little help from your friends
