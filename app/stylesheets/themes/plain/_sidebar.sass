@@ -38,7 +38,19 @@
 
       #twitter
         float: left
-        margin: 5px
+
+        a
+          display: block
+          margin: 5px
+          width: 55px
+          height: 20px
+          cursor: pointer
+          background: url('/images/buttons/twitter.png') no-repeat 0 0
+
+          &:hover
+            background-position: 0 -21px
+          &:active
+            background-position: 0 -42px
 
       #facebook
         float: left

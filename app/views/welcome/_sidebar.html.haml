@@ -53,7 +53,6 @@
 
 - content_for :js do
   = AppConfig.javascript['facebook']['fb_root']
-  = javascript_include_tag AppConfig.javascript['twitter']['widgets']
   -# Note: only one of Facebook's javascript excerpts may be included or else
   -# they'll conflict and not work. Choose 'sdk' if you want the
   -# 'like/recommend' buttons or 'share' if you want the 'share' button. Keep

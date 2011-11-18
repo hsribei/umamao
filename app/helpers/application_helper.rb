@@ -381,12 +381,13 @@ module ApplicationHelper
   end
 
   def tweet_button(options)
-    link_to(nil,
-            'https://twitter.com/share',
-            :class => 'twitter-share-button',
-            :'data-text' => options[:text],
-            :'data-url' => options[:url],
-            :'data-count' => 'none')
+    link_to('',
+            url_for({ :host => 'twitter.com/share',
+                      :original_referer => root_url,
+                      :source => :tweetbutton,
+                      :text => options[:text],
+                      :url => options[:url] }),
+            :target => :_blank)
   end
 
   def facebook_button(options)
