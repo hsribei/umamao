@@ -87,7 +87,7 @@ class SuggestionList
       if suggestion_or_entry.is_a?(Suggestion)
         suggestion_or_entry
       else
-        Suggestion.first({ :entry_id => entry_id, :entry_type => entry_type,
+        Suggestion.first({ :entry_id => suggestion_or_entry.id,
                            :rejected_at => nil, :accepted_at => nil,
                            :origin_id => nil, :user_id => self.user.id })
       end
