@@ -25,8 +25,7 @@ class UserSuggestion < Suggestion
   def accept!
     self.send_accept_notification_to_origin
 
-    self.accepted_at = Time.zone.now
-    self.save!
+    self.set(:accepted_at => Time.zone.now)
   end
 
   def delete!
@@ -34,8 +33,7 @@ class UserSuggestion < Suggestion
   end
 
   def reject!
-    self.rejected_at = Time.zone.now
-    self.save!
+    self.set(:rejected_at => Time.zone.now)
   end
 
   def send_notification
