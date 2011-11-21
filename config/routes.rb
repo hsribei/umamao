@@ -326,6 +326,11 @@ Shapado::Application.routes.draw do
     match '/' => 'url_invitations#show'
   end
 
+  # Signup via group invitation link.
+  scope :constraints => lambda { |request| request.params[:group_invitation] } do
+    match '/' => 'users#new'
+  end
+
   match '/vanity(/:action(/:id(.:format)))', :controller => :vanity, :as => :vanity
 
   match '/g' => 'search_results#show'
