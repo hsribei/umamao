@@ -79,6 +79,14 @@ class UsersController < ApplicationController
       @user.timezone = AppConfig.default_timezone
       @signin_index, @signup_index = [6, 1]
       session['sign_up_allowed'] = true
+      session['invitation_id'] = @invitation.try(:id) || @group_invitation.try(:slug)
+      session['invitation_type'] = if @invitation
+                                 "Invitation"
+                               elsif @group_invitation
+                                 "GroupInvitation"
+                               else
+                                 nil
+                               end
       render 'welcome/landing', :layout => 'welcome'
     else
       return redirect_to(root_path(:focus => "signup"))
