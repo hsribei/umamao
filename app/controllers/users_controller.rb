@@ -106,16 +106,6 @@ class UsersController < ApplicationController
 
     if invitation = Invitation.find_by_invitation_token(@user.invitation_token)
       tracking_properties[:invited_by] = invitation.sender.email
-
-      if m = invitation.recipient_email.match("^[a-z](\d{6})@dac.unicamp.br$")
-        unicamp = University.find_by_short_name('Unicamp')
-        affiliation = Affiliation.new(:user => @user,
-                                      :university => unicamp,
-                                      :email => invitation.recipient_email,
-                                      :confirmed_at => Time.now)
-        affiliation.save
-        @user.affiliation_token = affiliation.affiliation_token
-      end
     end
 
     debugger
@@ -141,46 +131,8 @@ class UsersController < ApplicationController
         tracking_properties[:invited_by] = @group_invitation.slug
       end
 
-      if @user.affiliation_token.present?
-        @affiliation = Affiliation.
-          find_by_affiliation_token(@user.affiliation_token)
-        @affiliation.confirmed_at ||= Time.now
-        @user.affiliations << @affiliation
-
-        # If student's code is known, link the affiliation to student model
-        code = @affiliation.email.match(/^[a-z](\d{6})@dac.unicamp.br$/)
-        if code
-          unicamp = University.find_by_short_name("Unicamp")
-          unless (student = Student.first(:code => code[1], :university_id => unicamp.id))
-            student = Student.new
-            student.code = code[1]
-            student.university = unicamp
-            student.name = @user.name
-            student.save
-          end
-          @affiliation.student = student
-          @affiliation.save
         end
-
-        if (student = @affiliation.student) && student.academic_program_class
-          @user.bio = "#{student.academic_program_class.academic_program.name} #{student.academic_program_class.year} #{student.university.short_name}"
-        else
-          @user.bio = @affiliation.university.short_name
         end
-
-        @user.save
-      end
-
-      # FIXME: this is temporary code only for the incoming Unicamp students.
-      # It should be removed after the occasion has passed.
-      if @group_invitation && (@group_invitation.slug == 'bixounicamp' || @group_invitation.slug == 'tci')
-        unicamp = University.find_by_short_name('Unicamp')
-        affiliation = Affiliation.new(:user => @user, :university => unicamp,
-                                      :confirmed_at => Time.now)
-        affiliation.save(:validate => false)
-        @user.affiliations << affiliation
-        @user.bio = affiliation.university.short_name + ' 2011'
-        @user.save
       end
 
       current_group.add_member(@user)
@@ -198,13 +150,6 @@ class UsersController < ApplicationController
         flash[:notice] = t("confirm", :scope => "users.create")
       end
 
-      # FIXME: temporary hack to allow as many users to signup as
-      # quick as possible on the same machine during an event
-      if @group_invitation && @group_invitation.slug == 'tci'
-        redirect_to '/tci'
-      else
-        sign_in_and_redirect(:user, @user) # !! now logged in
-      end
     else
       flash[:error]  = t("users.create.flash_error")
       render :action => 'new', :layout => 'welcome'
