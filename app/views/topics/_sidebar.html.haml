@@ -44,12 +44,12 @@
         - if @question_lists.size < @question_lists.total_entries
           = link_to t(".more"), question_lists_topic_path(topic), :class => "more"
 
-  -#- if topic.related_topics.any?
-  -#  #related-topics.block.related
-  -#    %h3.title
-  -#      = t('.related_topics')
-  -#    %ul.topic-list
-  -#      = render :partial => "related_topic_list", :locals => {:topic => topic}
+  - if topic.related_topics.any?
+    #related-topics.block.related
+      %h3.title
+        = t('.related_topics')
+      %ul.topic-list
+        = render :partial => "related_topic_list", :locals => {:topic => topic}
 
   - if link_to_main
     = link_to(local_assigns[:main_title] || t(".main"), topic_path(topic))
