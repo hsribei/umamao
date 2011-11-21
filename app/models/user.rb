@@ -144,6 +144,7 @@ class User
   after_create :create_suggestion_list
   after_create :create_contact_references
   after_create :associate_with_waiting_users
+  after_create :add_invitation_topics, :if => :invitation_token?
 
   scope :confirmed, where(:confirmed_at.ne => nil)
   scope :unconfirmed, where(:confirmed_at => nil)
@@ -1040,7 +1041,28 @@ Time.zone.now ? 1 : 0)
     UrlInvitation.first(:inviter_id => self.id, :active => true)
   end
 
+  def save_user_invitation(options={})
+    if ref = options[:url_invitation]
+      UrlInvitation.find_by_ref(params[:ref]).try(:add_invitee, self)
+    elsif slug = options[:group_invitation]
+      group_invitation = GroupInvitation.first(:slug => slug)
+      self.set(:confirmed_at => Time.now)
+      group_invitation.push(:user_ids => id)
+    end
+  end
+
+  def add_invitation_topics
+    invitation = Invitation.find_by_invitation_token(invitation_token)
+    if invitation && invitation.topics
+      invitation.topics.each do |topic|
+        topic.add_follower!(self)
+      end
+    end
+  end
+  handle_asynchronously :add_invitation_topics
+
   protected
+
   def password_required?
     (encrypted_password.blank? || !password.blank?)
   end
