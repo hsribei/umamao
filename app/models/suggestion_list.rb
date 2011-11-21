@@ -82,25 +82,21 @@ class SuggestionList
   # suggestion.
   def remove_suggestion(suggestion_or_entry)
     return if suggestion_or_entry.blank?
-    if suggestion_or_entry.is_a?(Suggestion)
-      suggestion = suggestion_or_entry
-      entry_type = suggestion.entry_type
-    else
-      entry_id = suggestion_or_entry.id
-      entry_type = suggestion_or_entry.class <= Topic ? "Topic" : "User"
-      suggestion = Suggestion.first(
-        :entry_id => entry_id, :entry_type => entry_type,
-        :rejected_at => nil, :accepted_at => nil,
-        :origin_id => nil, :user_id => self.user.id)
-    end
-    return if !suggestion
 
-    if entry_type.constantize < Topic
-      self.topic_suggestion_ids.delete(suggestion.id)
-    elsif entry_type == "User"
-      self.user_suggestion_ids.delete(suggestion.id)
+    suggestion =
+      if suggestion_or_entry.is_a?(Suggestion)
+        suggestion_or_entry
+      else
+        Suggestion.first({ :entry_id => suggestion_or_entry.id,
+                           :rejected_at => nil, :accepted_at => nil,
+                           :origin_id => nil, :user_id => self.user.id })
+      end
+
+    if suggestion
+      self.remove_from_suggestions!(suggestion.id, suggestion.entry_id)
+    else
+      self.remove_from_suggestions!(suggestion_or_entry.id)
     end
-    suggestion.reject!
   end
 
   # Mark something as uninteresting. Uninteresting users and topics
@@ -124,7 +120,7 @@ class SuggestionList
   def refuse_suggestion(suggestion)
     entry = suggestion.entry
     self.mark_as_uninteresting(entry)
-    self.remove_suggestion(suggestion)
+    suggestion.reject!
   end
 
   # Find suggestions from the user's external accounts.
@@ -211,6 +207,19 @@ class SuggestionList
                                                :entry_id => topic_count.first,
                                                :entry_type => "Topic",
                                                :reason => "calculated")
+    end
+  end
+
+  def remove_from_suggestions!(*ids)
+    ids.each do |an_id|
+      user.
+        collection.
+        update({ :_id =>  user.id },
+               { :$pull =>
+                   { 'suggestion_list.user_suggestion_ids' => an_id,
+                     'suggestion_list.topic_suggestion_ids' => an_id,
+                     'suggestion_list.uninteresting_user_ids' => an_id,
+                     'suggestion_list.uninteresting_topic_ids' => an_id } })
     end
   end
 

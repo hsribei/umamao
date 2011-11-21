@@ -1,6 +1,8 @@
 class Suggestion
   include MongoMapper::Document
 
+  before_destroy :propagate_destruction
+
   key :user_id, :required => true, :index => true
   belongs_to :user
 
@@ -16,5 +18,15 @@ class Suggestion
 
   def reject!
     self.destroy
+  end
+
+  def propagate_destruction(options = { :delayed => true })
+    if user
+      if options[:delayed]
+        user.delay.remove_suggestion(self)
+      else
+        user.remove_suggestion(self)
+      end
+    end
   end
 end
