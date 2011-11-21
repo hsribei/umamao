@@ -63,3 +63,8 @@
   -#
   -#= AppConfig.javascript['facebook']['sdk']
   = javascript_include_tag AppConfig.javascript['facebook']['share']
+
+- content_for :head do
+  %meta{ :name => 'request_ip', :content => request.ip }
+  %meta{ :name => 'user_id', :content => current_user.id }
+  %meta{ :name => 'user_name', :content => current_user.name }
