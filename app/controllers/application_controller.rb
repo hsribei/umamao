@@ -44,6 +44,10 @@ class ApplicationController < ActionController::Base
   # Options:
   # exclude_guests: don't track non-logged visitors _at all_.
   def identify_vanity(options = {})
+    if options[:inviter] && (url = UrlInvitation.first(:invitee_ids => current_user.id))
+      return url.inviter.id
+    end
+
     if identity = _vanity_identity
       identity.id
     elsif options[:exclude_guests]
