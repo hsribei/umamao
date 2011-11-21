@@ -36,6 +36,10 @@ class WelcomeController < ApplicationController
     @questions = Question.latest.limit(10) || [] if @news_items.empty?
     @getting_started = Answer.find_by_id("4d42bebf79de4f262d000e4b")
 
+    if %w[facebook twitter].include?(params[:shared_url_invitation])
+      track_event("shared_invitation_url_via_#{params[:shared_url_invitation]}".to_sym)
+    end
+
     set_tab :all, :welcome_home
     render 'home'
   end

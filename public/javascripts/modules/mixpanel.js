@@ -7,12 +7,12 @@ $(document).ready(function() {
   mpq.name_tag(user_name);
 
   $('#url_share #twitter').delegate('a', 'click', function() {
-    mpq.track('twitter_share_clicked', properties);
+    mpq.track('clicked_to_share_url_invitation_via_twitter', properties);
     mpq.track('any_action', properties);
   });
 
   $('#url_share #facebook').delegate('a', 'click', function() {
-    mpq.track('facebook_share_clicked', properties);
+    mpq.track('clicked_to_share_url_invitation_via_facebook', properties);
     mpq.track('any_action', properties);
   });
 });

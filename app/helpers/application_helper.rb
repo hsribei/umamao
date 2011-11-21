@@ -383,7 +383,7 @@ module ApplicationHelper
   def tweet_button(options)
     link_to('',
             url_for({ :host => 'twitter.com/share',
-                      :original_referer => root_url,
+                      :original_referer => options[:original_referer],
                       :source => :tweetbutton,
                       :text => options[:text],
                       :url => options[:url] }),
