@@ -43,6 +43,7 @@
     %p#invitation_only=t("welcome.landing.invitation_only")
     = image_tag("mamaopq.png", :id => "mamao_signup")
   - else
-    - content_for :optimizely do
-      ~ AppConfig.optimizely_code_snippet
+    - if should_track?
+      - content_for :optimizely do
+        ~ AppConfig.optimizely_code_snippet
     = render :partial => 'users/signup'
