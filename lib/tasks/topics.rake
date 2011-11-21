@@ -43,7 +43,7 @@ namespace :topics do
   task :check_and_fix_dependent_content => :environment do
     ['news_items', 'notifications', 'user_topic_info', 'question_versions'].
       each do |t|
-        Rake::Task["topics:check_and_fix:{t}"].invoke
+        Rake::Task["topics:check_and_fix:#{t}"].invoke
       end
   end
 
