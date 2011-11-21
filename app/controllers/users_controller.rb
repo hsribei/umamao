@@ -115,6 +115,7 @@ class UsersController < ApplicationController
     end
 
     if @user.save
+      sign_in @user
 
       if group_invitation = params[:group_invitation]
         @user.save_user_invitation(:group_invitation => group_invitation)
@@ -138,8 +139,6 @@ class UsersController < ApplicationController
       end
 
       current_group.add_member(@user)
-      track_event(:sign_up, {:user_id => @user.id,
-                    :confirmed => @user.confirmed?}.merge(tracking_properties))
       flash[:conversion] = true
 
       # Protects against session fixation attacks, causes request forgery
@@ -152,6 +151,10 @@ class UsersController < ApplicationController
         flash[:notice] = t("confirm", :scope => "users.create")
       end
 
+      #TODO ver para onde redirecionar
+      redirect(:user, @user) # !! now logged in
+      track_event(:sign_up, {:user_id => @user.id,
+                    :confirmed => @user.confirmed?}.merge(tracking_properties))
     else
       flash[:error]  = t("users.create.flash_error")
       render :action => 'new', :layout => 'welcome'
