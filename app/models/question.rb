@@ -175,6 +175,7 @@ class Question
   end
 
   def search_result_added!
+    on_activity
   end
 
   def answer_removed!
