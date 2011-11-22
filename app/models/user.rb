@@ -1027,7 +1027,8 @@ Time.zone.now ? 1 : 0)
                        :agrees_with_terms_of_service => true,
                        :name => user_info["name"],
                        :password => password,
-                       :password_confirmation => password)
+                       :password_confirmation => password,
+                       :invitation_token => auth_hash["invitation_token"])
 
     if user
       UserExternalAccount.create(auth_hash.merge(:user => user))
@@ -1043,8 +1044,10 @@ Time.zone.now ? 1 : 0)
 
   def save_user_invitation(options={})
     if ref = options[:url_invitation]
-      UrlInvitation.find_by_ref(params[:ref]).try(:add_invitee, self)
-    elsif slug = options[:group_invitation]
+      UrlInvitation.find_by_ref(ref).try(:add_invitee, self)
+    end
+
+    if (slug = options[:group_invitation]).present?
       group_invitation = GroupInvitation.first(:slug => slug)
       self.set(:confirmed_at => Time.now)
       group_invitation.push(:user_ids => id)
