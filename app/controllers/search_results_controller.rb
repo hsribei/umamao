@@ -69,7 +69,6 @@ class SearchResultsController < ApplicationController
       @search_result.user.update_reputation(:delete_search_result, current_group)
     end
     @search_result.destroy
-    @question.search_result_removed!
 
     respond_to do |format|
       format.html do
