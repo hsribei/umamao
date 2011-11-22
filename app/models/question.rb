@@ -578,6 +578,12 @@ class Question
     UserTopicInfo.question_removed!(self)
   end
 
+  def update_user_visit_info(user_id)
+    uqi = UserQuestionInfo.
+      find_or_create_by_user_id_and_question_id(user_id, self.id)
+    uqi.set(:last_visited_at => Time.zone.now)
+  end
+
   protected
   def delete_answers
     Answer.destroy_all(:question_id => self.id)
