@@ -323,6 +323,8 @@ module ApplicationHelper
     # characters, plus the 3-character '...' divider
     options = {:length => 63}.merge(options)
     half_length = (options[:length] - 3) / 2
+    scheme, _ = URI.split(url)
+    url = "http://#{url}" unless scheme
     uri = URI.parse(url)
     port = lambda { |uri| [80, 443].include?(uri.port) ? '' : ":#{uri.port}" }
     relevant_path = lambda do |uri|
