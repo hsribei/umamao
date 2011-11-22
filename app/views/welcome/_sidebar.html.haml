@@ -8,7 +8,9 @@
       .navigation
         = t(:title, :scope => [:url_invitations, :sidebar])
         #url_field_wrapper
-          = url_field_tag :ref, root_url(:ref => current_user.url_invitation.ref), :readonly => true, :class => :url_field
+          = url_field_tag(:ref,
+                          root_url(:ref => current_user.url_invitation.ref),
+                          { :readonly => true, :class => :url_field })
         #url_invitation_information
           %span.number
             = current_user.url_invitation.clicks_count
