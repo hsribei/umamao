@@ -24,14 +24,7 @@ class WelcomeController < ApplicationController
   end
 
   def home
-    ni_sr = ab_test(:news_items_search_results_helpers)
-    if ni_sr == :answer
-      options = {:news_update_entry_type => {:$ne => "SearchResult"}}
-    else
-      options = {:news_update_entry_type => {:$ne => "Answer"}}
-    end
-
-    @news_items = filter_news_items(options)
+    @news_items = filter_news_items(:news_update_entry_type => "Question")
 
     @questions = Question.latest.limit(10) || [] if @news_items.empty?
     @getting_started = Answer.find_by_id("4d42bebf79de4f262d000e4b")
