@@ -43,6 +43,8 @@ module Support::Search
 
     types = [:user, :question, :topic] & (options[:in] || [])
 
+    q = CGI.escape(q)
+
     # Decide whether to filter the result by type.
     if types.present? && types.length != 3
       q = "(#{q}) AND entry\\_type:(" +
@@ -53,7 +55,6 @@ module Support::Search
     per_page = options[:per_page] || 25
     start = (page - 1) * per_page
 
-    # TODO: escape the query
     query_path = "/solr/select?wt=json&q=#{q}&start=#{start}" +
       "&rows=#{per_page}"
 

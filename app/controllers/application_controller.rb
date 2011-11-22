@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
       if current_user.tracked?
         current_user
       else
-        set_vanity_cookie(Umamao::UntrackedUser.instance.id)
+        set_identity_cookie(Umamao::UntrackedUser.instance.id)
         Umamao::UntrackedUser.instance
       end
     end
@@ -43,18 +43,18 @@ class ApplicationController < ActionController::Base
   #
   # Options:
   # exclude_guests: don't track non-logged visitors _at all_.
-  def identify_vanity(options = {})
-    if options[:inviter] && (url = UrlInvitation.first(:invitee_ids => current_user.id))
-      return url.inviter.id
-    end
+  # inviter: track the user's inviter.
+  def identifier(options = {})
+    if (identity = _vanity_identity) && !options[:preserve_identity]
+      if options[:inviter] && (url = UrlInvitation.first(:invitee_ids => identity.id))
+        return url.inviter.id
+      end
 
-    if identity = _vanity_identity
       identity.id
     elsif options[:exclude_guests]
       Umamao::UntrackedUser.instance.id
     else
-      set_vanity_cookie(SecureRandom.hex(16)) unless cookies[:vanity_id]
-      cookies[:vanity_id]
+      obtain_identity_cookie
     end
   end
 
@@ -88,6 +88,22 @@ class ApplicationController < ActionController::Base
     track_event(:sign_up, {:user_id => user.id,
                 :confirmed => user.confirmed?}.merge(tracking_properties))
 
+  end
+
+  # If there's a logged user, should track according to User#tracked?,
+  # otherwise should track if the cookie is not that of an untracked user.
+  def should_track?
+    if logged_in?
+      current_user.tracked?
+    else
+      obtain_identity_cookie != Umamao::UntrackedUser.instance.id
+    end
+  end
+  helper_method :should_track?
+
+  def obtain_identity_cookie
+    set_identity_cookie(SecureRandom.hex(16)) unless cookies[:identity]
+    cookies[:identity]
   end
 
   protected
@@ -388,9 +404,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_vanity_cookie(value)
-    unless cookies[:vanity_id] == value
-      cookies[:vanity_id] = { :value => value, :expires => Time.now + 10.years }
-    end
+  def set_identity_cookie(value)
+    cookies[:identity] = { :value => value, :expires => Time.now + 2.weeks }
   end
 end

@@ -10,3 +10,9 @@ pt-BR:
       left: sobrando
       sign_ups: registros
       title: Compartilhe esse link para convidar pessoas
+    share:
+      facebook:
+        description: "Ache tudo o que precisar com uma ajudinha dos seus amigos."
+        name: "Junte-se a mim no Umamao!"
+      twitter:
+        text: "Junte-se a mim no Umamao e ache tudo o que precisar com uma ajudinha dos seus amigos."

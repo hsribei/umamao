@@ -392,10 +392,7 @@ class Topic
   def remove_from_suggestions
     Suggestion.query(:entry_id => self.id,
                      :entry_type => "Topic").each do |suggestion|
-      if suggestion.user.present?
-        suggestion.user.remove_suggestion(suggestion)
-        suggestion.user.save
-      end
+      suggestion.reject!
     end
 
     # TODO: We should replace this with a better query, but this would
@@ -403,8 +400,7 @@ class Topic
     # an issue since topics are rarely deleted.
     User.query(:select => :suggestion_list).each do |user|
       if user.suggestion_list
-        user.suggestion_list.uninteresting_topic_ids.delete(self.id)
-        user.save
+        user.remove_from_suggestions!(self.id)
       end
     end
   end

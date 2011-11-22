@@ -1,3 +1,7 @@
+- if current_user.blank?
+  - content_for :hellobar do
+    ~ AppConfig.hellobar_code_snippet
+
 #topic
   = render :partial => "common", :locals => {:topic => @topic, :students => @students_course}
 

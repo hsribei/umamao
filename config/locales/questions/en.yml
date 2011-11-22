@@ -28,7 +28,7 @@ en:
       questions: Questions
   questions:
     answer:
-      add_comment: Add comment...
+      add_comment: Add comment
       flag: Flag
       pick_answer: Pick as solution
       share_new_answer: Share your answer with others!
@@ -80,7 +80,7 @@ en:
       success: Question moved to %{group}
     new:
       add_details: Add details
-      ask: Post Your Question
+      ask: Post As New Question
       how_to_ask: How to ask
       title: Ask Question
     question:
