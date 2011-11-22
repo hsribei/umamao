@@ -94,7 +94,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    tracking_properties = {}
     @user = User.new
     @user.safe_update(%w[login email name password_confirmation password
                          preferred_languages website language timezone
@@ -110,33 +109,14 @@ class UsersController < ApplicationController
 
     @user.confirmed_at = Time.now if @group_invitation
 
-    if invitation = Invitation.find_by_invitation_token(@user.invitation_token)
-      tracking_properties[:invited_by] = invitation.sender.email
-    end
-
     if @user.save
       sign_in @user
 
-      if group_invitation = params[:group_invitation]
-        @user.save_user_invitation(:group_invitation => group_invitation)
-        tracking_properties[:invited_by] = group_invitation
-      end
-
-      if @url_invitation = UrlInvitation.find_by_ref(params[:ref])
-        tracking_properties[:invited_by] = @url_invitation.inviter.id
-        @user.save_user_invitation(:url_invitation = params[:ref])
-        track_bingo(:signed_up_action)
-
-        # Do not track for all UrlInvitations because we are tracking
-        # if the user has invited more people
-        if @url_invitation.active?
-          track_bingo(:converted_invitation)
-          UrlInvitation.generate(@url_invitation.inviter)
-        end
-        if ab_test(:email_converted_invitation)
-          Notifier.delay.converted_invitation(@url_invitation.inviter, @user)
-        end
-      end
+      group_invitation = params[:group_invitation]
+      url_invitation = params[:ref]
+      @user.save_user_invitation(:url_invitation => url_invitation,
+                                 :group_invitation => group_invitation)
+      handle_signup_track(@user, url_invitation, group_invitation)
 
       current_group.add_member(@user)
       flash[:conversion] = true
@@ -151,10 +131,7 @@ class UsersController < ApplicationController
         flash[:notice] = t("confirm", :scope => "users.create")
       end
 
-      #TODO ver para onde redirecionar
-      redirect(:user, @user) # !! now logged in
-      track_event(:sign_up, {:user_id => @user.id,
-                    :confirmed => @user.confirmed?}.merge(tracking_properties))
+      redirect_to wizard_path("connect")
     else
       flash[:error]  = t("users.create.flash_error")
       render :action => 'new', :layout => 'welcome'
