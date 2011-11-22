@@ -310,12 +310,12 @@ $(document).ready(function() {
     $('.loader').show();
   });
 
-  $('.inline_comment .comment_text_area').focus(function() {
+  $('.inline_comment .comment_text_area').live('focus', function() {
     $(this).addClass('focussed');
     $(this).closest(".group").find(".navform.hidden").show();
   });
 
-  $('.inline_comment .comment_text_area').blur(function() {
+  $('.inline_comment .comment_text_area').live('blur', function() {
     if(this.value == ""){
       $(this).removeClass('focussed');
       $(this).closest(".group").find(".navform.hidden").hide();
