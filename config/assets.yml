@@ -65,6 +65,8 @@ javascripts:
     - public/javascripts/modules/request_answer.js
   print:
     - public/javascripts/modules/print.js
+  mixpanel:
+    - public/javascripts/modules/mixpanel.js
 
 stylesheets:
   base:

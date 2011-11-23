@@ -66,8 +66,8 @@ class Answer < Comment
   end
 
   def summary
-    truncate(markdown2txt(body).
-               slice((title(:truncated => true).size - 3)..-1).
+    truncate(markdown2txt(body).mb_chars.
+               slice((title(:truncated => true).mb_chars.size - 3)..-1).
                to_s.
                insert(0, '… '),
              :length => SearchResult::SUMMARY_SIZE,

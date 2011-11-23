@@ -10,3 +10,9 @@ en:
       left: left
       sign_ups: sign ups
       title: Share this link to invite people
+    share:
+      facebook:
+        description: "Find whatever you need with a little help from your friends."
+        name: "Join me on Umamao!"
+      twitter:
+        text: Join me on Umamao and find whatever you need with a little help from your friends
