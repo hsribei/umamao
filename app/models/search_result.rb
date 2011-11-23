@@ -50,7 +50,7 @@ class SearchResult
                    :unless => :summary_present?,
                    :if => [:response_body_present?, :response_body_text?]
 
-  after_create :create_news_update
+  after_create :create_news_update, :increment_user_topic_answers_count
   after_create :notify_watchers, :unless => :has_answer?
 
   before_destroy  :unhide_news_update
@@ -60,6 +60,10 @@ class SearchResult
 
   validates_presence_of :url
   validates_uniqueness_of(:url, :scope => :question_id)
+
+  def increment_user_topic_answers_count
+    UserTopicInfo.answer_added!(self)
+  end
 
   def topics
     question.topics

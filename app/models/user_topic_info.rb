@@ -81,11 +81,11 @@ class UserTopicInfo
     end
   end
 
-  def self.answer_added!(answer)
-    return if answer.question.nil?
+  def self.answer_added!(answer_or_search_result)
+    return if answer_or_search_result.question.nil?
 
-    answer.question.topics.each do |topic|
-      update_answer_topic(answer.user, topic)
+    answer_or_search_result.question.topics.each do |topic|
+      update_answer_topic(answer_or_search_result.user, topic)
     end
   end
 
