@@ -12,7 +12,7 @@
             = link_to(truncate(h(short_name(current_user)), :length => 16),
                       user_path(current_user))
         .question_followers_count
-          = @user.question_followers_count
+          = current_user.question_followers_count
     %ul.hidden-menu
       %li.menu-item
         = link_to t("layouts.application.profile"), user_path(current_user)
