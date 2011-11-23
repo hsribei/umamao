@@ -1,27 +1,52 @@
 =down-arrow
-  position: relative
-  top: -12px
   font-size: 0
   line-height: 0%
-  width: 0
   border-top: 5px solid gray
   border-left: 5px solid transparent
   border-right: 5px solid transparent
 
 
 #other-actions
-  .actions-header
-    .down-arrow
-      +down-arrow
-    .user-name
-      width: 0px
-      display: inline
-      padding-right: 5px
-      padding-left: 6px
-      position: relative
-      bottom: 10px
-      &:hover
-        text-decoration: underline
+  float: left
+  height: 100%
+  width: 100%
+
+  #actions_header
+    float: left
+    height: 100%
+    width: 100%
+
+    .user_info
+      float: right
+      height: 100%
+
+      .user_title
+        float: left
+
+      .arrow
+        float: left
+        height: 100%
+        margin-right: 3px
+
+      .down-arrow
+        +down-arrow
+
+      .user_name
+        float: right
+
+        &:hover
+          text-decoration: underline
+
+      .question_followers_count
+        float: right
+        clear: both
+        font-weight: bold
+
+    .user-avatar
+      float: right
+      height: 100%
+      margin-left: 10px
+
   ul
     list-style: none
     font-weight: bold
