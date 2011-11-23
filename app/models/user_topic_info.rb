@@ -27,12 +27,13 @@ class UserTopicInfo
 
   def follow
     self.unignore
-    self.followed_at ||= Time.now
+    self.followed_at ||= Time.zone.now
   end
 
   def follow!
-    self.follow
-    self.save!
+    self.unignore!
+    self.set(:followed_at => Time.zone.now) unless self.followed?
+    self.reload
   end
 
   def unfollow
@@ -40,8 +41,8 @@ class UserTopicInfo
   end
 
   def unfollow!
-    self.unfollow
-    self.save!
+    self.set(:followed_at => nil)
+    self.reload
   end
 
   def ignored?
@@ -50,12 +51,13 @@ class UserTopicInfo
 
   def ignore
     self.unfollow
-    self.ignored_at ||= Time.now
+    self.ignored_at ||= Time.zone.now
   end
 
   def ignore!
-    self.ignore
-    self.save!
+    self.unfollow!
+    self.set(:ignored_at => Time.zone.now) unless self.ignored?
+    self.reload
   end
 
   def unignore
@@ -63,8 +65,8 @@ class UserTopicInfo
   end
 
   def unignore!
-    self.unignore
-    self.save!
+    self.set(:ignored_at => nil)
+    self.reload
   end
 
   def self.question_added!(question)
@@ -94,10 +96,7 @@ class UserTopicInfo
   end
 
   def self.reset_answers_count!
-    self.find_each do |user_topic|
-      user_topic.answers_count = 0
-      user_topic.save
-    end
+    self.set({}, :answers_count => 0)
   end
 
   def self.vote_added!(answer, vote)
@@ -121,10 +120,7 @@ class UserTopicInfo
   end
 
   def self.reset_votes_balance!
-    self.find_each do |user_topic|
-      user_topic.votes_balance = 0
-      user_topic.save
-    end
+    self.set({}, :votes_balance => 0)
   end
 
   def self.question_classified!(question, topic)
@@ -169,8 +165,7 @@ class UserTopicInfo
     user_topic = UserTopicInfo.first(:topic_id => topic.id,
                                      :user_id => user.id)
     if user_topic
-      user_topic.questions_count += increment
-      user_topic.save
+      user_topic.increment(:questions_count => increment)
     else
       increment = [increment, 0].max
       UserTopicInfo.create(:topic_id => topic.id, :user_id => user.id,
@@ -182,8 +177,7 @@ class UserTopicInfo
     user_topic = UserTopicInfo.first(:topic_id => topic.id,
                                      :user_id => user.id)
     if user_topic
-      user_topic.answers_count += increment
-      user_topic.save
+      user_topic.increment(:answers_count => increment)
     else
       increment = [increment, 0].max
       UserTopicInfo.create(:topic_id => topic.id, :user_id => user.id,
@@ -196,8 +190,7 @@ class UserTopicInfo
                                      :user_id => user.id)
 
     if user_topic
-      user_topic.votes_balance += increment
-      user_topic.save
+      user_topic.increment(:votes_balance => increment)
     else
       UserTopicInfo.create(
         :topic_id => topic.id, :user_id => user.id, :votes_balance => increment)
@@ -209,8 +202,8 @@ class UserTopicInfo
                                      :user_id => user.id)
 
     if user_topic
-      user_topic.votes_balance = vote
-      user_topic.save
+      user_topic.set(:votes_balance => vote)
+      user_topic.reload
     else
       UserTopicInfo.create(
         :topic_id => topic.id, :user_id => user.id, :votes_balance => vote)
