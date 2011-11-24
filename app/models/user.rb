@@ -1065,6 +1065,15 @@ Time.zone.now ? 1 : 0)
   end
   handle_asynchronously :add_invitation_topics
 
+  def question_followers_count
+    # Possible TODO: drop to the mongo driver if this becomes a performance
+    # bottleneck.
+    @question_followers_count ||=
+      questions.inject(0) do |count, question|
+        count += question.watchers.reject { |watcher_id| watcher_id == id }.count
+      end
+  end
+
   protected
 
   def password_required?

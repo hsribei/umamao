@@ -135,7 +135,8 @@ en:
         questions: Questions
         search_results: Links
       title: User %{user}
-      upvotes_count: "Total upvotes received: %{upvotes_count}"
+      upvotes_count: Upvotes received
+      question_followers_count: Question followers
       views: views
     signup:
       sign_up_with_facebook: Sign up with Facebook

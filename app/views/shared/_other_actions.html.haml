@@ -1,10 +1,18 @@
 #other-actions
   - if logged_in?
-    .actions-header
-      %span
-        = link_to "", "#", :class => "down-arrow"
-      = link_to(truncate(h(short_name(current_user)), :length => 16), user_path(current_user), :class => "user-name")
-      = link_to(avatar_for(current_user, :size => 32).html_safe, user_path(current_user), :class => "user-avatar")
+    #actions_header
+      .user-avatar
+        = link_to(avatar_for(current_user, :size => 32).html_safe,
+                  user_path(current_user))
+      .user_info
+        .user_title
+          .arrow
+            = link_to(nil, '#', :class => 'down-arrow')
+          .user_name
+            = link_to(truncate(h(short_name(current_user)), :length => 16),
+                      user_path(current_user))
+        .question_followers_count
+          = current_user.question_followers_count
     %ul.hidden-menu
       %li.menu-item
         = link_to t("layouts.application.profile"), user_path(current_user)

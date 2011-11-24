@@ -38,5 +38,14 @@
           = markdown(@user.description)
     -else
       = markdown(@user.description)
-    .upvotes_count
-      = t('users.show.upvotes_count', :upvotes_count => @user.upvotes_count)
+    #user_stats
+      #question_followers_count.stat
+        %span{ :class => :count }
+          = @user.question_followers_count
+        %span{ :class => :text }
+          = t(:question_followers_count, :scope => [:users, :show])
+      #upvotes_count.stat
+        %span{ :class => :count }
+          = @user.upvotes_count
+        %span{ :class => :text }
+          = t(:upvotes_count, :scope => [:users, :show])
