@@ -130,8 +130,9 @@ pt-BR:
         as permissões necessárias para permitir essa ação. Clique em\n\
         \"Conectar\" para habilitá-las.\n"
       question_views:
-        one: Esta pergunta foi visualizada 1 vez
-        other: Esta pergunta foi visualizada %{count} vezes
+        one: visualizada 1 vez
+        other: visualizada %{count} vezes
+      creation_time: "Esta pergunta foi criada %{time_ago} atrás,"
       related_questions: Perguntas relacionadas
       request_answer: "Pedir para alguém responder"
       request_closing: Pedir para fechar

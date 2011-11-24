@@ -431,5 +431,9 @@ module ApplicationHelper
               :style => 'text-decoration: none;')
     end
   end
+
+  def span_tag(content, options = {})
+    "<span #{options.map { |h| "#{h.first}=\"#{h.last}\"" }.join(' ')}>#{content}</span>"
+  end
 end
 
