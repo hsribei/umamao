@@ -74,10 +74,20 @@ class AuthCallbackController < ApplicationController
       end
     else
       if session['sign_up_allowed']
+        if session['invitation_type'] == 'Invitation'
+          invitation_token = session['invitation_id']
+          auth_hash['invitation_token'] = invitation_token
+        end
+
         if user = User.create_with_provider(auth_hash)
-          track_bingo(:signed_up_action)
+          invitation_type = session['invitation_type']
+          ref = session['invitation_id'] if invitation_type == "UrlInvitation"
+          slug = session["invitation_id"] if invitation_type == "GroupInvitation"
+          user.save_user_invitation(:url_invitation => ref,
+                                   :group_invitation => slug)
 
           sign_in user
+          handle_signup_track(user, ref, slug)
           redirect_to wizard_path("follow")
         else
           head(:unprocessable_entity)

@@ -7,7 +7,8 @@
     - title = search_result.title
     - if title.blank? || title == search_result.url
       - title = shorten_url(search_result.url, :length => 45)
-    = link_to(title, trackable_search_result_url(search_result, Umamao::PAGE_MAPPING['questions#show']))
+    = link_to(title, trackable_search_result_url(search_result, Umamao::PAGE_MAPPING['questions#show']),
+      :target => "_blank")
   .url
     %p
       = shorten_url(search_result.url)

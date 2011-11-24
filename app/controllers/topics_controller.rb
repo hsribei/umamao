@@ -129,6 +129,8 @@ class TopicsController < ApplicationController
     followers_count = @topic.followers_count + 1
     @topic.add_follower!(user)
     user.remove_suggestion(@topic)
+    # After removing the suggestion the current user object is not correct
+    user.reload
     user.populate_news_feed!(@topic)
     user.save!
 

@@ -175,15 +175,10 @@ class Question
   end
 
   def search_result_added!
-    collection.update({ :_id => _id },
-                      { :$inc => { :search_results_count => 1 } },
-                      :upsert => true)
-  end
-
-  def search_result_removed!
-    collection.update({ :_id => _id },
-                      { :$inc => { :search_results_count => -1 } },
-                      :upsert => true)
+    on_activity
+    self.reload
+    NewsItem.delay.set({:news_update_id => self.news_update.id},
+                       :entry_activity_at => self.activity_at)
   end
 
   def answer_removed!
@@ -584,6 +579,12 @@ class Question
 
   def decrement_user_topic_questions_count
     UserTopicInfo.question_removed!(self)
+  end
+
+  def update_user_visit_info(user_id)
+    uqi = UserQuestionInfo.
+      find_or_create_by_user_id_and_question_id(user_id, self.id)
+    uqi.set(:last_visited_at => Time.zone.now)
   end
 
   def topic_followers_count

@@ -3,6 +3,9 @@ class CommentsController < ApplicationController
   before_filter :find_scope
   before_filter :check_permissions, :except => [:create]
 
+  # We need ApplicationHelper#markdown.
+  include ApplicationHelper
+
   def create
     track_bingo(:commented)
 
@@ -114,11 +117,9 @@ class CommentsController < ApplicationController
           render :json => @comment.to_json, :status => :ok
         end
         format.js do
-          render :json => {
-            :message => notice,
-            :success => true,
-            :body => @comment.body
-          }
+          render(:json => { :success => true,
+                            :message => notice,
+                            :body => markdown(@comment.body) } )
         end
       else
         error = @comment.errors.full_messages.join(", ")
