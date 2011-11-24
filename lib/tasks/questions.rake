@@ -4,6 +4,7 @@ namespace :questions do
     Question.find_each do |q|
       last_updated_at = q.search_results.map(&:created_at).max || q.created_at
       q.set(:activity_at => last_updated_at)
+      print '.'
     end
   end
 end
