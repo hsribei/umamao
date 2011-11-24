@@ -115,7 +115,7 @@ class UserTopicInfo
     return if answer.question.nil?
 
     answer.question.topics.each do |topic|
-      self.update_votes_balance(answer.user, topic, answer.votes_average)
+      self.increment_votes_balance(answer.user, topic, answer.votes_average)
     end
   end
 
