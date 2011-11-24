@@ -170,4 +170,15 @@ class Notifier < ActionMailer::Base
     mail(:to => user.email,
          :subject => t(:subject, :scope => [:notifier, :survey]))
   end
+
+  def converted_invitation(user, invited_user)
+    @user = user
+    @invited_user = invited_user
+    @invited_user_link = user_url(@invited_user)
+
+    subject = I18n.t("mailers.notifications.invitation_converted.subject")
+
+    mail(:to => @user.email, :subject => subject)
+  end
+
 end

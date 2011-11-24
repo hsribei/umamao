@@ -8,6 +8,7 @@ module Support
     POSSIBLE_FETCH_ERRORS = [Errno::ECONNREFUSED,
                              Errno::ECONNRESET,
                              Errno::ETIMEDOUT,
+                             Errno::EHOSTUNREACH,
                              Net::HTTPServerException,
                              Net::HTTPBadResponse,
                              Net::HTTPFatalError,

@@ -43,14 +43,51 @@ class ApplicationController < ActionController::Base
   #
   # Options:
   # exclude_guests: don't track non-logged visitors _at all_.
+  # inviter: track the user's inviter.
   def identifier(options = {})
     if (identity = _vanity_identity) && !options[:preserve_identity]
+      if options[:inviter] && (url = UrlInvitation.first(:invitee_ids => identity.id))
+        return url.inviter.id
+      end
+
       identity.id
     elsif options[:exclude_guests]
       Umamao::UntrackedUser.instance.id
     else
       obtain_identity_cookie
     end
+  end
+
+  # This method tracks the information for signup. It is used in users#create
+  # and auth_callback#signup_with_provider
+  def handle_signup_track(user, url_invitation, group_invitation)
+    tracking_properties = {}
+
+    if invitation = Invitation.find_by_invitation_token(user.invitation_token)
+      tracking_properties[:invited_by] = invitation.sender.email
+    end
+
+    if group_invitation
+      tracking_properties[:invited_by] = group_invitation
+    end
+
+    if url_invitation = UrlInvitation.find_by_ref(url_invitation)
+      tracking_properties[:invited_by] = url_invitation.inviter.id
+
+      # Do not track for all UrlInvitations because we are tracking
+      # if the user has invited more people
+      if url_invitation.active?
+        track_bingo(:converted_invitation)
+        UrlInvitation.generate(url_invitation.inviter)
+      end
+      if ab_test(:email_converted_invitation)
+        Notifier.delay.converted_invitation(url_invitation.inviter, user)
+      end
+    end
+    track_bingo(:signed_up_action)
+    track_event(:sign_up, {:user_id => user.id,
+                :confirmed => user.confirmed?}.merge(tracking_properties))
+
   end
 
   # If there's a logged user, should track according to User#tracked?,

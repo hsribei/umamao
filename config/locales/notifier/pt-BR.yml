@@ -28,6 +28,12 @@ pt-BR:
       signature: "Abraço,\n\
         Equipe Umamão\n"
       user_page: perfil
+    invitation_converted:
+      message_html: |
+        "%{user} acabou de aceitar seu convite para se cadastrar no Umamao.  Visite o <a href='%{profile_link}'>perfil de %{first_name}</a> no Umamao para segui-lo(a) e sugerir tópicos. Muitíssimo obrigado por ajudar no boca-a-boca,  :)"
+        Para ir até o perfil de %{first_name} acesse %{profile_link}
+      message: |
+      subject: %{name} aceitou seu convite para conhecer o Umamao
     new_answer:
       author: "%{user} respondeu:"
       link_label: "Para ver a resposta, visite o link:"
