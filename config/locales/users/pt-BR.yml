@@ -134,7 +134,8 @@ pt-BR:
         questions: Perguntas
         search_results: Links
       title: "%{user}"
-      upvotes_count: "Total de votos positivo recebidos: %{upvotes_count}"
+      upvotes_count: Votos recebidos
+      question_followers_count: Seguidores de questão
       views: visitas
     signup:
       sign_up_with_facebook: Cadastrar-se com o Facebook

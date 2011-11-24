@@ -176,6 +176,8 @@ class QuestionsController < ApplicationController
 
     @bing_response = Support::Bing.search(@question.title)
 
+    @question.update_user_visit_info(current_user.id)
+
     respond_to do |format|
       format.html
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }

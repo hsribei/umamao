@@ -62,15 +62,13 @@ class Notifier < ActionMailer::Base
     @question = @search_result.question
 
     subject = if user == search_result.question.user
-                I18n.t('subject_owner',
+                I18n.t(:subject_owner,
                        :scope => [:mailers, :notifications, :new_search_result],
-                       :title => search_result.question.title,
-                       :name => search_result.user.name)
+                       :title => search_result.question.title)
               else
-                I18n.t('subject_other',
+                I18n.t(:subject_other,
                        :scope => [:mailers, :notifications, :new_search_result],
-                       :title => search_result.question.title,
-                       :name => search_result.user.name)
+                       :title => search_result.question.title)
               end
 
     mail(:to => user.email, :subject => subject)
@@ -170,4 +168,15 @@ class Notifier < ActionMailer::Base
     mail(:to => user.email,
          :subject => t(:subject, :scope => [:notifier, :survey]))
   end
+
+  def converted_invitation(user, invited_user)
+    @user = user
+    @invited_user = invited_user
+    @invited_user_link = user_url(@invited_user)
+
+    subject = I18n.t("mailers.notifications.invitation_converted.subject")
+
+    mail(:to => @user.email, :subject => subject)
+  end
+
 end

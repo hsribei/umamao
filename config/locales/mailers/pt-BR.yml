@@ -10,6 +10,8 @@ pt-BR:
       give_advice:
         friend_subject: "Precisamos da sua ajuda em: %{question_title}"
         subject: "Precisamos da sua ajuda em: %{question_title}"
+      invitation_converted:
+        subject: "Alguém que você convidou acabou de se cadastrar!"
       new_answer:
         subject_friend: "%{name} respondeu à pergunta \"%{title}\""
         subject_other: "%{name} respondeu à pergunta \"%{title}\""
@@ -19,8 +21,8 @@ pt-BR:
       new_question:
         subject: "Nova pergunta no tópico %{topic}"
       new_search_result:
-        subject_other: "%{name} postou um link na pergunta \"%{title}\""
-        subject_owner: "%{name} postou um link na sua pergunta \"%{title}\""
+        subject_other: "Novo link na pergunta \"%{title}\""
+        subject_owner: "Novo link na sua pergunta \"%{title}\""
       new_user_suggestion: "%{origin} sugeriu que você seguisse o tópico %{entry}"
       report:
         subject: "Relatório do %{app}"

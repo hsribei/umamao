@@ -16,7 +16,7 @@
           :commentable => commentable,
           :path_scope => path_scope, :inline => true}
     - else
-      %p= t("comments.shared.not_logged", :link => new_user_session_path) 
+      %p= t("comments.shared.not_logged", :link => root_path) 
   - else
     = render :partial => "comments/comment", :object => comments[0], :locals => {:source => source, :mini => true}
     - comments = comments[1 .. comments.count]

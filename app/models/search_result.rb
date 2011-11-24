@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class SearchResult
   TITLE_SIZE        = 100
   SUMMARY_SIZE      = 250
@@ -52,6 +53,7 @@ class SearchResult
 
   after_create :create_news_update
   after_create :notify_watchers, :unless => :has_answer?
+  after_create Proc.new { |sr| sr.question.search_result_added! }
 
   before_destroy  :unhide_news_update
 

@@ -40,4 +40,20 @@ namespace :news_items do
     end
     puts i
   end
+
+  desc 'Update entry_activity_at field on news_items of question'
+  task :update_entry_activity_at => :environment do
+    activity_at_hash = {}
+    NewsUpdate.find_each(:entry_type => "Question") do |nu|
+      activity_at_hash[nu.id] = nu.entry.activity_at
+    end
+    NewsItem.find_each(:batch_size => 1_000,
+                       :news_update_entry_type => "Question") do |ni|
+      print '.'
+      ni.set(:entry_activity_at => activity_at_hash[ni.news_update_id])
+    end
+    print "\nTotal news items of questions without entry_activity_at: "
+    puts NewsItem.count(:news_update_entry_type => 'Question',
+                        :entry_activity_at => nil)
+  end
 end

@@ -133,12 +133,17 @@
     .requested_users
       = render :partial => "requested_users", :locals => {:question => @question}
 
-
   .question-stats
     %h3= t("questions.show.stats")
     .audience-size
-      = t('.question_views',
-          :count => @question.views_count)
-      = t('.topic_followers',
-          :count => @question.topics.map(&:followers_count).inject(0) {|sum, count| sum + count})
+      = t(:creation_time,
+          :time_ago => span_tag(time_ago_in_words(@question.created_at),
+                                :class => :number),
+          :scope => [:questions, :show])
+      = t(:question_views,
+          :count => span_tag(@question.views_count, :class => :number),
+          :scope => [:questions, :show])
+      = t(:topic_followers,
+          :count => span_tag(@question.topic_followers_count, :class => :number),
+          :scope => [:questions, :show])
     = render_cell :users, :followers, :followed => @question

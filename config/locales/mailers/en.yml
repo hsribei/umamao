@@ -10,6 +10,8 @@ en:
       give_advice:
         friend_subject: "Your friend needs help: %{question_title}"
         subject: "We need your advice: %{question_title}"
+      invitation_converted:
+        subject: Someone you invited just signed up!
       new_answer:
         subject_friend: Your friend %{name} answered the question %{title}
         subject_other: "%{name} answered the question %{title}"
@@ -19,8 +21,8 @@ en:
       new_question:
         subject: New question on topic %{topic}
       new_search_result:
-        subject_other: "%{name} posted a link on the question \"%{title}\""
-        subject_owner: "%{name} posted a link on your question \"%{title}\""
+        subject_other: "New link on question \"%{title}\""
+        subject_owner: "New link on your question \"%{title}\""
       new_user_suggestion: "%{origin} suggested that you follow the topic %{entry}"
       report:
         subject: Report for the group %{group} of %{app}
