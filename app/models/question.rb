@@ -176,6 +176,9 @@ class Question
 
   def search_result_added!
     on_activity
+    self.reload
+    NewsItem.delay.set({:news_update_id => self.news_update.id},
+                       :entry_activity_at => self.activity_at)
   end
 
   def answer_removed!
