@@ -4,7 +4,8 @@
       .navigation= link_to t(".admin"), manage_properties_path
     - if current_user.mod_of?(current_group)
       .navigation= link_to t(".moderate"), moderate_path
-    - if current_user.url_invitation
+    - url_invitation = current_user.url_invitation
+    - if url_invitation
       .navigation
         = t(:title, :scope => [:url_invitations, :sidebar])
         #url_share
@@ -13,7 +14,7 @@
                                       :scope => [:url_invitations,
                                                  :share,
                                                  :twitter]),
-                           :url => root_url(:ref => current_user.url_invitation.ref),
+                           :url => root_url(:ref => url_invitation.ref),
                            :original_referer => root_url(:shared_url_invitation => :twitter))
           #facebook
             = facebook_button(:action => :feed,
@@ -26,21 +27,21 @@
                                                     :share,
                                                     :facebook]),
                               :redirect_uri => root_url(:shared_url_invitation => :facebook),
-                              :url => root_url(:ref => current_user.url_invitation.ref))
+                              :url => root_url(:ref => url_invitation.ref))
         #url_field_wrapper
           = url_field_tag(:ref,
-                          root_url(:ref => current_user.url_invitation.ref),
+                          root_url(:ref => url_invitation.ref),
                           :readonly => true,
                           :class => :url_field)
         #url_invitation_information
           %span.number
-            = current_user.url_invitation.clicks_count
+            = url_invitation.clicks_count
           = "#{t(:clicks, :scope => [:url_invitations, :sidebar])},"
           %span.number
-            = current_user.url_invitation.sign_ups_count
+            = url_invitation.sign_ups_count
           = "#{t(:sign_ups, :scope => [:url_invitations, :sidebar])},"
           %span.number
-            = current_user.url_invitation.invites_left
+            = url_invitation.invites_left
           = t(:left, :scope => [:url_invitations, :sidebar])
 
   -# Topic suggestions

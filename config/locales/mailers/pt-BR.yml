@@ -10,6 +10,8 @@ pt-BR:
       give_advice:
         friend_subject: "Precisamos da sua ajuda em: %{question_title}"
         subject: "Precisamos da sua ajuda em: %{question_title}"
+      invitation_converted:
+        subject: "Alguém que você convidou acabou de se cadastrar!"
       new_answer:
         subject_friend: "%{name} respondeu à pergunta \"%{title}\""
         subject_other: "%{name} respondeu à pergunta \"%{title}\""

@@ -7,6 +7,8 @@ class UrlInvitation
   key :sign_ups_count, Integer, :default => 0
   key :ref, String, :unique => true, :required => true, :length => 4
 
+  key :active, Boolean, :default => true
+
   key :invitee_ids, Array
   many :invitees, :in => :invitee_ids, :class_name => 'User'
 
@@ -19,6 +21,7 @@ class UrlInvitation
 
   def self.generate(user)
     begin ref = SecureRandom.hex(2); end while find_by_ref(ref)
+    UrlInvitation.set({:inviter_id => user.id}, {:active => false})
     UrlInvitation.create(:inviter => user, :ref => ref)
   end
 
