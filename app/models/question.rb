@@ -586,6 +586,10 @@ class Question
     UserTopicInfo.question_removed!(self)
   end
 
+  def topic_followers_count
+    @topic_followers_count ||= topics.map(&:followers_count).inject(0, :+)
+  end
+
   protected
   def delete_answers
     Answer.destroy_all(:question_id => self.id)

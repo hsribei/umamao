@@ -123,9 +123,10 @@ en:
         message: Click "Connect" below to start sharing on your %{site} account.
         title: Connect your account
       needs_permission: Apparently, your account on %{site} is not connected with the necessary permissions to allow this action. Click "Connect" to enable them.
+      creation_time: "This question was created %{time_ago} ago,"
       question_views:
-        one: This question has been viewed 1 time
-        other: This question has been viewed %{count} times
+        one: viewed 1 time
+        other: viewed %{count} times
       related_questions: Related questions
       request_answer: Invite to Answer
       request_closing: Request closing
@@ -139,8 +140,8 @@ en:
       title: Answer with
       to_answer_question: to answer this question
       topic_followers:
-        one: and its topics are followed by 1 person.
-        other: and its topics are followed by %{count} people.
+        one: "and its topics are followed by 1 person."
+        other: "and its topics are followed by %{count} people."
       unauthenticated_retag: You need an account to retag questions
       unfavorite_tooltip: Remove this question from your favorites
       unknown_destination: Invalid sharing destination.
