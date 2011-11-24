@@ -15,7 +15,8 @@
   %li.entry.item
     -# News_item Summary
     .summary
-      %h3= link_to title, link, :title => truncate(entry.body, :length => 200)
+      %h3= link_to title, link, :title => truncate(entry.body, :length => 200),
+        :target => entry_type == "searchresult" ? "_blank" : ""
       - if entry_type == "searchresult"
         .search_result_url
           %p
