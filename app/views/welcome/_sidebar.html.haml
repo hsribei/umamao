@@ -31,8 +31,7 @@
         #url_field_wrapper
           = url_field_tag(:ref,
                           root_url(:ref => url_invitation.ref),
-                          :readonly => true,
-                          :class => :url_field)
+                          { :readonly => true, :class => :url_field })
         #url_invitation_information
           %span.number
             = url_invitation.clicks_count
