@@ -591,6 +591,16 @@ class Question
     @topic_followers_count ||= topics.map(&:followers_count).inject(0, :+)
   end
 
+  def unseen_search_results_count(user_id)
+    uqi = UserQuestionInfo.find_by_user_id_and_question_id(user_id, self.id)
+    if uqi && uqi.last_visited_at
+      self.search_results.count(:created_at.gt => uqi.last_visited_at,
+                                :user_id.ne => user_id)
+    else
+      self.search_results.count
+    end
+  end
+
   protected
   def delete_answers
     Answer.destroy_all(:question_id => self.id)
