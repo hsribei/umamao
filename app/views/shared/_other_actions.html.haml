@@ -7,7 +7,7 @@
       .user_info
         .user_title
           .arrow
-            = link_to(nil, '#', :class => 'down-arrow')
+            = link_to('', '#', :class => 'down-arrow')
           .user_name
             = link_to(truncate(h(short_name(current_user)), :length => 16),
                       user_path(current_user))
