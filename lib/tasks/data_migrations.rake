@@ -55,9 +55,9 @@ namespace :data do
       UserTopicInfo.reset_votes_balance!
       UserTopicInfo.reset_answers_count!
 
-      Answer.find_each do |answer|
-        UserTopicInfo.answer_added!(answer)
-        UserTopicInfo.update_vote_balance!(answer)
+      SearchResult.find_each do |sr|
+        UserTopicInfo.answer_added!(sr)
+        UserTopicInfo.update_vote_balance!(sr)
       end
     end
 

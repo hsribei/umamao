@@ -15,6 +15,7 @@ log/
 tmp/**/*
 dump
 *.swp
+*.swo
 *~
 vendor/cache
 public/stylesheets/compiled
