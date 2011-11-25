@@ -80,6 +80,7 @@ class AuthCallbackController < ApplicationController
         end
 
         if user = User.create_with_provider(auth_hash)
+          current_group.add_member(user)
           invitation_type = session['invitation_type']
           ref = session['invitation_id'] if invitation_type == "UrlInvitation"
           slug = session["invitation_id"] if invitation_type == "GroupInvitation"
