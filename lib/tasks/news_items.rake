@@ -48,6 +48,7 @@ namespace :news_items do
       activity_at_hash[nu.id] = nu.entry.activity_at
     end
     NewsItem.find_each(:batch_size => 1_000,
+                       :entry_activity_at => nil,
                        :news_update_entry_type => "Question") do |ni|
       print '.'
       ni.set(:entry_activity_at => activity_at_hash[ni.news_update_id])
