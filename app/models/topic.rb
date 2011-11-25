@@ -167,8 +167,8 @@ class Topic
     self.find_related_topics
 
     # if an error happens during set, set will return a Hash with it
-    errors_ids = self.set(:related_topic_ids, self.related_topics_id)
-    errors_count = self.set(:related_topics_count, self.related_topics_count)
+    errors_ids = self.set(:related_topic_ids => self.related_topics_id)
+    errors_count = self.set(:related_topics_count => self.related_topics_count)
 
     # only return true if both fields could be updated properly
     !(errors_ids.is_a?(Hash) || errors_count.is_a?(Hash))
