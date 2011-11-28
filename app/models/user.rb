@@ -31,6 +31,8 @@ class User
   key :description,               String
   key :new_user,                  Boolean, :default => true
 
+  key :active,                    Boolean, :default => true
+
   key :identity_url,              String
   key :role,                      String, :default => "user"
   key :last_logged_at,            Time
