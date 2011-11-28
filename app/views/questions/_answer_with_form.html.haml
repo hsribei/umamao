@@ -2,7 +2,8 @@
   .loader{:style => 'display: none;'}
     = waiting_tag
   - if logged_in? && !@question.closed
-    - if ab_test(:link_only_answer_form) == :link_only_answer_form
+    -# hardcoded to false to use the old-style answer form:
+    - if false
       = form_for(@search_result,
                    :url => question_search_results_path(@question.id, :format => :js),
                    :html => { :class => 'form bp',

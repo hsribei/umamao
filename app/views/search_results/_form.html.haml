@@ -2,7 +2,8 @@
 = f.hidden_field(:group_id, :value => group_id)
 = f.hidden_field(:user_id, :value => user_id)
 
-- if ab_test(:link_only_answer_form) == :link_only_answer_form
+-# hardcoded to false to use the old-style answer form:
+- if false
   #search_result_area
     = f.text_field(:url, :type => :url, :class => "link_only_answer_form",
                    :placeholder => t("search_results.add_link"))
