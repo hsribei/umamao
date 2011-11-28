@@ -54,12 +54,7 @@ class TopicsController < ApplicationController
       @topic.indirect_question_lists.paginate(:per_page => 6,
                                               :order => :created_at.desc)
 
-    ni_sr = ab_test(:news_items_search_results_helpers)
-    if ni_sr == :answer
-      options = {:news_update_entry_type => {:$ne => "SearchResult"}}
-    else
-      options = {:news_update_entry_type => {:$ne => "Answer"}}
-    end
+    options = {:news_update_entry_type => {:$ne => "Answer"}}
 
     @news_items = NewsItem.paginate({
       :recipient_id => @topic.id,
