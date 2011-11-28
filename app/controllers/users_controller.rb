@@ -144,15 +144,7 @@ class UsersController < ApplicationController
 
     @order_info = {:will_sort => false}
 
-    # A/B test for news items
-    ni_sr = ab_test(:news_items_search_results_helpers)
-    ni_sr = :answer
-    if ni_sr == :answer
-      options = {:entry_type => {:$ne => "SearchResult"}}
-    else
-      options = {:entry_type => {:$ne => "Answer"}}
-    end
-
+    options = {:entry_type => {:$ne => "Answer"}}
 
     @page = params[:page] || 1
     @items = @user.news_updates.paginate(options.merge(
