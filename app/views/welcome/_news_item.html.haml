@@ -33,7 +33,10 @@
         .metadata
           = t("time.ago", :time => time_ago_in_words(entry.created_at))
           \|
-          = format_number(question.search_results.count)
-          = t(:answer_count, :scope => "activerecord.models", :count => question.search_results.count)
+          - if logged_in?
+            = t(:new_answer_count, :scope => "welcome.news_item.question", :count => question.unseen_search_results_count(current_user.id))
+          - else
+            = format_number(question.search_results.count)
+            = t(:answer_count, :scope => "activerecord.models", :count => question.search_results.count)
           = render :partial => 'shared/stats_follow', :locals => { :question => question }
     .clear

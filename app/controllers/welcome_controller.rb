@@ -24,16 +24,11 @@ class WelcomeController < ApplicationController
   end
 
   def home
-    ni_sr = ab_test(:news_items_search_results_helpers)
-    if ni_sr == :answer
-      options = {:news_update_entry_type => {:$ne => "SearchResult"}}
-    else
-      options = {:news_update_entry_type => {:$ne => "Answer"}}
+    @news_items = filter_news_items(:news_update_entry_type => "Question")
+
+    if @news_items.empty?
+      @questions = Question.sort(:activity_at.desc).limit(10) || []
     end
-
-    @news_items = filter_news_items(options)
-
-    @questions = Question.latest.limit(10) || [] if @news_items.empty?
     @getting_started = Answer.find_by_id("4d42bebf79de4f262d000e4b")
 
     if %w[facebook twitter].include?(params[:shared_url_invitation])
@@ -122,7 +117,7 @@ class WelcomeController < ApplicationController
     NewsItem.paginate({
       :recipient_id => current_user.id, :recipient_type => "User",
       :per_page => 15, :page => params[:page] || 1,
-      :order => :created_at.desc, :visible => true}.merge(options))
+      :order => :entry_activity_at.desc, :visible => true}.merge(options))
   end
 
   def calculate_counts

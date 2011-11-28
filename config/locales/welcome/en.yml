@@ -34,6 +34,10 @@ en:
           created: Question added to topic %{origin}.
         user:
           created: "%{origin} added a question."
+        new_answer_count:
+          zero: "no new answers"
+          one: "%{count} new answer"
+          other: "%{count} new answers"
       searchresult:
         topic:
           created: Answer to %{question} added to %{origin}.

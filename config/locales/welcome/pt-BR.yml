@@ -38,6 +38,10 @@ pt-BR:
           created: "Pergunta adicionada ao tópico %{origin}."
         user:
           created: "%{origin} adicionou uma pergunta."
+        new_answer_count:
+          zero: "nenhuma nova resposta"
+          one: "%{count} nova resposta"
+          other: "%{count} novas respostas"
       searchresult:
         topic:
           created: "Resposta para %{question} adicionadaa ao tópico %{origin}."
